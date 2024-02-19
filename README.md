@@ -1,4 +1,6 @@
 # Research
+[PhD student @ University of Warwick](https://warwick.ac.uk/fac/sci/dcs/people/u2251609/)
+
 My goal is to design an AI agent whose internal structure is that of a market (because markets and intelligent agents do basically the same things; markets : intelligence :: capitalism : learning). My research will prevent the now-seemingly-inevitable destruction of the world and lead us to a glorious utopia, for three broad reasons:
 
 * **(Alignment is Industrial Organization)** Markets serve the consumers, they don't develop nefarious goals of their own, at least when you have a decent antitrust system, or spies. In fact this also addresses the question of how to handle conflicting interests between the humans we'd like to align the AI to.
