@@ -48,11 +48,32 @@ The first one will help you get rich; the second and third will satiate your dee
       <td valign="top">
         <img src="face.jpg" width="1000">
         <ul>
-          <li><a href = "https://warwick.ac.uk/fac/sci/dcs/people/u2251609/">PhD student @ University of Warwick</a> </li> 
-          <li>CV: <a href="https://drive.google.com/file/d/1_SfMm_qtLpzms3agqb6zf-76-Vq7U5VZ/view?usp=drive_link">relevant</a>, <a href ="https://drive.google.com/file/d/1_VStBkw6DthYNyp4F3Xx2THInWLpNrHK/view?usp=drive_link">extended</a> </li> 
-          <li>Blogs: <a href="https://thewindingnumber.blogspot.com">The Winding Number</a>, <a href="https://copypasta.substack.com/">Copypasta</a></li> 
-          <li>Profiles: <a href="https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir">LessWrong</a>, <a href="https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir">Stack Exchange</a>, <a href="https://twitter.com/abhimanyupasu">X (Twitter)</a></li>
-          <li>Also profiles: <a href="https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/">LinkedIn</a>, <a href="https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en">GScholar</a>, <a href="https://orcid.org/0000-0002-2506-0515">ORCID</a> </li>
+          <li><a href = "https://warwick.ac.uk/fac/sci/dcs/people/u2251609/">PhD student @ Warwick</a> </li> 
+          <li>CV:
+            <ul>
+              <li> <a href="https://drive.google.com/file/d/1_SfMm_qtLpzms3agqb6zf-76-Vq7U5VZ/view?usp=drive_link">relevant</a></li>
+              <li><a href ="https://drive.google.com/file/d/1_VStBkw6DthYNyp4F3Xx2THInWLpNrHK/view?usp=drive_link">extended</a></li>
+            </ul> 
+          </li> 
+          <li>Blogs: 
+            <ul>
+              <li><a href="https://thewindingnumber.blogspot.com">The Winding Number</a></li>
+              <li><a href="https://copypasta.substack.com/">Copypasta</a></li>
+            </ul>
+          </li> 
+          <li>Profiles:
+            <ul>
+              <li><a href="https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir">LessWrong</a></li>
+              <li><a href="https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir">Stack Exchange</a></li>
+              <li><a href="https://twitter.com/abhimanyupasu">X (Twitter)</a></li>
+            </ul>
+          </li>
+          <li>Also profiles: 
+            <ul>
+              <li><a href="https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/">LinkedIn</a></li>
+              <li><a href="https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en">GScholar</a></li>
+              <li><a href="https://orcid.org/0000-0002-2506-0515">ORCID</a></li>
+            </ul>
         </ul>
       </td>
       <td>
