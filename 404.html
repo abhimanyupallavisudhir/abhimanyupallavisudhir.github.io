@@ -6,7 +6,7 @@
     <script>
         window.onload = function() {
             var path = window.location.pathname;
-            if (path.startsWith("/substack/")) {
+            if (path.startsWith("/blog/")) {
                 var targetPath = path.slice("/blog/".length);
                 window.location.href = "https://copypasta.substack.com/p/" + targetPath;
             } else {
