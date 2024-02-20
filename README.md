@@ -16,9 +16,9 @@ My goal is to design an AI agent whose internal structure is that of a market (b
 
 So far all I've done is devise prediction markets for First-Order Logic (and also hyperarithmetical) sentences -- preprint out soon. Some side-quests that have emerged as a corollary of all this -- contact if you're interested in collaborating, because I don't have the time to do them all:
 
-* Building practical markets: I can prove that a very theoretical implication of my framework works; designing real markets for this will require some work.
-* Implications for mathematical logic: What if you let mathematical theories bet on markets? If they make a lot of money, we should trust them. Maybe this gives us a nice way to think about proof-theoretic ordinals etc. IDK.
-* Rewriting probability theory: I think the probability theory axioms are wrong and should be rewritten in a way to make long-term prices on my market a probability distribution. In particular, a sigma-algebra should only be required to be closed under countable union of a computable enumeration of its elements.
-* Bridges to neural networks: As it stands, program markets are absurdly impractical. Now I think I can solve this with latent spaces, but maybe we can somehow transfer our ideas to neural networks, or interpret neural networks as markets.
+* **Building practical markets:** I can prove that a very theoretical implication of my framework works; designing real markets for this will require some work.
+* **Implications for mathematical logic:** What if you let mathematical theories bet on markets? If they make a lot of money, we should trust them. Maybe this gives us a nice way to think about proof-theoretic ordinals etc. IDK.
+* **Rewriting probability theory:** I think the probability theory axioms are wrong and should be rewritten in a way to make long-term prices on my market a probability distribution. In particular, a sigma-algebra should only be required to be closed under countable union of a computable enumeration of its elements.
+* **Bridges to neural networks:** As it stands, program markets are absurdly impractical. Now I think I can solve this with latent spaces, but maybe we can somehow transfer our ideas to neural networks, or interpret neural networks as markets.
 
 The first one will help you get rich; the second and third will satiate your deepest intellectual curiosities; the last one will prevent the world from being destroyed.
