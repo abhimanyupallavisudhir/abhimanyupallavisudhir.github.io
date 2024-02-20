@@ -7,7 +7,7 @@
         window.onload = function() {
             var path = window.location.pathname;
             if (path.startsWith("/substack/")) {
-                var targetPath = path.slice("/substack/".length);
+                var targetPath = path.slice("/blog/".length);
                 window.location.href = "https://copypasta.substack.com/p/" + targetPath;
             } else {
                 // Display a 404 error message or redirect to another page
