@@ -3,7 +3,7 @@
 ## Research
 
 [PhD student @ University of Warwick](https://warwick.ac.uk/fac/sci/dcs/people/u2251609/)
-* CV: [relevant](https://drive.google.com/file/d/1_SfMm_qtLpzms3agqb6zf-76-Vq7U5VZ/view?usp=drive_link), [extended](https://drive.google.com/file/d/1_VStBkw6DthYNyp4F3Xx2THInWLpNrHK/view?usp=drive_link)
+* CV: [relevant](cv/extended.pdf), [extended](cv/relevant.pdf)
 * Blogs: [The Winding Number](https://thewindingnumber.blogspot.com), [Copypasta](https://copypasta.substack.com/)
 * Profiles: [LessWrong](https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir), [Stack Exchange](https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir), [Twitter](https://twitter.com/abhimanyupasu)
 * Also profiles: [LinkedIn](https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/), [GScholar](https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-2506-0515)
