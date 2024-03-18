@@ -1,0 +1,159 @@
+\documentclass{article}
+
+\usepackage{geometry, xcolor}
+\usepackage{titling, titlesec, enumitem, natbib}
+\usepackage{hyperref, cite, url, microtype, babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\droptitle}{-10em}
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \par\end{center}
+    \begin{center}\normalsize#1\end{center}
+    \vskip0.5em}}
+\titleformat{\section}
+  {\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalsize\itshape}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.5ex}{0.25ex}
+\setlist{nosep}
+\setlength{\bibsep}{0.3em}
+
+\newcommand{\disown}[1]{\color{lightgray}\sout{#1}}
+\DeclareTextFontCommand{\archive}{\color{lightgray}}
+\definecolor{linky}{RGB}{225,255,255}\let\hrefori\href\renewcommand{\href}[2]{{\setlength{\fboxsep}{1pt}\colorbox{linky}{\hrefori{#1}{#2}}}}
+\urlstyle{same}
+
+
+\title{\Large\bf Abhimanyu Pallavi Sudhir}
+\subtitle{AI researcher working on program markets in the context of AI and bounded rationality. \\ %\href{mailto:abhimanyupallavisudhir@gmail.com}{abhimanyupallavisudhir@gmail.com} / +44-7771824896 / 55 Leinster Square, London -- W2 4PW 
+\vspace{-2em}}
+\predate{}\postdate{}\date{}
+\preauthor{}\postauthor{}\author{}
+
+\begin{document}
+
+\begingroup
+\let\center\flushleft
+\let\endcenter\endflushleft
+\maketitle
+\endgroup
+
+\section*{Formal}
+
+\subsection*{Education}
+\begin{itemize}
+    \item University of Warwick $\cdot$ PhD Computer Science $\cdot$ 2022-26 -- supervisor: Long-Tran-Thanh %; Bounded rationality and market dynamics
+    \item Imperial College London $\cdot$ MSci Mathematics $\cdot$ 2018-22 -- 1st class honors
+\end{itemize}
+
+\subsection*{Internships}
+\begin{itemize}
+    \item Goldman Sachs $\cdot$ AI Research Intern $\cdot$ Jan-Aug 2021% -- Developed and implemented novel machine learning algorithms in NLP, data stream representation, Bayesian DAGs.
+\end{itemize}
+
+\section*{Publications}
+
+\subsection*{AI and theoretical economics}
+
+\begin{itemize}
+
+\item 
+Abhimanyu Pallavi Sudhir (2024), ``Betting on what is neither verifiable nor falsifiable'', \href{https://arxiv.org/abs/2402.14021}{arxiv.org/abs/2402.14021}
+
+\item
+Abhimanyu Pallavi Sudhir (2021),
+``A mathematical definition of property rights in a Debreu economy'', 
+\href{https://arxiv.org/abs/2107.09651}{arxiv.org/abs/2107.09651}
+
+\end{itemize}
+
+\subsection*{Pure math}
+
+Archived, see \href{https://scholar.google.co.in/citations?user=lb38BjYAAAAJ&hl=en}{Google Scholar} or \href{https://drive.google.com/file/d/1_VStBkw6DthYNyp4F3Xx2THInWLpNrHK/view?usp=drive_link}{extended CV}.
+
+\section*{Projects}
+
+\subsection*{Pet projects}
+
+\begin{itemize}
+
+    \item \emph{The Winding Number} $\cdot$ 2016-present $\cdot$ Personal academic blog; sample articles \href{https://thewindingnumber.blogspot.com/2019/10/sigma-fields-are-venn-diagrams.html}{[1]}\href{https://thewindingnumber.blogspot.com/2022/10/a-crash-course-on-mathematical-logic.html}{[2]}\href{https://thewindingnumber.blogspot.com/2020/08/hacking-evidential-decision-theory.html}{[3]}\href{https://thewindingnumber.blogspot.com/2019/05/whats-with-e-1x-on-smooth-non-analytic.html}{[4]}
+
+\end{itemize}
+
+\subsection*{Academic service}
+
+\begin{itemize}
+
+    \item \emph{Teaching Assistant for CS141: Functional Programming (Warwick)} $\cdot$ 2023
+    
+    \item \emph{Reviewer for Advances in Applied Clifford Algebras (Springer)} $\cdot$ 2020
+
+\end{itemize}
+
+
+\subsection*{Write-ups and talks}
+
+\begin{itemize}
+
+    \item \emph{Betting on what is not verifiable nor falsifiable} $\cdot$ 2023 $\cdot$ PhD
+    
+    \begin{itemize}
+        \item Annual Report \href{https://drive.google.com/file/d/1qNZjvwNXTKl8KHc1_m-vPnJyWvpT_-yi/view?usp=sharing}{[pdf]}
+        
+        \item Warwick Postgraduate colloquium (Dec 2023) \& Warwick Cake Talk (Nov 2023) \href{https://drive.google.com/file/d/1qvkmYbPsZ9kVE1WPljcPSpXZq7wphDqt/view?usp=sharing}{[ppt]}
+    \end{itemize}
+    
+    \item \emph{Bounded rationality and such} $\cdot$ 2022-23 $\cdot$ PhD
+
+    \begin{itemize}
+        \item ``Algorithmic information is at the root of all our problems'', Warwick Postgraduate colloquium (Mar 2023) \href{https://drive.google.com/file/d/1auYDhlsq1i0ZhTs3UsfuuUXYViS9UnqS/view?usp=sharing}{[ppt]}
+        \item ``Incompleteness theorems and firing philosophers'', Warwick Cake Talk (Feb 2023) \href{https://drive.google.com/file/d/1IrAc8RWr6gsGurXND3baNWEGaEJP6Tjb/view?usp=sharing}{[ppt]}
+        \item PhD proposal \href{https://drive.google.com/file/d/1EK045SAo025lGJtmkOOYI7sIzzIQF03K/view?usp=sharing}{[pdf]}
+    \end{itemize}
+
+    \item \emph{When does equivariant learning make sense?} $\cdot$ 2021-22 $\cdot$ final-year project with Jeroen Lamb
+        
+    \item \emph{A mathematical definition of property rights} $\cdot$ 2021 
+
+    \begin{itemize}
+        \item Imperial Undergraduate Colloquium (Feb 2022)
+        \item Sheffield SIAM-IMA Applied Math Conference (July 2021) \href{https://drive.google.com/file/d/1AjYV2bo33F7Cm6vmzD1PBA_8L3cnMQ0S/view?usp=sharing}{[ppt]}
+    \end{itemize}
+
+    \item \emph{Local normal forms of analytical maps near fixed points} $\cdot$ 2020 $\cdot$ group report and presentation
+    
+    \item \emph{Lie theory: the topology of groups} $\cdot$ 2019 $\cdot$ UROP reading project with Richard Thomas
+
+    \begin{itemize}
+        \item Warwick-Imperial Autumn Meeting (Mar 2022) [cancelled due to COVID-19 lockdowns] 
+        \item Imperial Undergraduate Colloquium (Oct 2019) \href{https://drive.google.com/file/d/1F5ZrQmRhkpp7dWFbjHreB-4pX4uR80VX/view?usp=drive_link}{[report]}\href{https://drive.google.com/file/d/1BYsFoRl5F6DBN7ARMdc-I1TrIKJgMqgY/view?usp=drive_link}{[ppt]}
+        \item Imperial 3-minute thesis competition (Oct 2019)
+    \end{itemize}
+
+    \item \emph{Ultraproducts and hyperreals} $\cdot$ 2018-19 $\cdot$ computerized formal proving with Kevin Buzzard
+
+    \begin{itemize}
+        \item Files in the Lean math library on Github, $\approx$1500 loc \href{https://github.com/leanprover-community/mathlib/blob/master/src/data/real/hyperreal.lean}{[hyperreal]}\href{https://github.com/leanprover-community/mathlib/blob/master/src/order/filter/filter_product.lean}{[ultraproduct]}\href{https://github.com/leanprover-community/mathlib/blob/master/src/order/filter/germ.lean}{[germ]}
+        \item Formalization of college math exams \href{https://xenaproject.wordpress.com/2019/05/06/m1f-imperial-undergraduates-and-lean/}{[announcement post]}
+        \item Poster presentation (Jun 2019) \href{https://drive.google.com/file/d/1FAx-c7pPaaKvjInDIQGr_gnhEnofc_vJ/view?usp=drive_link}{[poster]}
+    \end{itemize}
+
+\end{itemize}
+
+% Links -- programming work and profiles
+
+\section*{Links}
+
+\begin{itemize}
+    \item Contact:  \href{mailto:abhimanyupallavisudhir@gmail.com}{[email]}\href{tel:+44-7771824896}{[phone]} % 55 Leinster Square, London -- W2 4PW
+    \item Websites: \href{https://thewindingnumber.blogspot.com/}{[TheWindingNumber.blogspot]}\href{https://abhimanyu.io/}{[Homepage]}
+    \item Profiles: \href{https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir}{[StackExchange]}\href{https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir}{[LessWrong]}\href{https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/}{[LinkedIn]}\href{https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en}{[Scholar]}\href{https://orcid.org/my-orcid?orcid=0000-0002-2506-0515}{[ORCID]}
+\end{itemize}
+
+\end{document}
