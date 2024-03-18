@@ -22,3 +22,5 @@ So far all I've done is devise prediction markets for First-Order Logic (and als
 * **Bridges to neural networks:** As it stands, program markets are absurdly impractical. Now I think I can solve this with latent spaces, but maybe we can somehow transfer our ideas to neural networks, or interpret neural networks as markets.
 
 The first one will help you get rich; the second and third will satiate your deepest intellectual curiosities; the last one will prevent the world from being destroyed.
+
+test
