@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  29 APR 2024 14:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  29 APR 2024 14:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -362,18 +362,18 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12987 strings out of 474222
- 203665 string characters out of 5750209
+ 12975 strings out of 474222
+ 203521 string characters out of 5750209
  1948978 words of memory out of 5000000
- 35077 multiletter control sequences out of 15000+600000
- 562241 words of font info for 72 fonts, out of 8000000 for 9000
+ 35073 multiletter control sequences out of 15000+600000
+ 561420 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,5n,79p,1084b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on cv.pdf (2 pages, 92045 bytes).
+Output written on cv.pdf (2 pages, 91975 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
- 22529 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 18433 words of extra memory for PDF output out of 20736 (max. 10000000)
 
