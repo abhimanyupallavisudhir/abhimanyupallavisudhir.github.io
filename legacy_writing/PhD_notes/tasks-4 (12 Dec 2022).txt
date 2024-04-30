@@ -1,0 +1,13 @@
+The way I would generally express my ideas right now is: bounded rationality/logical uncertainty is generally the problem of a program not even being able to represent its uncertainty about something, because a program of some given length can only store so much information. The way to model such uncertainty is by giving the program a semantics -- maybe from a more powerful program -- which allows us to represent this uncertainty without the agent itself knowing about it (in a very "Tarski's undefinability" fashion). Then we could think about information in this representation of uncertainty.
+
+So what's the best way to act when there is something correlated with your beliefs? Is there a CK interpretation of such a decision theory? 
+
+---
+
+LITERATURE TO READ
+
+Halpern (also give bounded optimality a skim)
+Tennezholtz
+What is a Free Lunch?
+MIRI logical induction: 29, 30 + https://www.lesswrong.com/posts/WmNeCipNwg9CmGy3T
+Zero-intelligence traders 

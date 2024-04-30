@@ -1,0 +1,125 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\subsection{Proof of Siegel's Linearization Theorem}
+
+We present a proof different from Siegel's more involved original, following Beardon and Gamelin.
+
+\todo{We think we understand the idea of this proof and have made an attempt at capturing the intentions of each step, but also think we need to do another pass to finish the details and check for errors.}
+
+Given $f$ fixing the origin with multiplier $\lambda$, we would like to construct a function $\psi : \D_r \to \C$ univalent on some neighbourhood of the origin satisfying Schröder's equation $f(\psi(z)) = \psi(\lambda z)$. Up to first order we must have for such functions that
+
+\[
+\psi(z) = z + \sum_{n=2}^\infty a_nz^n = z + \Psi(z)
+\]
+and
+\[
+f(z) = \lambda z + \sum_{n=2}^\infty b_n z^n = \lambda z + F(z)
+\]
+Substituting into Schröder's equation
+\begin{equation}\label{eqn:schroeder-expand}
+    \lambda(z + \Psi(z)) + F(z + \Psi(z)) = \lambda z + \Psi(\lambda z)
+\end{equation}
+Heuristically, we expect $\Psi(z)$ to be small and imagine $F(z + \Psi(z)) \approx F(z)$. Then, replacing one term with the other and rearranging, of the previous equation \eqref{eqn:schroeder-expand} remains
+\begin{equation}\label{eqn:schroeder-simple}
+     F(z) = \Psi(\lambda z) - \lambda\Psi(z)
+\end{equation}
+and we expect that a solution to \eqref{eqn:schroeder-simple} to also approximately solve \eqref{eqn:schroeder-expand}. By inspecting the coefficients, \eqref{eqn:schroeder-expand} is satisfied by
+\begin{equation*}
+    \Psi_0(z) = \sum_{n=2}^\infty \frac{b_n}{\lambda^n - \lambda}z^n
+\end{equation*}
+Tentatively we define
+\begin{equation}
+    \psi_0(z) = z + \Psi_0(z)
+\end{equation}
+
+Which we can make univalent by restricting to a smaller domain. The strategy is to iterate this process in an attempt to progressively improve the approximate solutions. The content of this proof lies in estimations that ensure the convergence of the iterates on some neighbourhood of the origin to a univalent function which satisfies Schröder's equation.
+
+The following lemma captures a step in this iterative process:
+
+\begin{lem}
+\label{lem:schroeder-step}
+Let $\lambda$ be such that
+\[
+\frac{1}{\abs{\lambda^q - 1}} \le c_0 \frac{q^{\kappa}}{\kappa!}
+\]
+for every $q$, and let $f : \D_{r} \to \C$ fix the origin with multiplier $\lambda$. Fix some $0 < \eta < 1/5$ and fix $\delta > 0$ such that
+\[
+    \abs{F'(z)} \le \delta
+\]
+Throughout $\D_r$. Assume additionally that $c_0 \delta \le \eta^{(\kappa+2)}$.
+
+Then there exists a univalent $\psi_0: \D_{r_0} \to \D_r$ and holomorphic $f_0 : \D_{r_0} \to \C$ such that
+\begin{itemize}
+    \item $\abs{\Psi_0'(z)} \le c_0\frac{\delta}\eta^{-(\kappa+1)} \le \eta$ and
+    \item $\abs{F_1'(z)} \le c_0 \delta^2 r \eta^{-(\kappa+2)}(1-\eta)^{-1}$
+\end{itemize}
+in which
+\begin{itemize}
+    \item $r_0 = (1-5\eta) r$
+    \item $\psi_0(z) = z + \Psi_0(z)$
+    \item $f_1(z) = \psi_0\inv \circ f_0 \circ \psi_0 (z) = \lambda z + F_1(z)$
+\end{itemize}
+
+\end{lem}
+
+\begin{rmk}
+Considering \eqref{eqn:schroeder-expand}, we desire $\Psi \to 0$ and $F \tendsto \lambda z$. We achieve this by bounding $\abs{\Psi'}$ and by expressions that go to zero sufficiently fast as the iteration progresses, in turn bounding $\abs{\Psi}$ towards zero on its domain by the mean value inequality.
+\end{rmk}
+
+\begin{rmk}
+If $\lambda = e^{2\pi i \xi}$ with $\xi$ Diophantine, by Lemma \ref{lem:dioph-asymp} we can always satisfy the assumption on $\lambda$ in Lemma \ref{lem:schroeder-step} for small $c_0$. Furthermore, by making a suitable choice of $c_0$, we shall see from the way we construct successive iterates of $\delta$ and $\eta$ that the requirement $c_0 \delta \le \eta^{(\kappa+2)}$ turns out to hold inductively.
+\end{rmk}
+
+\begin{proof}
+We treat each part of the statement in turn, assuming all the hypotheses:
+
+\begin{itemize}
+    \item \emph{bounds on $\abs{\Psi_0'}$.} Where $z \in \D_{r_0}$, by considering the power series:
+    \begin{align*}
+    \abs{\Psi_0'(z)}
+    &\le
+    \sum_{n=2}^\infty \frac{n \abs{b_j} \abs{r(1-\eta)}^{n-1}}{\abs{\lambda^n - \lambda}}\\
+    &\le
+    \frac{\delta}{\abs{\lambda}}
+    \sum_{n=2}^\infty \frac{(1-\eta)^{n-1}}{\abs{\lambda^{n-1} - 1}}\\
+    &\le \delta \sum_{n=1}^\infty \frac{(1-\eta)^{n-1}}{\abs{\lambda^n - 1}}\\
+    &\le \frac{c_0\delta}{\kappa!} \sum_{n=1}^\infty
+    q^\kappa (1-\eta)^{n-1}\\
+    &\le \frac{c_0\delta}{q^{(\kappa+1)}}
+    \end{align*}
+    In which the second inequality follows from considering the power series of $\abs{F'(z)} < \delta$, the third from manipulating indicies, the fourth from the hypothesis on $\lambda$, and the final inequality from some gymnastics with bionomial coefficients.
+
+    \item \emph{$\psi_0$ is univalent $\D_{r_0} \to \D_r$.} The part of this claim about the domain of $\psi_0$ follows from the mean value estimate, univalence on the restricted domain follows from the bound on $\abs{\psi_0}$ and the mean value inequality.
+    
+    At this point we see
+    \[
+        \begin{tikzcd}
+        \D_{r(1-3\eta)} \ar[r, "f"] &[6em] \D_{r(1-2\eta)} \ar[d, "\psi\inv"]\\
+        \D_{r(1-4\eta)} \ar[r, "f_1 = \psi_0\inv \circ f \circ \psi_0"']
+        \ar[u, "\psi"] & \D_{r(1-\eta)}
+        \end{tikzcd}
+    \]
+    so indeed we have $f_1 = \psi_0\inv \circ f \circ \psi_0$ holomorphic on $\D_{r_0}$.
+    
+    \item \emph{Bounds on $\abs{F'_1}$.} (\textbf{to do.})
+\end{itemize}
+
+\end{proof}
+
+To complete the proof, we must finally verify that the $\psi_n$ constructed by the process described indeed converge to an univalent function $\psi$ on a neighbourhood of the origin:
+
+\[
+\begin{tikzcd}[column sep=tiny]
+\psi(z) \ar[rrr, "f"] & {} &[8em] \ar[d, "\psi_0^{-1}"] & f(\psi(z)) \ar[dddd, "\phi\inv"] \\
+& \ar[u, "\psi_0"] \ar[r, "f_1=\psi_0\inv \circ f \circ \psi_0"] & \ar[d, "\psi_1\inv"] & \\
+& \ar[u, "\psi_1"] \ar[r, "f_2=\psi_1\inv \circ \psi_0\inv \circ f \circ \psi_0 \circ \psi_1"] & \ar[d, "\psi_2\inv"] & \\
+& \vdots \ar[u, "\psi_2"] & \vdots & \\
+z \ar[uuuu, "\psi"] \ar[rrr, "\lambda \cdot"] & & & \lambda z
+\end{tikzcd}
+\]
+
+To check that the domain $\bigcap_{n \ge 0} \D_{r^n}$ on which every $\psi_n$ is defined is indeed nonempty, we invoke an arcane result from combinatorics. %TODO: what the frick is a q-pochhammer
+Then the family $\{ \psi_n : \D_R \to \D_R\}$ is normal as it is a family of maps between hyperbolic surfaces.
+
+\end{document}

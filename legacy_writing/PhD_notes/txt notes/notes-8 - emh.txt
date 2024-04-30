@@ -1,0 +1,31 @@
+Friedman: The market is efficient.
+
+Boundman: Surely that is impossible. For example, if I discover some pattern in stock prices that was previously unknown, I can make money off of it.
+
+Friedman: Ah, but you see, that algorithm, the information it's worth, is itself a resource, a resource of information. So it wasn't that the market was inefficient, it was efficient with respect to the algorithms that had been supplied to it. As time passed and more algorithms were created, it improved.
+
+Boundman: Ok, but when I decided to run this algorithm, surely you're not claiming that this was the *optimal* algorithm for me to run? Did my (or the economy's) decision to run this algorithm incorporate "all available information in the world"?
+
+Friedman: Well, optimal with respect to what? The economy (or you, in particular) ran some meta-algorithm to decide to run this algorithm, and maybe there were better meta-algorithms, but we weren't aware of them -- finding a better meta-algorithm would have needed some information, which we didn't have! Or you know, if you find some profit opportunity in some random market: there is only so much computational power available to us in the world! It's a scarce resource, and there's a market that determines how much of it to allocate to each thing.
+
+Boundman: But, I mean, is that market efficient? Can you calculate exactly how much computational power/which algorithms to allocate to each thing? No, right? But yet you say that there's something fundamentally optimal about markets. That whatever be the situation, markets are somehow "the" optimal way to present your algorithmic information to the world, that some kind of forceful intervention is never better. Why?
+
+Friedman: Maybe give me an example of a government intervention, and I'll explain.
+
+Boundman: ...
+
+Friedman: The point is that *if an inefficiency is discovered*, it will be corrected. And do we have a perfect mechanism to discover inefficiencies? Of course not! But again, if a way to improve it is discovered, it will be corrected.
+
+Boundman: Aahh but it just seems something is wrong with saying the market is "optimal" somehow. Because we can't find the optimum -- of anything! Sure, it's "optimal given the amount of algorithmic information it has" but that's just like saying "it's optimal because that's what we've got". What's *special* about markets?
+
+Friedman: What's special is the way in which it assimilates all the information from all the algorithms. If there is someone in the market who produces a better algorithm to calculate the price of something, or someone who determines that a particular market needs more attention/more allocation of resources (i.e. offers a higher price to information on that market), then the market will accomodate that information.
+
+Boundman: Is it the BEST way to accomodate that information?
+
+Friedman: No! But you don't know a better way. And if you do, you can price that in to the market.
+
+Boundman: Hmmm this is still very weird to me. Is the idea that each market is optimal "with respect to its meta-market"? And if you have a better meta-market (as evaluated by the meta-meta-market), you can price that in easily? But what if the meta-meta-market is just bad? Then you can beat it by appealing to the meta-meta-meta-market? But what if *that's* bad! Where does it all end, and how would you be able to tell if it's *all* bad?
+
+Friedman: ...
+
+Boundman: Perhaps it would help to have an example. Let's say you're trying to predict "Is the number 392288871 prime?" So you issue 500 yes shares and 500 no shares, and auction them off with the promise that at the end of the day, everyone who held the right share will get to share the sum of money raised. Maybe some traders with a total pool of $1000 come 

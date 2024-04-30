@@ -1,0 +1,245 @@
+\section{Appendix}
+
+\subsection{Preliminary Results in Complex Analysis}
+
+% Julia set non empty and uncountable
+
+\begin{thm}
+\label{app:thm:nonempty}
+$(\mathrm{J} \text { Is not Empty, Milnor})$. If $f$ is rational of degree 2 or more, then the Julia set $J(f)$ is nonvacuous.
+\end{thm}
+
+% weierstrass uniform convergence theorem(theorem 1.4)  -- basically everywhere.
+\begin{thm}
+\label{app:thm:weierstrass}
+(Weierstrass Uniform Convergence Theorem, Milnor). If a sequence of holomorphic functions $f_{n}: U \rightarrow \mathbb{C}$ converges uniformly to the limit function $f,$ then $f$ itself is holomorphic. Furthermore, the sequence of derivatives $f_{n}^{\prime}$ con-
+verges, uniformly on any compact subset of $U,$ to the derivative $f^{\prime}$
+\end{thm}
+
+% permanence principle 
+\begin{thm}
+\label{app:thm:permanence}
+(Permanence Principle) For one variable, the principle of permanence states that if $f(z)$ is an analytic function defined on an open connected
+subset $U$ of the complex numbers $\C$ and there exists a convergent sequence $\left\{a_{n}\right\}$ having a limit $L$ which is in $U$, such that $f\left(a_{n}\right)=0$ for all $n$, then $f(z)$ is uniformly zero on $U$.
+\end{thm}
+
+% Picard's theorem (theorem 2.6) -- ch.8
+\begin{thm}
+\label{app:thm:picard}
+(Picard's Theorem, Milnor). Every holomorphic map $f: \mathbb{C} \rightarrow \mathbb{C}$ which omits two different values must necessarily be
+constant.
+\end{thm}
+
+
+% Cauchy derivative estimate (Lemma 1.2') -- ch. 10,ch. 8, ch. 11.
+\begin{thm}
+\label{app:thm:cauchyder}
+(Cauchy Derivative Estimate). If $f$ maps the disk of radius $r$ about $z_{0}$ into some disk of radius $s,$ then
+\[
+\left|f^{\prime}\left(z_{0}\right)\right| \leq s / r
+\]
+\end{thm}
+
+% Open mapping theorem
+\begin{thm}
+\label{app:thm:openmapping}
+(Open Mapping Theorem, wikipedia) If $f : U \rightarrow \C$ is a non-constant holomorphic function, where $U \subset \C$, then $f$ sends open subsets of $U$ to open subsets of $\mathbf{C}$.
+\end{thm}
+
+
+  % immediate basin exists (if defining it as "invrt conn comp")
+  % attraction basin is open
+% ch. 11:
+  % definitions: lebesgue measure (plan: "you've seen borel in M2S; complete that boi")
+  % lemmas of Jensen \& M. \& F. Riesz (analysis-y suff)
+  % univalent limit is univalent
+\begin{thm}\label{ax:thm:uniform-limit-univalent}If a sequence of univalent functions $\{f_n\}$ on a domain converges locally uniformly to $f$, then $f$ is either constant or univalent.
+\end{thm}
+
+%\begin{proof}
+%As a locally uniform limit of holomophic functions, $f$ is holomorphic by the Weierstrass uniform convergence theorem. We show that $f$ is injective if is nonconstant: suppose $f(z_1) = f(z_2) = c$, and we may assume $c = 0$ by possibly replacing $f(z)$ with $f(z) - c$. Since zeros of a holomorphic function cannot accumulate we can find two discs around $z_1$ and $z_2$ such that $f$ vanishes nowhere else in their interior. By locally uniform convergence, for $n$ sufficiently large we can bound $\abs{f_n - f} < \abs{f}$ on the boundary of the two discs and arrive at a contradiction from Rouché's theorem and the injectivity of $f_n$.
+%\end{proof}
+
+\begin{lem} 
+\label{app:lem:julia}
+(Basin Boundary \(=\) Julia Set). If \(\mathcal{A} \subset \widehat{\mathbb{C}}\) is the basin of attraction for some attracting periodic orbit, then the topological boundary \(\partial \mathcal{A}=\overline{\mathcal{A}} \backslash \mathcal{A}\) is equal to the entire Julia set. Every connected component of the Fatou set \(\widehat{\mathbb{C}} \backslash J\) either
+coincides with some connected component of this basin \(\mathcal{A}\) or else is disjoint from \(\mathcal{A}\). 
+\end{lem}
+
+\begin{thm}[Classification of Fatou components]
+\label{ax:thm:fatou-classification}
+For any holomorphic $f : S \to S$ from a hyperbolic Riemann surface to itself, exactly one of the four cases is true:
+\begin{itemize}
+    \item \emph{Attracting.} $f$ has an attracting fixed point, and all orbits converge locally uniformly towards it.
+    \item \emph{Escape.} No orbit in $f$ has an accumulation point.
+    \item \emph{Finite order.} Some iterate $\iter{f}{n}$ is the identity map (thus every point in $S$ is periodic.)
+    \item \emph{Irrational rotation.} $S$ is conformally isomorphic to a disc, a punctured disc, or an annulus, and $f$ is conjugate to a rotation $z \mapsto e^{2 \pi i \xi}$ with $\xi$ irrational. 
+\end{itemize}
+\end{thm}
+
+\subsection{Riemann Surfaces and the Riemann Sphere}
+Most of our results concern the behaviour near a fixed point. It makes sense then that many of them have generalisations to the setting of \emph{Riemann surfaces,} which are objects which `locally resemble` an open subset of $\C$. This notion is formalised as follows
+
+\begin{dfn}
+\label{app:dfn:riemannsurfaces}
+
+A \emph{Riemann surface} $S$ is a topological space such that for any $p \in S$, there is a neighbourhood $U$ of $p$ and a map called the \textit{local uniformising parameter}:
+
+$$\Phi : U \mapsto \C$$
+
+homeomorphically mapping $U$ to an open subset of the complex plane. Furthermore, for any two such neighbourhoods \(U\) and \(U^{\prime}\) with nonempty intersection and local uniformising parameters \(\Phi\) and \(\Psi\), \(\Psi \circ \Phi^{-1}\) is a holomorphic function on $\Phi(U \cap U')$.
+\end{dfn}
+
+In the report, we make use of the following result about families of maps between Riemann surfaces:
+\begin{thm}[Montel]\label{ax:thm:montel}
+Any family of holomorphic maps between hyperbolic Riemann surfaces is normal.
+\end{thm}
+
+Of particular interest to us is the \emph{Riemann sphere}, denoted $\widehat{\C}$. As a set, $\widehat{\C}$ is equal to $\C \cup \{\infty\}$, the complex numbers together with infinity. We make $\widehat{\C}$ into a Riemann surface by defining a pair of local uniformising parameters, each omitting a point on the sphere:
+
+\begin{align*}
+\chart_0 : \widehat{\C}\minuset\{\infty\} &\to \C\\
+z &\mapsto z\\
+\chart_\infty : \widehat{\C}\minuset\{0\} &\to \C\\
+0           &\mapsto \infty\\
+z           &\mapsto \frac{1}{z}
+\end{align*}
+
+The transition maps are
+$(\chart_\infty \circ \chart_0\inv)(z) = \frac{1}{z}$ and
+$(\chart_0 \circ \chart_\infty\inv)(z) = \frac{1}{z}$, both of which are evidently holomorphic on $\widehat{\C}\minuset\{0, \infty\}$.
+
+It's also of interest to consider the topology on the Riemann Sphere. The open set's are exactly the open sets of $\C$ and the sets of the form $U \cup \{\infty\}$, where $U \subset \C$ is such that $\C \backslash U$ is compact. $\widehat{\C}$ is said to be the one-point compactification of the complex plane into the a sphere, since $\widehat{\C}$ is compact and by adding $\infty$ the space is diffeomorphic to the unit sphere. 
+
+\subsection{Results on Infinite Series and Products}
+
+We make use of several well-known results on seires and products, which are summarised here; for their proofs we refer to Knopp (1990).
+
+\begin{thm}\label{ax:thm:binomial}
+For a $t \in \R$ such that $\abs{t} < 1$,
+\[
+\sum_{j=0}^\infty {{j + k} \choose j} t^j = (1-t)^{-(k+1)}
+\]
+\end{thm}
+
+\begin{thm}\label{ax:thm:product}
+Let $\{a_k\}_{k \in \N}$ be a sequence of real numbers. Then if $\displaystyle \sum_{k \in \N} a_k$ converges absolutely, then so does
+$\displaystyle \prod_{k\in \N} (1+a_k)$.
+\end{thm}
+
+\begin{thm}\label{ax:thm:product-2}
+Let $\{a_k\}_{k \in \N}$ be a sequence of real numbers such that
+$\displaystyle \sum_{k \in \N} a_k$
+converges. Suppose furthermore that $0 < a_k < 1$ for each $a_k$. Then $\displaystyle \prod_{k\in \N} (1-a_k) > 0$.
+\end{thm}
+
+\subsection{Continued Fractions}
+Let $\xi \in [0,1)$ be an irrational number with continued fraction
+\[
+\xi = \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + \dots}}}.
+\]
+Denote by
+\[
+[a_1, a_2, a_3, \dots, a_n] = \frac{1}{a_1 + \frac{1}{\ddots + \frac{1}{a_n}}}
+\]
+
+\begin{lem}\label{continuedrecurrence}
+If $\xi$ has the above continued fraction decomposition, and $p_{n}$ and $q_{n}$ are integers defined by
+$p_{0} = 1, p_{1} = 0, q_{0} = 0, q_{1} = 1$ and
+    \begin{align*}
+        p_{n+1} &= a_{n}p_{n} + p_{n-1}\\
+        q_{n+1} &= a_{n}q_{n} + q_{n-1}
+    \end{align*}
+then $[a_1, a_2, a_3, \dots, a_{n-1}] = \frac{p_{n}}{q_{n}}$ for $n \geq 2$
+\end{lem}
+\begin{proof}
+Proceed by induction on $n$. If $n = 2$, the result can be immediately verified. Now assuming
+\[
+[a_1, a_2, \dots, a_{n-1}] = \frac{p_{n}}{q_{n}} = \frac{a_{n-1}p_{n-1} + p_{n-2}}{a_{n-1}q_{n-1} + q_{n-2}}
+\]
+we have
+\begin{align*}
+    [a_1, a_2, \dots, a_{n-1}, a_n] &= \left[a_1, a_2, \dots, a_{n-1} + \frac{1}{a_n}\right]\\
+    & = \frac{\left(a_{n-1} + \frac{1}{a_n}\right)p_{n-1} + p_{n-2}}{\left(a_{n-1} + \frac{1}{a_n}\right)q_{n-1} + q_{n-2}}\\
+    & = \frac{a_{n}(a_{n-1}p_{n-1} + p_{n-2}) + p_{n-1}}{a_{n}(a_{n-1}q_{n-1} + q_{n-2}) + q_{n-1}}\\
+    & = \frac{a_{n}p_{n} + p_{n-1}}{a_{n}q_{n} + q_{n-1}}\\
+    & = \frac{p_{n+1}}{q_{n+1}}\\
+\end{align*}
+\end{proof}
+Hence $\{q_{n}\}$ is a strictly increasing, unbounded sequence of integers.
+
+\begin{cor}
+With $p_{n}$ and $q_{n}$ as above, we have 
+$$p_{n}q_{n+1} - p_{n+1}q_{n} = (-1)^{n}$$
+\end{cor}
+\begin{proof}
+We can rewrite the recurrence relation in matrix form as
+\[
+\begin{pmatrix}
+p_{n} & q_{n}\\
+p_{n+1} & q_{n+1}
+\end{pmatrix}
+= 
+\begin{pmatrix}
+0 & 1\\
+1 & a_{n}
+\end{pmatrix}
+\begin{pmatrix}
+p_{n-1} & q_{n-1}\\
+p_{n} & q_{n}
+\end{pmatrix}
+\]
+and so comparing determinants
+\[
+p_{n}q_{n+1} - p_{n+1}q_{n} = (-1)(p_{n-1}q_{n} - p_{n}q_{n-1}).
+\]
+The result now follows.
+\end{proof}
+
+\begin{lem}
+$\frac{p_{n}}{q_{n}} < \xi$ if $n$ is odd and $\frac{p_{n}}{q_{n}} > \xi$ if $n$ is even
+\end{lem}
+\begin{proof}
+Proceeding by induction again, we see that the result is immediate for $n = 1$ or $2$. Now $[a_2, a_3, \dots, a_{n-1}]$ is the $n^{th}$ convergent of $\frac{1}{\xi} - a_1$. Then by the induction hypothesis, if $n$ is even
+\[
+[a_2, a_3, \dots, a_{n-1}] < \frac{1}{\xi} - a_1
+\]
+\[
+\Rightarrow \frac{p_{n}}{q_{n}} = \frac{1}{a_1 + [a_2, a_3, \dots, a_{n-1}]} > \xi
+\]
+The same argument holds for $n$ odd where the inequalities are simply reversed.
+\end{proof}
+
+\begin{cor}
+We have $\abs{q_{n}\xi - p_{n}} < \abs{q_{n-1}\xi - p_{n-1}}$ and
+\[
+0 = \frac{p_1}{q_1} < \frac{p_3}{q_3} < \frac{p_5}{q_5} < \dots < \xi < \dots < \frac{p_6}{q_6} < \frac{p_4}{q_4} < \frac{p_2}{q_2} = \frac{1}{a_1} < 1.
+\]
+\end{cor}
+\begin{proof}
+The second statement follows immediately from the first and the above lemma so it suffices to prove that $\abs{q_{n}\xi - p_{n}} < \abs{q_{n-1}\xi - p_{n-1}}$.
+Let $r_{1} \in (0, 1)$ be such that $r_{1} = 1/\xi - a_{1}$. Then define $r_{n+1} \in (0,1)$ inductively such that $r_{n+1} = 1/r_{n} - a_{n+1}$. Then $\xi = \left[a_1, a_2, \dots, 1/r_{n}\right]$. By applying Lemma \ref{continuedrecurrence} to $\left[a_1, a_2, \dots, 1/r_{n}\right]$, we have
+\[
+\xi = \frac{p_{n} + p_{n-1}r_{n}}{q_{n} + q_{n-1}r_{n}}.
+\]
+Hence, $\abs{q_{n}\xi - p_{n}} = r_{n}\abs{q_{n-1}\xi - p_{n-1}}$ and $r_{n} < 1$. The result now follows since $q_{n} > q_{n-1}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

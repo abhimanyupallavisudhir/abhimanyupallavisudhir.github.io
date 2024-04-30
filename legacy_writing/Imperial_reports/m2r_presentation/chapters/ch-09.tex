@@ -1,0 +1,151 @@
+\section{Superattracting Fixed Points}
+\sectiontitleframe
+
+\begin{frame}{Introduction}
+
+    \begin{definition}
+    A holomorphic function $f : \C \rightarrow \C$ has a super-attracting fixed point at $z^* \in \C$, if $f(z^*)=z^*$ and $f'(z^*) = 0$.
+    \end{definition}\bigskip
+    
+    WLOG fixed point at 0, we can write:
+    
+    \begin{equation}
+    \label{9:eq:1}
+    f(z) = a_pz^p + a_{p+1}z^{p+1}\dots = \sum_{k=p}^{\infty} a_{k}z^k
+    \end{equation}
+    
+\end{frame}
+
+
+\begin{frame}{Bottcher's Theorem}
+
+\begin{thm}
+    \label{9:thm:bottcher}
+    Let $f$ be as in Eq.~\ref{9:eq:1}. Then there exists a local holomorphic change of coordinates $\lin{z} = \linT(z)$, such that $\linT(0) = 0$ and $\linT'(0) = 1$, where $\linT(f(z)) = \phi(z)^p$ locally. Furthermore, $\linT$ is unique up to multiplication by a $(p-1)^{th}$ root of unity. 
+\end{thm}
+\medskip
+    
+    \begin{itemize}
+        \item existence and uniqueness of map $\phi : \C \rightarrow \C$
+        \item $\linT(f(z)) = \phi(z)^p$
+        \item derivative at 0 is 1
+        \item existence of inverse $\psi$
+        \item $\phi \circ f \circ \phi^{-1} (z) = z^p$
+        
+    \end{itemize}
+    
+\end{frame}
+
+
+
+
+\begin{frame}{Inverse of the change of coordinates}
+
+\begin{thm}
+\label{9:thm:extension}
+Let $f$ and $\linT$ be as in Theorem \ref{9:thm:bottcher} and let $\linV_r$ be local inverse of $\phi$. Then there exists a unique open disc $\D_\eps$ around 0 of maximal radius $0<\eps \leq 1$ such that $\linV_r$ extends holomorphically to a map $\linV$ from the disc into the immediate basin $\basin^0$ of $0$. If $\eps=1$, then $\linV$ maps the unit disc biholomorphically onto $\basin^0$ and $0$ is the only critical point of f in the basin. On the other hand if $\eps<1$ then there is at least one other critical point of $f$ in $\basin^0$, lying on the boundary of $\linV(\D_\eps)$.
+\end{thm}\bigskip
+    
+    \begin{itemize}
+        \item Holomorphic extension of $\psi$, to:
+        \begin{enumerate}
+            \item Another critical point, $\psi$ valid on $\D_\eps$, critical point on boundary of image of $\D_\eps$ under the map $\psi$.
+            
+            \item No other critical point, $\psi$ biholomorphism from $\D_1$ to immediate basin.
+        \end{enumerate}
+
+    \end{itemize}
+    
+\end{frame}
+
+
+
+\begin{frame}{First Example}
+
+\begin{exl}
+
+Take:
+
+$$f(z) = \frac{z^2}{1-2z^2} \approx z^2+2z^4+4z^6\dots$$
+
+
+By our Theorem \ref{9:thm:extension} the extension of the inverse of the map valid in whole of $\D_1$. Inverse given by:
+
+
+$$\linV(\lin{z}) = \frac{\lin{z}}{1+\lin{z}^2}$$
+
+We then see:
+
+$$f(\linV(\lin{z})) = f\left(\frac{\lin{z}}{1+\lin{z}^2}\right) = \frac{\lin{z}^2}{1+\lin{z}^4} = \linV(\lin{z}^2)$$
+\end{exl}
+    
+\end{frame}
+
+
+\begin{frame}{Applications to Polynomial Dynamics}
+    Now we will be working on the Riemann Sphere, let:
+    \begin{equation}
+f(z) = a_dz^d + a_{d+1}z^{d+1}\dots+a_1z + a_0
+\end{equation}
+
+\begin{itemize}
+    \item WLOG we can assume f to be monic
+    \item super-attracting fixed point at $\infty$
+\end{itemize}
+\end{frame}
+
+
+% \begin{frame}{Application to Polynomial Dynamics}
+
+% \begin{dfn}
+% We call the set of all $z \in \widehat{\C}$ with a bounded orbit under f the \emph{filled Julia set} of f, $\kulia = \kulia(f)$. 
+% \end{dfn}
+
+% \begin{thm}
+% \label{9:thm:1.6}
+% For any polynomial $f$ of degree at least 2, the filled Julia set $\kulia \subset \widehat{\C}$ is compact, with connected complement and with $\partial \kulia = \julia = \julia(f)$ (the Julia set) and with interior equal to the union of all the bounded components $U$ of the Fatou set $\widehat{\C}\setminus\julia$. Thus $K$ is equal to the union of all such $U$ and $\julia$ itself. 
+% \end{thm}
+
+    
+% \end{frame}
+
+\begin{frame}{Fixed point at $\infty$}
+Let $\zeta = \frac{1}{z}$. Then:
+
+$$G(\zeta) = \frac{1}{f(1/\zeta)}$$
+
+Then since $f$ is monic, near $\infty$, $f(z) \approx z^d$. By that we have near 0, $$G(\zeta) \approx \frac{1}{z^d} = \zeta^d$$
+
+Then from Theorem \ref{9:thm:bottcher} we can get a map $\alpha$, which conjugates $G$ to $\Lin{z} \mapsto \Lin{z}^d$. Let:
+
+$$\linT(z) = \frac{1}{\alpha(\frac{1}{z})}$$
+
+which maps some neighbourhood of $\infty$ biholomorphically onto another neighbourhood of $\infty$. We then have:
+
+$$\linT(f(z)) = \linT(z)^d$$
+
+\end{frame}
+
+\begin{frame}{Example}
+
+    \begin{exl}
+Let's take the map:
+
+$$f(z) = z^2 -2$$ 
+
+Super-attracting fixed point at $\infty$. Let $\zeta = 1/z$ and get map $G(\zeta)$:
+
+$$G(\zeta) = \frac{1}{f\left(\frac{1}{\zeta}\right)} = \frac{\zeta^2}{1-2\zeta^2}$$
+
+For $G$ we had the local inverse $\beta(\Lin{z}) = \frac{\Lin{z}}{1+\Lin{z}^2}$, here we have:
+
+$$\linV(\lin{z}) = \frac{1}{\beta(1/\lin{z})} = \lin{z} +\frac{1}{\lin{z}}$$
+
+For verification we find:
+
+$$f\left(\lin{z} + \frac{1}{\lin{z}}\right) = \lin{z}^2 + \frac{1}{\lin{z}^2} = \linV(\lin{z}^2)$$
+
+
+\end{exl}
+
+\end{frame}

@@ -1,0 +1,310 @@
+%%% ---------------------------------------- %%%
+%%%                 PACKAGES                 %%%
+%%% ---------------------------------------- %%%
+
+%%% System %%%
+%\usepackage{subfiles}         % for writing sections separately
+\usepackage{xparse}           % for NewDocumentCommand
+\usepackage[                  % for biblatex
+    backend = biber,
+    sorting = none, 
+    defernumbers,
+    style = numeric-comp %ieee
+           ]{biblatex} 
+
+%% Text %%%
+\usepackage[
+  breaklinks,
+  unicode
+           ]{hyperref}
+\usepackage[
+    %shortlabels
+           ]{enumitem}        % for better itemize, enumerate
+\usepackage[
+    %page                     % appendix should have title
+           ]{appendix}
+
+%%% Page %%%
+% \usepackage[                  
+%     %a4paper,
+%     margin = 1in, 
+%     headsep = 12pt % separation between header rule and text
+%            ]{geometry} 
+% \usepackage{fancyhdr}
+% \usepackage{xcolor}
+% \usepackage{lastpage}
+%\usepackage{fouriernc}
+% \usepackage[
+%     scale=1
+%            ]{tgschola}
+
+%%% Math %%%
+\usepackage{amsmath}          % for better math
+\usepackage{amsthm}           % for better NewTheorem
+\usepackage{amssymb}          % for better symbols (comes with amsfonts)
+%\usepackage{mathtools}       % for better math
+%\usepackage{bm}              % for bold math symbols
+
+%%% Code %%%
+\usepackage[
+    noend
+           ]{algpseudocode}
+\usepackage{algorithm}
+
+%%% Figures %%%
+\usepackage{tikz}             % for tikz figures,
+\usepackage{pgfplots}
+\usepackage{mathrsfs}
+\usepackage{graphicx}         % for general graphics things, reflectbox
+\usepackage{caption}
+\usepackage{subcaption}      % for subfigures with their own captions
+
+%%% Package settings %%%
+%\setlist{nosep}
+%\renewcommand*\appendixpagename{\Large Appendices}
+% \MakeRobust{\Call}
+% \MakeRobust{\Function}
+% \newcommand*\Object[1]{\textproc{#1}}
+% \algdef
+%     {SxnE}% block statement, Start line x no End line
+%     [CLASS]% new block type, not to be confused with loops or if-statements
+%     {Class}% "\Struct{name}" will indicate the start of the struct declaration
+%     {EndClass}% "\EndStruct" ends the block indent
+%     [1]% There is one argument, which is the name of the data structure
+%     {\textbf{class} \textsc{#1}}% typesetting of the start of a struct
+%     %{\textbf{end class}}% typesetting the end of the struct
+% \algnewcommand{\LeftComment}[1]{\(\triangleright\) #1}
+% \algnewcommand{\Type}[1]{\textbf{type}\ \textsc{#1}}
+
+%%% ---------------------------------------- %%%
+%%%                 COMMANDS                 %%%
+%%% ---------------------------------------- %%%
+
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyhead[C]{%
+%     \footnotesize\sffamily
+%     \yourname\quad
+%     %web: \textcolor{blue}{\itshape\yourweb}\quad
+%     \textcolor{blue}{\yourid} \quad
+%     PhD (Dec 2022-26) Y1 Annual report
+%     \vspace{3pt}
+%   }
+% \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+% \newcommand{\thetitle}{Betting on the latent space}
+% \newcommand{\yourname}{Abhimanyu Pallavi Sudhir}
+% \newcommand{\yourid}{u2251609}
+% \newcommand{\yourweb}{https://abhimanyu.io}
+
+%%% Meta-data %%%
+
+\bibliography{refs}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=groups, final]
+      \step[fieldset=keywords, origfieldval]
+    }
+  }
+}
+
+\defbibfilter{self}{%
+    keyword={Own work}
+}
+
+\defbibfilter{predmarkets}{%
+    keyword={Market-makers}
+    or keyword={Decision scoring}
+}
+
+\defbibfilter{progmarkets}{%
+    keyword={Multi-agent AI - markets}
+    or keyword={Multi-agent AI - a whole new world}
+    or keyword={Multi-agent AI - other}
+}
+
+\defbibfilter{latent}{%
+    keyword={Latent space}
+    or keyword={Elicitation}
+    or keyword={Automated mechanism design}
+}
+
+\defbibfilter{math}{%
+    keyword={Logic, ordinals and measure}
+    or keyword={Game semantics and CL}
+    or keyword={Information and complexity}
+}
+
+\defbibfilter{lampposts}{%
+    keyword={Lampposts for drunks}
+    or keyword={Tolerance for irrationality}
+}
+\defbibfilter{br}{%
+    keyword={As-if and such}
+    or keyword={Dynamical and such}
+    or keyword={Finite automata and such}
+    or keyword={Heuristics and such} or keyword={Machines and such}
+    or keyword={Thermodynamics and such}
+    or keyword={Other MIRI stuff}
+}
+
+\defbibfilter{econ}{%
+    keyword={EMH go theorems}
+    or keyword={Information and Complexity Economics}
+    or keyword={Market logic}
+    or keyword={Mechanism design}
+}
+
+\defbibheading{bibliography}[\refname]{}
+
+\renewcommand{\maketitle}{
+    {\Large Betting on the latent space}
+    
+    \emph{(working title; year 1 annual report)}
+    
+    \vspace{5pt}
+    
+    \textbf{Name:} Abhimanyu Pallavi Sudhir (u2251609)
+    
+    \textbf{Supervisor:} Long Tran-Thanh
+    
+    \textbf{Course:} PhD Computer science, 1 Dec 2022--26, University of Warwick
+    
+    \vspace{6pt}
+    \hrule
+    \bigskip
+    }
+
+%%% Theorem environments %%%
+
+% theoremstyle theorem, numbered with [theorem]s
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% theoremstyle definition, numbered with [definitions]s
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lefinition}[definition]{Predefinition}
+\newtheorem{example}[definition]{Example}
+
+% theoremstyle remark, not numbered
+\theoremstyle{remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{notes*}{Explanatory notes}
+\newtheorem*{constants*}{Constants}
+\newtheorem*{notation*}{Notation}
+
+% pissearch environments; theoremstyle definition, not numbered
+\theoremstyle{definition}
+\newtheorem*{goals*}{Research objective}
+\newtheorem*{work*}{Work so far}
+\newtheorem*{applications*}{Applications}
+\newtheorem*{timeline*}{Timeline}
+\newtheorem*{actionable*}{Immediate next steps}
+\newtheorem*{events*}{Related events}
+\newtheorem*{collaboration*}{Collaboration with supervisor and others}
+\newtheorem*{skills*}{Professional development and transferable skills}
+
+% proof sketch
+\newenvironment{hproof}{%
+  \renewcommand{\proofname}{Proof sketch}\proof}{\endproof}
+
+%%% New Document Commands %%%
+
+% basic math
+\NewDocumentCommand{\Nats}{}{\mathbb{N}}
+\NewDocumentCommand{\Rats}{}{\mathbb{Q}}
+\NewDocumentCommand{\Reals}{}{\mathbb{R}}
+\NewDocumentCommand{\Bools}{}{\{\bot,\top\}}
+\NewDocumentCommand{\probs}{}{[0,1]}
+\NewDocumentCommand{\Props}{}{\operatorname{Prop}}
+\NewDocumentCommand{\strings}{}{\operatorname{string}}
+\NewDocumentCommand{\code}{m}{\left\langle#1\right\rangle}
+\NewDocumentCommand{\concat}{m m}{#1:#2}
+\NewDocumentCommand{\compl}{}{\,\raisebox{0.25ex}{\rotatebox[origin=c]{180}{\ensuremath{\DOTSB\lhook\joinrel\relbar}}}}
+\NewDocumentCommand{\proj}{O{}}{\operatorname{pr}_{#1}}
+\NewDocumentCommand{\too}{}{\to_\circ}
+\NewDocumentCommand{\topt}{}{\to_{\mathsf{p}}}
+\NewDocumentCommand{\toc}{}{\to_{\mathsf{c}}}
+\NewDocumentCommand{\mapstopt}{}{\mapsto_{\mathsf{p}}}
+\NewDocumentCommand{\mapstoc}{}{\mapsto_{\mathsf{c}}}
+\NewDocumentCommand{\toe}{}{\to_{-}}
+\NewDocumentCommand{\mapstoe}{}{\mapsto_{-}}
+\NewDocumentCommand{\tod}{}{\to_{\downarrow}}
+\NewDocumentCommand{\mapstod}{}{\mapsto_{\downarrow}}
+\NewDocumentCommand{\tode}{}{\to_{-\downarrow}}
+\NewDocumentCommand{\mapstode}{}{\mapsto_{-\downarrow}}
+\NewDocumentCommand{\intlen}{m}{\left|#1\right|}
+\NewDocumentCommand{\zero}{}{\mathbf{0}}
+\NewDocumentCommand{\maybe}{m}{\overline{#1}}
+\NewDocumentCommand{\preimg}{m m}{{#1}^{-1}\left(#2\right)}
+\NewDocumentCommand{\supp}{}{\operatorname{supp}}
+\NewDocumentCommand{\finset}{}{\operatorname{finset}}
+\NewDocumentCommand{\argmax}{}{(\operatorname{arg}, \operatorname{max})}
+\NewDocumentCommand{\argmin}{}{(\operatorname{arg}, \operatorname{max})}
+
+% logic
+\NewDocumentCommand{\play}{m m}{#1[#2]}
+\NewDocumentCommand{\moves}{}{\maybe{\finset{\Nats}}}
+\NewDocumentCommand{\playfull}{}{\operatorname{Game}}
+\NewDocumentCommand{\halts}{}{\operatorname{Halts}}
+
+% series
+\ExplSyntaxOn
+\prop_new:N \g_based_agents_prop
+\prop_set_from_keyval:Nn \g_based_agents_prop
+  {
+    a = \alpha, b = \beta, c = \gamma, m = \mu, p = \pi, pp = \varpi, s = \mathcal{A}
+  }
+
+\NewDocumentCommand{\agent}{O{a}}{
+  \prop_get:NnNTF \g_based_agents_prop {#1} \l_tmpa_tl {
+    \tl_use:N \l_tmpa_tl
+  }{
+    #1
+  }
+}
+\ExplSyntaxOff
+
+\NewDocumentCommand{\trader}{O{a}}{\hat{\agent[#1]}}
+\NewDocumentCommand{\player}{O{a}}{\tilde{\agent[#1]}}
+\NewDocumentCommand{\instaplayer}{O{a}}{\breve{\agent[#1]}}
+\NewDocumentCommand{\labeler}{O{a}}{{\agent[#1]}^{\#}}
+\NewDocumentCommand{\endowment}{O{a}}{{\agent[#1]}^{\operatorname{b}}}
+\NewDocumentCommand{\birthday}{O{a}}{{\agent[#1]}^{\operatorname{t}}}
+\NewDocumentCommand{\inventory}{O{a}}{{\agent[#1]}_{\$}}
+\NewDocumentCommand{\change}{O{} O{a}}{{\delta\agent[#2]}_{\$}^{#1}}
+\NewDocumentCommand{\father}{O{m}}{{\agent[#1]}^{\operatorname{bh}}}
+\NewDocumentCommand{\price}{O{p}}{{\agent[#1]}^{*}}
+\NewDocumentCommand{\longrun}{O{pp}}{{\agent[#1]}^{\infty}}
+\NewDocumentCommand{\tpler}{O{s}}{{\agent[#1]}^{\circ}}
+\NewDocumentCommand{\foo}{}{\texttt{``foo''}}
+
+% special stupid thing because writing \player[s] \instaplayer[s] in theorem name confuses LaTex
+\NewDocumentCommand{\instaplayers}{}{\instaplayer[s]}
+\NewDocumentCommand{\players}{}{\player[s]}
+
+% probabilities
+\NewDocumentCommand{\Prob}{}{\mathbf{Pr}}
+\NewDocumentCommand{\Expect}{}{\mathbf{E}}
+
+% prediction markets subsection
+\NewDocumentCommand{\finprocs}{}{\operatorname{FinProc}}
+\NewDocumentCommand{\portfolios}{}{\operatorname{PF}}
+\NewDocumentCommand{\pricee}{}{\pi}
+\NewDocumentCommand{\inventorye}{}{{\boldsymbol{\alpha}}}
+
+% garrabrant subsection
+\NewDocumentCommand{\thms}{}{\Theta}
+\NewDocumentCommand{\world}{}{w}
+\NewDocumentCommand{\PC}{}{\mathsf{PC}}
+\NewDocumentCommand{\indicate}{m}{\mathbf{I}\left[#1\right]}
+
+% oesterheld subsection
+\NewDocumentCommand{\DP}{}{\mathsf{DP}}
+\NewDocumentCommand{\choice}{O{m}}{\agent[#1]^c}
+\NewDocumentCommand{\estimate}{O{m}}{\agent[#1]^e}
+\NewDocumentCommand{\hyps}{}{\agent[s]}
+\NewDocumentCommand{\hyp}{O{a}}{\agent[#1]}

@@ -1,0 +1,59 @@
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\pgfmathsetmacro{\myw}{3.6}
+\pgfmathsetmacro{\myh}{2.6}
+\pgfmathsetmacro{\mys}{0.25}
+\newlength{\mypad}
+\setlength{\mypad}{8pt}
+\newlength{\mylsg}
+\setlength{\mylsg}{2pt}
+
+\begin{tikzpicture}[line width =1pt]
+
+\draw (0,0) -- (0,3*\myh+4*\mys);
+\draw (\myw,0) -- (\myw,3*\myh+4*\mys);
+\node[] at (\myw/2,3*\myh+4*\mys){$\dots$};
+\draw node[above = \mypad, anchor = north east]{$\Delta_0$} (0,0) -- (\myw,0) node[above = \mypad, anchor = north west]{$\Delta_0$};
+\draw (0,0) -- (\myw,\myh) node[above = \mypad, anchor = north west]{
+    \begin{tabular}{l}
+        $\Pi_1$ \vspace{\mylsg}\\
+        ``Bob will die'' \vspace{\mylsg}\\
+        ``all swans are white'' \vspace{\mylsg}\\
+        ``$P$ does not halt''
+    \end{tabular}};
+\draw (\myw,0) -- (0,\myh) node[above = \mypad, anchor = north east]{
+    \begin{tabular}{r}
+        $\Sigma_1$ \vspace{\mylsg}\\
+        ``Bob will die'' \vspace{\mylsg}\\
+        ``there is a white swan'' \vspace{\mylsg}\\
+        ``$P$ halts''
+    \end{tabular}};
+\draw (0,\myh+\mys) -- (\myw,2*\myh+\mys) node[above = \mypad, anchor = north west]{
+    \begin{tabular}{l}
+        $\Pi_2$ \\
+        ``all men are mortal'' \vspace{\mylsg}\\
+        ``all swans will lay\\
+        a white egg'' \vspace{\mylsg}\\
+        ``there are an infinite\\
+        number of primes''
+    \end{tabular}};
+\draw (\myw,\myh+\mys) -- (0,2*\myh+\mys) node[above = \mypad, anchor = north east]{
+    \begin{tabular}{r}
+        $\Sigma_2$ \\
+        ``there is an immortal man'' \vspace{\mylsg}\\
+        ``there is a swan that\\
+        always lays brown eggs'' \vspace{\mylsg}\\
+        ``there are finitely\\
+        many perfect numbers''
+    \end{tabular}};
+\draw (0,2*\myh+2*\mys) -- (\myw,3*\myh+2*\mys) node[above = \mypad, anchor = north west]{
+    \begin{tabular}{l}
+        $\Pi_3$ \vspace{\mylsg}\\
+        ``$x_n$ converges to 2''
+    \end{tabular}};
+\draw (\myw,2*\myh+2*\mys) -- (0,3*\myh+2*\mys) node[above = \mypad, anchor = north east]{
+    \begin{tabular}{r}
+        $\Sigma_3$ \vspace{\mylsg}\\
+        ``$x_n$ does not converge to 2''
+    \end{tabular}};
+\end{tikzpicture}

@@ -3,9 +3,11 @@
 \usepackage{geometry, xcolor}
 \usepackage{titling, titlesec, enumitem, natbib}
 \usepackage{hyperref, cite, url, microtype, babel}
+\usepackage{mdframed}
 \usepackage[normalem]{ulem}
 
 \setlength{\droptitle}{-10em}
+
 \newcommand{\subtitle}[1]{
   \posttitle{
     \par\end{center}
@@ -20,14 +22,35 @@
 \titlespacing*{\section}{0pt}{2ex}{1ex}
 \titlespacing*{\subsection}{0pt}{1ex}{0.5ex}
 \titlespacing*{\subsubsection}{0pt}{0.5ex}{0.25ex}
-\setlist{nosep}
-\setlength{\bibsep}{0.3em}
+%\setlist{nosep}
+%\setlength{\bibsep}{0.3em}
+\setitemize{itemsep=0.25em,topsep=0.5em,parsep=0pt,partopsep=0pt}
+
+\newenvironment{relatedwork}
+   {
+     \begin{mdframed}[
+       leftmargin=1cm,
+       rightmargin=0cm,
+       innerleftmargin=10pt,
+       innerrightmargin=0pt,
+       innertopmargin=0.5em,
+       innerbottommargin=0.5em,
+       linewidth=1pt,
+       linecolor=gray,
+       topline=false,
+       bottomline=false,
+       rightline=false
+     ]
+     \footnotesize
+   }
+   {
+     \end{mdframed}
+   }
 
 \newcommand{\disown}[1]{\color{lightgray}\sout{#1}}
 \DeclareTextFontCommand{\archive}{\color{lightgray}}
 \definecolor{linky}{RGB}{225,255,255}\let\hrefori\href\renewcommand{\href}[2]{{\setlength{\fboxsep}{1pt}\colorbox{linky}{\hrefori{#1}{#2}}}}
 \urlstyle{same}
-
 
 \title{\Large\bf Abhimanyu Pallavi Sudhir}
 \subtitle{AI researcher working on program markets in the context of AI and bounded rationality. \\ %\href{mailto:abhimanyupallavisudhir@gmail.com}{abhimanyupallavisudhir@gmail.com} / +44-7771824896 / 55 Leinster Square, London -- W2 4PW 
@@ -45,56 +68,99 @@
 
 % \section*{Formal}
 
-\subsection*{Education}
+\section*{Formal education}
+
 \begin{itemize}
+
     \item University of Warwick $\cdot$ PhD Computer Science $\cdot$ 2022-26 -- supervisor: Long-Tran-Thanh %; Bounded rationality and market dynamics
+
     \item Imperial College London $\cdot$ MSci Mathematics $\cdot$ 2018-22 -- 1st class honors
+
 \end{itemize}
 
-\subsection*{Internships}
-\begin{itemize}
-    \item Goldman Sachs $\cdot$ AI Research Intern $\cdot$ Jan-Aug 2021% -- Developed and implemented novel machine learning algorithms in NLP, data stream representation, Bayesian DAGs.
-\end{itemize}
-
-% \section*{Research}
-
-\subsection*{Publications}
+\section*{Internships}
 
 \begin{itemize}
 
-\item 
-Abhimanyu Pallavi Sudhir and Long-Tran Thanh (2024), ``Betting on what is neither verifiable nor falsifiable'', \href{https://arxiv.org/abs/2402.14021}{arxiv.org/abs/2402.14021}
-
-\item
-Abhimanyu Pallavi Sudhir (2021),
-``A mathematical definition of property rights in a Debreu economy'', 
-\href{https://arxiv.org/abs/2107.09651}{arxiv.org/abs/2107.09651}
+    \item Goldman Sachs $\cdot$ AI Research Intern $\cdot$ Jan-Aug 2021, London -- Developed and implemented novel methods in NLP and recurrent neural networks for financial forecasting
 
 \end{itemize}
 
-\emph{Archived pure math work}: see \href{https://scholar.google.co.in/citations?user=lb38BjYAAAAJ&hl=en}{Google Scholar} or \href{https://drive.google.com/file/d/1_VStBkw6DthYNyp4F3Xx2THInWLpNrHK/view?usp=drive_link}{extended CV}.
+\section*{Research}
 
-\subsection*{Ongoing collaborations}
+\subsection*{Markets and AI (PhD-related)}
+
+My current work focuses on (a) developing  a good enough algorithmic model of market dynamics in order to design AI agents with a market-based structure (b) developing prediction market mechanisms for latent space variables in order to elicit latent knowledge from AIs.
 
 \begin{itemize}
-    
-    \item \emph{Consistency checks for forecasting} with Daniel Paleka et al (2024) $\cdot$ Berkeley Supervised Program for Alignment Research (SPAR)
+
+    \item
+          Abhimanyu Pallavi Sudhir and Long-Tran Thanh (2024), ``Betting on what is neither verifiable nor falsifiable'', \href{https://arxiv.org/abs/2402.14021}{arxiv.org/abs/2402.14021}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2021),
+          ``A mathematical definition of property rights in a Debreu economy'',
+          \href{https://arxiv.org/abs/2107.09651}{arxiv.org/abs/2107.09651}
 
 \end{itemize}
 
-% \section*{Projects}
+\begin{relatedwork}
+    \emph{Related write-ups and talks.}
+    \begin{itemize}[label=—]
+        \item LessWrong post (2023): \href{https://www.lesswrong.com/posts/id84oe3LxdzoqinKA/betting-on-what-is-un-falsifiable-and-un-verifiable}{``Betting on what is un-falsifiable and un-verifiable''}
+        \item Poster at the Co-operative AI Foundation (CAIF) summer workshop, 2023:
 
-\subsection*{Academic service}
+              \href{https://abhimanyu.io/legacy_writing/PhD_presentations/caif.pdf}{abhimanyu.io/legacy\_writing/PhD\_presentations/caif.pdf}
+        \item LessWrong post (2022): \href{https://www.lesswrong.com/posts/xqxXrAohXSD3akYCg/meaningful-things-are-those-the-universe-possesses-a}{``Meaningful things are those the universe possesses a semantics for''}
+    \end{itemize}
+\end{relatedwork}
+
+\subsection*{Consistency checks and forecasting (Berkeley SPAR -- spring 2024)}
+
+Ongoing collaboration with Daniel Paleka and others to develop a consistency benchmark for LLM forecasters, as part of the Berkeley Supervised Program for Alignment Research (Spring 2024).
+
+\subsection*{General mathematics}
+
+Math publications from high-school days; no longer relevant to my work.
+
+\begin{itemize}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2019),
+          ``Infinitesimal translations and a multivariate Gr\"unwald-Letnikov calculus'', \href{https://arxiv.org/abs/1904.02710}{arxiv.org/abs/1904.02710}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2019),
+          ``Generalisations of the determinant to interdimensional transformations: a review,'' \href{https://arxiv.org/abs/1904.08097}{arxiv.org/abs/1904.08097}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2018),
+          ``The generalized Cauchy derivative as a principal value of the Gr\"unwald-Letnikov fractional derivative for divergent expansions,'' \href{https://arxiv.org/abs/1809.08051}{arxiv.org/abs/1809.08051}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2014),
+          ``On the Determinant-like function and the Vector Determinant,''
+          \emph{Advances in Applied Clifford Algebras} (24-3: 805-807), \href{https://link.springer.com/article/10.1007/s00006-014-0455-3}{doi:10.1007/s00006-014-0455-3}
+
+    \item
+          Abhimanyu Pallavi Sudhir (2013),
+          ``Defining the Determinant-like function for m by n matrices using the exterior algebra,''
+          \emph{Advances in Applied Clifford Algebras} (23-4: 787-792),
+          \href{https://link.springer.com/article/10.1007/s00006-013-0416-2}{doi:10.1007/s00006-013-0416-2}
+
+\end{itemize}
+
+\section*{Academic service}
 
 \begin{itemize}
 
     \item \emph{Teaching Assistant for CS141: Functional Programming (Warwick)} $\cdot$ 2023
-    
+
     \item \emph{Reviewer for Advances in Applied Clifford Algebras (Springer)} $\cdot$ 2020
 
 \end{itemize}
 
-\subsection*{Workshops and courses}
+\section*{Courses and workshops attended}
 
 \begin{itemize}
 
@@ -102,71 +168,69 @@ Abhimanyu Pallavi Sudhir (2021),
 
 \end{itemize}
 
-\subsection*{Pet projects}
+\section*{Other projects}
+
+\subsection*{Equivariant learning (2021-22)}
+
+Final-year MSci project with Professor Jeroen Lamb at Imperial College London exploring equivariant learning and causal DAGs.
+
+Report: \href{https://abhimanyu.io/legacy_writing/Imperial_reports/m4r.pdf}{abhimanyu.io/legacy\_writing/Imperial\_reports/m4r.pdf}
+
+\subsection*{Lie theory (2019)}
+
+Undergraduate research project with Professor Richard Thomas at Imperial College London on Lie groups and algebras.
+
+Report: \href{https://abhimanyu.io/legacy_writing/Imperial_reports/urop.pdf}{abhimanyu.io/legacy\_writing/Imperial\_reports/urop.pdf}
+
+Presentation: \href{https://abhimanyu.io/legacy_writing/Imperial_presentations/lie_theory.pdf}{abhimanyu.io/legacy\_writing/Imperial\_presentations/lie\_theory.pdf}
+
+% \begin{relatedwork}
+%     \emph{Related write-ups and talks.}
+%     \begin{itemize}[label=—]
+% \item Warwick-Imperial Autumn Meeting (Mar 2022) [cancelled due to COVID-19 lockdowns]
+%         % \item Imperial Undergraduate Colloquium (Oct 2019)
+% \item Imperial 3-minute thesis competition (Oct 2019)
+%     \end{itemize}
+% \end{relatedwork}
+
+
+\subsection*{Lean (2018-19)}
+
+Computerized formal proving in Lean with Kevin Buzzard at Imperial College London.
+
+\begin{itemize}
+    \item Wrote the \href{https://github.com/leanprover-community/mathlib4/blob/3a7e6bb77ec51d8009107923a4c071a9473ecc5c/Mathlib/Order/Filter/FilterProduct.lean}{FilterProduct.lean} and \href{https://github.com/leanprover-community/mathlib4/blob/3a7e6bb77ec51d8009107923a4c071a9473ecc5c/Mathlib/Data/Real/Hyperreal.lean}{Hyperreal.lean} modules for the Lean math library
+          %\item Imperial first-year project poster: \href{https://abhimanyu.io/legacy_writing/Imperial_reports/m1r.pdf}{abhimanyu.io/legacy_writing/Imperial_reports/m1r.pdf}
+    \item Formalized the first-year ``Foundations of Analysis'' module exam Blog post:
+
+          \href{https://xenaproject.wordpress.com/2019/05/06/m1f-imperial-undergraduates-and-lean/}{xenaproject.wordpress.com/2019/05/06/m1f-imperial-undergraduates-and-lean/}
+\end{itemize}
+
+\subsection*{PhysicsOverflow (2014-15)}
+
+Co-founded \href{https://physicsoverflow.org}{PhysicsOverflow}, a postgraduate-level physics Q\&A site and open peer review system. See \href{https://en.wikipedia.org/wiki/PhysicsOverflow}{en.wikipedia.org/wiki/PhysicsOverflow} for more details.
 
 \begin{itemize}
 
-    \item \emph{The Winding Number} $\cdot$ 2016-2023 $\cdot$ Personal academic blog; sample articles \href{https://thewindingnumber.blogspot.com/2019/10/sigma-fields-are-venn-diagrams.html}{[1]}\href{https://thewindingnumber.blogspot.com/2022/10/a-crash-course-on-mathematical-logic.html}{[2]}\href{https://thewindingnumber.blogspot.com/2020/08/hacking-evidential-decision-theory.html}{[3]}\href{https://thewindingnumber.blogspot.com/2019/05/whats-with-e-1x-on-smooth-non-analytic.html}{[4]}
+    \item
+          Abhimanyu Pallavi Sudhir and Rahel Knoepfel (2015),
+          ``PhysicsOverflow: A postgraduate-level physics Q\&A site and open peer review system,''
+          \emph{Asia-Pacific Physics Newsletter} (4-1: 53-55),
+          \href{https://dx.doi.org/10.1142/S2251158X15000193}{doi:10.1142/S2251158X15000193}
 
 \end{itemize}
 
-\subsection*{Write-ups and talks}
-
-\begin{itemize}
-
-    \item \emph{Betting on what is not verifiable nor falsifiable} $\cdot$ 2023 $\cdot$ PhD
-    
-    \begin{itemize}
-        \item Annual Report \href{https://drive.google.com/file/d/1qNZjvwNXTKl8KHc1_m-vPnJyWvpT_-yi/view?usp=sharing}{[pdf]}
-        
-        \item Warwick Postgraduate colloquium (Dec 2023) \& Warwick Cake Talk (Nov 2023) \href{https://drive.google.com/file/d/1qvkmYbPsZ9kVE1WPljcPSpXZq7wphDqt/view?usp=sharing}{[ppt]}
-    \end{itemize}
-    
-    \item \emph{Bounded rationality and such} $\cdot$ 2022-23 $\cdot$ PhD
-
-    \begin{itemize}
-        \item ``Algorithmic information is at the root of all our problems'', Warwick Postgraduate colloquium (Mar 2023) \href{https://drive.google.com/file/d/1auYDhlsq1i0ZhTs3UsfuuUXYViS9UnqS/view?usp=sharing}{[ppt]}
-        \item ``Incompleteness theorems and firing philosophers'', Warwick Cake Talk (Feb 2023) \href{https://drive.google.com/file/d/1IrAc8RWr6gsGurXND3baNWEGaEJP6Tjb/view?usp=sharing}{[ppt]}
-        \item PhD proposal \href{https://drive.google.com/file/d/1EK045SAo025lGJtmkOOYI7sIzzIQF03K/view?usp=sharing}{[pdf]}
-    \end{itemize}
-
-    \item \emph{When does equivariant learning make sense?} $\cdot$ 2021-22 $\cdot$ final-year project with Jeroen Lamb
-        
-    \item \emph{A mathematical definition of property rights} $\cdot$ 2021 
-
-    \begin{itemize}
-        \item Imperial Undergraduate Colloquium (Feb 2022)
-        \item Sheffield SIAM-IMA Applied Math Conference (July 2021) \href{https://drive.google.com/file/d/1AjYV2bo33F7Cm6vmzD1PBA_8L3cnMQ0S/view?usp=sharing}{[ppt]}
-    \end{itemize}
-
-    \item \emph{Local normal forms of analytical maps near fixed points} $\cdot$ 2020 $\cdot$ group report and presentation
-    
-    \item \emph{Lie theory: the topology of groups} $\cdot$ 2019 $\cdot$ UROP reading project with Richard Thomas
-
-    \begin{itemize}
-        \item Warwick-Imperial Autumn Meeting (Mar 2022) [cancelled due to COVID-19 lockdowns] 
-        \item Imperial Undergraduate Colloquium (Oct 2019) \href{https://drive.google.com/file/d/1F5ZrQmRhkpp7dWFbjHreB-4pX4uR80VX/view?usp=drive_link}{[report]}\href{https://drive.google.com/file/d/1BYsFoRl5F6DBN7ARMdc-I1TrIKJgMqgY/view?usp=drive_link}{[ppt]}
-        \item Imperial 3-minute thesis competition (Oct 2019)
-    \end{itemize}
-
-    \item \emph{Ultraproducts and hyperreals} $\cdot$ 2018-19 $\cdot$ computerized formal proving with Kevin Buzzard
-
-    \begin{itemize}
-        \item Files in the Lean math library on Github, $\approx$1500 loc \href{https://github.com/leanprover-community/mathlib/blob/master/src/data/real/hyperreal.lean}{[hyperreal]}\href{https://github.com/leanprover-community/mathlib/blob/master/src/order/filter/filter_product.lean}{[ultraproduct]}\href{https://github.com/leanprover-community/mathlib/blob/master/src/order/filter/germ.lean}{[germ]}
-        \item Formalization of college math exams \href{https://xenaproject.wordpress.com/2019/05/06/m1f-imperial-undergraduates-and-lean/}{[announcement post]}
-        \item Poster presentation (Jun 2019) \href{https://drive.google.com/file/d/1FAx-c7pPaaKvjInDIQGr_gnhEnofc_vJ/view?usp=drive_link}{[poster]}
-    \end{itemize}
-
-\end{itemize}
-
-% Links -- programming work and profiles
 
 \subsection*{Links}
 
 \begin{itemize}
-    \item Contact:  \href{mailto:abhimanyupallavisudhir@gmail.com}{[abhimanyupallavisudhir@gmail.com]}\href{tel:+44-7771824896}{[+44-7771824896]} % 55 Leinster Square, London -- W2 4PW
-    \item Websites: \href{https://thewindingnumber.blogspot.com/}{[TheWindingNumber.blogspot.com]}\href{https://abhimanyu.io/}{[abhimanyu.io]}
-    \item Profiles: \href{https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir}{[StackExchange]}\href{https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir}{[LessWrong]}\href{https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/}{[LinkedIn]}\href{https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en}{[Scholar]}\href{https://orcid.org/my-orcid?orcid=0000-0002-2506-0515}{[ORCID]}
+    \item Email: \href{mailto:abhimanyupallavisudhir@gmail.com}{abhimanyupallavisudhir@gmail.com}
+    \item Contact: \href{tel:+44-7771824896}{+44-7771824896}
+    \item Website: \href{https://abhimanyu.io/}{abhimanyu.io}
+    \item Blog: \href{https://thewindingnumber.blogspot.com/}{TheWindingNumber.blogspot.com}
+    \item Google Scholar: \href{https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en}{scholar.google.com/citations?user=lb38BjYAAAAJ}
+    \item Github: \href{https://github.com/abhimanyupallavisudhir}{github.com/abhimanyupallavisudhir}
+    \item LessWrong: \href{https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir}{lesswrong.com/users/abhimanyu-pallavi-sudhir}
 \end{itemize}
 
 \end{document}

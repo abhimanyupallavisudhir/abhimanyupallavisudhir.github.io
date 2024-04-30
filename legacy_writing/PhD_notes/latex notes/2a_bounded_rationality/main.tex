@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage{preamble}
+\bibliography{%
+    readinglist, % things I must read
+    refbank, % things I might potentially want to read
+    lampposts, % things I lean on for rhetoric or vague motivation but I don't actually need to learn
+%   dontlike % things I'll mention but are really irrelevant (and maybe I should explain why)
+}
+
+\title{Market dynamics and bounded rationality}
+\author{Abhimanyu Pallavi Sudhir}
+\date{31 October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{General thoughts}
+
+In the July report, I described the ``most general'' framework of a dynamic game or market, and suggested that specific models of market dynamics can be realized as special cases of this dynamic under different choices for the ``laws of physics'' $\info$. I present the framework again in Def~\ref{def:dynamic-naive}, although I am no longer certain that it is so much as well-defined.
+
+\begin{definition}[Naive dynamic for Bayes-rational agents]\label{def:dynamic-naive}
+Let $\OUTCOME$ be the ``set of states of the world''; let the partially ordered set $(\AGENT, <)$ be called the \emph{set of agents}. Then for each $\agent\in\AGENT$, let there be:
+
+\begin{itemize}
+    \item A $\sigma$-algebra $\EVENT[\agent]$ and probability measure $\PRO[\agent]$ called the \emph{prior belief} of $\agent$.
+    \item A set $\CHOICE[\agent]$, called the \emph{choice set} of $\agent$, carrying the $\sigma$-algebra of countable and co-countable sets. 
+    \item A set $\OBS[\agent]$, called the \emph{observation set} of $\agent$, carrying the $\sigma$-algebra of countable and co-countable sets.
+    \item A measurable function $\Choice[\agent]:\OUTCOME\to\CHOICE[\agent]$, representing $\agent$'s beliefs about what choices it will make. 
+    \item A measurable function $\Obs[\agent]:\OUTCOME\to\OBS[\agent]$, representing $\agent$'s beliefs about what observations it will get.
+    \item A measurable function $\Utility[\agent]:\OUTCOME\to\R$, called the \emph{utility} of $\agent$.
+    \item A function $\info[\agent]:\prod_{\agentb<\agent}{\CHOICE[\agentb]}\to\OBS[\agent]$, called the \emph{law of physics}.
+\end{itemize}
+
+And loop the following algorithm for each $\agent\in\AGENT$, in order: assign 
+\begin{align*}
+    \obs[\agent] &\assign
+    \info[\agent] 
+    \bra{\tup{\choice[\agentb]}[\agentb<\agent]} \\
+    \choice[\agent] &\assign
+    \argmax_{\choice\in\CHOICE[\agent]}
+    {
+        \Exp[\agent]\ope{
+            \Utility[\agent]\con
+                \inv{\Obs[\agent]}\bra{\obs[\agent]} \cap
+                \inv{\Choice[\agent]}\bra{\choice}
+        }
+    }
+\end{align*} 
+\end{definition}
+
+There are several things wrong with this framework.
+
+\begin{itemize}
+
+    \item \emph{All} meaningful aspects of the framework should be captured by the state -- including the set of agents, the $\sigma$-algebras and priors of each agent, what the choice and observation sets even are, the utility functions and the laws of physics -- and there should be a ``state-consistency requirement'' -- that the values ``algorithmically'' calculated for $\obs[\agent]$ and $\choice[\agent]$ are in fact those which are implied by the state.
+
+    \item The ``hope'' was that all other models of agent reasoning -- including game dynamics, equilibrium itself, formal systems -- could be realized as special cases of this dynamic. The framework models agents as perfectly Bayes-rational -- immediately deducing the choice that maximizes expected utility, and while this is unrealistic, one might assume that an ``as-if'' approach might still work.
+    
+    I am not sure -- for example, how would this not violate [a generalization -- e.g. \cite{Charlesworth2014} -- of] G\"odel's incompleteness theorem? For example -- consider a state that implies an agent whose utility function directs it to make a choice contrary to that implied by the state. So there must be fundamental limits on how much the agent can learn about the state, but it is not clear to me if this generalized G\"odel theorem can be expressed entirely in terms of $\sigma$-algebras.
+
+    It is perhaps instructive to consider a thought experiment on how a real person $\agent$ would handle a G\"odelian ``rebel'' program $\agentb$ who is known by $\agent$ to be fully informed of $\agent$'s predictions of $\agentb$'s behaviour, and precommitted to acting in the contrary way (e.g. $\agentb$ will choose 0 if $\agent$ predicts $\agentb$ will likely choose 1). Would $\agent$ chaotically flip-flop on its beliefs, as reflection takes the form of an information flow? Or would $\agent$ quite literally be unable to hold a belief on the outcome? I'm not sure.
+
+\end{itemize}
+
+I expect that a more realistic framework of ``universes with agents that can hold beliefs and make predictions about that universe'' is necessary to make progress on understanding market dynamics. Here are some \emph{speculations} on what something like this might look like:
+
+\begin{itemize}
+
+    \item The reasoning of bounded agents with increasing reflective power could be taken to be captured by increasingly fine $\sigma$-algebras, and that of a perfect Bayesian agent could be captured by perhaps some sort of inverse limit construction, and we could then consider whether such a construction would make sense, and what its limitations would be.
+
+    Kind of the real thing I'm curious about is to figure if some form of perfect rationality -- perhaps with programs for choices and some form of logical induction -- can capture any notion of bounded rationality. Intuitively, I think the answer must be ``yes'' (or maybe at least in some limiting sense), but I need to think this through, and figure out how G\"odelian issues are resolved (perhaps by some really chaotic updates treating reflection as new information).
+
+    [Even \emph{more} speculation: There is a straightforward definition of ``programs with beliefs'', where one considers the outputs of an enumerator as the G\"odel numbers of the propositions it believes -- see e.g. \cite{Feferman2006} minus the deductive closure requirement; but (1) This does not capture uncertain beliefs -- although maybe algorithmic randomness can be used to recover a notion of uncertainty, I don't know -- and (2) It seems to me that the real way to assign meaning to the propositions believed by a computer program is in terms of the decisions it executes as a result, i.e. a ``decision-theoretic'' or ``utilitarian'' system of semantics. But this would once again justify as-if theories.]
+    
+    \item Beyond the fact that a general theory of market dynamics requires modelling bounded rationality in some way, there seems to be a rather curious, direct correspondence or analogy between the two concepts, perhaps as a consequence of the focus of both on actual computational algorithms rather than just a posited perfect solution. 
+
+    \begin{itemize}
+        \item An apparent analogy between transaction costs and computational costs -- and efficiency is achieved in the absence of these costs.
+        \item The Efficient Market Hypothesis, or no-arbitrage theorems, seems similarly analogous to Dutch book rules for rational agents. 
+        \item It is possible to construct a prediction market that resolves to the opposite of whatever is bet on it, so the market cannot correctly price this asset, analogous to G\"odel's theorem.
+        \item While perfectly rational agents may consistently be postulated in equilibrium-models, they seem to be problematic in dynamic models, as these are fundamentally computational. So e.g. the program equilibrium \cite{Tennenholtz2004} framework is well-defined, and does not contradict Rice's theorem.
+    \end{itemize}
+
+    Claims that markets with transaction costs can still be interpreted as efficient markets where the transaction costs are just prices for a particular service (and so the cause for inefficiency is really imperfect information) \cite{Cheung1970}, or that the market is still efficient when you account for the fact that information-gathering has a cost, seem relevant to the belief of classical economists that boundedly rational behaviour can still be modelled as perfectly rational behaviour with imperfect information \cite{Arrow2004, Gigerenzer2016, Echenique2011}.
+
+    The relation between market dynamics and bounded rationality has been previously alluded to, e.g. \cite{Aumann1997}, and \cite{Wuppuluri2020Suwailem} has suggested that markets could be modelled as formal systems. It is not clear to me if the analogy should be to the market dynamics of perfectly rational agents, or of arbitrary programs, but \cite{Gode1993}, which claims that even completely unintelligent agents can lead to efficient market outcomes, suggests the latter might be interesting to consider. I find it plausible that much like for markets, the beliefs of an agent may only be extracted in an ``implied '' fashion (and only defined under certain assumptions -- e.g. not for G\"odel statements)
+\end{itemize}
+
+\section{Immediate plan + literature to read}
+
+Things seem a lot more scattered to me right now than they did in July. The overarching agenda of my research remains -- develop a general theory or understanding of rational or strategic algorithms and apply it to the context of market dynamics to deduce the assumptions underlying standard models of market dynamics and to address known challenges to the Efficient Market Hypothesis (e.g. \cite{Monroe2009, Maymin2010, Milgrom2022, Xiaotie2008, Decheng2009, Paparas2017, Xi2009, Codenotti2006, Vazirani2011, Chen2009, Daskalakis2006, Yannakakis2010}). 
+
+A theory that could fit any data with equal likelihood and thus make no predictions about the future is not what we want -- however, I am not convinced by the position articulated e.g. in \cite{Gigerenzer2016} that this is what an as-if theory would necessarily entail; instead of rationalizing data, we could rationalize programs into a limited-information rational framework, giving them a ``decision-theoretic semantics'', which would allow us to translate behavioural assumptions into statements about implied utilities, priors and information flows.
+
+There are a couple of directions I plan to start exploring in immediately, that might lead to some actual approaches to address this agenda --
+
+\begin{itemize}
+
+    \item There is significant pre-existing literature on attempts to generally formulate bounded rationality, the most promising seem to be ``bounded optimality'' \cite{Singh2014, Russell1995} and Halpern's ``algorithmic rationality'' \cite{Halpern2013, Halpern2015, Halpern2021} -- reading these will get me a better idea of the exact current state of knowledge in this area.
+
+    I can then begin to formalize the apparent correspondence between computational costs and transaction costs, minds and markets more precisely. \cite{Wuppuluri2020Suwailem} will help, as will a better understanding of no-arbitrage rules in finance \cite{Delbaen2004} (as it is an area of economics where imperfect information is considered explicitly) and corresponding Dutch book arguments in decision theory, which generally can only be taken to hold algorithmically (but also, in the sense where one takes limited computational capacities into account, always hold exactly).
+    
+    \item The  question I have about these approaches to bounded rationality -- without knowing the specifics -- is exactly how do they address (1) G\"odelian incompleteness of beliefs, and (2) The fundamental problem of logical uncertainty. I am aware there are approaches to logical induction, such as by MIRI \cite{MIRI2016, LW2014} -- I should read it, but to understand exactly how it all fits in philosophically, I need to read a bit more formal logic, specifically in relation to: Chaitin's formulations of logically unprovable statements \cite{Wuppuluri2020}; reflection and ordinal analysis \cite{Rathjen2007}. %Philosophy of logic -- it is a way to compress information. A foundation for algorithmic information theory?
+
+    \item To make sure that as-if theories are actually logically consistent -- figure out the sigma-algebra inverse limit thing; determine how a perfect Bayes-rational agent would handle a G\"odelian rebel (or for that matter, how the universe in general would limit a G\"odelian rebel).
+
+    \item To provide a mathematical basis for as-if theories -- start thinking about a ``decision-theoretic semantics'' for programs. Belief updates as choices?
+
+%   \item Cerny
+
+\end{itemize}
+
+\printbibliography
+
+\end{document}

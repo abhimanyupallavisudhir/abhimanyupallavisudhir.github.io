@@ -1,0 +1,26 @@
+Do we just say there's an asset for some states of the world?
+
+Not really. The states of the world might not be well-defined, and there are assets corresponding to states that don't even exist. By "the states of the world aren't well-defined" I mean that 
+1) 
+Actually what do I mean?
+There are assets for *observables*.
+And for the things we construct to explain observables.
+For example, we may have an asset for "the sun will rise tomorrow" but what does that even _mean_, you know, how do we know anything about "tomorrow" and what does it even mean for sun rise and tomorrow and all that? And when we have an asset for "378821 is a prime", what does that even mean?
+
+I mean we just have assets. They represent, well, something 
+
+....
+
+It's not about creating markets but about discovering them.
+Or maybe it is about creating them idk
+
+.....
+
+
+As an example, suppose the task is: find out the probability that 3455778122261 is prime.
+
+Suppose some program tells us that on average numbers tend to be 20% prime. 
+Suppose some program spits out the fact that numbers with these many digits are on average 10% prime.
+Suppose some program tells us that numbers that end with 1 are 7% prime on average
+Suppose some program tells us that if you have two estimates from seemingly unconnected information sources, you should pick a number in between them.
+The question is how you integrate this information. Well, 

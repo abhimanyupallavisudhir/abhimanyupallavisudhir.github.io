@@ -1,0 +1,84 @@
+%%% ---------------------------------------- %%%
+%%%                 PACKAGES                 %%%
+%%% ---------------------------------------- %%%
+
+%%% System %%%
+\usepackage{subfiles}         % for writing sections separately
+\usepackage{xparse}           % for NewDocumentCommand
+\usepackage[                  % for biblatex
+    backend = biber,
+    sorting = none, 
+    style = numeric-comp
+           ]{biblatex} 
+
+%% Text %%%
+\usepackage{hyperref}         % for hyperlinks (comes with url)
+\usepackage[
+    %shortlabels
+           ]{enumitem}        % for better itemize, enumerate
+
+%%% Math %%%
+\usepackage{amsmath}          % for better math
+\usepackage{amsthm}           % for better NewTheorem
+\usepackage{amssymb}          % for better symbols (comes with amsfonts)
+%\usepackage{mathtools}       % for better math
+%\usepackage{bm}              % for bold math symbols
+
+%%% Code %%%
+\usepackage[
+    noend
+           ]{algpseudocode}
+\usepackage{algorithm}
+
+%%% Figures %%%
+\usepackage{tikz}             % for tikz figures,
+%\usepackage{graphicx}        % for general graphics things
+%\usepackage{subcaption}      % for subfigures with their own captions
+
+%%% ---------------------------------------- %%%
+%%%                 COMMANDS                 %%%
+%%% ---------------------------------------- %%%
+
+%%% Meta-data %%%
+\title{Supply and demand for logical uncertainty}
+\author{Abhimanyu Pallavi Sudhir}
+\date{23 April 2023}
+\bibliography{references}
+
+%%% Theorem environments %%%
+
+% theoremstyle theorem, numbered with [theorem]s
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% theoremstyle definition, numbered with [theorem]s
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lefinition}[theorem]{Le-finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{constants}{Constants}
+\newtheorem*{notation}{Notation}
+
+% theoremstyle remark, not numbered
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%%% New Document Commands %%%
+
+% basic math
+\NewDocumentCommand{\Nats}{}{\mathbb{N}}
+\NewDocumentCommand{\Ints}{}{\mathbb{Z}}
+\NewDocumentCommand{\Rats}{}{\mathbb{Q}}
+\NewDocumentCommand{\Reals}{}{\mathbb{R}}
+\NewDocumentCommand{\Bools}{}{\{0,1\}}
+\NewDocumentCommand{\us}{}{\underline{\quad}}
+\NewDocumentCommand{\too}{}{\to_\circ}
+\NewDocumentCommand{\supp}{o}{\operatorname{supp} #1}
+\NewDocumentCommand{\finset}{m}{\operatorname{finset} #1}
+\NewDocumentCommand{\Prices}{}{\mathbb{P}}
+\NewDocumentCommand{\Qties}{}{\mathbb{X}}
+
+% ground reality
+\NewDocumentCommand{\Sentences}{}{\mathcal{S}}
+\NewDocumentCommand{\Theorems}{}{\mathcal{T}}

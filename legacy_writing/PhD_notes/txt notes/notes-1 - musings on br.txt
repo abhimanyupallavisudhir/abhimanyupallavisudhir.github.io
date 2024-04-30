@@ -1,0 +1,71 @@
+You know what, let's just go ahead and do the thing.
+
+So let's set up the problem. Does alpha know what the problem is? IDK. We can always generalize things later and say this was a toy model or only part of the thing we're working on.
+
+So let's say alpha's tryna decide what to eat. It doesn't even know what the choices are, but you know there are some choices -- call them X. Blabla exogenous.
+
+Each choice has some utility attached to it -- u(x). Given x, you can calculate u(x) by thinking about it a little. Thinking about it how much? Alpha doesn't even know that.
+
+This is annoying! It's like you're trying to figure something out, and there's constantly some annoying shit in the corner saying -- well, actually, you need to spend money to even think.
+
+But let's just think about what alpha DOES for now, and then think about how we can understand this more fundamentally.
+
+Let's say alpha does this -- he discovers choices sequentially--
+
+He runs a quick heuristic to estimate u(x)--
+
+And if u(x) is sufficiently large, he makes that choice.
+
+So there's a LOT that alpha is implicitly believing here about reality.
+
+A lot of choices he's making here.
+
+Firstly, he's choosing to run this sequential search. This implies one of two things.
+
+Either he believes that this is truly the best algorithm to discover his choice set -- he prolly isn't that stupid, but you know, maybe he is.
+
+Or he believes that discovering a better algorithm would take a lot of effort.
+
+WHAT DOES THIS MEAN ALPHA SHOULD HAVE BELIEFS ON?
+
+Then, when he's estimating u(x), he's choosing to use this heuristic to estimate u(x). This implies one of two things.
+
+Either he believes that this is truly the best algorithm to calculate u(x) -- he prolly isn't that stupid, but you know, maybe he is.
+
+Or he believes that discovering a better algorithm would take a lot of effort.
+
+WHAT DOES THIS MEAN ALPHA SHOULD HAVE BELIEFS ON?
+
+Then, when he's deciding to accept or reject x based on what u(x) is, he's choosing to use this heuristic. This implies one of twot hings.
+
+Either he believes that this is truly the highest value of u(x) possible -- he prolly isn't that stupid, but you know, maybe he is.
+
+Or he believes that continuing to search for more xs will be too expensive to justify the gain in utility.
+
+WHAT DOES THIS MEAN ALPHA SHOULD HAVE BELIEFS ON?
+
+But you know, maybe he isn't even consciously making this judgement here.
+
+Maybe once he's decided to adopt this satisficing algorithm, he just sort of goes ahead with it blindly without looking back. 
+
+Maybe he doesn't even need to consider the possibility of other algorithms being better -- maybe he's already decided to embark on this algorithm.
+
+WHAT WOULD THIS MEAN ALPHA SHOULD HAVE BELIEFS ON?
+
+So kind of the idea is... at each step, alpha's choices are not what you'd think it is...
+
+Instead it's a couple of programs that alpha could run that it has "in mind"...
+
+====================================================================================================================================================================================
+
+AT TIME T, WHAT DOES THE AGENT DO?
+
+IT MAKES A CHOICE. 
+
+====================================================================================================================================================================================
+
+What's the basic problem?
+
+I don't really have a "prior" on all of Omega now do I?
+
+Maybe it still has a prior on some partition of Omega. Like maybe even if I 

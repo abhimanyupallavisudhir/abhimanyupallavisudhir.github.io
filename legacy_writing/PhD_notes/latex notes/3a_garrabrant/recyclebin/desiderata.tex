@@ -1,0 +1,57 @@
+\begin{desideratum}[Computability]
+    \label{des:computable}
+    The agents treated by the theory should be computable, i.e. their input/output properties can be simulated by some computable function. 
+\end{desideratum}
+
+\begin{desideratum}[Descriptivity]
+    \label{des:descriptive} 
+    \emph{Any} computable strategy should be treatable by the theory.
+
+    (Note that this does not mean that every strategy should be accepted as ``equally'' rational, but that every strategy should be accepted to exist.)
+\end{desideratum}
+
+\begin{desideratum}[Normativity]
+    \label{des:normative} 
+    A theory of bounded rationality must entail some judgement of what is rational or correct -- this is what prevents us from simply postulating any model of computation as a ``theory of bounded rationality''. We may use the following goalposts to judge if a theory is normative: 
+    \begin{enumerate}[label = \textbf{\alph*}]
+        \item (Learning and self-improvement). Given knowledge of its ``true'' utility function, or some information about its preferences, an agent may understand to trust this information and self-improve. Or looked at in the converse direction, an agent's choices of when to self-modify can be seen as a normative judgement revealing preferences not seen in its base-level behaviour. The theory should be able to give formal meaning to such a ``true'' utility function of a program, or the utility function it would be optimizing if it had all the information in the world.
+        \item (Welfare economics). The theory should be able to evaluate the extent to which the deviation from perfect rationality affects statements about e.g. whether government interventions could be beneficial to increase some measure of efficiency or social welfare function.
+    \end{enumerate}
+\end{desideratum}
+
+\begin{desideratum}[Process integrity]
+    \label{des:heuristic}
+    A demand of Herbert Simon's, echoed by Gigerenzer \cite{oldreview_gigerenzer}, is that a theory of bounded rationality should reflect the actual decision-making procedures that agents use. They argue it is not sufficient for such a theory to reproduce the behaviour of real agents through another mechanism, or that doing so is impossible without a gears-level explanation of agent behaviour. For example, this criterion would disqualify solutions based on logical counterfactuals (aka impossible possible worlds). 
+\end{desideratum}
+
+\begin{desideratum}[Bayesian interpretation]
+    \label{des:asif}
+    On the opposite end of the spectrum, we may demand that our theory of bounded rationality still have some Bayesian/EUM interpretation or analogy, such as representing bounds on rationality as resulting from limited information. This was the demand of many neoclassical economists (reviewed in \cite{oldreview_arrow}), motivated by the hope of retaining efficiency results from mainstream economics.
+\end{desideratum}
+
+\begin{desideratum}[Asymptotic bounded optimality]
+    \label{des:asymptotic}
+    A formal definition of \emph{asymptotic bounded optimality} was given in \cite{bounded_optimality_intelligence}, arguing that the concept correctly captures the concept of intelligence. 
+    
+    A theory of bounded rationality may provide tools to determine when an algorithm is asymptotically bounded optimal, i.e. intelligent. However, this may be a practically difficult task -- it is not really clear how one may prove that humans are intelligent. 
+\end{desideratum}
+
+\begin{desideratum}[Logical induction]
+    \label{des:logical}
+    A theory of bounded rationality must subsume the problem of logical uncertainty.
+\end{desideratum}
+
+\begin{desideratum}[Rationality in the limit]
+    \label{des:limit}
+    It would be attractive for a theory of bounded rationality to tend toward Bayes rationality in some natural limit (e.g. unlimited computational power). 
+\end{desideratum}
+
+
+
+Of these, we believe that only Desiderata~\ref{des:computable},~\ref{des:descriptive},~\ref{des:normative} are essential for any theory of bounded rationality. Desiderata~\ref{des:heuristic},~\ref{des:asif} are directly opposed to each other and both non-essential; Desiderata~\ref{des:asymptotic}~\ref{des:logical},~\ref{des:limit} would be interesting exercises once given a theory. 
+
+It may be argued that trying to 
+
+\begin{remark}
+    Approaches that depend on an unspecified meta-reasoner may pass Des.~\ref{des:computable},~\ref{des:descriptive},~\ref{des:normative} for the base reasoner, but do not for the meta-reasoner, and thus are unsatisfactory. The thermodynamic approach is interesting, yet remains at this point too abstract to judge if it satisfies Des~\ref{des:normative} in any quantitatively useful way.
+\end{remark}

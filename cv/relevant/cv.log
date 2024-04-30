@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  29 APR 2024 14:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  30 APR 2024 21:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -238,42 +238,151 @@ Package babel Info: You haven't specified a language as a class or package
  (c:/texlive/2023/texmf-dist/tex/generic/babel/nil.ldf
 Language: nil 2024/01/07 v24.1 Nil language
 \l@nil=\language90
-)) (c:/texlive/2023/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box54
-\UL@hyphenbox=\box55
-\UL@skip=\skip60
+)) (c:/texlive/2023/texmf-dist/tex/latex/mdframed/mdframed.sty
+Package: mdframed 2013/07/01 1.9b: mdframed
+ (c:/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-01-22 L3 programming layer (loader) 
+ (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count283
+\l__pdf_internal_box=\box54
+))
+Package: xparse 2023-10-10 L3 Experimental document command parser
+) (c:/texlive/2023/texmf-dist/tex/latex/zref/zref-abspage.sty
+Package: zref-abspage 2023-09-14 v2.35 Module abspage for zref (HO)
+ (c:/texlive/2023/texmf-dist/tex/latex/zref/zref-base.sty
+Package: zref-base 2023-09-14 v2.35 Module base for zref (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+Package zref Info: New property list: main on input line 767.
+Package zref Info: New property: default on input line 768.
+Package zref Info: New property: page on input line 769.
+)
+\c@abspage=\count284
+Package zref Info: New property: abspage on input line 67.
+) (c:/texlive/2023/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\mdf@templength=\skip60
+\c@mdf@globalstyle@cnt=\count285
+\mdf@skipabove@length=\skip61
+\mdf@skipbelow@length=\skip62
+\mdf@leftmargin@length=\skip63
+\mdf@rightmargin@length=\skip64
+\mdf@innerleftmargin@length=\skip65
+\mdf@innerrightmargin@length=\skip66
+\mdf@innertopmargin@length=\skip67
+\mdf@innerbottommargin@length=\skip68
+\mdf@splittopskip@length=\skip69
+\mdf@splitbottomskip@length=\skip70
+\mdf@outermargin@length=\skip71
+\mdf@innermargin@length=\skip72
+\mdf@linewidth@length=\skip73
+\mdf@innerlinewidth@length=\skip74
+\mdf@middlelinewidth@length=\skip75
+\mdf@outerlinewidth@length=\skip76
+\mdf@roundcorner@length=\skip77
+\mdf@footenotedistance@length=\skip78
+\mdf@userdefinedwidth@length=\skip79
+\mdf@needspace@length=\skip80
+\mdf@frametitleaboveskip@length=\skip81
+\mdf@frametitlebelowskip@length=\skip82
+\mdf@frametitlerulewidth@length=\skip83
+\mdf@frametitleleftmargin@length=\skip84
+\mdf@frametitlerightmargin@length=\skip85
+\mdf@shadowsize@length=\skip86
+\mdf@extratopheight@length=\skip87
+\mdf@subtitleabovelinewidth@length=\skip88
+\mdf@subtitlebelowlinewidth@length=\skip89
+\mdf@subtitleaboveskip@length=\skip90
+\mdf@subtitlebelowskip@length=\skip91
+\mdf@subtitleinneraboveskip@length=\skip92
+\mdf@subtitleinnerbelowskip@length=\skip93
+\mdf@subsubtitleabovelinewidth@length=\skip94
+\mdf@subsubtitlebelowlinewidth@length=\skip95
+\mdf@subsubtitleaboveskip@length=\skip96
+\mdf@subsubtitlebelowskip@length=\skip97
+\mdf@subsubtitleinneraboveskip@length=\skip98
+\mdf@subsubtitleinnerbelowskip@length=\skip99
+ (c:/texlive/2023/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
+File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
+)
+\mdf@frametitlebox=\box55
+\mdf@footnotebox=\box56
+\mdf@splitbox@one=\box57
+\mdf@splitbox@two=\box58
+\mdf@splitbox@save=\box59
+\mdfsplitboxwidth=\skip100
+\mdfsplitboxtotalwidth=\skip101
+\mdfsplitboxheight=\skip102
+\mdfsplitboxdepth=\skip103
+\mdfsplitboxtotalheight=\skip104
+\mdfframetitleboxwidth=\skip105
+\mdfframetitleboxtotalwidth=\skip106
+\mdfframetitleboxheight=\skip107
+\mdfframetitleboxdepth=\skip108
+\mdfframetitleboxtotalheight=\skip109
+\mdffootnoteboxwidth=\skip110
+\mdffootnoteboxtotalwidth=\skip111
+\mdffootnoteboxheight=\skip112
+\mdffootnoteboxdepth=\skip113
+\mdffootnoteboxtotalheight=\skip114
+\mdftotallinewidth=\skip115
+\mdfboundingboxwidth=\skip116
+\mdfboundingboxtotalwidth=\skip117
+\mdfboundingboxheight=\skip118
+\mdfboundingboxdepth=\skip119
+\mdfboundingboxtotalheight=\skip120
+\mdf@freevspace@length=\skip121
+\mdf@horizontalwidthofbox@length=\skip122
+\mdf@verticalmarginwhole@length=\skip123
+\mdf@horizontalspaceofbox=\skip124
+\mdfsubtitleheight=\skip125
+\mdfsubsubtitleheight=\skip126
+\c@mdfcountframes=\count286
+
+****** mdframed patching \endmdf@trivlist
+
+****** -- success******
+
+\mdf@envdepth=\count287
+\c@mdf@env@i=\count288
+\c@mdf@env@ii=\count289
+\c@mdf@zref@counter=\count290
+Package zref Info: New property: mdf@pagevalue on input line 895.
+) (c:/texlive/2023/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box60
+\UL@hyphenbox=\box61
+\UL@skip=\skip127
 \UL@hook=\toks23
 \UL@height=\dimen161
-\UL@pe=\count283
+\UL@pe=\count291
 \UL@pixel=\dimen162
-\ULC@box=\box56
+\ULC@box=\box62
 Package: ulem 2019/11/18
 \ULdepth=\dimen163
-) (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count284
-\l__pdf_internal_box=\box57
 ) (./cv.aux)
 \openout1 = `cv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -311,36 +420,36 @@ LaTeX Font Info:    ... okay on input line 38.
 
 (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count285
+\scratchcounter=\count292
 \scratchdimen=\dimen164
-\scratchbox=\box58
-\nofMPsegments=\count286
-\nofMParguments=\count287
+\scratchbox=\box63
+\nofMPsegments=\count293
+\nofMParguments=\count294
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count288
+\MPscratchCnt=\count295
 \MPscratchDim=\dimen165
-\MPnumerator=\count289
-\makeMPintoPDFobject=\count290
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
 \everyMPtoPDFconversion=\toks25
 )
-Package hyperref Info: Link coloring OFF on input line 38.
+Package hyperref Info: Link coloring OFF on input line 61.
  (./cv.out) (./cv.out)
 \@outlinefile=\write3
 \openout3 = `cv.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 38.
-Package microtype Info: Applying patch `item' on input line 38.
-Package microtype Info: Applying patch `toc' on input line 38.
-Package microtype Info: Applying patch `eqnum' on input line 38.
-Package microtype Info: Applying patch `footnote' on input line 38.
-Package microtype Info: Applying patch `verbatim' on input line 38.
+LaTeX Info: Redefining \microtypecontext on input line 61.
+Package microtype Info: Applying patch `item' on input line 61.
+Package microtype Info: Applying patch `toc' on input line 61.
+Package microtype Info: Applying patch `eqnum' on input line 61.
+Package microtype Info: Applying patch `footnote' on input line 61.
+Package microtype Info: Applying patch `verbatim' on input line 61.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 38.
+LaTeX Info: Redefining \showhyphens on input line 61.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -348,10 +457,15 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 50.
+(Font)              <7> on input line 75.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 50.
- [1
+(Font)              <5> on input line 75.
+
+Overfull \hbox (11.20007pt too wide) in paragraph at lines 141--144
+[]\OT1/cmr/m/n/10 (-20) Abhimanyu Pallavi Sudhir (2014), ``On the Determinant-like function and the Vector Determinant,''
+ []
+
+[1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2] (./cv.aux)
  ***********
@@ -362,18 +476,18 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12975 strings out of 474222
- 203521 string characters out of 5750209
- 1948978 words of memory out of 5000000
- 35073 multiletter control sequences out of 15000+600000
- 561420 words of font info for 66 fonts, out of 8000000 for 9000
+ 13943 strings out of 474222
+ 223528 string characters out of 5750209
+ 1943978 words of memory out of 5000000
+ 35990 multiletter control sequences out of 15000+600000
+ 563322 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,1084b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on cv.pdf (2 pages, 91658 bytes).
+ 79i,5n,93p,1084b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on cv.pdf (2 pages, 126362 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 84 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  3 named destinations out of 1000 (max. 500000)
- 18433 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 26625 words of extra memory for PDF output out of 29859 (max. 10000000)
 

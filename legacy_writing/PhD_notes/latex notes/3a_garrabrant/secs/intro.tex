@@ -1,0 +1,21 @@
+\section{Introduction}
+
+Computer scientists and economists have long recognized, at least since calls by Good \cite{oldreview_good} and Simon \cite{oldreview_simon}, that perfect rationality (Bayes-rational expected utility maximization) is computationally impossible. While this is not a problem for classical paradigms of game theory and economics that only seek to prove the existence of equilibrium, more dynamics-centric frameworks, as well as theoretical discussions of artificial general intelligence, create the demand for a more realistic yet useful (for describing ``goals'') model of agents. Developing such a model is the problem of \emph{bounded rationality} \cite{oldreview_gigerenzer}.
+
+A brief overview of classical literature on bounded rationality follows:
+
+\begin{itemize}
+    \item Early approaches: explicit modeling of specific heuristics (reviewed in \cite{oldreview_heuristics}), as-if theories which studied perfect rationality with some information constraints (reviewed and criticized for their lack of predictive usefulness in \cite{oldreview_arrow, norationalization_friedman}) and modeling of agents as finite automata (reviewed in \cite{oldreview_aumann}). 
+    \item Definitions of boundedly rational programs, although without means to construct them, e.g. bounded optimality, which defines optimality given computational constraints \cite{bounded_optimality_LHS, bounded_optimality_RS, bounded_optimality_zilberstein}, and machine games, which are games with programs for choices, which have equilibria under weak assumptions, but no framework to effectively compute them \cite{halpern_game, halpern_choice, tennenholtz}.
+    \item Thermodynamic rationality \cite{thermo_info, thermo_thermo, thermo_main}, which appeals to the underlying physics of computation to describe bounded rationality.
+\end{itemize}
+
+In this paper, we study an alternative approach to modeling boundedly rational behaviour: \emph{markets}. The basic approach was originally introduced in \cite{logical_induction}, an algorithm we will hereby call Garrabrant induction, which defines the probabilities of logical sentences as their prices in a prediction market. 
+
+There are several reasons it is attractive to think of markets as an appropriate framework for modeling bounded rationality. Like agents, markets hold beliefs about their model of the world and make decisions -- unlike perfectly rational agents, markets may hold incomplete beliefs or even inconsistent beliefs (in the form of undiscovered arbitrage), and are only optimal ``conditional on'' computational constraints (indeed, the reason that as-if theories \cite{rationalization_discounting, rationalization_inattention, rationalization_inattention_2} fail is they model agents as limited only by the scarcity of statistical, rather than algorithmic, information). Markets are fundamentally ensembles of algorithms, and naturally capture the notion of ``integrating all available algorithmic information''. 
+
+In this paper, we will [propose some extensions of the Garrabrant framework /// generalize the Garrabrant framework to a full theory of BR /// ??] 
+
+\begin{notation}
+    The sets $\Nats,\Ints,\Rats,\Reals$ mean what they always do, with $0\notin\Nats$. $f:A\too B$ is a function with finite support, we use $f:(a:A)\to B$ as an alternative to lambda notation (and we will not bother to distinguish functions and dependent types), and the set of functions $A\to B$ may also be denoted as $B^A$. Types may be left implicit as $\us$ when it is understood from context what sort of object is being referred to.
+\end{notation}

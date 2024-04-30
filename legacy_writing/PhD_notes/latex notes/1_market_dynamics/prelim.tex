@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{preamble}
+\bibliography{foundations, algorithms, complexity, economics, misc}
+
+\title{Algorithms of natural market dynamics}
+\author{Abhimanyu Pallavi Sudhir}
+\date{16 July 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+There are no-go theorems forbidding a computationally efficient algorithm for equilibrium computation in many games (\cite{agt:2} and references therein, \cite{maymin}). It seems, at least superficially, that one of the following must therefore be true of real-world markets:
+
+\begin{enumerate}
+    \item Markets are capable of efficiently performing computations that cannot be done so on a single computer, e.g. because of parallelization.
+    \item Economic efficiency is not properly captured by the notion of polynomial-time complexity seen in these theorems.
+    \item Markets are not efficient.
+\end{enumerate}
+
+Our discussion above is rather vague, as it is not yet clear to me if the relationship between computational and economic efficiency has yet been described in general in the literature. \cite{maymin} specifically discusses the problem of markets computing prices from previous price history while the price history is constantly being updated -- so it is natural to ask if the computations can be done faster than new information is obtained; but he calls for a more rigorous, algorithmic definition of efficient markets in general (work like \cite{chenthesis, norman} seem to approach this problem).
+
+We approach the problem from the reverse perspective -- instead of talking about the inefficiency of equilibrium computation algorithms in general and applying this to the natural algorithm that runs on markets (whatever it might be), we will attempt to construct, from clearly formulated assumptions, a model of natural market dynamics and subsequently study its efficiency as an algorithm.
+
+\subsection{Literature review of natural dynamics}
+
+We will note that the concept of ``natural dynamics'' has not been studied systematically in the literature as an organized field of study, but the notion has been discussed in several areas.
+
+\cite{cheung} focuses on Fisher markets. 
+
+\begin{definition}[Fisher market]\label{def:fisher}
+    There are $m$ divisible products, each with supply equal to 1, and $n$ buyers with budgets $B_1,\dots B_n$ and utility functions $U_1,\dots U_n$. A competitive equilibrium is a  price-vector $\mathbf{p}\in\R^m$ such that it is possible to allocate to each buyer $i$ a bundle $\mathbf{x}_i\in\R^m$ such that $\mathbf{x}_i$ is affordable for buyer $i$, it maximizes $U_i(\mathbf{x})$ among all affordable bundles, and $\sum \mathbf{x}_i=\mathbf{1}_m$.
+\end{definition}
+
+Large classes of standard equilibrium-finding algorithms -- including (1) simplex-like methods (2) numerical methods (3) combinatorial methods -- are argued to not be realistic, as they are centralized, and cannot describe a distributed computing behaviour. Instead, the following algorithms can be seen as more natural:
+
+\begin{enumerate}
+    \item \emph{Tatonnement} -- initialize a price vector, calculate a best-response allocation, raise or lower price of goods depending on whether there is a surplus or shortage.
+    \item \emph{Proportional response} -- initialize the amounts spent by each buyer on each good, calculate the price of each good as the sum of the total amount spent on it, increment the amounts spent in proportion to the differential utility. 
+\end{enumerate}
+
+\cite{bayati3} focuses on bargaining networks. 
+
+\begin{definition}[Bargaining game]\label{def:bargaining}
+    There is some graph of agents $G$ with weights $p_{\alpha\beta}$ representing the total profit generated if agents $\alpha$ and $\beta$ trade with each other. A matching $M$ (a pairwise non-adjacent subset of the edges of $G$) represents an arrangement in which each agent trades with at most one other agent. An equilibrium is a pair $(M,\bm{q})$ (where $\bm{q}\in\R^{|G|}$, which represents the amount of profits earned by each agent, satisfies $q_\alpha\ge 0$ for all $\alpha\in G$ and $q_\alpha+q_\beta=p_{\alpha\beta}$ for all $\alpha, \beta$ adjacent) that obeys the following rules ($\partial \alpha$ represents the nodes adjacent to $\alpha$):
+    \begin{itemize}
+        \item for all $(\alpha, \beta) \notin M$, $q_\alpha+q_\beta\ge p_{\alpha\beta}$ (so no agent has an incentive to change their trade).
+        \item for all $(\alpha, \beta)\in M$, $q_\alpha-\max_{\gamma\in\partial \alpha/\beta}(p_{\alpha\gamma}-q_\gamma)_+=q_\beta-\max_{\gamma\in\partial \beta/\alpha}(p_{\beta\gamma}-q_\gamma)_+$ (the surplus of $\alpha$ over his next best alternative equals that of $j$ over his next best alternative).
+    \end{itemize}
+\end{definition}
+
+While a exact definition of natural dynamics is not given, \cite{bayati3} lists (without precise operationalization) three properties desired from such an algorithm. 
+
+\begin{itemize}
+    \item \emph{Locality} -- The algorithm involves limited information processing at nodes and exchange along edges. More fundamentally, this tells us that the dynamics should be interpreted as information propagation and the response to it.
+    \item \emph{Time invariance} -- The players' behaviour should be the same (resp. similar) on identical local information at different times. More fundamentally, this tells us that information propagation is the \emph{only} (resp. main) cause of the dynamics.
+    \item \emph{Interpretability} -- The information exchanged by agents has a meaning for the agents and the players' response to the information should have a simple, reasonable meaning.
+\end{itemize}
+
+They propose the following algorithm, which they call the natural dynamics:
+
+\begin{enumerate}
+    \item Initialize messages $i_{\alpha\to\beta}$  -- these are supposed to represent the maximum profit that $\alpha$ can currently earn by trading with some other agent. 
+    \item Compute offers $m_{\alpha\to\beta}=(p_{\alpha\beta}-i_{\alpha\to\beta})_+-\frac12(p_{\alpha\beta}-i_{\alpha\to\beta}-i_{\beta\to\alpha})_+$ -- i.e. an offer is non-negative, it is not so large that its profit will be less than what it can earn from elsewhere, and any surplus is shared equally.
+    \item Compute profits $q_\alpha=\max_{\beta\in\partial\alpha}m_{\beta\to\alpha}$
+    \item Recalculate messages $i_{\alpha\to\beta}\assign\kappa\max_{\gamma\in\partial\alpha/\beta}m_{\gamma\to\alpha}+(1-\kappa)i_{\alpha\to\beta}$ -- the damping factor $\kappa$ prevents certain pathological behaviours [realistically, there may be more active intelligent interventions by the agents to prevent pathological behaviour].
+    \item Return from Step 1.
+\end{enumerate}
+
+And demonstrate the following results about it:
+
+\begin{itemize}
+    \item Suppose the bargaining game has an equilibrium. Then all its equilibria $(M,\bm{q})$ are in one-to-one correspondence with the fixed points of the natural dynamics $\bm{i}$ such that $\bm{q}$ equals the computed $\bm{q}$ for the latter.
+    \item Suppose the bargaining game has an equilibrium with a gap\footnote{This has a rather involved definition, so I omitted studying it in detail as it didn't appear directly relevant to me.} $\sigma>0$ -- then $\bm{q}$ will be within $\varepsilon$ of the equilibrium after time
+    $$T(n,\sigma,\varepsilon)=Cn^7\left(\frac{W}{\sigma}+\log(1+\sigma/\varepsilon)\right)$$
+    Where $n$ is the number of agents and $W$ is the max of all initialized messages $\bm{i}$.
+    \item Let $t\ge T(n,\sigma,\sigma/3)$ -- for each agent $\alpha$ receiving non-zero offers, there exists a unique neighbour $P(i)$ which offers more than all its other neighbours. Furthermore, $j=P(i)\iff i=P(j)$. The pairs $(i, P(i))$ are precisely the matching $M$ in the equilibrium $(M,\bm{q})$.
+\end{itemize}
+
+The first and third theorems show that the fixed points of the natural dynamics correspond to the equilibria; the second shows that the algorithm has polynomial-time convergence.
+
+While these algorithms are all somewhat natural -- compared to, say, simplex-based algorithms -- they are still rather specific models of agent behaviour that certainly cannot be expected to hold true in general. Instead, they are ``spherical body in a vacuum'' toy models which should be considered special cases of a more general theory under simplifying assumptions. There are many advantages of developing this general theory:
+
+\begin{itemize}
+    \item It better \emph{motivates} such specific models of natural dynamics, clearly specifying under what assumptions would \emph{rational} agents behave as per this natural dynamics.
+    \item It will allow us to treat the algorithmic complexity of such dynamics in a much more bottom-up way, perhaps identifying exactly the cause for the no-go theorems mentioned earlier. Work such as \cite{chenthesis, norman} is suggestive in this direction.
+    \item It will allow us to study at least generic properties of markets under more complicated assumptions -- for surely, even in the absence of such simplifying assumptions, we observe markets to be somewhat efficient -- so perhaps efficiency can be demonstrated given some relatively more generic assumptions rather than looking at specific algorithms. This hope is supported by results like \cite{gode} (which demonstrates that efficiency is reached even among ``zero-intelligence'' agents, so it is really market structure, rather than individual agent capabilities, that matters) and \cite{echenique} (which demonstrates that computational constraints have ``no relevance'' to efficiency, whatever that means), and answers the oft-repeated call for economics to answer questions about the real world at least to the degree that physics can with approximate tools.
+\end{itemize}
+
+We will construct, below, such a general model for the behaviour of interacting utility-maximizing agents. The work of \cite{br1, br2}, illustrating that boundedly-rational behaviour can be rationalized as perfectly rational behaviour under imperfect information, supports this.
+
+\section{General dynamic}
+\label{sec:dynamic}
+
+We will define a framework to define a ``natural game dynamic'' -- reflecting the actual utility-maximizing behaviour of agents in a general setting. Naturally, the algorithm in Def~\ref{def:general} is not necessarily an algorithm in itself: (1) $\AGENT$ needs to be countable, and more importantly (2) the maximization step itself might be arbitrarily complex or even uncomputable. The idea will be that the agent's rational inattention -- coded in through the information determination -- will ensure that each maximization will itself be a very simple procedure with negligible cost. 
+
+\begin{definition}[General dynamic]\label{def:general}
+Let $\OUTCOME$ be the ``set of states of the world''; let the partially ordered set $(\AGENT, <)$ be called the \emph{set of agents}. Then for each $\agent\in\AGENT$, let there be:
+
+\begin{itemize}
+    \item A $\sigma$-algebra $\EVENT[\agent]$ and probability measure $\PRO[\agent]$ called the \emph{prior belief} of $\agent$.
+    \item A set $\CHOICE[\agent]$, called the \emph{choice set} of $\agent$, carrying the $\sigma$-algebra of countable and co-countable sets. 
+    \item A set $\OBS[\agent]$, called the \emph{observation set} of $\agent$, carrying the $\sigma$-algebra of countable and co-countable sets.
+    \item A measurable function $\Choice[\agent]:\OUTCOME\to\CHOICE[\agent]$, representing $\agent$'s beliefs about what choices it will make. 
+    \item A measurable function $\Obs[\agent]:\OUTCOME\to\OBS[\agent]$, representing $\agent$'s beliefs about what observations it will get.
+    \item A measurable function $\Utility[\agent]:\OUTCOME\to\R$, called the \emph{utility} of $\agent$.
+    \item A function $\info[\agent]:\prod_{\agentb<\agent}{\CHOICE[\agentb]}\to\OBS[\agent]$, called the \emph{law of physics}.
+\end{itemize}
+
+And loop the following algorithm for each $\agent\in\AGENT$, in order: assign 
+\begin{align*}
+    \obs[\agent] &\assign
+    \info[\agent] 
+    \bra{\tup{\choice[\agentb]}[\agentb<\agent]} \\
+    \choice[\agent] &\assign
+    \argmax_{\choice\in\CHOICE[\agent]}
+    {
+        \Exp[\agent]\ope{
+            \Utility[\agent]\con
+                \inv{\Obs[\agent]}\bra{\obs[\agent]} \cap
+                \inv{\Choice[\agent]}\bra{\choice}
+        }
+    }
+\end{align*} 
+\end{definition}
+
+\section{Outline of work as planned}
+\label{sec:outline}
+
+Immediate directions for exploration at this point:
+\begin{itemize}
+    \item \emph{Foundations of bounded rationality} -- I need to justify the claim that ``any cognitive heuristic can be rationalized in terms of imperfect information'', and work with some specific toy examples of cognitive heuristics and biases to ensure they can be modeled in my algorithm. Relevant literature -- \cite{br1, br2}; also helpful to read up on -- general literature on agent foundations, decision theory and bounded rationality.
+    \item \emph{Background for my model in the literature} -- It seems to me that my model is ``obvious'' on some level, and something similar might exist in the literature. At the very least, there is a plausible connection to the notions of correlated equilibrium and program equilibrium. Completeness of contract-writing? Relevant literature -- \cite{aumann, marks, progeq}.
+    \item \emph{Simplifying assumptions on the algorithm} -- Initial special cases to look through: (0) exceedingly simple games; information hazards (1) immediate equilibrium (2) equilibrium computation (3) message-passing algorithms (4) repeated games (5) out-of-equilibrium models (6) reinforcement learning. Relevant literature -- details on specific algorithms; \cite{gode, tesfatsion}.
+\end{itemize}
+Subsequent work:
+\begin{itemize}
+    \item \emph{Background on economics and computational complexity} -- Before trying to investigate complexity questions in my model under simplifying assumptions, it will be helpful to study exactly what the existing no-go theorems say, as well as more theoretical work about defining complexity in economic settings. Relevant literature: \cite{echenique, chenthesis, norman} \cite{agt:2, goapprox, maymin}; also helpful to read up on -- queue equilibrium.
+    \item \emph{Economic phenomenology} -- Model economic phenomena in this model -- especially price of anarchy. Also helpful to read up on -- general economic literature on social welfare etc.
+\end{itemize}
+% Side quests to investigate when bored:
+% \begin{itemize}
+%     \item Physics with things as agents? Also helpful to read up on -- stuff like oh, physics comes from Fisher info.
+%     \item Uncountable $\AGENT$? Also helpful to read up on -- analog computation.
+%     \item Quantum version of algorithm? Also helpful to read up on -- quantum information theory, quantum causal models.
+%     \item Something about AI safety 
+% \end{itemize}
+
+\printbibliography
+
+\end{document}

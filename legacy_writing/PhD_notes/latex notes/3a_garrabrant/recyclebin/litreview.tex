@@ -1,0 +1,19 @@
+Expected utility maximization does not capture the true behaviour of agents: while Herbert Simon had in his day offered several arguments \cite{oldreview_simon} in support of this view, only one is truly necessary: expected utility maximization is not even computable. There have since been several distinct lines of research seeking to addressing the problem of bounded rationality, both by computer scientists and by economists:
+
+\begin{itemize}
+    
+    \item \textbf{The adaptive toolbox.} Building on Simon's exposition of the ``sufficing'' heuristic, researchers in cognitive psychology and behavioural economics have attempted to explicitly list and model the heuristics adopted by agents as part of their ``adaptive toolbox'' \cite{oldreview_heuristics}.
+
+    While it is technically true that ``real agents operate via heuristics'', this approach does not seem to be operating at the \emph{right level of abstraction}: we are motivated to seek general results about boundedly rational agents independent of the specific architectures that implement bounded rationality, and we also wish for a theory of bounded rationality to provide a framework for reflective self-improvement.
+
+    \item \textbf{As-if theories.} The early neoclassical reaction to this criticism of perfect rationality was that much \cite{rationalization_savage, rationalization_savage2} of real agent behaviour can be ``rationalized'' so that we may regard the agents ``as if'' they were performing expected utility maximization with some suitably complicated prior, imperfect information and utility function -- and so the main results of neoclassical economics could be kept. 
+
+    Rationalizing observed behaviour is in general an underdetermined problem, and work in this area has focused on adding terms with psychological labels to the utility function (e.g. \cite{rationalization_discounting, rationalization_inattention, rationalization_inattention_2, rationalization_recall}). It was found in \cite{norationalization_friedman} that these rationalizations failed at predicting new data \cite{oldreview_gigerenzer}. 
+
+    \item \textbf{Limitations on agent architecture.} One may directly impose limitations on agent complexity and demand optimality given this architecture -- usually finite automata. A review of such approaches is given by \cite{oldreview_aumann} -- in particular, such models serve as toy examples to draw general observations about the behaviour of boundedly rational agents. 
+
+    \item \textbf{Meta-level reasoning} -- More recent approaches to modeling bounded rationality rely on a perfect meta-reasoner that solves a constrained optimization problem. This includes the general definition of bounded optimality \cite{bounded_optimality_RS, bounded_optimality_LHS, bounded_optimality_zilberstein} and Halpern's definition of a Bayesian machine game, which does not describe the mechanism by which equilibrium is reached \cite{halpern_choice, halpern_game}.
+    
+    \item Thermodynamics \cite{thermo_info, thermo_thermo, thermo_main}
+    
+\end{itemize}

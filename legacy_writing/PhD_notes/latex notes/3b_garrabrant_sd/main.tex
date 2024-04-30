@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Garrabrant induction assigns probabilities to logical sentences based on their prices in a prediction market. However, it does not discriminate based on the ``importance'' of a logical sentence -- it does not provide a way to incentivize information about particular logical sentences of ``interest'' to us. We demonstrate that the mechanism can be made ``incentive-compatible'' with our interests with an appropriately-chosen automated market-maker, and suggest that the framework can be extended into more general models of bounded rationality and generally intelligent agents.
+\end{abstract}
+
+\section{Introduction}
+
+A framework for working with logical uncertainty (uncertainty arising from not being logically omniscient) was defined in the seminal work of Garrabrant et al \cite{garrabrant_logical_2016}, which constructed an algorithm for assigning probabilities to logical sentences. The algorithm proceeds by constructing a market of logical sentences that pays off as a theorem enumerator outputs each sentence, where every polynomial-time trader (i.e. a trader for which there exists a polynomial $p$ such that its strategy on each day $n$ is computed in $p(n)$ time) participates in the market from some point based on some enumeration, and on each day $n$ computing a rational approximation to the equilibrium price of the market by a brute-force enumeration of rational tuples. Naturally, this is a terribly inefficient algorithm -- furthemore, it does not provide a way for us to incentivize the market to prioritize logical sentences of interest to us.
+
+But this is hardly the only possible way to define a market: mechanism design and automated market-making are fields with extensive corpora of literature (the most widely-known of which is Logarithmic Market Scoring \cite{hanson_logarithmic_2012}), and although most work has focused on markets of perfectly rational agents, efficient outcomes can still be achieved by \emph{program markets} -- markets whose participants are programs -- if they are incentive-compatible and have budget constraints, because smarter traders make more money and gain influence, while dumber ones go bankrupt (see \cite{gode_allocative_1993, gode_what_1997, schwartz_how_2008, jamal_simple_2015} for discussion -- we will state a formal version of this result for our uses in this paper). 
+
+%(Program markets are to be contrasted with the machine game \cite{halpern_algorithmic_2014, halpern_i_2011}, program equilibrium \cite{tennenholtz_program_2004} and bounded optimality paradigms \cite{russell_provably_1995}), which define what it means for a chosen program to be optimal for a task but do not provide a computable algorithm to choose this optimal program -- this choice is still left to a perfectly rational agent, or left unaddressed.)
+
+We recast the Garrabrant algorithm with a logarithmic market maker and point out that this lets us prioritize logical sentences by appropriately setting the liquidity parameter. This requires an alternate definition of market optimality than the ``inexploitability'' condition satisfied by the Garrabrant algorithm, one which looks more like asymptotically optimizing a certain welfare function -- and as a result there are many technical differences between our framework and standard Garrabrant induction:
+
+\begin{itemize}
+    \item We do not (and cannot) require traders to be continuous functions -- instead we allow markets that do not reach equilibrium (e.g. ``the price of this asset will be <0.4 on day 5''), and leave it to traders and the market maker to not provide much liquidity to such markets.
+    \item !!!! I'm not sure if this was the right call, I might have broken something big.!!! In the Garrabrant framework, propositional logic has a fixed exchange rate, so e.g. a stock in $\phi$ plus a stock in $\lnot\phi$ can always be exchanged for \$1 -- this shows up in the budget constraint (holding $\phi+\lnot\phi$ allows you to exchange that for stocks worth \$1) and in the definition of exploitation (earning unbounded numbers of $\phi+\lnot\phi$ stock counts as exploitation). This is true even if both $\phi$ and $\varphi$ are unprovable, so unprovable statements still have non-zero price.
+    
+    [I think I did break something -- what is the probability of a program halting? It's going to just be zero the way I've constructed it.]
+    \item We accomodate any enumeration of traders (not necessarily polynomial-time) and account for the computational costs by deducting them from the traders' budgets.
+\end{itemize}
+
+It may be possible to extend our work to a framework where this welfare function is propagated from downstream tasks, i.e. itself based on a market mechanism. There has been speculation that program markets could be used as architectures of intelligent agents \cite{oesterheld_futarchy_2017, branwen_evolution_2018}, as they seem to possess the desired attributes of boundedly rational agents \cite{oesterheld_theory_2021} -- our work may be considered a step closer to the design of such agents, and to a general theory of bounded rationality.
+
+\section{Logarithmic logical inductor}
+
+\begin{notation}
+    The sets $\Nats,\Ints,\Rats,\Reals$ mean what they always do, with $0\notin\Nats$. Intervals, e.g. $[0,1]$ will always be subsets of $\Rats$ unless specified otherwise with a subscript. $f:A\too B$ is a function with finite support $\supp[f]$, and $\finset{A}=(A\too\Bools)$, we use $f:(a:A)\to B$ as an alternative to lambda notation (and we will not bother to distinguish functions and dependent types), and the set of functions $A\to B$ may also be denoted as $B^A$. Types may be left implicit as $\us$ when it is understood from context what sort of object is being referred to.
+\end{notation}
+
+\begin{constants}
+    Let:
+    \begin{itemize}
+        \item $\Sentences$ be a set of ``sentences'' in some language
+        \item $\Theorems : (t : \Nats) \to \finset{\Sentences}$ s.t. $s<t\implies\Theorems(s)\subseteq\Theorems(t)$ be an enumerator of ``theorems''
+        \item $\Prices = \Sentences \too [0, 1]$ is the ``type of prices'' (note in particular how $\Theorems(t)\in\Prices$)
+        \item $\Qties = \Sentences \too \Rats$ is the ``type of portfolios''
+        \item $\Qties' = \Rats\times\Qties$ is the ``type of portfolios including a cash term''
+        \item Addition $(+)$ between portfolios and cash amounts in the obvious way
+    \end{itemize}
+\end{constants}
+
+\begin{definition}\label{def:mm}
+    A market-maker is a computable function $\mu:(t:\Nats)\to\Sentences\to(\Rats^2\to\Rats^2)$ -- for given $t, s$, the function $\mu(t,s)(x_0,x_1)$ produces prices $p_0,p_1$ of ``NO'' and ''YES'' stocks for the sentence $s$ given the inventory of those stocks $x_0,x_1$. 
+    
+    In particular for a logarithmic market-maker:
+    \begin{equation*}
+        \mu(t,s)(x_0,x_1) = \frac{(\exp((-a_0-x_0)/b), \exp((-a_1-x_1)/b)}{\sum\exp((-a_i-x_i)/b)}
+    \end{equation*}
+    where $(a_0, a_1)$ and $b$ are the ``bias'' and ``liquidity'' of the market for sentence $s$ at time $t$''. $\sum_s b_{t,s}<\infty$ at every time.
+\end{definition}
+
+Note how it may assign liquidity to an infinite number of sentences! The ``initial price'' posited by the market-maker for a sentence no one has traded on yet -- the prior belief taken by the market-maker -- is $\frac{(e^{-a_0/b},e^{-a_1/b})}{e^{-a_0/b}+e^{-a_1/b}}$.
+
+\begin{definition}\label{def:trader}
+    A trader is a computable function $\alpha:(t:\Nats)\to\Prices^t\to\Sentences\too\Rats$. $\alpha(t,\underline{p},s)$ is the ``fraction of its cash holdings exchanged for stock in $s$ at time $t$ based on price history $\underline{p}$''. $\sum_s\alpha(t,\underline{p},s)=1$ but any individual $\alpha(t,\underline{p},s)$ is allowed to be negative.
+\end{definition}
+
+\begin{algorithm}\label{alg:li}
+    \caption{Logarithmic logic market}
+    \begin{algorithmic}[1]
+        \For{$\alpha$}
+            \State $x_\alpha \gets \dots$ \Comment{initialize agent budgets}
+        \EndFor
+        \While{$t<\infty$}
+            \For{$\alpha$}
+                \State $q\gets\alpha(t,\underline{p})x_\alpha^{\mathrm{cash}}$ \Comment{agent decides how to spend}
+                \For{$s\in\supp[q]$}
+                    \State $x\gets (\int\mu(t,s,x_{\mathrm{mm},s}+x)\,dx)^{-1}(q_s)$ \Comment{compute stock qty}
+                    \State $x_{\alpha}^{\mathrm{cash}} \gets x_{\alpha}^{\mathrm{cash}} - q_s$ \Comment{update portfolios}
+                    \State $x_{\alpha,s} \gets x_{\alpha,s} - x$
+                    \State $x_{\mathrm{mm},s}\gets x_{\mathrm{mm},s} + x$
+                    \State $p_{t,s}=\mu(t,s, x_{\mathrm{mm},s})$ \Comment{update price}
+                \EndFor
+            \EndFor
+            \For{$s\in\Theorems(t)$}
+                \For{$\alpha$}:
+                    \State $x_{\alpha, \mathrm{cash}} \gets x_{\alpha, s}$ \Comment{pay off stockholders}
+                    \State $x_{\alpha, s} \gets 0$
+                \EndFor
+            \EndFor
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,146 @@
+%% Base on http://tex.stackexchange.com/questions/150900/latex-coding-for-statement-of-purpose
+
+\documentclass{article}
+\usepackage[
+  %a4paper,
+  margin=1in,
+  headsep=12pt, % separation between header rule and text
+]{geometry}
+\usepackage{fancyhdr, xcolor, lastpage, enumitem}
+%\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage[scale=1]{tgschola}
+
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex#Reference_guide
+% https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
+% https://www.overleaf.com/learn/latex/Biblatex_citation_styles (this link often gets misplaced)
+\usepackage[ 
+  backend = biber, 
+  sorting = none, 
+  style = numeric-comp,
+]{biblatex}
+\addbibresource{references.bib}
+%\usepackage{cite}
+%\usepackage[natbibapa]{apacite}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+  \footnotesize\sffamily
+  \yourname\quad
+  %web: \textcolor{blue}{\itshape\yourweb}\quad
+  \textcolor{blue}{\youremail} \quad
+  Research proposal, 2022 PhD
+  \vspace{3pt}
+  }
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+
+\newcommand{\soptitle}{Towards a theoretical framework for algorithms of market dynamics}
+
+\newcommand{\yourname}{Abhimanyu Pallavi Sudhir}
+\newcommand{\youremail}{ap6218@imperial.ac.uk}
+\newcommand{\yourweb}{https://abhimanyu.io}
+
+\newcommand{\statement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\textbf{#1.}}\space
+}
+
+\newcommand{\substatement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\emph{#1.}}\space
+}
+
+\usepackage[
+  breaklinks,
+  pdftitle={\yourname - \soptitle},
+  pdfauthor={\yourname},
+  unicode
+]{hyperref}
+
+\begin{document}
+
+\begin{center}
+\LARGE\soptitle%\\
+%\large [Research Proposal, 2022 PhD]
+\end{center}
+
+\hrule
+%\vspace{1pt}
+%\hrule height 1pt
+
+\bigskip
+
+\par\medskip
+
+\statement{Abstract} The dynamics of markets outside of equilibrium have been studied in various algorithmic and game-theoretic contexts. If converging to an equilibrium, such dynamics can be interpreted as algorithms for equilibrium computation. I am interested in giving a behavioural foundation to out-of-equilibrium behaviour -- and more generally, in rationalizing game dynamic or equilibrium computation algorithms as the optimal behaviour of locally optimising agents in the economy. To this end, I want to study Bayesian models of bounded rationality using imperfect information or rational inattention -- as these models operate in the backdrop of one-value optimization, generalize them to multi-agent settings and apply them to the study of market dynamics. As this is fundamentally an interdisciplinary area, my work will have applications not only in the micro-foundation of out-of equilibrium behaviour, but also in computer science and machine learning.
+
+\statement{Research background} 
+
+There has been a long-standing informal recognition of the fact that market dynamics is fundamentally a problem of information propagation. Information in the economy is generally dispersed and one of the key functions of a market is to aggregate this dispersed information with the help of prices. This is the view underlying Hayek’s formulation of the economic calculation debate \cite{hayek} later expanded upon in mechanism design \cite{palda}. 
+
+While equilibrium dynamics are generally well understood, the process by which markets aggregate information and reach equilibrium is less understood even though several areas of economic theory study out-of-equilibrium behaviour: Dynamics of games have been extensively studied in the context of multi-agent learning \cite{fudenberg} (wherein one seeks to describe the dynamics of a game as a strategy learning algorithm). Agent-based computational economics (ACE) \cite{hce:32} makes ad-hoc behavioral assumptions about agent behaviour to develop realistic models of out-of-equilibrium dynamics (such as in response to supply shocks \cite{gas, hal1, hal2}). However, these models do not attempt to \emph{rationalize} game dynamics. While behavioral economist have tried to rationalise sub-optimal individual dynamic choice through imperfect information and rational inattention, e.g. \cite{gabaix, laibson}, this agenda has largely been confined to individual decision making instead of games and markets. I want to fill this gap, and work on the behavioral foundation of market dynamics focusing on the channel of incomplete information and its impact on individual and aggregate dynamic behaviour. 
+
+The general problem of studying market dynamics under the the lens of imperfect information of the agents is related to models of \emph{information propagation} in networks. Most relevant to my interests, Bayesian belief propagation algorithms have been shown to be equivalent to simple agent-based models of bargaining in exchange networks \cite{bayati1, bayati2, bayati3}, thereby founding belief propagation in precise ACE-like behavioural assumptions. However, like in ACE, these behavioral assumptions are ad-hoc, and not expressible in a general theoretical framework; their work cannot directly be extended to a different model of agent behavior, or to games other than bargaining games.
+
+I believe that modelling game dynamics as the result of information propagation is a promising approach to rationalizing the former, and would be beneficial to the goal of finding a general theoretical framework for modeling market algorithms. 
+
+\statement{Research problems}
+
+A basic ``minimal working example'' of a research problem for the above agenda is the study of message-passing algorithms such as Max-Sum as models for information propagation in markets. We refer to \cite{rogers} for a rundown of the algorithm -- at each iteration, an agent sends a message to its neighbours that encapsulates its own interests and the messages received from its own neighbours, and each agent chooses an optimal choice based on the information it has received.
+
+I will use the algorithm to define a Bayesian game of message sending where agents are initially uninformed about other agents' preferences. Agents learn from message received over the course of the Max-Sum algorithm and use them to update their prior. As a first step I will investigate what the agents' priors should be such that the choices made at each iteration are Bayes-rational for each agent.
+
+
+Message-passing algorithms are formulated in a non-strategic setting, and while we still assume this in our model (that the agents do not attempt to pick a choice in a way that optimally influences the future choices of other agents, but rather just to maximize some current game), formulating the game corresponding to a message-passing algorithm requires more detail on what the agents are permitted to do. 
+
+The second fundamental theorem of welfare economics \cite{mas} gives a correspondence between initial endowments and different efficient outcomes in a Walrasian setting; initial endowments are a special example of rights structures, as formalized mathematically in property rights theory e.g. \cite{garden, pasu}. In my own previous work \cite{pasu}, I suggested that the second welfare theorem be generalized to a correspondence between rights structures and social welfare functions (i.e. that each rights structure maximizes a particular social welfare function at equilibrium). This is directly of interest to us, as we are interested in finding the rights structure implied by a particular message-passing algorithm (i.e. by a particular function being optimized).
+
+Thus, I want to determine the precise correspondence between rights structures and the social welfare functions they maximize, and use this to formulate message-passing algorithms as equilibrium computation algorithms on games with rights structures.
+
+\par\medskip
+
+Still, Max-Sum has many limitations, namely that it is computationally expensive to scale \cite{khan}, which raises doubts as to how realistic it is as a model of economic computation in real markets. Thus, I intend to extend this work to other algorithms of market dynamics present in the literature. I briefly review other mechanisms that are particularly relevant for my research agenda, and highlight the differences between them and their limitations. 
+
+\begin{itemize}
+    \item \emph{Algorithmic game theory} Equilibrium computation algorithms \cite{agt:5, tesfatsion, gode}, in particular on graphs \cite{kakade}, double auctions \cite{tagiew, mcafee, myerson}, supply chain double-auctions \cite{babaioff-nisan, babaioff-walsh}. These algorithms are typically considered over the setting of an artificially-designed market, such as an online supply chain (rather than the natural dynamics of markets), and the dynamics of the game are thus ``hard-coded'' into the system, as it is an engineering problem. 
+    \item \emph{Multi-agent learning} Repeated games, e.g. multi-agent reinforcement learning \cite{zhang, canese}, no-regret learning \cite{calliess}. 
+\end{itemize}
+
+\statement{Applications and significance}
+
+%for example, this directly leads to a theory of Max-Sum for ordinal utility functions; other implications are discussed in the applications section. 
+% There are implementations of a continuous Max-Sum algorithm, e.g. \cite{soton}, which rely on approximation by piecewise linear functions. A more intuitive approach may involve looking at message-passing as a differentiable process to implement a ``marginal Max-Sum'' algorithm. I suspect such an algorithm might look a lot like backpropagation when implemented on an acyclic graph; in particular, it would be valuable to study the behavioral assumptions that cause the emergence of marginal Max-Sum (or other ``marginal'' algorithms), thus looping back to RP 1.
+
+
+One of the main motivations for my research agenda is to give foundations for models of agent-based computational economics. A general theoretical framework in terms of information propagation will enable a wider and more systematic study of possible market dynamics than the ad-hoc assumptions currently seen in the literature. 
+
+In particular, my work will have implications in microfoundational research. Underlying microeconomic models have been proposed for a variety of observed macroeconomic phenomena, e.g. growth \cite{growth} and business cycles \cite{cycles}. My proposed theoretical framework will bring greater scientific clarity to such phenomenological work, as it enables us to make precise scientific predictions, allowing the falsification of models of agent behavior and bounded rationality.
+
+Furthermore, my investigation of right structures directly pertains to the theoretical foundations of welfare economics, and could in similar spirit pave the way for research into the effects of redistribution, or on the relative inequalities in preference fulfilment resulting from a particular rights structure.
+
+Conversely, my work will also have implications for computer science and machine learning algorithms. The contrapositive of the quote ``If your laptop can't find it, then neither can the market'' (attributed to Kamal Jain by Christos Papadimitriou) is that a realistic model of information propagation in the market will allow for computationally efficient multi-agent co-ordination mechanisms. The development of a ``natural'' model of market dynamics from realistic assumptions about the temporal game will contribute directly to this goal. This serves to address the known computational inadequacies of existing message-passing algorithms like Max-Sum \cite{khan}. 
+
+Furthermore, many classic machine learning/optimization algorithms may be mathematically equivalent to multi-agent co-ordination algorithms -- this is shown by \cite{bayati1, bayati2, bayati3} for belief propagation, and I suspect that a differential version of Max-Sum may look a lot like backpropagation when implemented on acyclic graphs (there is a continuous version of Max-Sum in the literature \cite{soton}, but it is not marginal in nature).%How is this related to your research proposal?
+While this line of research is more speculative, my research agenda in general may have implications for studying (or reverse-engineering) the convergence and complexity properties of traditional learning algorithms.
+
+\statement{Tentative research plan}
+
+In the proposal above, I've listed several closely-aligned problems that I am interested in. Below is a coarse tentative research plan/outline of the research part of my PhD:
+
+%\substatement{Background reading} I will first review the existing literature on agent-based computational economics \cite{hce:32}, which as \cite{tesfatsion} describes is ``growing economies from the ground up'', and is thus closely related to my theme of explicitly specifying axiomatic behavioural assumptions underlying market dynamics. I also know comparatively little about multi-agent learning with strategic agents, and should review \cite{zhang, canese, calliess}. Other relevant references to my work include \cite{agt:5, bayati1, bayati2, bayati3, garden}, and I will also briefly review the microfoundations literature (including \cite{growth, cycles}). 
+
+\substatement{Months 1-8} I will first work on the basic setting of Max-Sum without being too committed to a particular theoretical framework. I will work with the more basic setting of initial endowments to formulate the game of interest; based on the results and time constraints, I could then work on applications and analogies to classic optimization algorithms.
+
+\substatement{Months 9-16} Focusing on the aspects of right structure, I will generalize my insights from the previous phase. This has the potential to lead to several papers e.g. in conferences such as LOFT and EC, and journals like Games and Economic Behavior.
+
+\substatement{Months 17-24} Depending on the results of the previous phases, I will either focus on generalizing my work to algorithms other than message-passing/Max-Sum, or may decide to delve deeper into the applications of my research. In the latter case, I would focus primarily on proposing laws for the ``natural dynamics'' of markets.
+
+\substatement{Months 25-36} In the final year of my PhD, I will focus on exploring the applications I've previously described, as I believe my work will open many exciting new directions of future research beyond my PhD. The economic applications of my work are those that currently hold my interest, although this is subject to change based on what I discover in the process.
+
+%\bibliographystyle{unsrt}
+%\bibliography{references}
+\printbibliography
+
+\end{document}

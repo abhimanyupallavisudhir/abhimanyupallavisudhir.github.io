@@ -1,0 +1,155 @@
+%% Base on http://tex.stackexchange.com/questions/150900/latex-coding-for-statement-of-purpose
+
+\documentclass{article}
+\usepackage[
+  %a4paper,
+  margin=1in,
+  headsep=12pt, % separation between header rule and text
+]{geometry}
+\usepackage{fancyhdr, xcolor, lastpage, enumitem}
+\usepackage{fouriernc}
+\usepackage[scale=1]{tgschola}
+\usepackage[ 
+  backend = biber, 
+  sorting = none, 
+  style = numeric-comp,
+]{biblatex}
+\addbibresource{references.bib}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+  \footnotesize\sffamily
+  \yourname\quad
+  %web: \textcolor{blue}{\itshape\yourweb}\quad
+  \textcolor{blue}{\youremail} \quad
+  2022 PhD
+  \vspace{3pt}
+  }
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+
+\newcommand{\soptitle}{Personal Statement}
+
+\newcommand{\yourname}{Abhimanyu Pallavi Sudhir}
+\newcommand{\youremail}{ap6218@imperial.ac.uk}
+\newcommand{\yourweb}{https://abhimanyu.io}
+
+\newcommand{\statement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\textbf{#1.}}\space
+}
+
+\newcommand{\substatement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\emph{#1.}}\space
+}
+
+\usepackage[
+  breaklinks,
+  pdftitle={\yourname - \soptitle},
+  pdfauthor={\yourname},
+  unicode
+]{hyperref}
+
+\begin{document}
+
+\begin{center}
+\LARGE\soptitle%\\
+%\large [Research Proposal, 2022 PhD]
+\end{center}
+
+\hrule
+%\vspace{1pt}
+%\hrule height 1pt
+
+\bigskip
+
+My current research interests lie in the field of algorithmic game theory and mechanism design, wherein I am interested in studying theoretical frameworks and the relationships between market mechanisms. This is an interdisciplinary field, lying at the intersection of theoretical economics and computer science, and its results find applications in both areas. 
+
+\par\medskip
+
+While my formal background is in mathematics (in which I am currently finishing my MSci at Imperial College London), over the course of my 4-year degree my interest has shifted away from pure mathematics towards agent-based problems, including algorithmic game theory but also AI. Part of the cause for this shift is that I was previously not exposed to these areas to fully appreciate them, and part is that I was attracted to the scope that exists for research in these areas, and their practical relevance.
+
+\par\medskip
+
+In particular: by treating the dynamics of games rather than the equilibria themselves, algorithmic game theory connects to agent-based computational economics, allowing the study of out-of-equilibrium phenomena and microfoundational problems. Conversely, many algorithms studied in the context of games/markets may be generalized to the broader context of optimization and machine learning -- the contrapositive of ``If your laptop can't find it, then neither can the market'' is that a realistic model of information propagation in the market will allow for computationally efficient multi-agent co-ordination mechanisms.
+
+\par\medskip
+
+I became exposed to this area towards the end of my second year, when I noticed an apparent analogy between market price propagation and backpropagation algorithms. On hindsight, I am uncertain if this analogy exists or is of importance, but and in my effort to better formulate my problem, I studied economic theory literature in greater detail and became very familiar with mechanism design and algorithmic game theory.
+
+\par\medskip
+
+Apart from economic theory, I have studied computer science and machine learning independently from projects and courses I did, as well as my AI internship at Goldman Sachs, where I worked on data analysis projects involving NLP and recurrent neural networks. In the latter two years of my MSci program, I have focused on electives in machine learning, statistics, game theory and dynamical systems. Several writing samples of machine learning/AI-related articles I've written are available on my blog\footnote{\href{https://thewindingnumber.blogspot.com}{The Winding Number}}. 
+
+\par\medskip
+
+My intended career path after my PhD is in academia, and I have an existing background in academic research; even prior to focusing on game theory, I had worked on several independent research projects in pure mathematics as listed on my CV. I have also worked on research projects in theoretical economics, and from this I produced one significant contribution to property rights theory that is closely related to my current area of interest \footnote{Abhimanyu Pallavi Sudhir.
+\emph{A mathematical definition of property rights in a Debreu economy}. 2021. arXiv:
+\href{https://arxiv.org/abs/2107.09651}{2170.09651 [econ.TH]}}. Apart from independent work, I am accustomed to working in research teams, such as a supervised pure mathematics project I did under Prof Richard Thomas and some work I did in formal theorem proving under Prof Kevin Buzzard at Imperial.
+
+\par\medskip
+
+My broader long-term interests have to do with agent-based problems at large, including (1) agent-based computational economics and the research directions opened by my PhD project, and (2) problems relating to agent foundations. These are both fields of crucial importance to AI research, and while my current PhD plan pertains most closely to the first, computational and economic models of bounded rationality are relevant to the latter area, and I believe that a PhD will provide me with an academic background that is closely suited to both.
+
+\par\medskip
+
+The Durham Business school has a strong program in game theory and theoretical economics; in particular, my research problem could be interpreted as pursuing a certain economic perspective of bounded rationality, which is of interest to the work of Prof Spyros Galanis.
+
+% \pagebreak
+
+% \begin{center}
+% \LARGE Explanation for grades%\\
+% %\large [Research Proposal, 2022 PhD]
+% \end{center}
+
+% \hrule
+
+% \bigskip
+
+% \substatement{To whomsoever it may concern}
+
+% \par\medskip
+
+% This is a \textbf{letter of explanation} for the fall in my Year 3 undergraduate grades, as an accompaniment to my transcript.
+
+% \par\medskip
+
+% I achieved 1st class honors in Year 1 and 2 of my 4-year MSci, making it to the Dean’s list (top 10\%) of my class in both years. Although I am still on track for a 1st, in Year 3, my grade slipped to a 2:1. 
+
+% \par\medskip
+
+% I had taken some really interesting modules in my third year, but in my foolishness, I underestimated the importance of grades to my future academic career, and focused on other independent learning and research projects:
+
+% \begin{itemize}
+%     \item In my first term, I focused primarily on my independent theoretical economics research, which lead to a paper. While the subject of the paper is actually closely related to some modules I took that term, I did not have the time to make an actual effort on the coursework.
+%     \item In my second term, I had the unique opportunity to take an 8-month-long off-cycle AI internship at Goldman Sachs where I worked on developing machine learning algorithms for credit default data. I got more carried away with the project than I had initially anticipated, and what was initially a 6-month-long internship was extended by two months because they wanted me to work on another project. I ended up focusing on this when it was time to prepare for the exams.
+% \end{itemize}
+
+% I can produce other evidence of my proficiency in each of these subjects, which I hope demonstrates that my grades are not representative of my understanding of these modules.
+
+% \begin{itemize}
+%     \item \emph{Dynamics of Games} -- I’ve done original research in this area, and have written a paper on generalized n-person games \href{https://arxiv.org/abs/2107.09651}{[2107.09651]}. While I didn’t explore the ``dynamical'' properties of the equilibria of such games in that paper, I studied problems relating to convergence in learning during my internship at Goldman Sachs. 
+%     \item \emph{Methods of Data Science, Stochastic simulation, Statistical modeling 2, Statistical theory I} -- For my internship at Goldman Sachs, I implemented a semi-novel learning algorithm for regressing on time-series/sequential data of varying lengths. I also worked with transformer networks, dimensionality reduction methods and statistical tests relating to ANOVA and such. I also took the Imperial College Business School’s summer course on data mining and machine learning in my 1st year, on which I topped the class, scoring 97.5\%, and have several independent machine learning and stochastic simulation projects listed on my CV.
+%     \item \emph{Measure and Integration, Geometry 1: Algebraic curves} -- I’ve written some posts on these topics and others on my blog \href{https://thewindingnumber.blogspot.com/p/analysis.html}{[1]} \href{https://thewindingnumber.blogspot.com/p/algebra.html}{[2]} \href{https://thewindingnumber.blogspot.com/p/geometry.html}{[3]}. I am also taking the Applied Probability module this term, which relies in prior knowledge on Measure and Integration, and have scored a 90\% on the tests so far on this module, which tend to be harder than the exams.
+% \end{itemize}
+
+% My overall grade from Years 1-3 is still a 1st, and I have scored 1sts in my tests so far this term of Year 4: \emph{Dynamical systems} (92\%), \emph{Applied probability} (90\%), \emph{Manifolds} (70\%) -- these tests are typically harder than the final exams held in Term 3. Thus I am on track to obtain a 1st class degree.
+
+% \par\medskip
+
+% I really hope that my performance in one year won’t have too adverse an impact on my admission. If my grades do end up being the deciding factor for admissions, I hope you will be able to give me an offer conditional on my final grades, as the modules I have chosen for my final term are also close to my research interests: \emph{Machine Learning}, \emph{Bayesian methods}, \emph{Non-parametric statistics}.
+
+% \par\medskip
+
+% Regards,
+
+% \par\medskip
+
+% Abhimanyu Pallavi Sudhir.
+
+% % \printbibliography
+
+\end{document}
+
+

@@ -1,0 +1,347 @@
+% chapter 11 a - Harmeet
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\section{Cremer Points and Siegel Discs}
+\label{sec:11}
+
+\subsection{Motivation}
+
+Hitherto, we have considered functions with either attracting, geometrically attracting, repelling or rationally indifferent fixed points. We now focus on the case when the fixed point is irrationally indifferent.
+
+Once again, we study maps of the form $f : \nhd \to \C$
+\begin{equation}\label{eq: def f}
+    f(z) = \lambda z + a_2 z^2 + a_3 z^3 + \dots
+\end{equation}
+with $\nhd \subseteq \C$ some neighbourhood of the origin and where the origin is a fixed point with multiplier $\lambda  = e^{2\pi i \xi},$ $\xi \in \R/\Z$ irrational. We wish to generalise Koenigs linearisation Theorem to the above case. We first formally define the discussion of local linearisation from Chapter 2. 
+
+\begin{dfn}[Locally linearisable] The function $f$ above is said to be \emph{locally linearisable} if there is a local biholomorphic map $\linV$ which conjugates $f$ to a linear map:
+\begin{equation}\label{eq: Schroder}
+    \left(\linV^{-1} \circ f \circ \linV\right)(z) = \lambda z, \;
+\end{equation}
+for all $z$ in some neighbourhood of the origin.
+\end{dfn}
+
+Here, equation \eqref{eq: Schroder} is called \textit{Schr\"oder's equation}. 
+
+In the special case that $f$ is a globally defined rational function, we have the following lemma:
+
+\begin{lem}\label{lem:11.1}
+Let $f : \C \to \C$ be a rational function of degree $\geq 2$. Suppose $z_0 \in \C$ is an indifferent fixed point, $\lambda = \abs{f'(z_0)} = 1$. Then the following are equivalent:
+\begin{enumerate}
+	\item $f$ is locally linearisable around $z_0$.
+	\item $z_0$ is in the Fatou set $\, \C \minuset J(f)$.
+	\item The connected component $U$ of the Fatou set containing $z_0$ is conformally isomorphic to $\D$, and the isomorphism conjugates $f$ to multiplication by $\lambda$ on $\D$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+% there you go, have some handwavery:
+    Note first that since the conformal isomorphism in (3), if it exists, locally linearises $f$; so (3) is a strictly stronger statement than (1). It remains only to prove two other implications:
+    \begin{itemize}
+    \item \emph{$1 \implies 2.$} Suppose $f$ is locally linearisable: there is a map $\phi$ univalent in some neighbourhood of $z_0$ so that $\phi \circ f \circ \phi\inv$ is the linear map $w \mapsto \lambda w$ for all $w$ in some disc $\D_r$ around the origin. See that the family $\{f^n\}$ of iterates of $f$ is normal on some neighbourhood of $z_0$ only if the family  $\{\phi \circ f^n \phi\inv \}$ is, since composition is continuous on the topology of locally uniform convergence. But $\{\phi\circ f^n \circ \phi\inv \}$ is the family of iterates $\{w \mapsto \lambda^n w \}$ . By compactness of the unit circle, we extract a convergent subsequence $\{\lambda_{n_k}\}$ of $\{ \lambda_n \}$ so that $\lambda_{n_k} \tendsto \lambda$ as $k \tendsto \infty$. Together with the bound $\abs{\lambda_{n_k} w - \lambda w} < r \abs{\lambda_{n_k} - \lambda}$ we see that the sequence $\{ w \mapsto \lambda_{n_k} w\}$ of maps converges uniformly (and hence locally uniformly) to $w \mapsto \lambda w$.
+    
+    \item \emph{$2 \implies 3.$} This follows from the classification of Fatou components (Theorem \ref{ax:thm:fatou-classification} in the Appendix, whose proof we do not present), considering $U$ as a Riemann surface and seeing that $f$ maps $U$ into itself by the connectedness of $U$. That $U$ contains an indifferent fixed point excludes the \emph{attracting} and \emph{escape} cases (since the orbit of the fixed point accumulates at itself and does not converge to an attracting fixed point); that the degree of $f$ is no less than $2$ prohibits any iterate of $f$ from being the identity on any open set, which excludes the \emph{finite order} case. Finally, $U$ must be conformally isomorphic to a disc since irrational rotations on an annulus or a punctured disc do not have fixed points.
+\end{itemize}
+\end{proof}
+
+With a local linearisation, one can effectively deduce the behaviour of orbits as has previously been discussed. It is thus important to understand when such linearisations exist and what may prevent such an existence.
+
+\subsection{Cremer's Nonlinearisation Theorem}
+
+\begin{dfn}
+We say an irrationally indifferent fixed point is a \textit{Cremer point} if there is no local linearisation of $f$ around the fixed point. A connected component of the Fatou set on which f is conjugate to a rotation of the unit disc is called a \emph{Siegel disc}.
+\end{dfn}
+
+We will prove the existence of Siegel discs in section $5.4$. We will now study the existence of Cremer points.
+
+In order to answer when local linearisation exists, one can consider the implications of such a linearisation. Suppose we have $f$ and $\phi$ as in equation \eqref{eq: Schroder} so $f$ is conjugate to the linear map $w \mapsto \lambda w$ in a neighbourhood of the origin. An immediate implication is that zero is the only periodic point of the linear map in this neighbourhood and so, as the number of periodic points is invariant under conjugation, we have that zero is an \emph{isolated} periodic point. That is, we have a neighbourhood about $0$ in which it is the only periodic point of $f$.
+
+Thus, if we argue in a contrapositive fashion, if $f$ has periodic points arbitrarily close to the origin, the origin must be a Cremer point. This motivates the following lemma.
+
+\begin{lem}\label{Cremlem}
+Let $\lambda \in \C$ s.t. $\abs{\lambda} = 1$ and $f$ be a monic polynomial of the form
+\[
+f(z) = z^{d} + \dots + \lambda z,
+\]
+where $d \geq 2$.  Suppose that the sequence $\sqrt[d^{q}]{1 / \abs{\lambda^q - 1}}$ is unbounded as $q \tendsto \infty$. Then $f$ is not locally linearisable about the origin.
+\end{lem}
+\begin{proof}
+Certainly $z = 0$ is a fixed point of multiplier $\lambda$. For $q \in \N$, $f^{oq}(z)$ is of the form $z^{d^{q}} + \dots + \lambda^{q} z$. Hence, the fixed points of $f^{oq}$, which correspond to periodic points of $f$, satisfy the polynomial equation
+\[
+z^{d^{q}} + \dots + (\lambda^{q} - 1)z = 0
+\]
+Denote by $z_{q}(1), z_{q}(2), \dots, z_{q}(d^{q} - 1)$ the non-zero roots of this polynomial. Then 
+\[
+\prod_{j = 1}^{d^{q}-1} \left|{ z_{q}{(j)}}\right| = \abs{\lambda^{q} - 1}
+\]
+If $\abs{\lambda^{q} - 1} < 1$, $\exists\; j_{q}$\; s.t. $0 < \left|z_{q}(j_q)\right|^{d^{q}} \leq\left|z_{q}(j_q)\right|^{d^{q}-1} \leq \abs{\lambda^{q} - 1} < 1$ (i.e. take $z_{q}(j_q) = \text{arg}\,\min\limits_{j}\{\left|z_{q}(j)\right|\}$). Then 
+\begin{equation}\label{eq: ineq}
+0 < \left| z_{q}(j_q) \right| < \abs{\lambda^{q} - 1}^{1/d^{q}}
+\end{equation}
+Now, if $\sqrt[d^{q}]{1 / \abs{\lambda^q - 1}}$ is unbounded, we can construct a sequence $(q_{k})_{k\geq 1}$ so that
+\begin{align*}
+\abs{\lambda^{q_k} - 1}^{-1/d^{q_{k}}} &\tendsto \infty\\
+\implies \abs{\lambda^{q_k} - 1}^{1/d^{q_{k}}} &\tendsto 0
+\end{align*}
+as $k \tendsto \infty$. We thus have $K \in \N$ where $\abs{\lambda^{q_k} - 1} < 1$ whenever $k \geq K$ and so from \eqref{eq: ineq} it follows $z_{q_{k}}(j_{q_{k}}) \tendsto 0$. Hence, every neighbourhood of the origin contains infinitely many periodic points. The result thus follows.
+\end{proof}
+
+In fact, one can generalise the above result which leads us to Cremer's proof of the existence of Cremer points.
+
+\begin{thm}(Cremer, 1938) \label{thm: 11.2}
+Given $\lambda \in \C$ on the unit circle and $d \geq 2$, if the sequence $\sqrt[d^{q}]{1 / \abs{\lambda^q - 1}}$ is unbounded as $q \tendsto \infty$, no fixed point with multiplier $\lambda$ of a rational function of degree $d$ can be locally linearisable.
+\end{thm}
+\begin{proof}
+For the general case, we take a rational function and reduce the problem to that described in the above lemma. Let $f(z) = P(z)/Q(z)$ for $P,\, Q$ polynomials with no common factors. Let $z$ be a fixed point of $f$ with multiplier $\lambda$. Through a conjugation by a M\"obius transformation, we can assume that $z = 0$ and so $f(0) = 0 \implies P(0) = 0$.
+\begin{claim}
+$\exists z_1 \neq 0$ such that $f(z_1) = 0$
+\end{claim}
+
+\begin{subproof}[Proof of claim]
+Any zero of $P$ will be a zero of $f$ and if deg($Q$) $>$ deg($P$), $z_1 = \infty$ will be a zero of $f$. The only non-trivial case is hence when $P(z) = z^d$ and deg($Q$) $\leq d$. We also have $\abs{\lambda} = |f'(0)| = 1$. From this, along with $d \geq 2$ and $P, Q$ having no roots in common,  it follows that $f$ cannot be of this form.
+\end{subproof}
+
+By conjugating with another M\"obius transformation that takes $z_1$ to $\infty$, we can assume that $f(\infty) = f(0) = 0$. Then, we have $d = \text{deg}(Q) > \text{deg}(P)$.
+
+Suppose $Q(z) = a_dz^d + a_{d-1}z^{d-1} + \dots + a_1z + a_0$ where $a_d, a_0 \neq 0$ (as $Q$ and $P$ share no roots and $\text{deg}(Q) = d$). If we conjugate $f$ by the map $z \mapsto (a_0/a_d)^{1/d}z$, we can assume $a_0 = a_d = 1$ so $P$ and $Q$ are of the form: 
+\[
+Q(z) = z^d + a_{d-1}z^{d-1} + \dots + 1, \;\;\; P(z) = \beta_{d-1}z^{d-1} + \dots + \beta_{2}z^{2} + \lambda z
+\]
+A brief computation gives
+\[
+f^{oq}(z) = \frac{P_q(z)}{Q_q(z)} = \frac{*z^{d^q - 1} + \dots + *z^2 + \lambda^{q}z}{z^{d^q} + \dots + 1}.
+\]
+The formula for fixed points of $f^{oq}$ is then given by
+\[
+P_{q}(z) - zQ_{q}(z) = 0
+\]
+\[
+\Longrightarrow z(z^{d^q} + \dots + (1 - \lambda^q)) = 0
+\].
+The result now immediately follows from the above lemma.
+\end{proof}
+
+Cremer's Theorem gives a seemingly broad class of irrational numbers $\xi \in \R/\Z$ for which there exists a function with multiplier $\lambda = e^{2\pi i \xi}$ that is not locally linearisable. In actual fact, this property holds for a \textit{generic} class of irrational numbers.
+
+\begin{dfn}
+Let $p$ be a property of angles in $\R/\Z$ and define
+\[
+T = \{\xi \in \R/\Z \mid \xi\; \text{satisfies property}\; p\}
+\]
+Then we say $p$ holds for \textit{generic} $\xi$\, if $\exists\, \left\{U_{n}\right\}_{n \in \N}$ dense open subsets of $\R/\Z$ such that
+\[
+\bigcap_{n = 1}^{\infty} U_{n} \subseteq T.
+\]
+By Baire's Theorem, such a countable intersection is necessarily dense and uncountably infinite.
+\end{dfn}
+
+Intuitively, if a property is generic, it may not hold for all points but if we perturb a given point slightly, we would expect to find a point satisfying the property.
+
+\begin{cor}\label{generic}
+For a generic choice of rotation number $\xi \in \R/\Z$, for any rational function of degree $\geq 2$ $z_0$ with a fixed point of multiplier $e^{2\pi i \xi}$, there is no locally linearising map about $z_0$ 
+\end{cor}
+\begin{proof} 
+(This was problem 11-b in Milnor, 2006).\\
+Let $\eps_{1} > \eps_{2} > \eps_{3} > \dots$ be an arbitrary decreasing sequence of positive real numbers converging to $0$. Viewing $\R/\Z$ as the interval $[0,1)$, define
+\[
+S(q_{0}) = \left\{\xi \in [0,1) \mathrel{\Big|} \exists\; \frac{p}{q} \in \Q \cap [0,1)\;, q > q_{0}\; \text{in lowest terms s.t.} \abs{\xi - \frac{p}{q}} < \eps_{q} \right\}.
+\]
+Then $S(q_{0})$ is a union of open balls so is open and contains all but finitely many rational numbers in [0,1) so is dense in [0,1). Then
+\[
+S = \bigcap_{q_{0} \geq 1} S(q_{0})
+\]
+is a countable intersection of dense open sets and consists of all angles $\xi \in \R/\Z$ for which there are infinitely many rationals satisfying the defining condition of the sets $S(q_{0})$. For $d \geq 2$, let $\eps_{q} = \frac{1}{2\pi} q^{-(d^{q}+1)}$. Since, $0 < \eps_{q} < \frac{1}{q^q}$, the $\eps_{q}$ converge to $0$ and form a strictly decreasing sequence. Suppose $\xi \in S$. Now for any $p \in \Z$ and $q \in \N\setminus\{0\}$, we have
+\[
+\abs{\lambda^q - 1} = \abs{e^{2\pi iq\xi} - 1} = \abs{2\sin(\pi q\xi)} = \abs{2\sin(\pi (q\xi - p))} \leq 2\pi \abs{q\xi - p}.
+\]
+Since $\xi \in S$, we have a sequence of rational numbers $\frac{p_{i}}{q_{i}}$ such that $q_{i} \tendsto \infty$ and so $\abs{\lambda^{q_{i}} - 1} \leq 2\pi q_{i}\abs{\xi - \frac{p_{i}}{q_{i}}} < 2\pi q_{i} \eps_{q_{i}}$. Hence $\abs{\lambda^{q_{i}} - 1}^{1/d^{q_{i}}} < \frac{1}{q_{i}} \tendsto 0$ as $i \tendsto \infty$. Thus $\xi \in S \Longrightarrow \liminf{\abs{\lambda^q - 1}^{1/d_{q}}} = 0$. The result thus follows.
+\end{proof}
+
+The question still remains whether non-linearisation is the case for \textit{all} irrational rotations. In fact, counter-intuitively, quite the opposite is true and it will turn out that the possibility of a local linearisation depends very carefully on to what extent the irrational angle $\xi$ can be approximated by rational numbers.
+
+\subsection{Siegel's Linearisation Theorem}
+
+We introduce various classes of irrational numbers and results from number theory in order to understand classical theorems on linearisation as well as sharper, recent results.
+
+\begin{dfn} For $\xi \in \R/\Z$ an irrational number
+$\xi$ is called \textit{Diophantine of order $\leq \kappa$} if $\exists$ $\varepsilon > 0$ such that
+\[
+\left|\xi - \frac{p}{q}\right| > \frac{\varepsilon}{q^\kappa}, \;\; \forall\; p/q \in \Q.
+\]
+The set of all $\kappa$ order Diophantine numbers is denoted by $\Dioph{\kappa}$ so certainly $\Dioph{\kappa} \subseteq \Dioph{\eta}$ whenever $\kappa \le \eta$
+\end{dfn}
+
+Intuitively, $\xi$ is Diophantine if it is badly approximated by rational numbers.
+
+\begin{lem} \label{lem:dioph-asymp} Let $\xi$ be irrational and $\lambda = e^{2\pi i \xi}$. Then
+\begin{enumerate}
+    \item $\xi \in \Dioph{\kappa} \Longleftrightarrow \exists M > 0\;\; \text{s.t.}\;\; \forall q \in \N,\;\; \abs{\lambda^{q} - 1}^{-1} \leq Mq^{\kappa - 1}$
+    \item $\Dioph{\kappa} = \emptyset$ for $\kappa = 0, 1$
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+    \item Fix $q \neq 0 \in \N$ and let $p$ be the closest integer to $q\xi$ so that $\abs{q\xi - p} \leq \frac{1}{2}$. From the proof of Corollary \ref{generic}, we have
+    \[
+    \abs{\lambda^q - 1} \leq 2\pi \abs{q\xi - p}.
+    \]
+    Moreover, since $\abs{q\xi - p} \leq \frac{1}{2}$, we have $\frac{2}{\pi} \abs{\pi (q\xi - p)} \leq \abs{\sin(\pi (q\xi - p))}$ and so
+    \begin{equation}\label{lambda est}
+        4q\abs{\xi - \frac{p}{q}} \leq \abs{\lambda^q - 1} \leq 2\pi q \abs{\xi - \frac{p}{q}}
+    \end{equation}
+    If $\xi \in \mathcal{D}(\kappa)$, then immediately from the left inequality of \eqref{lambda est}, we have
+    \[
+    \abs{\lambda^q - 1}^{-1} \leq \frac{1}{4\varepsilon} q^{\kappa - 1}.
+    \]
+    Conversly, now using the right inequality in \eqref{lambda est}, if $\abs{\lambda^q - 1}^{-1} \leq Mq^{\kappa - 1}$, we have 
+    \[
+    \abs{q\xi - p} \geq \frac{1}{2\pi M q^{\kappa - 1}}
+    \]
+    where $p = \lfloor q\xi \rfloor$. Thus, if $a \in \Z$ is any integer, we have $ \abs{q\xi - a} \geq \abs{q\xi - p}$ and so
+    \[
+    \abs{\xi - \frac{a}{q}} \geq \frac{\varepsilon}{q^{\kappa}}
+    \]
+    and the result follows since $q \in \N$ was arbitrary.
+    
+    \item (This is problem 11-a in Milnor, 2006.)
+    We prove that for any irrational $x$ there are infinitely many rationals $p/q$ such that
+    \[
+        \left|{x - \frac{p}{q}}\right| < \frac{1}{q^2}
+    \]
+    For any integer $Q > 1$, the circle can be partitioned into a disjoint union of $Q$ half-open intervals of length $1/Q$:
+    \[
+    \R/\Z = \bigcup\limits_{k = 0}^{Q-1} \left[\frac{k}{Q}, \frac{k+1}{Q}\right)
+    \]
+    By the pigeonhole principle, at least two of the $Q+1$ numbers $0, x, 2x, \cdots, Qx$ fall in the same interval in the quotient. That is, there exist integers $p$ and $0 \le m < n \le Q$ such that
+    \[
+    nx - mx = p + d
+    \]
+    with $\abs{d} < 1/Q$. Setting $q = n - m$, rearranging, and dividing through by $q$ noting that $1 \le q \le Q$, we have
+    \[
+    \abs{x - \frac{p}{q}} = \frac{d}{q} < \frac{1}{qQ} \le \frac{1}{q^2}
+    \]
+    as desired. In particular, for any irrational $x$ and $\varepsilon > 0$ we may choose $Q$ such that $1/Q < \varepsilon$ and hence for some rational $p/q$ have
+    \[
+    \abs{x - \frac{p}{q}} < \frac{\varepsilon}{q}
+    \]
+    showing that $\Dioph{1}$ (and hence its subset $\Dioph{0}$) is vacuous.
+\end{enumerate}
+\end{proof}
+
+\begin{thm}
+(Liouville's Theorem) Every algebraic number is Diophantine. More specifically, if $\xi$ is a root of a degree $d$ polynomial $P(x) \in \Z[x]$, then $\xi \in \Dioph{d}.$
+\end{thm}
+\begin{proof}
+
+Let $Z(P)$ denote the zero set of $P$ and $I = [\xi - 1, \xi + 1]$. As $I$ is compact and the map $x \mapsto P'(x)$ is continuous, $\exists M \geq 0$ such that $\forall \; x\in I,\; \abs{P'(x)} \leq M$.
+
+Fix $\frac{p}{q} \in \Q\minuset Z(P)$.
+
+\textit{Case 1: $\frac{p}{q} \in I$}\\
+If $P(x) = a_dx^d + \dots + a_0$, we have $P\left(\frac{p}{q}\right) = \frac{1}{q^d}\abs{p^da_d + \dots + a_0q^d} = \frac{R}{q^d}$. As $a_i, p, q \in \Z$, we have $R \in \Z$ and since $\frac{p}{q}$ is not a root of $P$, $R \geq 1$ so $\abs{P\left(\frac{p}{q}\right)} \geq \frac{1}{q^d}$. 
+
+Now, by the Mean Value Estimate, 
+\[
+\abs{\frac{P\left(\frac{p}{q}\right) - P(\xi)}{\xi - \frac{p}{q}}} \leq M \Longrightarrow \frac{1}{q^d} \leq \abs{P\left(\frac{p}{q}\right)} \leq M\abs{\xi - \frac{p}{q}}.
+\]
+\[
+\Longrightarrow \abs{\xi - \frac{p}{q}} \geq \frac{1}{Mq^d}.
+\]
+
+\textit{Case 2: $\frac{p}{q} \notin I$}\\
+Since $q \in \N_{\geq 1}$, the set
+\[
+((\xi - 1)q, (\xi + 1)q) \cap \Z \neq \emptyset
+\]
+is non-empty so we can take $a \in \Z$ in this set and so $\frac{a}{q} \in I$. Now
+\[
+\frac{p}{q} \notin I \Longrightarrow \abs{\xi - \frac{p}{q}} > 1 \geq \abs{\xi - \frac{a}{q}} \geq \frac{1}{Mq^d}
+\]
+using \textit{case 1}.
+
+We have thus shown that:
+\[
+\abs{\xi - \frac{p}{q}} \geq \frac{1}{Mq^d}, \;\;\; \forall\; \frac{p}{q} \in \Q\minuset Z(P)
+\]
+As $P$ is a polynomial, $Z(P) \cap \Q$ is a finite set so we can define 
+\[
+\delta = \min{\left\{b^{d}\abs{\xi - \frac{a}{b}} \mathrel{\Big|} \frac{a}{b} \in Z(P) \cap \Q, \text{hcf}(a, b) = 1 \right\}}
+\]
+Setting $0 < \varepsilon < \min\{\delta, \frac{1}{M}\}$ gives the required result.
+\end{proof}
+
+We can now state the remarkably simple Siegel's linearisation Theorem
+\begin{thm}(Siegel, 1942) \label{thm: 11.4}
+Let $\lambda = e^{2\pi i \xi},\, \xi \in \R\minuset\Q$. If $\xi$ is Diophantine of any order, then any germ of a holomorphic function with a fixed point of multiplier $\lambda$ is locally linearisable.
+\end{thm}
+
+The proof will be the focus of the next section. For now, we consider how `large' the set of such Diophantine $\xi$ is, akin to what we did in the last section.
+
+% TODO: sanity check, possibly move to appendix
+
+The notion of `largness' is captured by the \emph{Lebesgue measure}. We give a brief description in the following and refer the reader to Fremlin (2011) for a comprehensive treatment.
+
+We motivate our definition by the heuristic that we would like an interval $I = (a, b)$ to have measure equal to its length $\ell(I) = b - a$. Furthermore, if a sequence of intervals $\{ I_k \}$ covers (that is, contains in its union) a set $S \subseteq \R$, we would expect the measure of $S$ not to exceed the sum of $\ell(I_k)$ across all $k$. Thus we define the \emph{Lebesgue outer measure} of a set $S \subseteq \R$:
+\[
+\mu^\ast (S) = \inf \left\{ \sum_{k=0}^\infty \ell(I_k)
+\mid S \subseteq \bigcup_{k=0}^\infty I_k\right\}
+\]
+Which possibly takes value $\infty$ if no such sum converges.
+
+We desire furthermore that the measure behave in a way consistent with the intuitive notion of size, in that we would like a union across a sequence of sets which are mutually disjoint to have measure equal to the sum of its terms. Unfortunately, it happens that it is impossible for all of these properties to hold across all subsets of $\R$ if we insist on assigning a size to every subset. Instead, we define the \emph{Lebesgue measure} only on sets in the \emph{Lebesgue $\sigma$-algebra}, which is a collection of subsets of $\R$ that is not all of the powerset of $\R$. There are several ways one might approach this construction; one of them is to define the Lebesgue $\sigma$-algebra as the collection of all subsets $S$ that satisfy the \emph{Carathéodory criterion} that
+\[
+\mu^\ast(S) = \mu^\ast(S \cap A) + \mu^\ast(S\minuset A)
+\]
+for all $A \subseteq \R$. Another construction is to take the \emph{Borel $\sigma$-algebra} generated by all open sets, and taking its \emph{completion} by including additionally all subsets of $\R$ which have Lebesgue outer measure zero. We write $\mu(S)$ for the Lebesgue measure of $S$, and for $S$ in the Lebesgue $\sigma$-algebra $\mu(S) = \mu^\ast(S)$.
+
+The Lebesgue measure on $\R/\Z$, as frequently referred to in this report, is obtained by identifying $\R/\Z$ with the interval $[0, 1)$ and taking the measure of subsets accordingly. Some terminology: we say that a property holds \emph{Lebesgue-almost everywhere} on a set $X$ if there is a set $N$ such that the property holds for all $X\minuset N$ and $\mu(N) = 0$.
+
+\begin{lem}\label{Rothmeasure}
+Define the set
+\[
+\Dioph{2+} = \bigcap_{\kappa > 2} \Dioph{\kappa}
+\]
+which consists of all integers that are Diophantine of every order $\kappa > 2$. Then $\Dioph{2+}$ has full measure on the circle $\R/\Z$ (that is, its compliment has measure zero).
+\end{lem}
+\begin{proof}
+We construct an open covering of $\Dioph{2+}^c$ which has measure converging to zero. We have 
+\[
+\Dioph{\kappa}^c = \left\{\xi \in [0,1) \mathrel{\Big|}\, \forall \varepsilon > 0,\, \exists\; \frac{p}{q} \in \Q \cap [0,1)\; s.t. \; \abs{\xi - \frac{p}{q}} \leq \frac{\varepsilon}{q^\kappa} \right\}
+\]
+Define the set
+\[
+U(\kappa, \varepsilon) = \left\{\xi \in [0,1) \mathrel{\Big|} \, \exists\; \frac{p}{q} \in \Q \cap [0,1) \; s.t. \; \abs{\xi - \frac{p}{q}} < \frac{\varepsilon}{q^\kappa} \right\}
+\]
+which is a union of open intervals so is an open set. We also have
+
+\[
+\Dioph{\kappa}^c = \bigcap_{\varepsilon > 0} U(\kappa, \varepsilon)
+\]
+Fix $q \in \Z_{\geq 1}$. Then we have $q$ possible choices for $p$ so that $\frac{p}{q} \in [0,1)$. Moreover, if $\xi \in U(\kappa, \varepsilon)$, then $\xi \in \left(\frac{p}{q} - \frac{\varepsilon}{q^{\kappa}}, \frac{p}{q} + \frac{\varepsilon}{q^{\kappa}}\right)$ and so we deduce
+\[
+U(\kappa, \varepsilon) \subseteq \bigcup_{q>1}\left\{\bigcup_{p=0}^{q-1} \left(\frac{p}{q} - \frac{\varepsilon}{q^{\kappa}}, \frac{p}{q} + \frac{\varepsilon}{q^{\kappa}}\right) \right\}
+\]
+$\Longrightarrow \left\{\bigcup_{p=0}^{q-1} \left(\frac{p}{q} - \frac{\varepsilon}{q^{\kappa}}, \frac{p}{q} + \frac{\varepsilon}{q^{\kappa}}\right) \mathrel{\Big|} q \in \Z_{\geq 1}\right\}$ is an open cover of $U(\kappa, \varepsilon)$.
+
+Hence, $U(\kappa, \varepsilon)$ has measure $\leq \sum_{q=1}^{\infty} \frac{2\varepsilon}{q^{\kappa - 1}}$. If $\kappa > 2$ this sum converges and so the upper bound $\tendsto 0$ as $\varepsilon \tendsto 0$. As $\Dioph{\kappa}^c \subseteq U(\kappa, \varepsilon)\; \forall \varepsilon > 0$, it follows that $\Dioph{\kappa}^c$ has measure zero and so
+\[
+\Dioph{2+}^c = \bigcup_{\kappa > 2} \Dioph{\kappa}^c
+\]
+has measure zero.
+\end{proof} 
+
+\begin{cor}
+For every $\xi$ outside of a set of measure zero, we can conclude that every holomorphic germ with a
+fixed point of multiplier $e^{2\pi i \xi}$ is locally linearisable.
+\end{cor}
+\begin{proof}
+Immediate from lemma \eqref{Rothmeasure} and theorem \eqref{thm: 11.4}. 
+\end{proof}
+
+This reveals a startling dichotomy between a \textit{general} property in the topological sense and a property that occurs \textit{almost everywhere} in the vernacular of measure theory. According to Milnor, 2006, this contrast is \emph{`not uncommon in dynamics'}.
+
+We will present a proof of Siegel's 1942 linearisation theorem (\ref{thm: 11.4}) in a latter section. But first we present a proof of a weaker version of the theorem, due to Yoccoz and following the presentation in Milnor. In some cases this version of the proof also gives us a way to estimate the `size' of a Siegel disc in the sense that its \emph{conformal radius} is the limit of a sequence that can be computed recursively.
+
+\end{document}
+ 

@@ -1,0 +1,110 @@
+%%% ---------------------------------------- %%%
+%%%                 PACKAGES                 %%%
+%%% ---------------------------------------- %%%
+
+%%% System %%%
+\usepackage{subfiles}         % for writing sections separately
+\usepackage{xparse}           % for NewDocumentCommand
+\usepackage[                  % for biblatex
+    backend = biber,
+    sorting = none, 
+    style = numeric-comp
+           ]{biblatex} 
+
+%% Text %%%
+\usepackage{hyperref}         % for hyperlinks (comes with url)
+\usepackage[
+    %shortlabels
+           ]{enumitem}        % for better itemize, enumerate
+
+%%% Math %%%
+\usepackage{amsmath}          % for better math
+\usepackage{amsthm}           % for better NewTheorem
+\usepackage{amssymb}          % for better symbols (comes with amsfonts)
+%\usepackage{mathtools}       % for better math
+%\usepackage{bm}              % for bold math symbols
+
+%%% Code %%%
+\usepackage[
+    noend
+           ]{algpseudocode}
+\usepackage{algorithm}
+
+%%% Figures %%%
+\usepackage{tikz}             % for tikz figures,
+%\usepackage{graphicx}        % for general graphics things
+%\usepackage{subcaption}      % for subfigures with their own captions
+
+% set default line width to 0.75pt        
+%\tikzset{every picture/.style={line width=0.75pt}} 
+
+%%% ---------------------------------------- %%%
+%%%                 COMMANDS                 %%%
+%%% ---------------------------------------- %%%
+
+%%% Meta-data %%%
+\title{Modeling bounded rationality with markets}
+\author{Abhimanyu Pallavi Sudhir}
+\date{25 January 2023}
+\bibliography{refs}
+
+%%% Theorem environments %%%
+
+% theoremstyle theorem, numbered with [theorem]s
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% theoremstyle definition, numbered with [theorem]s
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lefinition}[theorem]{Le-finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{constants}{Constants}
+\newtheorem*{notation}{Notation}
+
+% theoremstyle definition, numbered with [desideratum]s
+%\newtheorem{desideratum}{Desideratum}
+
+% theoremstyle remark, not numbered
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%%% New Document Commands %%%
+
+% basic math
+\NewDocumentCommand{\Nats}{}{\mathbb{N}}
+\NewDocumentCommand{\Ints}{}{\mathbb{Z}}
+\NewDocumentCommand{\Rats}{}{\mathbb{Q}}
+\NewDocumentCommand{\Reals}{}{\mathbb{R}}
+\NewDocumentCommand{\Bools}{}{\{0,1\}}
+\NewDocumentCommand{\set}{om}{
+    \IfNoValueTF{#1}
+        {\left\{ #2 \right\}}
+        {\left\{ #2 \;\middle|\; #1 \right\}}
+}
+\NewDocumentCommand{\supp}{m}{\operatorname{supp}\left[#1\right]}
+\NewDocumentCommand{\too}{}{\to_\circ}
+\NewDocumentCommand{\us}{}{\underline{\quad}}
+
+% reality
+\NewDocumentCommand{\Sentences}{}{\mathcal{S}}
+\NewDocumentCommand{\Theorems}{}{\mathcal{T}}
+
+% beliefs
+\NewDocumentCommand{\Prices}{}{\mathcal{P}}
+\NewDocumentCommand{\Price}{}{P}
+\NewDocumentCommand{\Qties}{}{\mathcal{Q}}
+\NewDocumentCommand{\Qty}{}{Q}
+
+% agents
+\NewDocumentCommand{\agent}{}{\alpha}
+\NewDocumentCommand{\agents}{}{\mathbb{A}}
+\NewDocumentCommand{\prop}{om}{\left[#2\right]_{#1}} % B E H
+
+
+\NewDocumentCommand{\earning}{m}{{#1}^h}
+\NewDocumentCommand{\budget}{m}{{#1}^b}
+\NewDocumentCommand{\mgent}{}{\mu}
+\NewDocumentCommand{\am}{}{\mathbf{m}}
+\NewDocumentCommand{\mm}{}{\mathfrak{m}} 

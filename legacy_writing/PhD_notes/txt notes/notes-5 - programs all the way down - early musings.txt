@@ -1,0 +1,42 @@
+General platitudes:
+ - bounded rationality is rationality with limited information
+ - computation is information; until you have found the arbitrage, it is not truly arbitrage
+ - every program has a notion of complexity and can't handle things more complex than itself
+ - minds are markets of smaller programs, and this provides an alternate model of computation that more usefully captures the idea of bounded rationality
+ - yes, there can be an inefficiency in the market, but maybe actually addressing this inefficiency has more of a cost than a benefit -- maybe discovering a solution is itself a cost
+
+-----
+
+Let's say Alice has some program that carries on her life in some "default" way. It wakes up in the morning, navigates her way to work, dashes across if a car comes too close, etc. Note that this is already a fairly complicated program! It is necessary that this program comes with a default response for anything that might happen in her life. 
+
+But this program isn't "really her" -- she is capable of introspection. This is *literally* the case: 
+
+
+-----
+
+you can't calculate P(X | observations) but you have some machine attached to your face that processes observations into representations so you can calculate P(x | r(observations)). 
+you can alter the machine, but you don't necessarily know what the alterations will do -- you can't really calculate P(X | alterations) either.
+but you can calculate P(X | r(alterations)), etc. 
+
+Hmm... there actually seem to be two sorta unrelated ideas here: (1) the concept of programs selecting for other programs (2) the idea that these programs can be understood as Bayesian inference.
+This is sort of analogous to how, you know, in markets, you have inefficiencies but you have markets controlling those inefficiencies as well. Is a market a program?
+
+Most generally, intelligence is the ability to efficiently navigate the space of computable functions ... which is itself governed by a computable function. So in some sense we need to distinguish between the "current computable function" and the "ultimate one" ... right?
+
+-----
+
+Let's start with a simple example, alright?
+
+The external environment is a stream of numbers 3, 5, 8, 2, 9, 11, 1, 3, 17, 4, 8, 6, 5 ... and you want an algorithm that decides when to stop (your reward for stopping at x is n(x) - 0.01x). You don't know what the underlying function is [maybe you have beliefs about it, but this is a topic for a later time]. 
+
+You have some "default" program to address it -- like "3" (so it always chooses i = 3).
+
+You have some "default" program that generates a better program.
+
+You have some "default" program that generates a better such program.
+
+And so on.
+
+For some finite number of programs.
+
+-----

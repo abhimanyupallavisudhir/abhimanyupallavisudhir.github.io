@@ -1,0 +1,73 @@
+\mode<presentation>
+
+\usepackage{tgschola}
+
+%\useinnertheme{circles}
+\usecolortheme{dove}
+
+%% FRAME TITLES
+\setbeamercolor{titlelike}{fg=white,bg=black}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{framesubtitle}{series=\mdseries}
+
+%% TABLE OF CONTENTS
+\setbeamerfont{subsection in toc}{size=\small,series=\mdseries,shape=\itshape}
+
+%% THEOREM & PROOF ENVIRONMENTS
+\setbeamertemplate{theorem begin}{%
+    {
+    \inserttheoremheadfont
+    \inserttheoremname
+    \ifx\inserttheoremaddition\@empty\else{\normalfont\ (\inserttheoremaddition)}\fi \inserttheorempunctuation
+    }\par\vspace{0.1em}
+}
+\setbeamertemplate{theorem end}{\vspace{0.5em}}
+
+\setbeamertemplate{proof begin}{%
+\textit{\insertproofname}
+}
+\setbeamertemplate{proof end}{}
+
+%% TITLE PAGE
+\setbeamercolor{title}{fg=white,bg=black}
+\setbeamercolor{title page}{fg=white,bg=black}
+\setbeamertemplate{title page}{
+    {\Huge \textbf{\inserttitle}}
+    \par\vspace{3em}
+    \insertauthor\par
+    \par\vspace{1.5em}
+    {\footnotesize \insertinstitute\par\insertdate}
+}
+\newcommand\titleframe{{
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{background canvas}{bg=black}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+}}
+
+\newcommand{\sectiontitleframe}{{
+\setbeamercolor{background canvas}{bg=black}
+\color{white}
+    \begin{frame}[plain]
+    \parbox{0.7\textwidth}{\raggedright
+    {\huge \textbf{\insertsection} }
+    }
+    \end{frame}
+}}
+%% HEADERS & FOOTERS
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{footline}{fg=white,bg=black}
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamertemplate{footline}{
+    \begin{beamercolorbox}[leftskip=0.6em,sep=0.6em]{footline}
+    \textbf{\insertsection} \ifx\insertsubsection\@empty\else{$\cdot$ \insertsubsection}\fi
+    \hfill
+    \texttt{\insertframenumber/\inserttotalframenumber}
+    \end{beamercolorbox}
+}
+
+\mode<all>

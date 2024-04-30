@@ -1,0 +1,187 @@
+% chapter 11 b - Jean
+\documentclass[../main.tex]{subfiles}
+
+\newcommand\crad[2]{\operatorname{rad}({#1}, {#2})}
+
+\begin{document}
+
+\subsection{Quadratic Siegel Discs}
+
+In this section we consider maps of the form $f_\lambda(z) = \lambda z + z^2$. The main result is that Siegel discs actually exist: indeed for Lebesgue-almost all values of $\lambda$ where $\abs{\lambda} = 1$, $f_\lambda$ has a Siegel disc about the origin.
+
+\subsubsection{The Conformal Radius Function}
+
+But first, some complex analysis.
+
+\begin{dfn}[conformal radius]
+    \label{def:conformal-radius}
+    Let $U$ a proper subset of $\C$ be a simply connected domain. By the Riemann mapping theorem, for each $z_0 \in U$ there is a unique conformal isomorphism $\phi : U \to \D$ with $\phi(z_0) = 0$ and $\phi'(z_0) > 0$. In terms of this map the \emph{conformal radius of $U$ from $z_0$} is defined as
+    \[
+    \crad{z_0}{U} = 1/\phi'(z_0)
+    \]
+\end{dfn}
+
+Intuitively, the conformal radius captures the \emph{size} of a simply connected domain in a sense that is invariant under conformal isomorphisms. This may be easier seen from the equivalent definition of $\crad{z_0}{U}$ as the unique $r \ge 0$ such that there is a conformal isomorphism $\psi: U \to \D_r$ to the disc with radius $r$ fixing the origin and such that $\psi'(0) = 1$.
+
+We are concerned with Siegel discs, which are connected components of the Fatou set on which $f$ is conformally conjugate to a rotation of the unit disc. It is an immediate consequence of the definition that a Siegel disc must be conformally isomorphic to $\D$. Therefore the following definition makes sense:
+
+\begin{dfn}[conformal radius function]
+    \label{def: conformal-radius-function}
+    For each $\lambda \in \C$, define $\sigma(\lambda)$ to be the conformal radius from 0 of the maximal linearising neighbourhood of $f_\lambda$ about the origin, taking $\sigma(\lambda) = 0$ if no such neighbourhood can exist.
+\end{dfn}
+
+More explicitly, $\sigma(\lambda)$ is the maximal $r$ such that there exists a univalent map $\psi_\lambda : \D_\sigma \to \C$ such that
+\begin{itemize}
+    \item $\psi_\lambda(0) = 0$  and $\psi_\lambda'(0) = 1$, and
+    \item $f_\lambda(\psi_\lambda(w)) = \psi_\lambda(\lambda w)$, that is, the following diagram commutes:
+    \[
+    \begin{tikzcd}
+    \C \ar[r, "f_\lambda"] & \C \\
+    \D_\sigma \ar[u, "\psi_\lambda"]
+    \ar[r, "w \mapsto \lambda w"'] & 
+    \D_\sigma \ar[u, "\psi_\lambda"'] \\
+    \end{tikzcd}
+    \]
+\end{itemize}
+
+Immediately we note the following:
+\begin{itemize}
+    \item $\sigma(\lambda)$ is positive for $0 < \abs{\lambda} < 1$ from Koenigs linearisation (Theorem \ref{8:thm:lin})
+    \item $\sigma(\lambda) = 0$ when $\lambda = 0$ as a consequence of Böttcher's theorem on superattracting fixed points (\ref{9:thm:bottcher}). 
+\end{itemize}
+
+In particular, $\sigma$ is nonconstant on $\cl{\D}$. In addition, we establish the following properties of the conformal radius function:
+
+\begin{lem}\label{lem:sigma-properties}
+The conformal radius function $\sigma$ is bounded and upper semi-continuous on $\cl{\D}$. Furthermore, there exists holomorphic $\eta : \D \to \C$ such that $\abs{\eta(\lambda)} = \sigma(\lambda)$ for all $\abs{\lambda} \in \D$.
+\end{lem}
+
+Recalling that a real-valued function $f : \C \to \R$ is \emph{upper semi-continuous} if the superlevel set
+\[
+    L_{c}^+(f) = \left\{ z \in \C \mid c \le f(z) \right\}
+\]
+is closed for every $c \in \R$.
+
+We postpone the proof of Lemma \ref{lem:sigma-properties}. For now assuming its conclusion, we see first how therefrom to arrive at the existence of quadratic Siegel discs.
+
+\subsubsection{Quadratic Siegel Discs Exist}
+
+We state now the main result of this section, which is a weaker version of Siegel's linearisation theorem \ref{thm: 11.4}:
+
+\begin{thm}\label{thm:11.14}
+For Lebesgue almost-every $\xi \in \R/\Z$, $f_\lambda : z \mapsto z^2 + e^{2 \pi i \xi} z$ has a Siegel disc about the origin.
+\end{thm}
+
+We shall establish this result by way of the following lemma, the proof of which we do not present here.
+
+\begin{lem}[F. and M. Riesz, 1916]\label{lem:A.3}
+    Let $\eta: \D \to \C$ be bounded and holomorphic. If for some constant $c \in \C$ the set of $\xi$ such that
+    \[
+    \lim_{r\nearrow 1} \eta (r e^{2\pi i \xi}) = c
+    \]
+    has positive Lebesgue measure, then $\eta$ is constant.
+\end{lem}
+
+
+
+\begin{proof}[Proof of Theorem \ref{thm:11.14}]
+
+Fix some $\lambda_0 = e^{2\pi i \xi}$. If $f_{\lambda_0}$ is not linearisable near the origin (i.e. if $f_{\lambda_0}$ has a Cremer point or a parabolic point there), then $\sigma(\lambda_0) = 0$. This happens if and only if
+\[
+\lim_{\lambda \to \lambda_0} \eta(\lambda) = 0 
+\]
+with $\lambda \in \D$: see this by noting that we always have
+\[
+\lim_{\lambda \to\lambda_0} \abs{\eta(\lambda)} =
+\lim_{\lambda \to\lambda_0} \sigma(\lambda) \le \sigma(\lambda_0)
+\]
+in which left-hand-side limit exists because $\eta$ is bounded and holomorphic, the inequality follows from upper semi-continuity of $\sigma$, and the inequality is in fact an equality when $\sigma(\lambda_0) = 0$ since $\sigma$ is nonnegative.
+
+At this point we invoke Lemma \ref{lem:A.3}, with $c = 0$ and taking the limit along $\lambda = re^{2\pi i\xi}$ for $r < 1$. Since $\eta$ is nonconstant, we have then that the values for $\xi \in \R/\Z$ such that $f_\lambda$ has no local linearisation must have Lebesgue measure zero.
+\end{proof}
+
+To complete the argument, it remains to prove Lemma \ref{lem:sigma-properties}.
+
+\begin{proof}[Proof of Lemma \ref{lem:sigma-properties}]
+We treat each part of the statement in turn.
+\begin{itemize}
+    \item \textit{$\sigma$ is bounded.} Indeed $\sigma(\lambda) \le 2$ for all $\lambda \in \cl{\D}$: see that for $\abs{z} > 2$, $\abs{z + \lambda} > 1$ on $\cl{\D}$, and thus
+    \[
+        \abs{f_\lambda(z)} = \abs{z(z + \lambda)} > \abs{z}
+    \]
+    bounds $\{\abs{f^n_\lambda(z)}\}$ below by a diverging geometric series. Therefore the iterated images of such a $z$ diverges to infinity and cannot lie within a neighbourhood of the origin in which $f_\lambda$ is conjugated to a rotation. Therefore any $\psi_\lambda : \D_\sigma \to \C$ as in Definition \ref{def: conformal-radius-function} maps $\D_\sigma$ into $\D_2 \subseteq \C$; further if $\psi_\lambda'(0) = 1$ then by the Cauchy derivative estimate
+    % does this appear as a cor. of the Schwarz lemma in our report or do i have to do a poof
+    \[
+    1 = \abs{\psi_\lambda'(0)} \le 2/\sigma
+    \]
+    so $\sigma(\lambda) \le 2$, as desired.
+
+    \item \textit{$\sigma$ is upper semi-continuous.} We show that the superlevel set $L_{\sigma_0}^+(\sigma)$ is closed for each $\sigma_0$ by showing that it is sequentially closed.
+    
+    Take any sequence $\{\lambda_k\}$ in $L_{\sigma_0}^+(\sigma)$ such that $\lambda_k \tendsto \lambda$ as $k \tendsto \infty$. To each $\lambda_k$ there corresponds a map $\psi_{\lambda_k} : \D_{\sigma_0} \to \D_2$ which conjugates $f_{\lambda_k}$ to a rotation on $\D_{\sigma_0}$ (indeed by hypothesis there is such a map which conjugates $f_{\lambda_k}$ to a rotation on $\D_{\sigma(\lambda_k)}$ where $\sigma_0 \le \sigma(\lambda_k)$; we obtain $\psi_{\lambda_k}$ by restricting the domain). The family $\{\psi_{\lambda_k}\}$ is normal since it is a family of maps between open discs (Theorem \ref{ax:thm:montel} in the Appendix), hence we may extract a convergent subsequence with limit $\psi_\lambda$.
+    
+    Now $\psi_\lambda$ is univalent since it is a local uniform limit of univalent functions (Theorem \ref{ax:thm:uniform-limit-univalent}), and it remains only to verify that $\psi_\lambda$ indeed conjugates $f_\lambda$ to a rotation of $\D_\sigma$. By construction
+    \[
+    \psi_\lambda(0) = 0 \quad \text{and} \quad \psi_\lambda'(0) = 1
+    \]
+    where the convergence of $\psi_\lambda'$ follows from the Weierstrass uniform convergence theorem. Now on $\D_{\sigma_0}$:
+    \begin{align*}
+    \psi_\lambda(\lambda w)
+    &= (\lim_{k \to \infty} \psi_{\lambda_k})(\lim_{l\to\infty} \lambda_l w)\\
+    &= \lim_{l\to\infty} (\lim_{k \to \infty} \psi_{\lambda_k})(\lambda_l w)
+    & \text{\footnotesize (by continuity of $\psi_\lambda$)}\\
+    &= \lim_{k\to\infty} \psi_{\lambda_k}(\lambda_k w)
+    & \text{\footnotesize (convergence of a subsequence)}\\
+    &= \lim_{k \to \infty} f_{\lambda_k}(\psi_{\lambda_k}(w))\\
+    & = f_\lambda(\psi_\lambda(w)) & \text{\footnotesize ($f_{\lambda_k} \tendsto f_\lambda$ locally uniformly)}
+    \end{align*}
+    % TODO: sanity check
+    Therefore $\psi_\lambda$ conjugates $f_\lambda$ to a rotation, thus $\lambda \in L_{\sigma_0}^+$ as desired.
+    
+    \item \textit{$\sigma$ coincides with the absolute value of some holomorphic $\eta : \D \to \C$ on the unit disc $\D$.} We define for $0 < \abs{\lambda} < 1$
+    \[
+    \eta(\lambda) = \phi(-\lambda/2)
+    \]
+    where $\phi$ is the Koenigs co-ordinate as in Theorem \ref{8:thm:attlinglob} and is holomorphic throughout the punctured disc. Further by Theorem \ref{8:lem:inv} we may extend $\psi_\lambda$ onto $\cl{\D}_\sigma$, and $\psi_\lambda(\partial\D_{\sigma})$ contains a critical point. But $\crit = -\lambda/2$ is the only critical point of $f_\lambda$, so there is $z \in \psi_\lambda\inv(\crit)$ satisfying
+    \[
+    \sigma(\lambda) = \abs{z} = \abs{\phi (\psi_\lambda (z))} = \abs{\phi(\crit)} = \abs{\eta(\lambda)}
+    \]
+    for every $\lambda$ in the punctured disc. Finally we observe that
+    \[
+        \lim_{\lambda\to0} \abs{\eta(\lambda)} = \lim_{\lambda\to0} \sigma(\lambda) \le \sigma(0) = 0 
+    \]
+    where the inequality follows from upper semi-continuity, therefore $\eta(\lambda) \tendsto 0$ as $\lambda \tendsto 0$; setting $\eta(0) = 0$ we thereby extend $\eta$ to a holomorphic function on the unit disc with the desired property.
+\end{itemize}
+Together these establish the conclusion of Lemma \ref{lem:sigma-properties}, and in turn complete the proof of Theorem \ref{thm:11.14}
+\end{proof}
+
+\subsubsection{Computing the Conformal Radius}
+
+Recall that we constructed the Koenigs co-ordinate in Theorem \ref{8:thm:attlinglob} by the locally uniform limit
+\[
+\phi_\lambda(z) = \lim_{n\to\infty}\frac{\iter{f_\lambda}{n}(z)}{\lambda^n}
+\]
+Since $\sigma(\lambda) = \abs{\eta(\lambda)} = \abs{\phi_\lambda(\crit)}$, this gives us a way to compute the conformal radius as the limit of the sequence $\{\eta_k\}$ whose terms are $\eta_k = f_\lambda^n(\crit)/\lambda^k$. The $\eta_k$ are given by the recurrence relation
+\begin{align*}
+\eta_{k+1} &= \frac{\iter{f_\lambda}{(k+1)}(\crit)}{\lambda^{k+1}}\\
+&= \frac{\left(\iter{f_\lambda}{k}(\crit)\right)^2 + \lambda \iter{f_\lambda}{k}(\crit)}{\lambda^{k+1}}\\
+&= \lambda^{k-1}\left(\frac{\iter{f_\lambda}{k}(\crit)}{\lambda^k}\right)^2 + \frac{\iter{f_\lambda}{k}(\crit)}{\lambda^k}
+= \lambda^{k-1}\eta_k^2 + \eta_k
+\end{align*}
+with $\eta_0 = \crit = -\lambda/2$. The next few terms in this sequence are
+\begin{align*}
+    \eta_1 &= \lambda^{-1} \left(-\frac{\lambda}{2}\right)^2 + \left(-\frac{\lambda}{2}\right)
+    = \frac{\lambda}{4}&\\
+    \eta_2 &= \lambda^0 \left(\frac{\lambda}{4}\right)^2 + \frac{\lambda}{4}
+    = \frac{\lambda}{4} + \frac{\lambda^2}{16}&\\
+    \eta_3 &= \lambda^1\left(\frac{\lambda}{4} + \frac{\lambda^2}{16}\right)^2 + \frac{\lambda}{4} + \frac{\lambda^2}{16}
+    = \frac{\lambda}{4} +\frac{\lambda^2}{16} + \frac{\lambda^3}{16} + \frac{\lambda^4}{32} + \frac{\lambda^5}{256}
+\end{align*}
+
+In particular note that $\eta_{k+1} - \eta_k$ has leading term of the order of $\lambda^k$. Therefore $\eta_{k+1}$ agrees with $\eta_k$ up to the order of $\lambda^{k-1}$, and we may continue this procedure to compute the coefficients of the power seires expansion of $\eta(\lambda)$, the first few terms of which are, after some more computation:
+\[
+\eta(\lambda) = -\frac{\lambda}{4} + \frac{\lambda^2}{16}
++\frac{\lambda^3}{16} + \frac{\lambda^4}{32} + \frac{9\lambda^5}{256} + \frac{\lambda^6}{256} +
+\frac{7\lambda^7}{256} + O(\lambda^8)
+\]
+\end{document}

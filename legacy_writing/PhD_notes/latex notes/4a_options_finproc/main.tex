@@ -1,0 +1,270 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Prediction markets are useful for estimating probabilities of fixed-term questions (i.e. questions whose true answer will be revealed at a given time) -- this includes questions about the values of real-world events (i.e. statistical uncertainty), and questions about the values of primitive recursive functions (i.e. logical or algorithmic uncertainty). However, they cannot be directly applied to questions without a fixed resolution criterion (real-world applications of prediction markets to such questions often amount to predicting not whether a sentence is true, but whether it will be proven) -- such questions could be represented by countable unions or intersections of more basic events, or as First-Order-Logic sentences on the Arithmetical Hierarchy (or even beyond FOL, as hyperarithmetical sentences). In this paper, we suggest modeling such events with \emph{perpetual options}, so that their probabilities are reflected by the prices of these options. Our work has immediate implications for prediction market design and logical uncertainty, but also broader implications for philosophy and mathematical logic.
+\end{abstract}
+
+\section{Introduction}
+
+Prediction markets are an attractive framework for modeling probabilities of events -- in a sense, they are more general than regular probability theory, because they handle incomplete beliefs and computational costs, and can be used even when there is no meaningful $\sigma$-algebra of events to speak of, i.e. for logical or algorithmic uncertainty \cite{oesterheld_decision_2020, oesterheld_futarchy_2017, oesterheld_theory_2021, garrabrant_logical_2016}. 
+
+However, there is an important sense in which prediction markets are less general than $\sigma$-algebras: while they can efficiently assign probabilities to finite unions and intersections of events (known as ``combinatorial markets'') \cite{hanson_combinatorial_2003, hanson_logarithmic_2002}, they do not help us define probabilities of countable unions and intersections of events, which standard probability theory does:
+
+\begin{align*}
+    \operatorname{Pr}\left[\bigcup_{n=1}^\infty X_n\right] &=
+    \sup_N \operatorname{Pr}\left[\bigcup_{n=1}^N X_n\right] \\
+    \operatorname{Pr}\left[\bigcap_{n=1}^\infty X_n\right] &=
+    \inf_N \operatorname{Pr}\left[\bigcap_{n=1}^N X_n\right] 
+\end{align*}
+
+Such events may be described in the language of First-Order Logic: a $\Sigma_0=\Pi_0$ sentence is a sentence about primitive recursion functions, with only bounded quantifiers; a $\Sigma_{n+1}$ sentence is one of the form $\exists x\in\mathbb{N}^k, \pi(x)$ where $\pi$ is a $\Pi_n$ formula; a $\Pi_{n+1}$ sentence is one of the form $\forall x\in\mathbb{N}^k, \sigma(x)$ where $\sigma$ is a $\Sigma_n$ formula. 
+
+\begin{example}
+    $\Sigma_1$ sentences are the \emph{verifiable} sentences (``this event will occur'', ``this program halts'', ``this program returns 37''); $\Pi_1$ sentences are the \emph{falsifiable} sentences (``this rule will always hold true''). Other examples: ``there are a finite number of Mersenne primes''  ($\Sigma_2$), ``every man who will ever be born will be mortal'' ($\Pi_2$); sentences about limits, i.e. ``such sequence diverges to $+\infty$'' ($\Pi_3$)
+\end{example}
+
+\begin{remark}
+    The meaningfulness of such sentences can be understood in philosophical terms: \emph{finitism} is the philosophy that rejects any sentence that is not primitive recursive. By assigning measures to countable unions and intersections, probability theory rejects finitism -- we seek to do the same with prediction markets.
+\end{remark}
+
+One approach to extend prediction markets to non-primitive-recursive sentences, in the context of logical uncertainty, is the framework of Garrabrant induction \cite{garrabrant_logical_2016}, which fixes a price of \$1 for $\phi+\lnot\phi$ even if they are both unprovable (i.e. stocks of $\phi+\lnot\phi$ are counted in the trader's budget, and a non-exploitable logical inductor may not lose an infinite amount of $\phi+\lnot\phi$ stock), so that even unprovable sentences must be given non-zero prices that ultimately depend on considerations of algorithmic information theory. 
+
+However, this solution is still inextricably connected to a prover, which makes it difficult to generalize beyond the context of logical uncertainty, and it is not clear that the probabilities assigned (or the ``priority given'') to unprovable sentences are aligned with our desire to predict physical events that are correlated with them (e.g. shouldn't our probability for Goodstein's theorem, or the consistency of Peano Arithmetic, really approach 1?). Ideally we would like our market to be a ``stronger system'' than a particular formal theory, which only learns to trust that formal theory (i.e. contains it as a trader and allocates it a large budget) if it proves itself. There would still be sentences independent of the market (e.g. ``the market price of this sentence on Day 5 is less than 0.5'') but the market should be able to hold confident beliefs about sentences independent of a particular formal theory.
+
+We propose an alternate approach: to model first-order logic sentences as \emph{options}. 
+
+\section{The framework}
+
+\subsection{Setting: finite processes and combinatorial stocks}
+
+We will first describe the setting we are working with, in a way that is general enough that it can be applied to both algorithmic uncertainty and statistical uncertainty.
+
+We use the term \emph{finite process} to refer to a blackbox that reveals a value out of some specified finite set $s$ at some specified finite time $t$, so that this value can be called upon by any program at $t$. The exact nature of such a process is left as a black-box: it could be a program with known source code, or a physical process of unknown mechanism. 
+
+\begin{algorithm}
+\begin{algorithmic}
+    \State \LeftComment{Not to be actually implemented, essentially a ``state of the world'' type}
+    \Class{FinProc}
+        \State $s : \finset{\Nats}$ \Comment{set of possible values}
+        \State $t : \Nats$ \Comment{maturity date}
+        \State $v(\tau) : \mathtt{Maybe}(s) := \begin{cases}\dots & \tau \ge \mathtt{self.}t \\ \mathtt{None} & \mathrm{else}\end{cases}$ \Comment{observe its value}
+    \EndClass
+\end{algorithmic}
+\end{algorithm}
+
+We suppose that the finite processes we are interested in can be computably enumerated, e.g. by a stock ticker symbol. The most basic relationships between the finite processes we are interested in reasoning about are finite logical combinations between them, i.e. questions like $X=1\land Y=4\land Z=4$ which can be represented by terms $\hat{X}:\finset{\FinProc}$ and inherits properties $\hat{X}.s=\prod_{X\in\hat{X}}X.s$, $\hat{X}.t=\max_{X\in\hat{X}}X.t$, $\hat{X}.v(t)=(X.v(t))_{X\in\hat{X}}$.
+
+As in \cite{hanson_combinatorial_2003, hanson_logarithmic_2002}, it is easy to trade stocks on the outcomes of finite logical combinations of such finite processes, i.e. ``combinatorial stocks'' -- denote the type of combinatorial stock portfolios as
+
+\begin{equation*}
+    \PF = (\hat{X}:\finset{\FinProc})\too \left(\hat{X}.s\to\Rats\right)
+\end{equation*}
+
+[notation: we denote dependent types like $f:(a:A)\to B(a)$, and $\too$ denotes a function with finite support] E.g. if $\mathbf{q}:\PF$ then $\mathbf{q}(X, Y, Z)$ denotes a stock distribution on the eight (assuming $|s|=2$ for all the finite processes) possible values of $(X, Y, Z)$.
+
+\begin{algorithm}
+\begin{algorithmic}
+    \Class{Agent}
+        \State $\mathbf{q} : \PF$ \Comment{Inventory of combinatorial stocks}
+        \State $c : \Rats$ \Comment{Cash inventory}
+        \State $\order:(t:\Nats)\to \PF$ \Comment{The algorithm implemented by the agent}
+    \EndClass
+\end{algorithmic}
+\end{algorithm}
+
+We may have some family of agents that we are interested in -- let \Enumerator{t} be an enumeration of these agents, corresponding to which agent interfaces with the market at each point in time. There may be distinct \Agent instances with the same algorithm, but also the same instance appears multiple times in the enumeration, for the duration that is its lifespan. In the interest of fairness, each agent should be given ample opportunities to interface with the market.
+
+We can then define a rewarder algorithm, running in the background, for all combinatorial stocks, by rewarding holders of stocks when their time has come. This is what really gives ``meaning'' to each asset, and the bit that needs to be generalized.
+
+\begin{algorithm}
+\begin{algorithmic}
+    \Function{Rewarder}{}
+        \While{$t\in\mathbb{N}$}
+            \State $\alpha\gets\Enumerator{t}$
+            \For{$\hat{X}\in\supp{\alpha.\mathbf{q}}$} \Comment{for all stocks $\alpha$ has a stake in}
+                \If{$t\ge\hat{X}.t$} \Comment{if they're matured}
+                    \State $\alpha.\mathbf{q}(\hat{X})\gets \mathbf{0}$ \Comment{take them away}
+                    \State $\alpha.c \gets \alpha.c + \alpha.\mathbf{q}(\hat{X})(\hat{X}.v(t))$ \Comment{and pay reward}
+                \EndIf
+            \EndFor
+        \EndWhile
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+Now we can define a market for all combinatorial stocks. Let $P(\mathbf{q}:\PF)$ be the ``costing function'', that gives the cash that a market-maker will accept to issue a total of $\mathbf{q}$ outstanding stocks -- this alone determines the market. For example, logarithmic market scoring \cite{hanson_logarithmic_2002} is defined by the costing function:
+
+\begin{equation*}
+    P(\mathbf{q}) = \sum_{\hat{X}\in \supp{\mathbf{q}}}{\lambda_{\hat{X}}\sum_{x\in\hat{X}.s}{\exp\left(\mathbf{q}(\hat{X}, x)/\lambda_{\hat{X}}\right)}}
+\end{equation*}
+
+Where $\lambda_{\hat{X}}$ the ``market-maker subsidy'' for the market on $\hat{X}$ (if the finite processes can be computably enumerated, $\lambda_{\hat{X}}$ can be pre-specified so it sums to a finite value over all $\hat{X}$) -- see appendix for further details. Then simply:
+
+\begin{algorithm}
+\begin{algorithmic}
+\Function{Market}{}
+    \State $\mathbf{q}, c \gets 0$ \Comment{Account of outstanding stocks, market-maker's cash reserves}
+    \While{$t\in\mathbb{N}$}
+        \State $\alpha\gets\Enumerator{t}$
+        \State $\Delta\mathbf{q} \gets \alpha(t)$
+        \State $\Delta c \gets P(\mathbf{q}+\Delta\mathbf{q})-P(\mathbf{q})$
+        \If{$\Delta c < \alpha.c$}\Comment{Check if in budget}
+            \State $\mathbf{q}\gets\mathbf{q}+\Delta\mathbf{q}$
+            \State $c \gets c + \Delta c$ 
+            \State $\alpha.\mathbf{q}\gets\alpha.\mathbf{q}+\Delta \mathbf{q}$
+            \State $\alpha.c\gets\alpha.c-\Delta c$
+        \EndIf
+        \State $\mathbf{p}=\nabla P(\mathbf{q})$\Comment{update current market prices}
+    \EndWhile
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+Of course, as stated, the market really incentivizes agents to make orders on unboundedly larger supports, causing unboundedly larger computational costs -- this can be fixed by charging transaction fees, but we will ignore this detail for now and assume that the market's computational costs are zero.
+
+\begin{example}[Primitive sentences as finite processes]
+    \label{ex:0}
+    Since we can computably enumerate the primitive recursive functions, we can also use computably enumerate primitive recursive function-input pairs with a Cantor pairing function, denote this enumeration as $(C_i.f, C_i.n)$. Then consider the enumeration of finite processes $X_i$ given by 
+    \begin{align*}
+        X_i.s &= \{\operatorname{False}, \operatorname{True}\} \\
+        X_i.t &= i \\
+        X_i.v(\tau) &= 
+        \begin{cases} 
+            C_i.f(C_i.n) == 0 & \tau \ge \mathtt{self}.t \\
+            \mathtt{None} & \mathrm{else}
+        \end{cases}
+    \end{align*}
+    I.e. at each time $i$, we decide if the $i$th primitive computation equals to zero.
+\end{example}
+
+\begin{example}[Observations as finite proceesses]
+    Let $Y_t:\Omega\to\Bools$ be random variables representing a stream of observations at each time $t$, generated by some joint distribution $\mathbf{P}(y_1,\dots)$ (for example, it could be the universal measure). Then:
+    \begin{align*}
+        X_i.s &= \{0, 1\} \\
+        X_i.t &= i \\
+        X_i.v(\tau) &= 
+        \begin{cases} 
+             Y_i(\omega) & \tau \ge \mathtt{self}.t \\
+            \mathtt{None} & \mathrm{else}
+        \end{cases}
+    \end{align*}
+    
+\end{example}
+
+\subsection{The Option hierarchy}
+
+We are now ready to describe our main contribution: allowing traders to bet on express beliefs about facts \emph{not} resolved by a finite process, by modeling such facts as options on combinatorial stocks, options on those options, etc. Intuitively, a $\Sigma_{n+1}$ sentence $\exists x, \pi(x)$ can be thought of as an infinite combination $\pi(1)\lor \pi(2)\lor \dots$, and a $\Pi_{n+1}$ sentence $\forall x, \sigma(x)$ can be thought of as an infinite combination $\sigma(1)\land\sigma(2)\land\dots$ Unlike for a finite combination however, our ``maturity date'' may no longer be finite, and so standard prediction markets do not work. For $\Sigma_1$ sentences (resp. $\Pi_1$ sentences) you can still get around the problem with perpetual prediction markets by taking (resp. giving) an upfront payment because the questions are still computationally verifiable (resp. computationally falsifiable), but for higher sentences, this too fails. Instead, we might want:
+
+\begin{itemize}
+    \item A $\Sigma_{n+1}$ sentence $\exists x, \pi(x)$ is associated with a zero-strike-price perpetual call option on the underlying asset $\exists t \le x, \pi(x)$ (i.e. the right to take any finite number of assets of the form $\pi(x)$)
+    \item A $\Pi_{n}$ sentence is \$1 minus its negation, i.e. the position of the option-writer of a $\Sigma_n$ option.
+\end{itemize}
+
+We needn't stop at finite $n$ either: we can also define an ``$\omega$-level'' option, i.e. whose underlying assets are an ascending sequence of $n$-level options, and so on defining a ``$\chi$''-level'' asset for any computable ordinal $\chi$ (which represent sentences called ``hyperarithmetical''). Naturally, this means recursion.
+
+\begin{algorithm}
+\begin{algorithmic}
+    \State $\Type{Option} = \DNF{\FinProc} \oplus (\Nats \to \Option)$
+    % \State $\Type{Option} = \mathtt{opt}(\Nats \to (\finset{\FinProc}\oplus\Obligation))$
+    % \State $\Type{Obligation} = \mathtt{opt}(\Nats \to (\finset{\FinProc}\oplus\Option))$
+    % \State $\Type{Asset} = \finset{\FinProc} \oplus \Option \oplus \Obligation$
+\end{algorithmic}
+\end{algorithm}
+
+(where $\DNF{\FinProc}$ represents the set of all disjoint normal forms over a finite number of finite processes, $\oplus$ is the union of types) How to interpret this: an option is either simply a stock (in the outcome of some finite processes), or the \emph{option to sell any of the underlying assets at strike price \$1}. It should be seen as representing a $\Sigma$ sentence of some level (while a $\Pi$ sentence is represented by \$1 minus an option, i.e. the short position on an option). All this ``interpretation'' will be given legitimacy by the rewarder function (i.e. the exchange that carries out the operations given in the contract). 
+
+Unlike mere $\finset{\FinProc}$, an object $\hat{X}:\Option$ does not have propeties $\hat{X}.t$ or $\hat{X}.v$ (it does not have a definitely revealed value). $\hat{X}.s$ is now always $\{\mathrm{False}, \mathrm{True}\}$.
+
+\begin{equation*}
+    \PF = (\hat{X}:\Option)\too \left(\{\mathrm{False}, \mathrm{True}\}\to\Rats\right)
+\end{equation*}
+
+Agents can now have their inventory $\mathbf{q}$ and $\order$ algorithm defined in terms of the new $\PF$ (i.e. they can trade options). We may define the ordinal ``rank'' of an option in the obvious way: the rank of a stock (a DNF of finite processes) is 0, while the rank of an option with underlying assets $A:\Nats\to\Option$ is $\sup_x(1+\operatorname{rank} A(x))$.
+
+Although we have defined options in this generality, the most important case for us (corresponding exactly to the first-order-logic sentences) is simply that of finite-rank options. Intuitively: writing a $\Sigma_{n+1}$ sentence as $\exists x, \lnot \sigma(x)$ (where $\sigma$ is $\Sigma_n$), its corresponding option is over assets of the form $\sigma(x_1)\land\dots\land\sigma(x_i)$ (which, as a finite conjunction of $\Sigma_n$ sentences is itself $\Sigma_n$) for every finite tuple of integers $(x_1,\dots x_i)$. 
+
+\begin{example}[First-order logic sentences as finite-rank options]
+    Denote as $\Option.\just$ and 
+    $\Option.\exists$ the two built-in
+    constructors for $\Option$ (i.e. wrappers that take terms of type $\DNF{\FinProc}$ and $\Nats\to\Option$ respectively and return an $\Option$); let $\pnf{}$ be a function that formats a given valid $\Sigma_n$ sentence into the form $\exists x_1 \lnot \exists x_2 \dots \lnot \exists x_n P(x_1, \dots x_n)$ with $P$ in Disjoint Normal Form. 
+    
+    Then we construct the map $\Optionof{}$, from $\Sigma$ sentences to options, inductively as follows: 
+    \begin{itemize}
+        \item Base case $\Sigma_0$ sentence $\mathtt{f(n)=0}$ ($f$ primitive recursive), from Ex~\ref{ex:0}: $\Optionof{\mathtt{f(n)=0}}=\Optionjust{X_{\langle f, n\rangle}}$ where $\langle\cdot,\cdot\rangle$ is an enumeration of primitive computations.
+        \item Inductive case $\Sigma_{n+1}$ sentence $\exists x, \lnot\sigma(x)$ ($\sigma(x)$ is for each $x$ a $\Sigma_n$ sentence): $\Optionof{\exists x, \lnot\sigma(x)} = \Optionsigma{x \mapsto \Optionof{\pnf{\sigma(1) \land \dots \land \sigma(x)}}}$.
+    \end{itemize}
+\end{example}
+
+It is clear how to define the semantics (i.e. to make meaningful) the position of the option-buyer -- simply include a term corresponding to exercising an option in the $\Rewarder$ algorithm. It may be less clear how to correctly reward the option-writer, i.e. how the market-maker should optimally exercise \emph{their option}, bought from the option-writer. The only natural way to do this is for the market-maker to sell the option off to the 
+
+https://arxiv.org/pdf/2212.06888.pdf
+https://www.hec.edu/sites/default/files/documents/paper%20Anthony%20Lee%20Zhang.pdf
+
+
+\printbibliography
+
+\appendix
+
+\section*{Appendix}
+
+\subsection*{Market scoring rules}
+
+In general for a costing function $P$ the instantaneous prices are given by $\nabla P(\mathbf{q})$ (which can be calculated as if $\mathbf{q}$ were an infinite-dimensional vector with only finitely many non-zero values, i.e. 
+
+\begin{equation*}
+    \nabla P : \PF\to\left((\hat{X} : \finset{\FinProc})\to\left(\hat{X}.s\to\Reals\right)\right)
+\end{equation*}
+
+So a necessary condition for an acceptable costing function is that $\nabla P(\mathbf{q}')=\nabla P(\mathbf{q})$ only when $\mathbf{q}'-\mathbf{q}$ amounts to a cash term (i.e. an equal distribution over mutually exclusive stocks), and that in this case $P(\mathbf{q}')-P(\mathbf{q})=\mathbf{q}'-\mathbf{q}$. In that case, the costing function leads to a scoring rule for report $\mathbf{r}$ given by $\theta(\mathbf{r})-P\circ\theta(\mathbf{r})$ where $\theta$ is any right-inverse of $\nabla P$, i.e. $\theta(\mathbf{r})$ is a portfolio that leads to a market price of $\mathbf{r}$. Of course, $\mathbf{r}$ is expected to differ from the market maker's prior position on only finitely many assets.
+
+For example, logarithmic market scoring \cite{hanson_logarithmic_2002} is defined by the costing function:
+
+\begin{equation*}
+    P(\mathbf{q}) = \sum_{\hat{X}\in \supp{\mathbf{q}}}{\lambda_{\hat{X}}\log\sum_{x\in\hat{X}.s}{\exp\left(\mathbf{q}(\hat{X}, x)/\lambda_{\hat{X}}\right)}}
+\end{equation*}
+
+Where $\lambda_{\hat{X}}$ the ``market-maker subsidy'' for the market on $\hat{X}$ (if the finite processes can be computably enumerated, $\lambda_{\hat{X}}$ can be pre-specified so it sums to a finite value over all $\hat{X}$). In fact it represents the price per bit of information on the value of $\hat{X}$. One can check that prices are then given by:
+
+\begin{equation*}
+    \nabla P(\mathbf{q}, \hat{X}, x) = \frac{\exp\left(\mathbf{q}(\hat{X}, x)/\lambda_{\hat{X}}\right)}{\sum_{x\in\hat{X}.s}{\exp\left(\mathbf{q}(\hat{X}, x)/\lambda_{\hat{X}}\right)}}
+\end{equation*}
+
+One may check that the resulting scoring rule (the total market payout made in each possible outcome, for moving prices to $\mathbf{r}$) is $\mathbf{s}(\mathbf{r})=\left[\lambda_{\hat{X}}\log\mathbf{r}(\hat{X}, x)\right]_{\hat{X}\in\finset{\FinProc}, x\in\hat{X}.s}$, the expectation of which, under belief $\mathbf{p}$, is:
+
+\begin{equation*}
+    s(\mathbf{p}, \mathbf{r})
+    =\sum_{\hat{X}}\sum_{x\in \hat{X}.s}\lambda_{\hat{X}}\mathbf{p}(\hat{X}, x)\log\mathbf{r}(\hat{X}, x)=-\sum_{\hat{X}}\lambda_{\hat{X}}H(\mathbf{p}_{\hat{X}}, \mathbf{r}_{\hat{X}})
+\end{equation*}
+
+Thus the expected profit from making a report $\mathbf{r'}$ when current market prices are $\mathbf{r}$:
+
+\begin{equation*}
+    \Delta s(\mathbf{p}, \mathbf{r}, \mathbf{r}') = s(\mathbf{p}, \mathbf{r}') - s(\mathbf{p}, \mathbf{r}) = \sum_{\hat{X}} \lambda_{\hat{X}}\left[H(\mathbf{p}_{\hat{X}}, \mathbf{r}_{\hat{X}}) - H(\mathbf{p}_{\hat{X}}, \mathbf{r}_{\hat{X}}')\right]
+\end{equation*}
+
+Where $H$ is cross-entropy. We would \emph{like} to say that $\Delta s(\mathbf{p}, \mathbf{r}, \mathbf{r}')$ is maximized when $\mathbf{r}'=\mathbf{p}$, but the report $\mathbf{r}'$ has finite support while $\mathbf{p}$ is not, so there is no ``best possible report'' to make. But we can see that the profit is decreasing in the cross-entropy $H(\mathbf{p}_{\hat{X}}, \mathbf{r}_{\hat{X}}')$, i.e. the closer your report to your true belief, the better.
+
+More precisely, one may calculate the value of acquiring some new information (say the value of some random variable $Y$) as follows. 
+
+Suppose making a report of $\mathbf{r}$ is associated with some transaction cost $C(\supp{\mathbf{r}})$ such that $\lim_{|\supp{\mathbf{r}}|\to\infty}C(\supp{\mathbf{r}})=\infty$. Then of course the agent makes the report that maximizes $\max_{\mathbf{r}} \left[s(\mathbf{p}, \mathbf{r}) - C(\supp{\mathbf{r}})\right]$. For some $S\subseteq\finset{\FinProc}$, denoting $\delta=\lambda(S')=\sum_{\hat{X}\notin S}\lambda_{\hat{X}}$ and $\varepsilon=C(S)$: 
+
+\begin{align*}
+    \max_{\mathbf{r}} \left[s(\mathbf{p}, \mathbf{r}) - C(\supp{\mathbf{r}})\right] &\le -\sum_{\hat{X}}\lambda_{\hat{X}}H(\mathbf{p}_{\hat{X}}) \\
+    \max_{\mathbf{r}} \left[s(\mathbf{p}, \mathbf{r}) - C(\supp{\mathbf{r}})\right] &\ge s(\mathbf{p}, \mathbf{p}|_S) - C(\mathbf{p}|_S) \\
+    &\ge -\sum_{\hat{X}}\lambda_{\hat{X}}H(\mathbf{p}_{\hat{X}}) - \lambda(S')\log2 - C(S)
+\end{align*}
+
+Similarly the expected score from the report after acquiring information $Y$ is $\mathbf{E}_{Y}\left[\max_{\mathbf{r}}\left[s(\mathbf{p}_{\hat{X}=x|Y=y}, \mathbf{r}) - C(\supp{\mathbf{r}})\right]\right]$. Since the term inside the expectation is bounded within $\lambda(S')\log2-C(S)$ of $-\sum_{\hat{X}}\lambda_{\hat{X}}H(\mathbf{p}_{\hat{X}}|Y=y)$, the whole term is bounded within the same constant $\lambda(S')\log2-C(S)$ of its expectation under $Y$, which is the conditional entropy:
+
+\begin{equation*}
+    -\sum_{\hat{X}}\lambda_{\hat{X}}H(\hat{X}|Y)-\lambda(S')\log(2)-C(S) \le \dots \le -\sum_{\hat{X}}\lambda_{\hat{X}}H(\hat{X}|Y)
+\end{equation*}
+
+And so the value gained from aquiring $Y$ is within $\lambda(S')\log2-C(S)$ of the mutual information $\sum_{\hat{X}}{\lambda_{\hat{X}}I(\hat{X}; Y)}$. Thus by making the transaction cost sufficiently slow-growing, the price paid by the market maker for one bit of information on $\hat{X}$ can be made arbitrarily close to $\lambda_{\hat{X}}$.
+
+\end{document}

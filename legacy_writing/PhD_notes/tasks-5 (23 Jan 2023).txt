@@ -1,0 +1,87 @@
+Desiderata for a theory of bounded rationality
+
+* Subsumes logical induction
+* Subsumes various models of heuristics, as well as somewhat more general BR models
+* Can answer economic questions, whether as-if makes sense
+* Can rationalize any program -- or rather decides, for any algorithm, if it's "rational given some constraints"
+* Is computable
+* Captures a notion of long-term efficiency/intelligence
+* Should be normative -- (a) in the sense that it can't just be "an agent is a program", but must capture goal-oriented behaviour in some sense (b) in the sense that it must explain the notion of "judging a choice to be better"
+* Should encapsulate some decision-making protocol that takes costs into account
+
+Reason why markets 
+It's certain that markets and intelligent systems are both computational in nature, and are ways to incorporate information, but then again so is everything.
+* Multi-agent widely studied
+* Meta-reasoning, incorporating 
+* Implied nature of belief
+* Computational costs and how markets are still efficient if you consider transaction costs factors of production (??)
+
+things to think about now
+- how can we have recursive self-improvement on recommender algos, if meta reasoning always harder? 
+  Is meta-reasoning (1) bounded rationality (2) abstraction (3) a thing you do when you decide you must or (4) markets?
+- markets
+- conditioning on algorithmic info, how to combine programs and their info, semantics
+- read barzel 
+
+---
+REFERENCES
+---
+
+Logical Induction https://arxiv.org/abs/1609.03543
+https://www.lesswrong.com/posts/WmNeCipNwg9CmGy3T/markets-are-universal-for-logical-induction
+
+Economics
+  Bartzel
+  Gode & Sunder
+  "The Incompletability of Markets" In: Chaitin
+  EMH stuff
+
+General multi-agent minds stuff
+https://www.alignmentforum.org/s/ZbmRyDN8TCpBTZSip -- Kaj Sotala 
+https://alignmentforum.org/posts/6chtMKXpLcJ26t7n5/integrating-three-models-of-human-cognition
+https://www.alignmentforum.org/posts/diruo47z32eprenTg/my-computational-framework-for-the-brain -- Steve Byrnes
+The Society of Mind by Marvin Minsky 
+Space-time embedded intelligence link.springer.com/chapter/10.1007/978-3-642-35506-6_22
+  Recursive self-improv
+  https://link.springer.com/chapter/10.1007/978-3-540-74481-8_4
+  http://ksi.cpsc.ucalgary.ca/KAW/KAW96/brazier/Brazier2.html
+  Category-theoretic MAS
+  https://math.mit.edu/~dspivak/informatics/grants/AFOSR--Proposal.pdf -- Spivak
+  https://doi.org/10.31449/inf.v42i4.1282 -- probably rubbish
+  http://arxiv.org/abs/1505.07712 -- werner, communication
+
+Halpern
+https://www.cs.cornell.edu/home/halpern/papers/algrationality.pdf
+https://www.cs.cornell.edu/home/halpern/papers/compdec.pdf
+
+Ortega & Braun // Free energy principle
+https://arxiv.org/abs/1512.06789 -- 2015 (information-theoretic br)
+https://arxiv.org/abs/1204.6481 -- 2012 (thermodynamics)
+https://arxiv.org/abs/1107.5766 -- 2011 (probably best to read)
+
+  Refs thereof
+  http://rbr.cs.umass.edu/shlomo/papers/Zaaai08ws1.pdf -- Zilberstein metareasoning
+
+  Cites thereof
+  https://arxiv.org/pdf/2106.15844.pdf -- quantal hierarchy
+
+    Refs theoreof
+    https://academic.oup.com/restud/article-abstract/86/3/1061/5060717
+    https://link.springer.com/chapter/10.1007/978-3-540-77296-5_10
+  
+  Relevant background reading
+  https://arxiv.org/pdf/2102.09981.pdf -- IISER
+
+Dynamic rationality
+https://link.springer.com/article/10.1007/s11229-009-9559-z -- Sonja Smets
+
+Bounded optimality
+Russell & Subramanian
+Lewis & Singh
+
+---
+
+Program equilibrium
+
+"Generalizations" of Bayes
+Dempster-Shafer, Transferable belief model, Open World Assumption

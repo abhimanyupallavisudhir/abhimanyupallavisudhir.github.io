@@ -1,0 +1,57 @@
+\usepackage{url, hyperref, tikz, graphicx, subcaption}
+\usepackage{xparse, amsmath, amsthm, amssymb, stmaryrd, mathtools, bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[backend = biber, sorting = none, style = numeric-comp]{biblatex} 
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+% theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{defilemma}[theorem]{Defi-lemma}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%%% Math %%%
+
+% general math commands 
+\NewDocumentCommand{\R}{}{\mathbb{R}}
+\NewDocumentCommand{\Z}{}{\mathbb{Z}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+\NewDocumentCommand{\inv}{m}{{#1}^{-1}} 
+\NewDocumentCommand{\arrow}{}{\rightarrow}
+\NewDocumentCommand{\arrows}{}{\twoheadrightarrow}
+\NewDocumentCommand{\assign}{}{\mapsfrom}
+\NewDocumentCommand{\function}{m m m}{\left(#1\in #2\right)\mapsto #3}
+\NewDocumentCommand{\bra}{m}{\left(#1\right)}
+\NewDocumentCommand{\ope}{m}{\left[#1\right]}
+\NewDocumentCommand{\set}{m}{\left\{#1\right\}}
+\NewDocumentCommand{\tup}{m O{} O{}}{\left\langle#1\right\rangle_{#2}^{#3}}
+\NewDocumentCommand{\seq}{m O{} O{}}{\left(#1\right)_{#2}^{#3}}
+\NewDocumentCommand{\con}{}{\;\middle|\;}
+\NewDocumentCommand{\com}{}{,\,}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\NewDocumentCommand{\proj}{}{\pi}
+\NewDocumentCommand{\bs}{m}{\left[0, 1\right]^{#1}_{/\sim}}
+
+%%% THE UNIVERSE AND BELIEFS ABOUT IT %%%
+
+% the optional parameter here is an agent
+\NewDocumentCommand{\OUTCOME}{O{}}{\Omega_{#1}}
+\NewDocumentCommand{\outcome}{O{}}{\omega_{#1}}
+\NewDocumentCommand{\EVENTS}{O{}}{\mathbb{F}_{#1}}
+\NewDocumentCommand{\EVENT}{O{}}{\mathbf{F}_{#1}}
+\NewDocumentCommand{\event}{O{}}{f_{#1}}
+\NewDocumentCommand{\eventG}{O{}}{g_{#1}}
+\NewDocumentCommand{\eventH}{O{}}{h_{#1}}
+\NewDocumentCommand{\PROBS}{O{}}{\mathbb{P}_{#1}}
+\NewDocumentCommand{\PROB}{O{}}{\mathbf{P}_{#1}}
+
+%%% OBSERVERS AND AGENTS %%%
+
+\NewDocumentCommand{\agent}{}{\alpha}

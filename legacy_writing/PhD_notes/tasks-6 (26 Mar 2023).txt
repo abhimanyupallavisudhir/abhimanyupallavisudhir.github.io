@@ -1,0 +1,11 @@
+Work 1
+-----
+
+- write algo
+- incorporate cost of computation, funded sentences
+- think about meta-markets to determine these // goods are decisions
+- trading information for transfer
+- different market-makers, different agent generators
+
+Substack
+-----

@@ -1,0 +1,97 @@
+\section{Logical induction}
+
+First an informal sketch of the framework from \cite{logical_induction}. The basic construction is a prediction market of logical sentences -- a market of ``stocks'' in sentences that pay out \$1 when proven by some unquestionable authority (a theorem enumerator). For any given trader, the price it neither buys nor sells at can be interpreted as its subjective probability assignment; analogously, the price at which the aggregate of all traders places no orders (i.e. the equilibrium price) can be interpreted as the subjective probability assigned by the consensus of all traders, i.e. taking into account all of their algorithmic information.
+
+The key in integrating information from different algorithms is in determining which algorithms' to take into account. One may argue that the traders are ``incentivized'' to trade well, but these are in general just programs, with no understanding of incentive. At the end of the day, one needs some notion of ``learning'', and for markets this is achieved with budgeting: traders can only trade their own money, and those who make more money can trade more, while those who go bankrupt cannot trade.
+
+The remaining part of this section details the precise construction.
+
+\begin{constants}
+    $\Sentences$ is a set of ``sentences'' in some language; $\Theorems:(t:\Nats)\to(\Sentences\too\Bools)$ is an enumerator of ``theorems''; $\Prices = \Sentences\to([0,1]\cap\Rats)$ is the ``type of prices'' (in particular $\Theorems(t)\in\Prices$); $\Qties = \Sentences\too \Rats$ is the ``type of quantities''; $\Qties'=\Qties\times\Rats$ is the type of quantities plus a cash term. ``Addition'' $(+)$ between quantities and cash amounts, and the dot product $(\cdot):\Prices\times\Qties\to\Rats$ are defined in the obvious way, while $(\cdot):\Prices\times\Qties'\to\Rats$ is defined as $\Price\cdot(\Qty+c)=\Price\cdot\Qty+c$.
+\end{constants}
+
+\begin{definition}\label{def:trader}
+    A trader is a computable function $\agent : (t : \Nats)\to \Prices^t\to\Qties$; we denote its type as $\agents$.
+\end{definition}
+
+(Interpretation: on each day $t = 1, 2, \dots$, it looks at the historical prices $\Price(1), \Price(2) \dots \Price(t-1)$ and the prevailing price $\Price(t)$ of all traded sentences, and outputs the quantities of some sentences to buy and sell at the prevailing price.)
+
+\begin{definition}\label{def:budget}
+    Given a trader $\agent$, a price history $(\Price(1), \dots)$ and an external income stream $(B(1),\dots)$, the budgeted version $\prop[B]{\agent}$ is given by:
+    \begin{equation*}
+        \prop[B]{\agent}(t)=
+        \begin{cases}
+            0 \cdot \agent(t) & \text{if }
+            \Theorems(t)\cdot\prop[B,H]{\agent}(t-1) \le 0 \\
+
+            \frac{\Theorems(t)\cdot\prop[B,H]{\agent}(t-1)}{-\Theorems(t)\cdot\prop[E]{\agent}(t)}\cdot\agent(t)
+            & \text{if } 
+             \begin{aligned}[t]
+             & \Theorems(t)\cdot\prop[B,H]{\agent}(t-1) > 0 \text{ but } \\
+             & \Theorems(t)\cdot(\prop[B,H]{\agent}(t-1) + \prop[E]{\agent}(t)) \le 0
+             \end{aligned} 
+             \\
+            \agent(t) & \text{else} \\
+        \end{cases}
+    \end{equation*}
+    Where
+    \begin{itemize}
+        \item $\prop[E]{\agent}(t) = B(t)+\agent(t)-\Price(t)\cdot\agent(t)$ is the change in assets of the unbudgeted trader $\agent$ on day $t$; $\prop[B,E]{\agent}(t) = \prop[B]{\agent}(t)-\Price(t)\cdot\prop[B]{\agent}(t)$ for the budgeted trader.
+        \item $\prop[B,H]{\agent}(t)=\sum_{s=0}^{t}{\prop[B,E]{\agent}(t)}$ are the holdings of the budgeted trader on day $t$.
+        \item Dotting with $\Theorems(t)$ gives the worst-case possible cash value of the trader's assets -- i.e. the amount that the trader is ``good for''.
+    \end{itemize}
+\end{definition}
+
+(Interpretation: Each trader can hold negative assets -- i.e. debt -- but only as much as it is ``good for'', i.e. the amount that it can repay even in the worst case where all its unproven beliefs are proven false. If a trade would push it into debt it is not good for, it scales down the trade; if it is already in debt it is not good for, it is considered bankrupt and cannot trade.)
+
+\begin{definition}\label{def:am}
+    An agent-producer is a computable function $\am : (t : \Nats) \to (\agents \too \Rats)$ ($\am(t,\agent)$ is the external income of agent $\agent$ at time $t$). Given a price history $(\Price(1),\dots)$, we may define the associated ``aggregate trader'':
+    \begin{equation*}
+        \mgent(t) = \sum_{\agent\in\agents}{\prop[B]{\agent}(t)} \\
+    \end{equation*}
+\end{definition}
+
+(Interpretation: we want to allow possibly infinite sets of traders, but only if they are finite at any given time, and if they can be generated algorithmically.)
+
+Now we are interested in an algorithm to compute these prices $\Price(t)$ from the agents' orders for the day: a market-maker. Ideally each price will be the equilibrium price -- this is troublesome for various reasons (an equilibrium may not exist; if it does exist, approximating it may be computationally expensive -- indeed, the entire point of markets in the real world is to have this computation done in a distributed fashion), but for now let us just abstract away the function of the market maker.
+
+\begin{definition}\label{def:mm}
+    A market-maker is a computable function $\mm : (t : \Nats) \to (\agent :\us) \to \Prices$.
+\end{definition}
+
+We will assume there exists a $\mm$ such that $\agent(t, \mm(t, \agent))$ is arbitrarily small on all sentences -- \cite{logical_induction} shows this is possible for any continuous trader $\agent$, although this $\mm$ is very slow as an algorithm (it simply brute force searches through all possible rational prices until it finds one good enough).
+
+\begin{definition}\label{def:dutch}
+    
+\end{definition}
+
+
+
+\begin{algorithm}\label{alg:li}
+    \caption{Garrabrant inductor}
+    \begin{algorithmic}[1]
+        \Require{}
+
+        
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{definition}\label{def:exploitation}
+    
+\end{definition}
+
+
+
+
+
+
+There are two questions to consider:
+
+\begin{itemize}
+    \item What should be the price of a sentence like ``The price of this asset on Day 5 is less than 0.5''? If such sentences exist in our language, then no equilibrium will exist.
+    \item The equilibrium price, if it exists, may not be computable (or even in $\Rats$).
+\end{itemize}
+
+The actual approach taken in \cite{logical_induction} is to restrict trading to continuous traders, so nothing like ``buy 100 if price under 0.5, else sell 100''. This seems quite odd: it is as if we are refusing to aggregate information from non-continuous traders. Indeed, the resulting prices could be exploited by a non-continuous trader, if it were allowed to trade on it.
+
+But this restriction can be seen in the more general light of price discrimination and market incompleteness: we may consider the 

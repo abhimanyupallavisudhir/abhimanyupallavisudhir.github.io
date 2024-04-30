@@ -1,0 +1,51 @@
+Let's think about the kind of things we will need to decide in making a boundedly rational decision
+
+Like, suppose we encounter a decision problem in the wild. We are given some shock: 
+like "you'll get $1 if you correctly decide if this sentence is true!"
+
+Or, suppose a market encounters a decision problem in the wild. It is given some shock:
+like "you'll get $1 if you create 100 potatoes!"
+
+Then the market reacts with some standard pre-defined infrastructure. Like, some agents in the economy
+have learned to immediately identify particular shocks that they're more equipped to handle -- like 
+farmers should look out for potato requests while rocket engineers shouldn't.
+
+But also the agents themselves don't need to be making all these decisions. Like, the farmer himself 
+doesn't have a filtering algorithm to decide which algorithm to take. There is a media algorithm to
+do that for him. 
+
+But he might choose which media algorithm to consume. 
+
+
+---
+cost of computation
+funded sentences
+---
+
+
+
+Two quick fixes we can make now:
+
+ - give different awards for different sentences
+ - charge agents for the cost of computation, time etc.
+
+(We can then think about having markets to determine these awards, costs etc. We can also think about trading information/hiring agents, transfer, goods are decisions, different market architectures, generating more agents) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

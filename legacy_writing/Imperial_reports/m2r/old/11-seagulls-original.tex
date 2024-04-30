@@ -1,0 +1,56 @@
+
+
+\subsection{Proof of Siegel's Linearization Theorem}
+
+Our proof will differ from Siegel's more involved original one. The following proof is an example of so-called KAM theory.
+
+As the proof is fairly lengthy, we give a summary of the main steps:
+
+Our objective is to construct a function 
+\[
+\phi(z) = z + \sum_{n=2}^{\infty} a_nz^n = z + \Phi(z)
+\]
+valid in some neighbourhood of the origin that satisfies Schr\"oder's equation
+\begin{equation}\label{eq: sch}
+    f(\phi(z)) = \phi(\lambda z)
+\end{equation}
+where
+\[
+f(z) = \lambda z + \sum_{n=2}^{\infty} b_nz^n = \lambda z + F(z).
+\]
+If we rewrite equation \eqref{eq: sch} in terms of $F$ and $\Phi$, we have
+\[
+\Phi(\lambda z) - \lambda\Phi(z) = F(\phi(z))
+\]
+Consider the simpler equation
+\begin{equation}\label{itereq}
+\Phi(\lambda z) - \lambda \Phi(z) = F(z)
+\end{equation}
+which we readily see has a solution $\Phi = \Phi_{0}$
+\[
+\Phi_{0}(z) = \sum_{j=2}^{\infty} \frac{b_j}{\lambda^j - \lambda} z^j
+\]
+achieved by comparing coefficients of \eqref{itereq}. If we restrict the domain of $\phi_{0}(z) = z + \Phi_{0}(z)$ so $\phi_{0}$ is a bijection, we can define
+\[
+f_{1}(z) = (\phi_{0}^{-1} \circ f \circ \phi_{0})(z) = z + F_{1}(z)
+\]
+where $F_{1}(z) = O(z^2)$ as $z \tendsto \infty$. If we iterate this process, we form sequences $\{f_{n}\}$, $\{\phi_{n}\}$ and $\{F_{n}\}$ where
+\[
+f_{n}(z) = \lambda z + F_{n}(z),\;\; f_{n+1} = \phi_{n}^{-1} \circ f_{n} \circ \phi_{n}, \, f_{0} = f
+\]
+It follows that $F_n$ converges uniformly to $0$ so $f$ converges uniformly to a rotation. Moreover, the sequence
+\[
+\{\psi_{n}\} = \{\phi_{0} \circ \dots \circ \phi_{n}\}.
+\]
+will have a convergent subsequence with limit $\phi$ satisfying \eqref{eq: sch}.
+\[
+\begin{tikzcd}[column sep=tiny]
+\phi(z) \ar[rrr, "f"] & {} &[8em] \ar[d, "\phi_1^{-1}"] & f(\phi(z)) \ar[dddd, "\phi\inv"] \\
+& \ar[u, "\phi_1"] \ar[r, "f_1=\phi_1\inv \circ f \circ \phi_1"] & \ar[d, "\phi_2\inv"] & \\
+& \ar[u, "\phi_2"] \ar[r, "f_2=\phi_2\inv \circ \phi_1\inv \circ f \circ \phi_1 \circ \phi_2"] & \ar[d, "\phi_3\inv"] & \\
+& \vdots \ar[u, "\phi_3"] & \vdots & \\
+z \ar[uuuu, "\phi"] \ar[rrr, "\lambda \cdot"] & & & \lambda z
+\end{tikzcd}
+\].
+
+\todo{finish this section}

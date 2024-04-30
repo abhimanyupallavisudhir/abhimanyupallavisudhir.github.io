@@ -1,0 +1,11 @@
+General platitudes:
+ - it's programs choosing programs choosing programs ... programs all the way down (a finite way down)
+ - what are the conditions for intelligence? (hint: when are markets efficient?) probably a relative sense, right?
+ - can you rationalize these little programs as Bayesian inference on coarse sigma algebras?
+ - assigning "belief" to a mind // rationalizing it // as-if-ing it -- is exactly like calculating implied beliefs of a market. 
+   The more complex the system, the more things it meaningfully has beliefs for.
+ - applications: gode & sunder, neural nets, social media
+ - Programs return beliefs and so represent information
+
+-----
+

@@ -1,0 +1,111 @@
+\usepackage{url, hyperref, tikz, graphicx, subcaption}
+\usepackage{xparse, amsmath, amsthm, amssymb, stmaryrd, mathtools, bm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[backend = biber, sorting = none, style = numeric-comp]{biblatex} 
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+% theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%%% Math %%%
+
+% general math commands 
+\NewDocumentCommand{\R}{}{\mathbb{R}}
+\NewDocumentCommand{\Z}{}{\mathbb{Z}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+\NewDocumentCommand{\inv}{m}{{#1}^{-1}} 
+\NewDocumentCommand{\arrow}{}{\rightarrow}
+\NewDocumentCommand{\arrows}{}{\twoheadrightarrow}
+\NewDocumentCommand{\assign}{}{\mapsfrom}
+\NewDocumentCommand{\bra}{m}{\left(#1\right)}
+\NewDocumentCommand{\ope}{m}{\left[#1\right]}
+\NewDocumentCommand{\set}{m}{\left\{#1\right\}}
+\NewDocumentCommand{\con}{}{\;\middle|\;}
+\NewDocumentCommand{\tup}{m O{} O{}}{\left\langle#1\right\rangle_{#2}^{#3}}
+\NewDocumentCommand{\com}{}{,\,}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\NewDocumentCommand{\ind}{}{i}
+\NewDocumentCommand{\indJ}{}{j}
+\NewDocumentCommand{\indK}{}{k}
+
+%%% General Dynamic %%%
+
+% uppercase Backbone characters A ... represent agent sets
+\NewDocumentCommand{\AGENT}{O{}}{\mathbb{A}_{#1}}
+% lowercase Greek letters alpha, beta, gamma ... represent agents
+\NewDocumentCommand{\agent}{O{}}{\alpha_{#1}}
+\NewDocumentCommand{\agentb}{O{}}{\beta_{#1}}
+\NewDocumentCommand{\agentc}{O{}}{\gamma_{#1}}
+% commands for beliefs
+\NewDocumentCommand{\OUTCOME}{O{}}{\Omega_{#1}}
+\NewDocumentCommand{\EVENT}{O{}}{\mathcal{F}_{#1}}
+\NewDocumentCommand{\PRO}{O{}}{\mathbf{P}_{#1}}
+\NewDocumentCommand{\PROSPACE}{O{}}{(\OUTCOME, \EVENT[#1], \PRO[#1])}
+\NewDocumentCommand{\outcome}{O{}}{\omega_{#1}}
+\NewDocumentCommand{\outcomeX}{O{}}{\chi_{#1}}
+\NewDocumentCommand{\outcomeY}{O{}}{\psi_{#1}}
+\NewDocumentCommand{\event}{O{}}{E_{#1}}
+\NewDocumentCommand{\eventF}{O{}}{F_{#1}}
+\NewDocumentCommand{\eventG}{O{}}{G_{#1}}
+\NewDocumentCommand{\Exp}{O{}}{\mathbf{E}_{#1}}
+% uppercase Calligraphic characters X, Y, P, Q, R ... represent choice sets
+\NewDocumentCommand{\CHOICE}{O{}}{\mathcal{X}_{#1}}
+\NewDocumentCommand{\CHOICEY}{O{}}{\mathcal{Y}_{#1}}
+\NewDocumentCommand{\CHOICEP}{O{}}{\mathcal{P}_{#1}}
+\NewDocumentCommand{\CHOICEQ}{O{}}{\mathcal{Q}_{#1}}
+\NewDocumentCommand{\CHOICER}{O{}}{\mathcal{R}_{#1}}
+% uppercase Latin characters X, Y, P, Q, R ... represent random choices
+\NewDocumentCommand{\Choice}{O{} O{}}{X_{#1}^{#2}}
+\NewDocumentCommand{\ChoiceY}{O{} O{}}{Y_{#1}^{#2}}
+\NewDocumentCommand{\ChoiceP}{O{} O{}}{P_{#1}^{#2}}
+\NewDocumentCommand{\ChoiceQ}{O{} O{}}{Q_{#1}^{#2}}
+\NewDocumentCommand{\ChoiceR}{O{} O{}}{R_{#1}^{#2}}
+% lowercase Latin characters x, y, p, q, r ... represent choices
+\NewDocumentCommand{\choice}{O{} O{}}{x_{#1}^{#2}}
+\NewDocumentCommand{\choiceY}{O{} O{}}{y_{#1}^{#2}}
+\NewDocumentCommand{\choiceP}{O{} O{}}{p_{#1}^{#2}}
+\NewDocumentCommand{\choiceQ}{O{} O{}}{q_{#1}^{#2}}
+\NewDocumentCommand{\choiceR}{O{} O{}}{r_{#1}^{#2}}
+% uppercase Calligraphic characters I, J, K represent observation sets
+\NewDocumentCommand{\OBS}{O{}}{\mathcal{I}_{#1}}
+\NewDocumentCommand{\OBSJ}{O{}}{\mathcal{J}_{#1}}
+\NewDocumentCommand{\OBSK}{O{}}{\mathcal{K}_{#1}}
+% uppercase Latin characters I, J, K represent random observations
+\NewDocumentCommand{\Obs}{O{}}{I_{#1}}
+\NewDocumentCommand{\ObsJ}{O{}}{J_{#1}}
+\NewDocumentCommand{\ObsK}{O{}}{K_{#1}}
+% lowercase Latin characters i, j, k represent observations
+\NewDocumentCommand{\obs}{O{}}{i_{#1}}
+\NewDocumentCommand{\obsJ}{O{}}{j_{#1}}
+\NewDocumentCommand{\obsK}{O{}}{k_{#1}}
+% uppercase Latin characters U, V, W ... represent random utilities
+\NewDocumentCommand{\Utility}{O{}}{U_{#1}}
+\NewDocumentCommand{\UtilityV}{O{}}{V_{#1}}
+\NewDocumentCommand{\UtilityW}{O{}}{W_{#1}}
+% lowercase Latin characters u, v, w ... represent utilities
+\NewDocumentCommand{\utility}{O{}}{u_{#1}}
+\NewDocumentCommand{\utilityV}{O{}}{v_{#1}}
+\NewDocumentCommand{\utilityW}{O{}}{w_{#1}}
+% lowercase Fraktur characters i, j, k ... represent algorithm of universe
+\NewDocumentCommand{\info}{O{}}{\mathfrak{i}_{#1}}
+\NewDocumentCommand{\infoJ}{O{}}{\mathfrak{j}_{#1}}
+\NewDocumentCommand{\infoK}{O{}}{\mathfrak{k}_{#1}}
+
+%%% Personal assumptions %%%
+\NewDocumentCommand{\PERSON}{}{\mathbb{P}}
+\NewDocumentCommand{\person}{}{\pi}
+\NewDocumentCommand{\persom}{}{\varpi}
+\NewDocumentCommand{\personq}{}{\theta}
+\NewDocumentCommand{\persomq}{}{\vartheta}
+\NewDocumentCommand{\ORDER}{}{\mathbb{T}}
+\NewDocumentCommand{\order}{}{t}
+\NewDocumentCommand{\orders}{}{s}

@@ -1,0 +1,116 @@
+%%% ---------------------------------------- %%%
+%%%                 PACKAGES                 %%%
+%%% ---------------------------------------- %%%
+
+%%% System %%%
+\usepackage{subfiles}         % for writing sections separately
+\usepackage{xparse}           % for NewDocumentCommand
+\usepackage[                  % for biblatex
+    backend = biber,
+    sorting = none, 
+    style = numeric-comp
+           ]{biblatex} 
+
+%% Text %%%
+\usepackage{hyperref}         % for hyperlinks (comes with url)
+\usepackage[
+    %shortlabels
+           ]{enumitem}        % for better itemize, enumerate
+\usepackage[
+    %page                     % appendix should have title
+    ]{appendix}
+
+%%% Math %%%
+\usepackage{amsmath}          % for better math
+\usepackage{amsthm}           % for better NewTheorem
+\usepackage{amssymb}          % for better symbols (comes with amsfonts)
+%\usepackage{mathtools}       % for better math
+%\usepackage{bm}              % for bold math symbols
+
+%%% Code %%%
+\usepackage[
+    noend
+           ]{algpseudocode}
+\usepackage{algorithm}
+
+%%% Figures %%%
+\usepackage{tikz}             % for tikz figures,
+\usepackage{graphicx}         % for general graphics things, reflectbox
+%\usepackage{subcaption}      % for subfigures with their own captions
+
+%%% Package settings %%%
+%\renewcommand*\appendixpagename{\Large Appendices}
+\MakeRobust{\Call}
+\MakeRobust{\Function}
+\newcommand*\Object[1]{\textproc{#1}}
+\algdef
+    {SxnE}% block statement, Start line x no End line
+    [CLASS]% new block type, not to be confused with loops or if-statements
+    {Class}% "\Struct{name}" will indicate the start of the struct declaration
+    {EndClass}% "\EndStruct" ends the block indent
+    [1]% There is one argument, which is the name of the data structure
+    {\textbf{class} \textsc{#1}}% typesetting of the start of a struct
+    %{\textbf{end class}}% typesetting the end of the struct
+\algnewcommand{\LeftComment}[1]{\(\triangleright\) #1}
+\algnewcommand{\Type}[1]{\textbf{type}\ \textsc{#1}}
+
+%%% ---------------------------------------- %%%
+%%%                 COMMANDS                 %%%
+%%% ---------------------------------------- %%%
+
+%%% Meta-data %%%
+\title{Option markets as prediction markets for un-falsifiable, un-verifiable sentences}
+\author{Abhimanyu Pallavi Sudhir}
+\date{7 May 2023}
+\bibliography{references}
+
+%%% Theorem environments %%%
+
+% theoremstyle theorem, numbered with [theorem]s
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% theoremstyle definition, numbered with [theorem]s
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lefinition}[theorem]{Le-finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{constants}{Constants}
+\newtheorem*{notation}{Notation}
+
+% theoremstyle remark, not numbered
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%%% New Document Commands %%%
+
+% basic math
+\NewDocumentCommand{\Nats}{}{\mathbb{N}}
+\NewDocumentCommand{\Ints}{}{\mathbb{Z}}
+\NewDocumentCommand{\Rats}{}{\mathbb{Q}}
+\NewDocumentCommand{\Reals}{}{\mathbb{R}}
+\NewDocumentCommand{\Bools}{}{\{0,1\}}
+\NewDocumentCommand{\us}{}{\underline{\quad}}
+\NewDocumentCommand{\too}{}{\to_\circ}
+\NewDocumentCommand{\toc}{}{\to_c}
+\NewDocumentCommand{\supp}{m}{\operatorname{supp}\left(#1\right)}
+\NewDocumentCommand{\finset}{m}{\operatorname{finset}\left(#1\right)}
+\NewDocumentCommand{\DNF}{m}{\operatorname{DNF}\left(#1\right)}
+\NewDocumentCommand{\pnf}{m}{\operatorname{pnformat}\left(#1\right)}
+\NewDocumentCommand{\notni}{}{\not\mathrel{\text{\reflectbox{$\in$}}}}
+
+% objects and calls
+\NewDocumentCommand{\Enumerator}{m}{\Call{Enumerator}{#1}}
+\NewDocumentCommand{\Optionof}{m}{\Object{Option.of}\left[#1\right]}
+\NewDocumentCommand{\Optionjust}{m}{\Object{Option.just}\left[#1\right]}
+\NewDocumentCommand{\Optionsigma}{m}{\Object{Option}.\exists\left[#1\right]}
+\NewDocumentCommand{\Option}{}{\Object{Option}}
+\NewDocumentCommand{\Rewarder}{}{\Object{Rewarder}}
+\NewDocumentCommand{\PF}{}{\Object{PF}}
+\NewDocumentCommand{\FinProc}{}{\Object{FinProc}}
+\NewDocumentCommand{\order}{}{\Object{order}}
+\NewDocumentCommand{\Agent}{}{\Object{Agent}}
+\NewDocumentCommand{\Obligation}{}{\Object{Obligation}}
+\NewDocumentCommand{\just}{}{\Object{just}}
+\NewDocumentCommand{\of}{}{\Object{of}}

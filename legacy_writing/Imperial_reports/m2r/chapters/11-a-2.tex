@@ -1,0 +1,277 @@
+% chapter 11 a - Harmeet
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Return Times}
+If we have a multiplier $\lambda = e^{2\pi i \xi}$ for $\xi$ an irrational rotation, a natural question is, for a given initial point, how close and how often does the orbit return to a neighbourhood of the initial point?
+
+Such questions are common in dynamics and in this case, precise answers can be given with results from classical number theory. The results will have implications to both celestial mechanics and so-called \textit{small divisors problems}.
+
+Let $S^1 \subset \C$ be the unit circle. We focus on the map $z \mapsto \lambda z$ for $z \in S^1$. Now without loss of generality, we can assume $z = 1$ by rotating the unit circle if necessary. We thus study the orbit
+\[
+1 \longmapsto \lambda \longmapsto \lambda^2 \longmapsto \lambda^3 \longmapsto \dots
+\]
+As $\xi$ is irrational, $1$ is not a periodic point so $\left\{1, \lambda, \lambda^2, \dots \right\}$ are all distinct.
+
+\begin{dfn}
+The expression
+\[
+\xi = \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + \dots}}}
+\]
+for $a_n \in \N$ is the \textit{continued fraction of $\xi$}. The $n^{th}$ truncated fraction
+\[
+\frac{p_{n}}{q_{n}} = \frac{1}{a_1 + \frac{1}{\ddots + \frac{1}{a_{n-1}}}}
+\]
+is called the \textit{$n^{th}$ convergent to $\xi$}.
+\end{dfn}
+
+\begin{lem}
+If $\xi$ has the above continued fraction decomposition, then
+\begin{enumerate}
+    \item $p_{0} = 1, p_{1} = 0, q_{0} = 0, q_{1} = 1$ and
+    \begin{align*}
+        p_{n+1} &= a_{n}p_{n} + p_{n-1}\\
+        q_{n+1} &= a_{n}q_{n} + q_{n-1}
+    \end{align*}
+    \item $\frac{p_{n}}{q_{n}} < \xi$ if $n$ is odd and $\frac{p_{n}}{q_{n}} > \xi$ if $n$ is even
+    \item $p_{n}q_{n+1} - p_{n+1}q_{n} = (-1)^{n}$
+    \item 
+    \[
+    0 = \frac{p_1}{q_1} < \frac{p_3}{q_3} < \frac{p_5}{q_5} < \dots < \xi < \dots < \frac{p_6}{q_6} < \frac{p_4}{q_4} < \frac{p_2}{q_2} = \frac{1}{a_1} < 1
+    \]
+    \item $\abs{q_{n}\xi - p_{n}} < \abs{q_{n-1}\xi - p_{n-1}}$
+\end{enumerate}
+\end{lem}
+
+The proof of the above lemma can be found in the Appendix.
+
+Define $x_{n} = q_{n}\xi - p_{n}$ so then $x_{n} < 0$ if $n$ is even and $> 0$ if $n$ is odd. Then we have 
+\[
+x_{n+1} = a_{n}x_{n} + x_{n-1}.
+\]
+and so
+\[
+-1 = x_{0} < x_{2}< x_{4} < \dots < 0 < \dots < x_{5} < x_{3} < x_{1} = \xi < 1
+\]
+Since
+\[
+\frac{p_n}{q_n} - \frac{p_{n+1}}{q_{n+1}} = \frac{(-1)^n}{q_{n}q_{n+1}}
+\]
+and $\xi$ lies between $p_{n}/q_{n}$ and $p_{n+1}/q_{n+1}$ but closer to $p_{n+1}/q_{n+1}$, it follows that $x_{n}$ lies between $\frac{(-1)^{n+1}}{2q_{n+1}}$ and $\frac{(-1)^{n+1}}{q_{n+1}}$ so the error
+\begin{equation}\label{error bound}
+    \frac{1}{2q_{n+1}} \leq \abs{x_{n}} \leq \frac{1}{q_{n+1}}.
+\end{equation}
+
+\begin{dfn}
+The sequence $\left\{\lambda, \lambda^2, \lambda^2, \dots \right\}$ is said to have a \textit{close return to $1$ at time $q$} if $\lambda^q$ is closer to $1$ than any previous iterations:
+\[
+\abs{\lambda^q - 1} < \abs{\lambda^k - 1}\;\; \text{for} \;\, k = 1, 2, \dots, q-1
+\]
+\end{dfn}
+
+We will primarily use the additive model of the circle $\R/\Z$. Using the isomorphism $\xi \longmapsto e^{2\pi i \xi}$, we can equivalently consider the dynamics of iterating 
+\[
+x \longmapsto x + \xi \mod{\Z}
+\]
+and the orbit
+\[
+0 \longmapsto \xi \longmapsto 2\xi \longmapsto 3\xi \longmapsto \dots
+\]
+
+\begin{dfn}
+Define the \textit{distance} function $\norm{\cdot} : \R/\Z \tendsto [0,1/2]$ as 
+\[
+\norm{x} = \text{dist}\left(x, \Z \right) = \min{\left\{\abs{x - n} \mid n \in \Z \right\}}.
+\]
+\end{dfn}
+
+With this, we can more concisely define $q \geq 1$ to be the \textit{close return time} if $\norm{q\xi} < \norm{k\xi}$ whenever $0 < k < q$.
+
+An elementary geometric argument gives,
+\[
+\abs{\lambda^k - 1} = 2\sin{(\pi \norm{k\xi})}
+\]
+where the map $x \longmapsto 2\sin{(\pi x)}$ is strictly increasing for $0 \leq x \leq 1/2$. Using trivial bounds for the $\sin$ function, we have for $0 < k$,
+\begin{equation}\label{lamdist}
+  4\norm{k\xi} \leq \abs{\lambda^{k} - 1} \leq 2\pi \norm{k\xi}  
+\end{equation}
+
+(compare with \eqref{lambda est}).
+
+In the special case that $k = q_{n}$, we have $k\xi \equiv q_{n}\xi \equiv p_{n} + x_{n} \equiv x_{n} \mod{\Z}$ and if $n \geq 2,\; \abs{x_{n}} < 1/2$ by \eqref{error bound}. Thus $\norm{q_{n}\xi} = \abs{x_{n}}$.
+
+\begin{rmk}\label{repequiv}
+Note that, for $a, b \in \Z$, 
+\[
+a\xi \equiv b\xi \mod{\Z} \Longleftrightarrow a = b. 
+\]
+Indeed $a\xi \equiv b\xi \mod{\Z} \Longleftrightarrow a\xi = b\xi + k$ for $k \in \Z$ and since $\xi$ is irrational, the result holds.
+\end{rmk}
+
+\begin{lem}
+For an integer $m$, $0 < m \leq q_{n+1},\, m\xi$ has a representative $ \mod{\Z}$ that lies strictly between $x_{n-1}$ and $x_{n} \Longleftrightarrow m = q_{n-1} + jq_{n}$ for some integer $1 \leq j \leq a_{n}$. 
+\end{lem}
+\begin{proof}
+This proof is due to Milnor's lecture at Harvard (Milnor 2005). 
+If $n$ is odd, then $x_{n-1} < 0 < x_{n} < -x_{n-1}$. Then certainly
+\begin{equation}\label{nodd}
+   x_{n-1} < x_{n-1} + x_{n} < x_{n-1} + 2x_{n} < \dots < x_{n-1} + a_{n}x_{n} = x_{n+1} < 0 < x_{n} 
+\end{equation}
+and so if $m = q_{n-1} + jq_{n}, 0 < j \leq a_{n}$, then $m\xi \equiv q_{n-1}\xi + jq_{n}\xi \equiv x_{n-1} + jx_{n} \mod{\Z}$. If $n$ is even, an analogous argument holds where all inequalities are simply reversed. Hence, the right to left direction is true. For the converse, we do a double induction on $n$ and $m$. Specifically, let \textbf{A$_{n}$} and \textbf{B$_{n}$} be the assertions
+\begin{itemize}
+    \item[] \textbf{A$_{n}$}: No point $m\xi$ with $0 < m \leq q_{n}$ has a representative $\mod{\Z}$ which lies strictly between $x_{n-1}$ and $x_{n}$
+    \item[] \textbf{B$_{n}$}: For $0 < m \leq q_{n+1}$, the only representatives of $m\xi \mod \Z$ that lie strictly between $x_{n-1}$ and $x_{n}$ are those of the form $x_{n-1} + jx_{n}$ for $1\leq j \leq a_{n}$. 
+\end{itemize}
+We will prove that \textbf{A$_{n}$} $\Longrightarrow$ \textbf{B$_{n}$} $\Longrightarrow$ \textbf{A$_{n+1}$} and so if \textbf{A$_{1}$} is true, it follows that \textbf{A$_{1}$} $\Longrightarrow$ \textbf{B$_{1}$} $\Longrightarrow$ \textbf{A$_{2}$} $\Longrightarrow$ \textbf{B$_{2}$} $\Longrightarrow$ \textbf{A$_{3}$} $\Longrightarrow \dots$ are all true by induction.
+
+Certainly \textbf{A$_{1}$} is true, trivially. Suppose \textbf{B$_{n}$} is true. If $n$ is odd, then we have 
+\[
+x_{n-1} < x_{n+1} < 0 < x_{n} < -x_{n-1} < -x_{n+1}
+\]
+so if we have $m\xi$ with $0 < m \leq q_{n+1}$ with representative lying strictly between $x_{n}$ and $x_{n+1}$, this representative would also lie between $x_{n-1}$ and $x_{n}$. From \textbf{B$_{n}$}, we know this representative is of the form $x_{n-1} + jx_{n}$ for some $1\leq j \leq a_{n}$. However, all of these are $\leq x_{n+1}$ by \eqref{nodd} so we have a contradiction. An analogous argument holds if $n$ is even where all inequalities are simply reversed. Thus \textbf{B$_{n}$} $\Longrightarrow$ \textbf{A$_{n+1}$} $\forall\, n$. 
+
+We now only need to verify that \textbf{A$_{n}$} $\Longrightarrow$ \textbf{B$_{n}$}. Fix $n \in \N$ and suppose \textbf{A$_{n}$} is true. We proceed by induction on $m$. Let  $0 < m \leq q_{n+1}$ and suppose $m\xi$ has a representative $y_{m} \mod{\Z}$ lying strictly between $x_{n-1}$ and $x_{n}$. From \textbf{A$_{n}$}, we must have $m > q_{n}\, (> q_{n-1})$. Then $(m-q_{n})\xi \equiv y_{m} - x_{n} \mod{\Z}$.
+
+If $y_{m}$ lies between $x_{n} + x_{n-1}$ and $x_{n}$, then $y_{m} - x_{n}$ will lie between $x_{n-1}$ and $0$. If further $y_{m} = x_{n} + x_{n-1}$, then $m = q_{n} + q_{n-1}$ by \eqref{repequiv} and so the result holds. Moreover, as $m > q_{n},\;\; y_{m} \neq x_{n}$. Thus $y_{m} - x_{n}$ lies \emph{strictly} between $x_{n-1}$ and $0$.
+
+Since $m - q_{n} < m$, we can apply the inductive hypothesis so $y_{m} - x_{n}$ is of the form $x_{n-1} + jx_{n}$ for some integer $k$. Hence, $y_{m}$ is of the same form.
+
+If $y_{m}$ does not lie between $x_{n}$ and $x_{n-1} + x_{n}$, $y_{m}$ would be contained in the open interval between $x_{n-1}$ and $x_{n-1} + x_{n}$ (e.g. by looking at \eqref{nodd}). Then $y_{m} - x_{n-1}$ would be strictly between $0$ and $x_{n}$ and so $(m - q_{n-1})\xi$ has a representative strictly between $0$ and $x_{n}$. The inductive hypothesis would then suggest $y_{m} - x_{n-1} = x_{n-1} + jx_{n}$ for $0 < j \leq a_{n}$. However, if $n$ is odd, this is always $< 0 < x_{n}$ by \eqref{nodd} and if $n$ is even, this is always $> 0 > x_{n}$ be reversing \eqref{nodd}. Hence, this case cannot happen.
+
+Thus \textbf{B$_{n}$} holds for all $n$. So if $m$ is as in $B_{n}$ with representative $y_{m}$ we have
+\[
+y_{m} = x_{n-1} + jx_{n}, \;\; 0 < j \leq a_{n}
+\]
+\[
+\Rightarrow m\xi \equiv (q_{n-1} + jq_{n})\xi \mod{\Z}
+\]
+\[
+\Rightarrow m = q_{n-1} + jq_{n}, \;\; 0 < j \leq a_{n}
+\]
+with the last implication following from Remark \eqref{repequiv}.
+\end{proof}
+
+\begin{thm}\label{closeret}
+The point $\lambda^q = e^{2\pi q i\xi}$ is a closest return to 1 along the orbit
+\[
+1 \longmapsto \lambda \longmapsto \lambda^2 \longmapsto \lambda^3 \longmapsto \dots
+\]
+if and only if $q$ is one of the denominators $1 \leq q_{1} \leq q_{2} < q_{3} < \dots$ of the continued fraction of $\xi$. Moreover,
+\[
+\frac{2}{q_{n+1}} < \abs{\lambda^n - 1} <\frac{2\pi}{q_{n+1}}.
+\]
+\end{thm}
+\begin{proof}
+The first part follows from assertion \textbf{A$_{n}$} in the above lemma and the second from \eqref{error bound} and \eqref{lamdist}.
+\end{proof}
+
+Since $q_{n+1} = a_{n}q_{n} + q_{n-1} > q_{n} + q_{n-1} > 2q_{n-1}$, we see that the close return times $q_{n}$ increase at least exponentially as $n \tendsto \infty$ and so the close return distances decrease at least exponentially fast to $0$ (from the bounds in Theorem \ref{closeret}).
+
+\subsection{Recent Developments, Problems and Open Conjectures}
+More recent developments in the field have revealed more sophisticated criterion on when local linearisation is possible. We state three of these without proof though proofs can be found in the relevant references in the bibliography.
+
+Recall the definition of the $n^{th}$ convergent to $\xi$:
+\[
+\frac{p_n}{q_n} = \frac{1}{a_1 + \frac{1}{\ddots + \frac{1}{a_{n-1}}}}.
+\]
+For the rest of this section, $\lambda = e^{2\pi i \xi}$ where $\xi \in \R/\Z$ and $\{q_n\}$ will be the sequence of denominators of the $n^{th}$ convergent.
+
+\begin{thm}(Brjuno 1965)
+If
+\begin{equation}\label{brjuno}
+    \sum_{n = 1}^{\infty} \frac{\log{(q_{n+1})}}{q_n} < \infty
+\end{equation}
+then any holomorphic germ with a fixed point of multiplier $\lambda$ is locally linearisable.
+\end{thm}
+
+With regards to non-linearisation, a more robust impediment to $f$ being conjugate to a rotation, is the so called \textit{small cycles property}.
+
+\begin{dfn}[Small Cycles] A fixed point is said to have the \textit{small cycles property} if every neighbourhood of the fixed point contains infinitely many periodic orbits.
+\end{dfn}
+
+Intuitively, a fixed point has the small cycles property if it can be approximated by small cycles.
+
+Jean-Christophe Yoccoz proved a partial converse to the theorem of Brjuno et. al, specifically showing that it is the best possible result for the quadratic maps $f(z) = z^2 + \lambda z$.
+
+\begin{thm}(Yoccoz, 1988)
+Conversely, if the sum in \eqref{brjuno} diverges, then the quadratic function $f(z) = z^2 + \lambda z$ is not locally linearisable about the origin. Furthermore, the origin has the small cycles property.
+\end{thm}
+
+Yoccoz's Theorem raises the natural question as to whether every Cremer point necessarily has the small cycles property. This was answered only 30 years ago by Ricardo Perez-Marco who completely characterised multipliers that have the small cycles property.
+
+\begin{thm}(Perez-Marco, 1990).
+Suppose the sum in \eqref{brjuno} diverges. Then, if
+\begin{equation}\label{Perez}
+     \sum_{n = 1}^{\infty} \frac{\log{\log{(q_{n+1})}}}{q_n} < \infty
+\end{equation}
+any germ of a holomorphic function which has a Cremer point at the origin will exhibit the small cycles property. Conversely, if \eqref{Perez} diverges then there exists a holomorphic function with the origin a fixed point of multiplier $\lambda$ which is not linearisable but also does not have the small cycles property.
+\end{thm}
+
+Many results have been established in only the last 20 years. Notably, X. Buff and A. Ch\'eritat formulated an upper bound on the size of quadratic Siegel discs, settling a conjecture on the bound of the so-called \textit{Brjuno function} in 2003 (Buff and Ch\'eritat 2004).
+
+The proofs of the above are highly non-trivial. Without saying anything further on the above results, we consider a substantially weaker condition for the smalls cycle property.
+
+\begin{thm}(Problem 11-d in Milnor 2006).
+Suppose that, for $d \in \Z_{\geq 2}$
+\begin{equation}
+    \limsup_{q \tendsto \infty}{\frac{\log{\log{(1/\abs{\lambda^q - 1})}}}{q}} > \log{d} > 0
+\end{equation}
+Then any fixed point of multiplier $\lambda$ for a degree $d$ rational function has the small cycles property (and so is not locally linearisable).
+\end{thm}
+\begin{proof}
+It suffices to prove the theorem for the function
+\[
+f(z) = z^d + \dots + \lambda z
+\]
+by applying the same reduction as in the proof of Cremer's Theorem \eqref{thm: 11.2}. 
+Fix $\delta > 0$ such that $f$ is analytic throughout $\D_{\delta}$. As $f(0) = f'(0) = 0$, the function 
+\[
+g(z) = 
+\begin{cases} 
+      \frac{f(z)}{z} & z\neq 0 \\
+      f'(0) & z = 0 \\
+\end{cases}
+\]
+is holomorphic throughout $\D_{\delta}$. Hence, by the maximum modulus principle,
+\[
+\abs{f(z)} \leq M \abs{z},\;\;\; \abs{z} < \delta
+\]
+where $M = \sup_{z \in \D_{\delta}}\abs{g(z)}$.
+
+Proceeding in exactly the same way as in the proof of lemma \eqref{Cremlem}, we see that if $\abs{\lambda^q - 1} < 1$, we have a $q$-periodic point $z_q$ where
+\[
+0 < \abs{z_q} < \abs{\lambda^q - 1}^{1/(d^q - 1)} < \abs{\lambda^q - 1}^{1/d^q}.
+\]
+Let $\varepsilon = \varepsilon(\delta) > 0$ such that $e^{\varepsilon} > M$. Then, by assumption, for arbitrarily large $q$
+\[
+\frac{\log{\log{(1/\abs{\lambda^q - 1})}}}{q} > \log(d) + \varepsilon 
+\]
+\[
+\Longrightarrow \abs{\lambda^q - 1}^{1/d^q} < \exp(-e^{\varepsilon q}).
+\]
+Now since $\abs{f(z)} < e^{\varepsilon}\abs{z}$ whenever $\abs{z} < \delta$, we have
+\[
+\abs{f^{ok}(z)} < \delta\;\; \text{for}\;\; 1 \leq k \leq q,\; \forall\; \abs{z} < e^{-\varepsilon q}\delta.
+\]
+Now we have a periodic point $\abs{z_q}$ such that
+\[
+0 < \abs{z_q} < \exp{\left(- e^{\varepsilon q}\right)} < e^{-\varepsilon q}\delta
+\]
+for large $q$. Thus, the periodic orbit $\mathcal{O}(z_q) = \left\{z_q, f(z_q), \dots, f^{oq}(z_q)\right\} \subset \D_{\delta}$. As this holds for arbitrarily large $q$, we have infinitely many periodic orbits in $\D_{\delta}$. As $\delta$ was arbitrary, the orgin must have the small cycles property.
+\end{proof}
+
+There are still many unsolved problems related to local normal forms of analytic maps near fixed points. Most of these are related to the irrationally indifferent case given the rich behaviour and novelty of many of the results. For example, the following are, at the point of writing, open problems,
+\begin{itemize}
+    \item Does a Julia set that contains a Cremer point always have a positive Lebesgue measure? 
+    
+    \item (Smale’s Mean Value Conjecture)
+    Let $f$ be any polynomial of the form $f(z)=z+a_{2} z^{2}+\cdots+a_{d} z^{d}$, does there exist a critical point $c$ of $f$ for which $\abs{\frac{f(c)}{c}} \leq 1$? (Miles-Leighton and Pilgrim 2012)
+
+    \item (Douady and Sullivan, 1980) Is the boundary of a Siegel disc of a rational map always a Jordan curve? 
+    
+    \item Does there exist a germ of a rational function that is not locally linearisable but also does not have the small cycles property?
+\end{itemize}
+
+%\input{../resources/ch-11/placeholder}
+\end{document}

@@ -1,0 +1,368 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\newcommand\tmpsi{\bar{\psi}}
+
+\subsection{Proof of Siegel's Linearisation Theorem}
+
+We present a proof different from Siegel's more involved original, following Gamelin (2013).
+
+Given $f$ fixing the origin with multiplier $\lambda$, we would like to construct a function $\psi : \D_r \to \C$ univalent on some neighbourhood of the origin satisfying Schröder's equation:
+\[
+f(\psi(z)) = \psi(\lambda z)
+\]
+Without loss of generality we may require $\psi(0) = 0$ and $\psi'(0) = 1$; then up to first order, we can write
+\[
+\psi(z) = z + \sum_{j=2}^\infty a_jz^j = z + \Psi(z)
+\quad\text{and}\quad
+f(z) = \lambda z + \sum_{j=2}^\infty b_j z^j = \lambda z + F(z)
+\]
+Substituting into Schröder's equation
+\begin{equation}\label{eqn:schroeder-expand}
+    \lambda(z + \Psi(z)) + F(z + \Psi(z)) = \lambda z + \Psi(\lambda z)
+\end{equation}
+Heuristically, we expect $\Psi(z)$ to be small and imagine $F(z + \Psi(z)) \approx F(z)$. Then, replacing one term with the other and rearranging, of the previous equation \eqref{eqn:schroeder-expand} remains
+\begin{equation}\label{eqn:schroeder-simple}
+     F(z) = \Psi(\lambda z) - \lambda\Psi(z)
+\end{equation}
+and we expect that a solution to \eqref{eqn:schroeder-simple} to approximately solve the simpler equation  \eqref{eqn:schroeder-expand}. By inspecting the coefficients, \eqref{eqn:schroeder-simple} is satisfied by
+\begin{equation*}
+    \Psi_0(z) = \sum_{j=2}^\infty \frac{b_j}{\lambda^j - \lambda}z^j
+\end{equation*}
+Tentatively we define
+\begin{equation}
+    \psi_0(z) = z + \Psi_0(z)
+\end{equation}
+
+Which we can make into an injection by restricting to a smaller domain. The strategy is to iterate this process in an attempt to progressively improve the approximate solutions. The content of this proof lies in the estimations that ensure the convergence of the iterates on some neighbourhood of the origin to a univalent function which satisfies Schröder's equation.
+
+The following lemma captures a step in this iterative process:
+
+\begin{lem}\label{11:lem:siegel-step}
+Suppose $\lambda$ is such that there exists $C, \kappa$ such that for all $j \in \N$
+\[
+\abs{\lambda^j - 1} \le C j^\kappa
+\]
+and let
+\[
+f(z) = \lambda z + \sum_{j=2}^\infty b_jz^j =\lambda z + F(z)
+\]
+defined in some neighbourhood of the origin which has multiplier $\lambda$.
+Suppose furthermore that $\delta, \eta$ satisfy the following:
+
+\begin{itemize}
+    \item $0 < \eta < \dfrac{1}{5}$ and $\dfrac{\eta}{1-\eta} < \dfrac{\kappa}{2^{\kappa+2}}$
+    \item $c \delta < \eta^{\kappa+2}$
+    \item $\abs{F'(z)} < \delta$ for $z \in \D_r$
+\end{itemize}
+
+in which we define the constant $c = \max(1, \kappa! C)$.
+Then there exist holomorphic $\psi, g : \D_{r(1-5\eta)} \to C$ where
+\[
+    g(z) = \lambda z + G(z) \quad \text{and} \quad \psi(z) = z + \Psi(z)
+\]
+such that
+\begin{itemize}
+\item $g(z) = (\psi\inv \circ f \circ \psi)(z)$
+\item $\abs{\Psi'(z)} \le \eta$
+\item $\abs{G'(z)} \le \dfrac{c\delta^2}{\eta^{\kappa+2}2^{\kappa+2}}$
+\end{itemize}
+for $z \in \D_{r(1-5\eta)}$.
+\end{lem}
+
+The proof of Lemma \eqref{11:lem:siegel-step} is somewhat involved, and we shall postpone its presentation briefly. Let us first see how we can use this result to construct the promised iteration process that will lead to a solution to Schröder's equation and yield the desired local linearisation of $f$.
+
+\begin{proof}[Proof of Theorem \ref{thm: 11.4} assuming Lemma \ref{11:lem:siegel-step}]
+% frick, off-by-one
+Let $\lambda = e^{2\pi i \xi}$ where $\xi$ is Diophantine of some order $\kappa + 1$, and let $f(z)$ fix the origin with multiplier $\lambda$. We write
+
+\[
+f_0(z) = f(z) = \lambda z + F_0(z)
+\]
+
+And by Lemma\ref{lem:dioph-asymp} we have $\abs{\lambda^j - 1} \le C j^\kappa \le c \dfrac{j^\kappa}{\kappa!}$ for some constants $\kappa$, $c$, and for all $j \in \N$. Now that $c$ and $\kappa$ are fixed, we fix $\eta_0$, choosing it to be small enough such that it satisfies
+\[
+0 < \eta_0 < \frac{1}{5}
+\quad\text{and}\quad
+\frac{\eta_0}{1-\eta_0} < \frac{\kappa}{2^{\kappa+2}}
+\]
+
+We then fix $\delta_0 > 0$ sufficiently small so that $c \delta_0 < \eta_0^{\kappa+2}$, then fix $r_0 > 0$ sufficiently small so that $f$ is defined on $\D_{r_0}$ and $\abs{F_0'(z)} \le \delta_0$ on $\D_{r_0}$. Then by construction, the hypotheses on $f, \eta, r, \delta$ in Lemma \ref{11:lem:siegel-step} are satisfied by $f_0, \eta_0, r_0, \delta_0$.
+
+Suppose now that for some $n \in \N$ those hypotheses are also satisfied by $f_n, \eta_n, r_n, \delta_n$. We define
+
+\begin{itemize}
+    \item $\eta_{n+1} = \dfrac{1}{2} \eta_n$
+    \item $r_{n+1} = r_n (1-5 \eta_n)$
+    \item $\delta_{n+1} = \dfrac{c \delta_n^2}{\eta_{n+1}^{\kappa+2}}$
+\end{itemize}
+
+Evidently $0 < \eta_{n+1} < \dfrac{1}{5}$ and $\dfrac{\eta_{n+1}}{1-\eta_{n+1}} < \dfrac{\kappa}{2^{\kappa+2}}$. We also note that
+
+\begin{align*}
+c \delta_{n+1}
+&=
+\frac{c^2 \delta_n^2}{\eta_n^{\kappa+2}2^{\kappa+2}}
+&\by{definition of $\delta_{n+1}$ and $\eta_{n+1}$}\\
+&<
+\frac{(\eta_n^{\kappa+2})^2}{\eta_n^{\kappa+2}}
+&\by{inductive hypothesis $c \delta_n \le \eta_n^{\kappa+2}$}\\
+&= \frac{\eta_n^{\kappa+2}}{2^{\kappa+2}} = \eta_{n+1}^{\kappa+2}
+\end{align*}
+
+At this point we invoke Lemma $\ref{11:lem:siegel-step}$ to obtain $\psi_n, f_{n+1} : \D_{r_{n+1}} \to \C$ such that throughout $\D_{r_{n+1}}$, writing $f_{n+1}(z) = \lambda z + F_{n+1}(z)$, we have
+
+\begin{itemize}
+    \item $\psi_n \circ f_{n+1} = f_n \circ \psi_n$
+    \item $\abs{F_{n+1}'(z)} < \dfrac{c \delta_n^2 r}{\eta_n^{\kappa+2}2^{\kappa+2}} = \delta_{n+1}$
+\end{itemize}
+
+Thus the hypotheses on $f, \eta, r, \delta$ in Lemma \ref{11:lem:siegel-step} are satisfied by $f_{n+1}, \eta_{n+1}, r_{n+1}, \delta_{n+1}$.
+
+Therefore, inductively, we have sequences $\{\psi_n\}, \{f_n\}, \{\eta_n\}, \{r_n\}, \{\delta_n\}$
+
+    \[
+        \begin{tikzcd}
+        \ar[r, "f_0 = f"] &[12em] \ar[d, "\psi_0\inv"]\\
+        \ar[r, "f_1 = \psi_0 \inv f \psi_0"]
+        \ar[u, "\psi_0"] & \ar[d, "\psi_1\inv"]\\
+        \ar[r, "f_2 = \psi_1\inv \psi_0 \inv f \psi_0 \psi_1"]
+        \ar[u, "\psi_1"] & \ar[d, "\psi_2\inv"]\\
+        \ar[r, "f_3 = \psi_2\inv \psi_1\inv \psi_0 \inv f \psi_0 \psi_1 \psi_2"]
+        \ar[u, "\psi_2"] & \ar[d, "\psi_3\inv"]\\
+        \vdots \ar[u, "\psi_3"] & \vdots\\
+        \end{tikzcd}
+    \]
+
+To finally extract the desired conjugation, we must be careful to verify that there is a neighbourhood about the origin on which all the $f_n$ are defined and converge. First, see that $\sum_{n\ge0} \eta_n = \sum_{n\ge0} \eta_0 2^{-n}$ converges as a geometric series, so by a result on infinite series (Theorem \ref{ax:thm:product-2}) the product
+\[
+r_\infty = r_0 \prod_{n\ge0} (1 - 5\eta_n)
+\]
+converges to a positive number. We see from this that there is indeed a nonempty disc $\D_{r_\infty}$ contained within $\D_{r_n}$ for every $n$, and every $f_n$ is defined on $\D_{r_\infty}$. Writing $\tmpsi_n = \psi_n \circ \psi_{n-1} \circ \cdots \circ \psi_0$, we have the following bound:
+\begin{align*}
+    \sup_{z \in \D_{r_\infty}} \abs{\tmpsi_n'(z)}
+    &\le
+    \prod\limits_{k=0}^n \abs{\psi_k'(z)}
+    &\by{chain rule}\\
+    &\le
+    \prod\limits_{k=0}^n \sup_{z \in \D_{r_\infty}} \abs{1 + \eta_k}
+    &\by{$\abs{\Psi_k'} \le \eta_k$ from Lemma \ref{11:lem:siegel-step}}\\
+    &\le
+    \prod\limits_{k\ge0} \abs{1 + \eta_k} \le M &\text{\footnotesize in which $M$ is a constant.}
+\end{align*}
+The final product converges since $\sum_{k\ge0} \eta_k$ does (by a result on infinite series, see Theorem \ref{ax:thm:product} in the Appendix.) % I'm running out of symbols
+By possibly replacing $M$ with a greater bound we may assume $M \ge 1$. Then by the Cauchy derivative estimate we have a neighbourhood $\D_{r_\infty/M}$ of the origin which is mapped by $\tmpsi_n$ into $\D_{r_\infty}$, subsequently the mean value inequality on $\D_{r_\infty/M}$ gives
+%
+\begin{align*}
+\abs{\tmpsi_{n+1}(z) - \tmpsi_n(z)}
+&=
+\abs{\psi_{n+1}(\tmpsi_n(z)) - \tmpsi_n(z)}\\
+&=
+\abs{\Psi_{n+1}(\tmpsi_n(z))} &\by{by $\psi_{n+1}(z) = z + \Psi_{n+1}(z)$}\\
+&\le \eta_{n+1} 
+&\by{$\tmpsi_n(z) \in \D_{r_\infty}$; Lemma \ref{11:lem:siegel-step}}\\
+\end{align*}
+%
+From this and the convergence of $\sum_{n\ge0} \eta_n$ we see that $\{\tmpsi_n\}$ is Cauchy in the uniform norm and thus the sequence of functions converges uniformly on $\D_{r_\infty/M}$, and the limit $\tmpsi$ is a holomorphic bijection since each of the $\tmpsi_n$ are.
+
+Furthermore by the bound
+\[
+\abs{F_{n}'(z)} < \delta_{n} \tendsto 0
+\]
+we have on $\D_{r_\infty/M} \subseteq \D_{r_\infty}$ that $F_n$ converges uniformly to zero and thus $f_n$ converges uniformly to $z \mapsto \lambda z$. Therefore we finally have
+\[
+(\tmpsi\inv \circ f \circ \tmpsi)(z) = \lambda z
+\]
+for all $z$ in some neighbourhood of the origin, demonstrating that $f$ is locally linearisable.
+\end{proof}
+
+To complete the proof of Siegel's linearisation theorem, it remains to prove Lemma \ref{11:lem:siegel-step}, which we do in the following.
+
+\begin{proof}[Proof of Lemma \ref{11:lem:siegel-step}]
+
+We define
+\[
+\Psi(z) = \sum_{k=2}^\infty \frac{b_j}{\lambda^j - \lambda}z^k
+\]
+
+\begin{itemize}
+    \item \emph{Bound on \abs{\Psi}.} See first that for $z \in \D_r$ we have $\abs{F(z)} \le \delta r$ from $\abs{F'(z)} \le \delta$ and the mean value inequality; therefore
+    
+    \begin{equation}\label{11:eq:b_j-est}
+    \abs{b_j} =
+    \abs{\frac{f^{(j)}(0)}{j!}}
+    \le \frac{1}{j!} \cdot \delta r j! r^{-j}
+    = \frac{\delta}{j r^{j-1}}
+    \end{equation}
+    
+    on $\D_r$, in which the inequality follows from the Cauchy derivative estimate for $\abs{F^{(n)}(z)}$.
+
+    Then throughout the slightly smaller disc $\D_{r(1-\eta)}$ we have
+     \begin{align*}
+        \abs{\Psi(z)}
+        &= \abs{\sum_{j=2}^\infty
+        \frac{b_j}{\lambda^j - \lambda}z^j
+        }\\
+        &<
+        \sum_{j=2}^\infty
+        \frac{\abs{b_j}}{\abs{\lambda(\lambda^{j-1} - 1)}}
+        \left(r (1-\eta)\right)^j
+        &\by{since $\abs{z} < r(1-\eta)$}
+        \\
+        & \le
+        \sum_{j=2}^\infty
+        \frac{\delta}{jr^{j-1}} \cdot
+        c \frac{(j-1)^\kappa}{\kappa!}
+        r^j ( 1-\eta)^j
+        & \by{by \eqref{11:eq:b_j-est} and hypothesis on $\lambda$}\\
+        & \le
+        \frac{c\delta r}{\kappa!}
+        \sum_{j=2}^\infty
+        j^{\kappa-1}
+        ( 1-\eta)^j
+        &\by{rearranging, $(j-1)^k \le j^k$}\\
+        &\le
+        \frac{c\delta r}{\kappa}
+        \sum_{j=2}^\infty
+        \frac{(j+\kappa-1)!}{j!(\kappa-1)!}
+        (1-\eta)^j\\
+        &=
+        \frac{c\delta r}{\kappa}
+        \sum_{j=2}^\infty
+        {{j + \kappa - 1} \choose j}
+        (1-\eta)^j
+        \le \frac{c\delta r}{\kappa \eta^\kappa}
+        %\numberthis \label{11:ineq:est-phi}
+    \end{align*}
+    
+    in which the final inequality follows from considering the binomial expansion of $\eta^{-\kappa}$ (Theorem \ref{ax:thm:binomial})
+    
+    \item \emph{Bound on $\abs{\Psi'}$.} This is a very similar calculation to the previous one:
+    
+    \begin{align*}
+        \abs{\Psi'(z)}
+        &<
+        \sum_{j=2}^\infty
+        \frac{j \abs{b_j}}{\abs{\lambda(\lambda^{j-1}-1)}}
+        \left(r(1-\eta)\right)^{j-1}\\
+        &\le
+        \frac{c \delta}{\kappa!}
+        \sum_{j=2}^\infty (j-1)^\kappa r^{j-1}\\
+        &\le
+        \frac{c}{\delta}
+        \sum_{j=1}^\infty {{j+\kappa} \choose j}(1-\eta)^j
+        &\by{relabelling; definition of binomial coefficients}\\
+        &\le \frac{c\delta}{\eta^{\kappa+1}}
+        &\by{Theorem \ref{ax:thm:binomial}}\\
+        &< \eta &\by{by hypothesis $c\delta < \eta^{\kappa+2}$}
+        \numberthis \label{11:ineq:est-psi'}
+    \end{align*}
+  
+    \item \emph{$g = \psi\inv \circ f \circ \psi$ is well-defined on $\D_{r(1-4\eta)}$.} This claim is a combination of several parts, and we verify each of them in turn:
+    \begin{itemize}
+
+    \item \emph{$\psi$ maps $\D_{r(1-4\eta)}$ into $\D_{r(1-3\eta)}$}. For $z \in \D_{r(1-4\eta)}$ we have
+    \[
+    \abs{\psi(z)}
+    = \abs{z+\Psi(z)}
+    \le r(1-4\eta) + r(1-4\eta) \cdot \eta
+    < r(1-3\eta)
+    \]
+    in which the first inequality follows from the triangle inequality, the mean value inequality, and the estimate $\eqref{11:ineq:est-psi'}$ of $\abs{\Psi'(z)} < \eta$.
+    
+    \item \emph{$f$ maps $\D_{r(1-3\eta)}$ into $\D_{r(1-2\eta)}$.} Similarly since $\abs{F'(z)} < \delta < \frac{\eta^{\kappa+2}}{c} \le \eta$ on $\D_r$, we have
+    \[
+        \abs{f(z)}
+        = \abs{\lambda z + F(z)}
+        \le r(1-3\eta) + \delta \cdot r(1-3\eta)
+        < r(1-2\eta)
+    \]
+    
+    \item \emph{$\psi^{-1} : \D_{r(1-2\eta)} \to \D_{r(1-\eta)}$ is well-defined.} That is, we show that for every $y \in \D_{r(1-2\eta)}$, there is exactly one $z \in \D_{r(1-\eta)}$ such that $y = \psi(z)$. By yet another similar estimate we have
+    \[
+    \abs{\psi(z)}
+    = \abs{z + \Psi(z)}
+    > r(1-\eta) - \eta \cdot r (1-\eta)
+    \ge r(1-2\eta)
+    \]
+    
+    Note first that $\psi(0) = 0$ by construction. Then by the ML-inequality we estimate
+    \begin{align*}
+        \abs{\frac{1}{2\pi i}\oint_\gamma \frac{\psi'(z)}{\psi(z)} dz}
+        &\le \frac{1}{2\pi}
+        \cdot 2\pi r (1-\eta)
+        \cdot \frac{1+\eta}{r(1-2\eta)}
+        &\by{since $\abs{\psi'(z)} \le 1 + \abs{\Psi'(z)} \le 1 + \eta$}
+        \\
+        &= \frac{1-\eta^2}{1-2\eta} < 2
+    \end{align*}
+    where the integral is along the boundary $\gamma = \partial \D_{r(1-\eta)}$. Then by the argument principle, $\psi$ has at most --- and hence exactly --- one root in $\D_{r(1-\eta)}$. Furthermore, for any $y \in \D_{r(1-2\eta)}$, for $z$ on the boundary of $\D_{r(1-\eta)}$ we have
+    \[
+    \abs{(\psi(z)-y) - \psi(z)} = \abs{y} < r(1-2\eta) \le \abs{\psi(z)}
+    \]
+    and so by the Rouché's theorem applied to $\psi(z)-y$ and $\psi(z)$ on $\D_{r(1-2\eta)}$ we obtain the desired conclusion that $\psi(z) - y$ has exactly one root in $\D_{r(1-\eta)}$.
+    \end{itemize}
+    
+    Together we have that the maps in the following diagram are well-defined, and that the diagram commutes:
+    \[
+        \begin{tikzcd}
+        \D_{r(1-3\eta)} \ar[r, "f"] &[6em] \D_{r(1-2\eta)} \ar[d, "\psi\inv"]\\
+        \D_{r(1-4\eta)} \ar[r, "g = \psi \inv \circ f \circ \psi"']
+        \ar[u, "\psi"] & \D_{r(1-\eta)}
+        \end{tikzcd}
+    \]
+    thus we may define $g(z) = \psi \inv \circ f \circ \psi(z) = \lambda z + G(z)$ on $\D_{r(1-4\eta)}$ (that the first term of the series expansion of $g$ at the origin is $\lambda z$ follows from the chain rule.) %Note that the conlcusion of the lemma requires only that $g$ be well-defined on $\D_{r(1-5\eta)}$, whereas we have defined $g$ on the disc $\D_{r(1-4\eta)}$ of slightly greater radius; we shall later depend on this fact to arrive at a good estimate of $\abs{G'(z)}$.
+    
+    \item \emph{bound on $\abs{G}$.} Substituting $g(z) = \lambda z + G(z)$ into $\psi \circ g = f \circ \psi$ we obtain, after some computation:
+    \[
+    G(z) = \lambda \Psi(z) - \Psi(\lambda z + G(z)) + F(z + \Psi(z))
+    = \Psi(\lambda z) - F(z) - \Psi(\lambda z + G(z)) + F(z + \Psi(z))
+    \]
+    in which the second equality holds noting that
+    \[
+    \Psi(\lambda z) - \lambda\Psi(z) = F(z)
+    \]
+    from the definition of $\Psi$ in terms of $F$.
+    
+    Writing $\Delta = \D_{r(1-4\eta)}$ and $M = \sup_{z \in \Delta} \abs{G(z)}$, see by the triangle and mean value inequalities together with the bounds on $\abs{\Psi}$, $\abs{\Psi'}$, and $\abs{F'}$ that
+    \begin{align*}
+        M
+        &\le
+        \sup_{z \in \Delta}
+        \abs{\Psi(\lambda z) - \Psi(\lambda z + G(z))}
+        + 
+        \sup_{z \in \Delta}
+        \abs{F(z + \Psi(z)) - F(z)}\\
+        &\le
+        \sup_{z \in \Delta}
+        \abs{\Psi'(z)} \cdot M
+        + 
+        \sup_{z \in \Delta}
+        \abs{F'(z)} \cdot
+        \sup_{z \in \Delta}
+        \abs{\Psi(z)}\\
+        &< \eta \cdot M + \delta \cdot \frac{c \delta r}{\kappa \eta^\kappa}
+    \end{align*}
+    
+    Consequently
+    \[
+    M \le \frac{c \delta^2 r}{\kappa\eta^\kappa(1-\eta)}
+    \]
+    
+    \item \emph{bound on $\abs{G'}$.} For any $z \in \D_{r(1-5\eta)}$, consider the disc around $z$ of radius $r \eta$, which is contained entirely within $\D_{r(1-4\eta)}$. Then the Cauchy derivative estimate gives
+    \begin{align*}
+    \abs{G'(z)}
+    &\le \frac{M}{r\eta}\\
+    &\le
+    \frac{c \delta^2}{\kappa\eta^{\kappa+1}(1-\eta)}\\
+    &\le
+    \frac{c \delta^2}{\kappa\eta^{\kappa+2}2^{\kappa+2}}
+    \end{align*}
+    for all $z \in \D_{r(1-5\eta)}$, as desired. The final inequality follows from the hypothesis $\dfrac{\eta}{1-\eta} < \dfrac{\kappa}{2^{\kappa+2}}$.
+    
+\end{itemize}
+\end{proof}
+
+
+
+\end{document}

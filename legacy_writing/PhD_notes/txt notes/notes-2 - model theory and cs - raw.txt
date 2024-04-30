@@ -1,0 +1,259 @@
+You know how we know that "there exist theorems we will never be able to prove"
+
+Maybe we can also say that "there are programs we can never execute". Not exactly true -- more like, there are dynamics we cannot execute, because programs are algorithms.
+
+Scratch that.
+
+So maybe we will never be able to prove or disprove the Goldbach conjecture. 
+
+(Of course, if we could prove that the Goldbach conjecture was undecidable, that would amount to a proof of the Goldbach conjecture, and therefore that's impossible.)
+
+What does that mean? That there is no algorithm that results in a proof of the Goldbach conjecture?
+
+Surely not! It means only that WE are an algorithm that does not result in the proof of the Goldbach conjecture.
+
+Hm. There are two different statements here, aren't there?
+
+"For any computer, there are theorems it cannot prove."
+
+"There are statements that are genuinely undecidable."
+
+Are these really so different?
+
+Are there statements that are decidable, but not to humans?
+
+Hm...
+
+The idea is that some theory/model reflects a computer's "knowledge", right?
+
+Like think back to the "I will hum forever" proof of Godel's incompleteness theorem.
+
+"If I am able to predict my future actions, I can just violate them."
+
+"Thus my predictions/beliefs must be imperfect (either incomplete or inconsistent)."
+
+So in particular, my beliefs could be the theorems of a theory-- a theory either produces wrong theorems, or can't produce some things.
+
+But in general, they could be the output of _any algorithm_ by which I decide my beliefs.
+
+I needn't be applying any Hilbertian deduction or First-order logic or Second-order logic or any shit like that.
+
+I could be doing absurd things.
+
+I could be doing probabilistic things.
+
+It applies to any agent.
+
+But, you know, let's say we're talking about an agent whose beliefs are theorems of a theory.
+
+And the algorithm it runs is some proof-discovery algorithm -- a logically valid proof discovery algorithm. 
+
+Let's talk about the Halting problem. But let's not talk about programs, let's just talk about "some dudes".
+
+Let's say you have some dude A who can predict what everyone else does exactly.
+
+Now you have some other dude B who acts as follows: he asks A what he predicts him to do, and then does something else instead.
+
+So you know, that means A can't predict what B can do. So you can't have a dude who knows exactly what will happen.
+
+What am I saying? That a theory may represent beliefs of an agent.
+
+So exactly what's the significance of an algorithm?
+
+And what's a model in all this?
+
+First question first.
+
+Hmm...
+
+So in my "proof" of Godel's incompleteness theorem, algorithms played a particular role, right?
+
+Did they, though?
+
+I mean... it's almost as if the Halting problem isn't really about computer science.
+
+Like the Halting problem is just-- about _beliefs_ right? Like we're saying an omniscient being can't exist.
+
+It's not specific to Turing computation. 
+
+But we can come up with _special cases_ of it.
+
+(Remember Godel -- whatever I predict about my behaviour, I can just violate it.)
+
+First special case. Where your beliefs are the outputs of an algorithm. I.e. you believe that someone will stop humming if your algorithm says it does.
+
+Second special case. Where your beliefs are the theorems of a theory. I.e. you believe whatever is a theorem of that theory.
+
+BOTH have a certain incompleteness. In BOTH cases there are some things you cannot correctly have a belief on. 
+
+But--but-- some formulations *mix* model theory and CS! They do things like proving Godel with CS, and, Godel requires a theory to be at least capable of running programs! Paaaaan. Or like the Eischendungs problem, which talks about programs proving theorems.
+
+So the Eischendungsproblem says -- there are theorems of ZFC -- things that ZFC KNOWS TO BE TRUE -- that I can't ever determine to be true or false.  
+Here's why, btw: determining whether a particular statement is provable is equivalent to determining whether the program that searches for proofs of that statement halts. 
+Actually that's not why, it's the converse of that: If we could determine the provability of every statement, in particular we can determine the provability of whether any Turing machine halts.
+
+There are things that ZFC knows that I can never know. Is that so? Is that what Eischendungs says?
+Is it more like "There are things that ZFC knows which I will never know that ZFC knows"?
+
+Yeah, it's the latter. _I don't know what exactly ZFC knows._ 
+Why? Because since I believe in ZFC, knowing whether ZFC knows whether a certain Turing machine halts means knowing whether that Turing machine halts.
+
+Put it another way: the Eischendungsproblem is just saying -- if there's a result I don't know, I can't know that someone I believe believes it either.
+
+In particular (and this is the converse of the real argument, which we initially wrongly proposed as the argument) -- to know that ZFC believes a particular statement straightforwardly gives an algorithm to know if that statement is true: just ask ZFC. So there's an isomorphism between the statements I can't prove and the programs I can't determine the halting of.
+
+For that matter, I don't know what I know either -- I don't know what I'm gonna think soon.
+
+We have an equivalence relation.
+
+This is Turing equivalence.
+
+Wait one second what exactly is this an equivalence relation on, surely TM is not equivalent to ZFC or something.
+
+It's an equivalence between problems.
+
+If you have a dude who knows exactly which programs halt (and you believe him), then you can, by asking him, determine what ZFC believes.
+
+If you have a dude who knows exactly what ZFC believes (and you believe him), then you can, by asking him, determine which programs halt.
+
+The problem of determining which programs halt is Turing-equivalent to the problem of determining what ZFC believes.
+
+So... an oracle for halting is Turing-equivalent to an oracle for ZFC?
+
+So... an oracle for PA is Turing-equivalent to an oracle for ZFC, by transitivity?
+
+Wait how exactly?
+
+If you want to know if PA proves a particular theorem, you construct, in ZFC, an algorithm to enumerate PA until you find that theorem, then you ask the Oracle if that algorithm will halt (according to ZFC).
+
+If you want to know if ZFC proves a particular theorem, you construct, in PA, an algorithm to enumerate ZFC until you find that theorem, then you ask the Oracle if that algorithm will halt (according to PA).
+
+So let's be very clear here. ZFC (An oracle for ZFC) is Turing-equivalent to an Oracle for the Halting Problem, or equivalently to an Oracle for the behaviours of Turing machines (this is something we will formalize better with Rice's theorem). A Turing Machine itself (i.e. the problems that a Turing machine can solve) has lower Turing degree. The Turing degree of a Turing Machine is denoted by 0, while the Turing degree of ZFC/the _theory_ of Turing Machines/Oracles is denoted by 0'.
+
+Penrose says: we are capable of proving Godel's theorem, including for ourselves, so oh no. But no oh no -- for that matter, even ZFC understands that Godel applies to itself. Being able to conceptualize one's Godel's sentence is NORMAL, you SHOULD be able to do it, being able to PROVE it is weird. But ok -- so what is our Turing degree? 0. But we can talk about Oracles? Yeah, so can ZFC.
+
+So when I say I believe in ZFC's consistency, wtf am I doing?
+
+Evil. Necessary evil. // Oh, I have no idea.
+
+hmm.. How do we believe in Goodstein's theorem, or in the strengthened finite Ramsey theorem?
+
+Because we "know" that we are working in a standard model universe of PA? Because we have a conception of a standard model of PA, that PA itself is not confident of (PA certainly also understands that this standard model -- constructed e.g. by constructing ZFC within itself and PA within that, by Turing-equivalence -- believes in Goodstein's theorem, it just isn't confident about Goodstein's theorem itself -- you know, a stronger theory doesn't know more, it's just more confident)?
+
+We also know: that a Turing machine that searches for proofs of its own non-halting (and is programmed to halt if it finds one) will never halt.
+
+Do we know the answer to -- WE adopt a maxim to pause breathing if we believe we will never pause breathing; will we pause breathing? ?
+
+If the threshold for "believe" is 100%, then we will only believe that we will never pause breathing if we are 100% sure in our own soundness (because then we can reason: well if we do pause breathing, we must have believed that we never will, so we'd be wrong, which is impossible).
+
+If the threshold for "believe" is 75%, well... I mean it's certainly confusing with a perfectly Bayesian agent, isn't it? A perfectly Bayesian agent literally _cannot_ calculate the probability efficiently -- the shortest way to get the full information is to just wait for resolution. But we may follow _heuristics_, and then your continuous self-observation acts as an information flow, and your beliefs will keep jumping, like that market on Manifold Markets. NEED TO THINK ABOUT THIS MORE.
+
+Now for the other way in which we talk about CS and model theory together.
+
+We often say that a system that is strong enough to have programs has Godel. Let's recall the proof of this.
+
+Let F be our system. Let SPITE be a program that enumerates all the theorems of F, halting when it finds a proof of its own non-halting. Then F cannot prove "SPITE halts" or "SPITE does not halt".
+
+So all that is needed is for F to be able to reason about programs (note how while loops truly are essential), and for F's theorems to be computably enumerable.
+
+The first condition is kinda stupid -- I mean, I would put it on the right side of the implication sign -- if you're computably enumerable, then you cannot completely and consistently reason about computer programs. 
+
+Yeah -- if a computer can read your mind, you can't predict its behaviour completely. Where "read your mind" is formalized as semi-decidability, or computable enumerability. And "you" could be (a) a formal system (b) another computer program. 
+
+Is there any "Turing equivalence" shit going on here?
+
+Given the set of theorems that ZFC proves, can you find the set of programs that halt, and vice versa? Yes, but this isn't the point -- this just tells you that if you have an Oracle for ZFC you have an Oracle for Halting and vice versa. So this doesn't have to do with Turing equivalence.
+
+So what's with all the first-order logic bullshit?
+
+First-order arithmetic encodes the notion of "being powerful enough to talk about computer programs".
+
+That's it. That's all. Why though?
+
+We want to be able to represent any computable set using a first-order logic rule. Suppose membership in this computable set is decided by some program that returns 0 or 1. That program could be:
+(1) just a constant that returns 0 or 1 (i.e. the empty -- respectively universal -- set is computable). We can just write F -- respectively T -- for this.
+(2) some constant arithmetical expression. Again this is representable in arithmetic with equality.
+(3) some arithmetical expression in x. Again this is representable in arithmetic with equality.
+(4) some for loop, e.g. for i < 2: {f = a(f, x)}. Then logical operators.
+(4) some while loop. Then quantifiers.
+
+_Certainly_ first-order logic can express more than just computer programs.
+
+Here's a fact: a set is computable if it can be written both as a Sigma-1 statement (exists i, psi) and a Pi-1 statement (forall i, psi).
+
+OK OK OK THAT CLARIFIES THINGS.
+
+So if a set is computably enumerable -- if there's an algorithm to list its elements -- that's the same as saying exists i such that the output i of that algorithm is x.
+And if a set is co computably enumerable -- if there's an algorithm to list its non-elements -- that's the same as saying forall i the output i of that algorithm is not x.
+If the set is both -- then every element will eventually appear in the outputs of one of those algorithms, so the obvious algorithm to check if an element appears in both those sets terminates.
+
+We need to make this relationship between computability and the Arithmetical hierarchy more general, if we want to motivate the arithmetical hierarchy.
+
+It's straightforward. Sigma_(n+1) = Sigma_1[0^(n)]. This is Post's theorem.
+
+
+
+
+
+Curry-Howard
+
+Models/Interpretation -- models are really just oracles?
+
+Logic (think about what is needed for S's theorems to be r.e. and S to be able to reason about programs), Language (https://math.stackexchange.com/questions/1706116/not-all-recursively-enumerable-sets-are-recursive)
+
+Rice's theorem and Kolmogorov's zero-one law
+
+Lob's theorem, self-modification. https://mathoverflow.net/questions/427842/will-this-turing-machine-find-a-proof-of-its-halting
+
+The state should be "consistent" with each agent's actions.
+
+Algorithmically, this whole Godel stuff can be understood as a measurement problem. 
+
+Now re-cast this whole thing in a game-theoretic light -- if A predicts B's actions precisely, and B knows what A has predicted, then B can counter-play this, etc. etc. But instead if you have probability distributions, then you can have an equilibrium. But you know, this is not really natural. And the reason dynamics converge to equilibrium is precisely because of the flow of information.
+
+
+
+Uh uh wait
+
+hold on
+
+Ok wait wait, another line of thinking.
+
+You know how our knowledge of things depends on the output of algorithms?
+
+Like: suppose we have the following axiomatic system-- 
+H1) there are three horses: A, B, C 
+H2) each horse may be "good"
+H3) there exists exactly one good horse
+H4) there is at least one good horse between A and B
+Then we can prove: C is not a good horse.
+
+But this is something we need to _realize_. Something we need to prove, or, you know, something.
+
+So here, that algorithm might be the following: 
+lam H : C is a good horse, (something H3) something something idk whatever
+
+Wait so a proof is an algorithm?
+
+But we also talk about algorithms to discover proofs...
+
+I don't think that was the sort of "algorithm" we were talking about.
+
+Is it?
+
+"Provable theorem" = "Computable function"?
+
+Hold that thought.
+
+So at any point, there's only so much we actually know.
+
+And for other things -- we have probability distributions on it?
+
+Well not exactly. But let's say so for now.
+
+This means we assign probabilities to the outputs of algorithms.
+
+Well of course we don't actually. The act of assigning such probabilities also follows an algorithm, after all.
+
+In fact, we really don't.
+

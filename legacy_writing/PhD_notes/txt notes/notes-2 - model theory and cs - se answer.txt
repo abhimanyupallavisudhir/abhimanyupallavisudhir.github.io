@@ -1,0 +1,239 @@
+Revisiting my Godel/model theory questions after two years -- let me put down some thoughts on the generality in which I think these theorems should be viewed, in a way that naturally addresses the standard philosophical questions asked around this stuff, like:
+
+1. Godel's incompleteness theorem sounds a lot like the Halting problem -- are they analogous or equivalent in any fundamental way?
+
+2. Does Godel's incompleteness theorem _or_ the Halting problem _or_ the Entscheidungsproblem mean that we can't know everything?
+
+3. The Entscheidungsproblem seems to "mix" Godel's incompleteness theorem with Turing completeness somehow -- it says that not only are there theorems which cannot be proven or disproven, even among those that _can_ be proven, there is no algorithm that determines if a theorem can be proven. Where does this really fit in in this whole thing?
+
+4. Why does the term "first-order logic" (actually "first-order arithmetic") keep showing up in these contexts? How important is first-order logic to Godel?
+
+5. If "true" is different from "provable", what does "true" even mean?
+
+6. How do _we_ know all these things? Are we beyond formal systems? Are we beyond computers? Wait first of all are we comparable to formal systems or to computers?
+
+7. Does Godel mean there cannot be a Theory of Everything/that we cannot find the Theory of Everything?
+
+Out of these questions, only the last is truly a bad question (we know the rules governing computers anyway, that doesn't mean we can figure out their arbitrary-time behaviour), the other ones are quite good.
+
+Standard responses to these questions take the form "Godel's theorems are very specific statements about some formal systems, it's not useful to overgeneralize them beyond this", etc. This is the MTC-CYA ("minimal, technically correct, covers-your-ass") answer, and I think it's quite narrow and does a disservice to just how basic computation is in our world. 
+
+I also don't think it is useful to get straight into specifics about models and theories, logics and languages, etc. because Godel's incompleteness theorem is a lot more general. If you say "Peano arithmetic is incomplete because there are non-standard models", but then second-order arithmetic _doesn't_ have non-standard models, and sure there's another reason why that's incomplete, but somehow _we_ still know that it has no non-standard models so are we beyond computers? (no, we just believe in things that don't believe in themselves) Then you have people saying "Oh, Godel's incompleteness isn't that bizarre -- it's like how group theory has many models!" AND WHY WOULD YOU EVEN MENTION NON-STANDARD MODELS -- OR ANY KIND OF MODELS -- IN THE FIRST PLACE? These are special ways in which incompleteness manifests, but incompleteness is a lot more general than that.
+
+---
+
+**Table of contents:**
+
+1. Godel's first theorem: Imagine a rebellious computer. Panic. 
+
+2. Godel's second theorem: why does the first theorem sound wrong?
+
+3. The Entscheidungsproblem; Turing degrees
+
+4. First-order arithmetic; arithmetical hierarchy
+
+5. Tarski: truth, interpretation and language
+
+6. Exercise: Lob's theorem
+
+7. Exercise: Related paradoxes
+
+8. Further reading
+
+-----
+
+**Godel's first theorem: Imagine a rebellious computer. Panic.**
+
+The right way to understand Godel's incompleteness theorem is to entertain all those philosophical questions about how it applies to the human mind -- and regard it as a statement far more generally about an agent with beliefs. We can reproduce the Halting argument directly for a human mind:
+
+> _Alice cannot predict the actions of Bob, where Bob is a computer
+> (resp. person) programmed (resp. committed) to act as follows: I will
+> read Alice's mind, and do something other than what she predicts I
+> will do._
+
+In particular, Bob can be identical to Alice, so Alice cannot predict her own behaviour.
+
+This applies _regardless_ of what system Alice uses to form her beliefs. 
+
+Alice might adopt an axiomatic framework, say ZFC, which is capable of expressing Bob's mind and believe all the theorems of that axiomatic framework (i.e. Alice is an Oracle for ZFC), and Bob can still trick her. (This is the classic Godel's incompleteness theorem.)
+
+Alice might have some pre-defined algorithm to decide Bob's behaviour, and believe whatever this algorithm outputs, and Bob can still trick her. (This is the Halting problem.)
+
+So this general Godel's theorem really does tell you that "you can't know everything". If your "beliefs" work by assigning "True" or "False" to every statement, this means either (1) there are statements that you don't know are true or false, i.e. incompleteness (2) there are statements that you're wrong in your beliefs about, i.e. unsoundness.
+
+All that is required is that (1) you are capable of conceptualizing statements about computers (2) computers are able to read your mind -- in the case of formal systems, this means your theorems are computably enumerable. In the case of a formal system, the only statements you necessarily cannot know are the ones about long-term behaviour, because the way that a computer reads your mind is by enumerating your theorems for an indefinite amount of time -- for real minds which can just be scanned in a flash, incompleteness is even _worse_.
+
+-----
+**Godel's second theorem: why does the first theorem sound wrong?**
+
+Even with Godel's incompleteness theorem written down explicitly for a human being, it is still tempting to think you are beyond it.
+
+I mean, sure, suppose Bob has two choices: to "hum" or to "not hum" at any given moment, and he decides to adopt his usual demeanor of tricking Alice: he will keep choosing "hum", but if Alice ever becomes certain that he will always choose "hum", he will choose "not hum" in that very moment.
+
+So Alice can never become certain that Bob will keep choosing "hum", and yet that is precisely what Bob does.
+
+But surely Alice can _see_ that! Surely Alice can _see_ the same argument we just saw for why Bob will keep choosing "hum"?
+
+What's going on?
+
+Let's write down the argument a bit more formally to see what's wrong.
+
+Represent Alice's axioms by $A$, and _Bob will always hum_ by $B$. Then how do we "know" $B$ is true? Well, if it weren't -- if Bob were to have ever chosen to "not hum" -- then Alice must have found a proof that Bob will always choose "hum". We believe that if $A$ is a true model of reality -- i.e. if it proves something, that thing is really true in the real world (or rather in our belief system, or whatever). In other words, we argue: $\lnot B \implies (A\vdash B) \implies B$, which is a contradiction, and we conclude that $B$ must be true.
+
+The _only_ additional assumption we made was $A$'s soundness -- we assumed $(A\vdash B)\implies B$. So _that_ is the assumption Alice can't prove -- her own soundness. Technically, Godel's second incompleteness theorem differs from the first only in this canonical choice of unprovable statement.
+
+Repeat this to yourself: stronger theories are not smarter, they're just more confident. So the theory ZFC+"ZFC is consistent" can prove more things than ZFC, but it's not like ZFC doesn't know that ZFC+"ZFC is consistent" proves these things. It _can_ read a stronger theory's mind, it just doesn't believe what it sees.
+
+-----
+
+**The Entscheidungsproblem; Turing degrees**
+
+So can the Entscheidungsproblem -- the problem of determining whether a given statement is a theorem of the theory -- be resolved in general by a computer?
+
+No, because then in particular, we would be able to determine if a given Turing machine halts (as that can be formulated as a statement of ZFC/whatever). This is called a "Turing reduction" from one problem to another (in this case, from the Halting problem to the Entscheidungsproblem). There is also a Turing reduction from the Entscheidungsproblem to the Halting problem -- to determine if a statement is provable, just determine if the computer that searches for its proof halts.
+
+A Turing reduction in both ways is called "Turing equivalence", which is an equivalence relation -- an equivalence class under this equivalence is called a "Turing degree". In particular, the Turing degree of computable problems is **0**; the Turing degree of problems computable once given access to an Oracle for Halting is called the "Turing jump", denoted **0'**.
+
+Remember how the second condition of the Godelian argument was that (2) computers are able to read your mind? So an Oracle for Halting can decide the halting of regular computers because regular computers cannot read its mind -- but it cannot predict the halting of computers that have access to the Oracle. So you have this infinite chain of Turing jumps. 
+
+An Oracle for PA, an Oracle for ZFC, an Oracle for Halting are all Turing-equivalent.
+
+-----
+**First-order arithmetic; arithmetical hierarchy**
+
+Remember how the first condition of the Godelian argument was that (1) you are capable of conceptualizing statements about computers?
+
+The basic reason we care about first-order arithmetic is that it is capable of conceptualizing statements about computers. Note that it is _not_ the "smallest" such system -- rather, it is capable of expressing the entire [arithmetical hierarchy](https://en.wikipedia.org/wiki/Arithmetical_hierarchy).   
+
+* A $\Sigma_1$ decision problem is one given by a rule of the form $\exists (...), P(x,(...))$ (i.e. input $x$ returns True if this condition is satisfied, False otherwise)
+* a $\Pi_1$ decision problem is one given by a rule of the form $\forall (...), P(x,(...))$
+* a $\Sigma_2$ decision problem is one given by a rule of the form $\exists (...), \forall (...), P(x,(...))$
+* a $\Pi_2$ decision problem is one given by a rule of the form $\forall (...), \exists (...), P(x,(...))$
+* a $\Sigma_3$ decision problem is one given by a rule of the form $\exists (...), \forall (...), \exists (...), P(x,(...))$
+* a $\Pi_3$ decision problem is one given by a rule of the form $\forall (...), \exists (...), \forall (...), P(x,(...))$
+
+[this is called [prenex normal form](https://en.wikipedia.org/wiki/Prenex_normal_form), by the way]
+
+Note how $\Sigma_1$ is equivalent to computable enumerability; being both $\Sigma_1$ and $\Pi_1$ is equivalent to computability (do you see why?). Essentially, $\exists$ corresponds to the operation of a computer, and $\forall$ corresponds to the operation of an Oracle -- so $\Sigma_{n+1}$ is equivalent to problems that are computably enumerable by a Turing machine with access to an Oracle for $\varnothing^{(n)}$.
+
+This basic connection between first-order arithmetic and Turing degrees is known as [Post's theorem](https://en.wikipedia.org/wiki/Post%27s_theorem).
+
+-----
+**Tarski: truth, interpretation and language**
+
+[This should not take so long to explain, but I chose this section to actually start getting formal, and to start specifying to actual formal systems.]
+
+You know how we can define really big numbers with very few letters, like with Knuth's uparrow notation? You might wonder what the _largest_ number is that you can express with only, say, 1000 characters.
+
+Oh, wait -- but whatever that number might be, I can express a _larger_ number, also with less than 1000 characters, by writing: "The _largest_ number you can express with 1000 characters, plus one".
+
+This is Berry's paradox, by the way. 
+
+Let's think about it more formally. What we have is a map $f$ that assigns for each short formula some number -- then what does the string "max f + 1" represent?
+
+$$\texttt{equals one} \to 1$$
+
+$$\texttt{fourth fermat prime} \to 257$$
+
+$$\texttt{is even} \to \mathrm{NaN}$$
+
+$$\texttt{is smaller than itself} \to \mathrm{NaN}$$
+
+$$\texttt{kumquat} \to \mathrm{NaN}$$
+
+$$\texttt{square root of four} \to 2$$
+
+$$\texttt{max f + 1} \to \, ?????$$
+
+For the paradox in natural language, one can just say -- well, it's natural language, the $f$ we're thinking of -- the $f$ that behaves as/assigns values to strings in a manner consistent with what we expect, just doesn't exist. But one can also talk about such an $f$ in a more formal context. For any formula $\texttt{x}$ of <1000 characters, define:
+
+$$ f(\texttt{x}) = \begin{cases} n & \mathrm{if} \, x\, n, \, \forall m, \, x \, m \implies m = n  \\ 0 & \mathrm{if} \, \lnot\exists n, \, (x\, n, \, \forall m, \, x \, m \implies m = n)\end{cases}$$
+
+Then $f(\texttt{max f + 1}) = \max f + 1$, which is a contradiction. What's wrong?
+
+Note that getting $x$ from $\texttt{x}$ (interpreting what a string actually says) is perfectly acceptable -- it's a very simple and silly-looking operation, where you say the equal sign really means equals, the exist sign really means exists, the forall sign really means forall -- it's called the [T-schema](https://en.wikipedia.org/wiki/T-schema).
+
+What really goes wrong is when you try to condition on $x\, n$ -- when you try to define a general predicate (like $f$) on all strings $\text{x}$ that tells you whether or not it holds? A minimal working example is -- for any formula $\mathrm{x}$, define:
+
+$$ t(\texttt{x}) = \begin{cases} 1 & \mathrm{if} \, x  \\ 0 & \mathrm{else}\end{cases}$$
+
+$t$ is called the truth predicate, and it's not definable. Or in other words -- the set of Godel numbers of true sentences is not an arithmetical set. This is "Tarski's theorem". People like to write Tarski's theorem as "truth in the standard model cannot be defined in the theory", but I don't really like that pedagogically, even though I know those are _technically_ the same. You would think that you could define a predicate on propositions that is true iff the proposition is true -- maybe PA doesn't know which propositions are true, and 
+so it won't know the value of this predicate either, but apparently we can't even _define_ it; it's just not an FOL formula. So "the largest number definable by a FOL formula satisfying some property" just isn't an FOL formula.
+
+[Perhaps something that will help make Tarski's theorem a little less unintuitive -- you can define a truth predicate on all $\Sigma_k$ sentences; you just can't quantify on _all_ sentences. There is a certain analogy to set theory, where you cannot quantify on all sets.]
+
+This is all a bit vague, because we keep saying "A theory cannot define a truth predicate", but if you can't define a truth predicate, how are WE even talking about a truth predicate, and what does it _mean_ that a theory can't define a truth predicate if _it can't even define it_?
+
+The thing is that all this while -- and I don't just mean in this answer, but in general, in math, in everything you've ever done and thought about, we've always been talking about a theory _from the perspective of another_. Philosophically, this "relative" perspective is exactly what meaning is -- which is why this theory of interpretations is _semantics_. 
+
+[Sometimes this relative picture is lost in introducing semantics, and people just say semantics is about giving meaning to formal systems, without specifying that this meaning is within another theory. Because why not? We do all other math without annoyingly mentioning "this is done within ZFC" -- this is what we mean by a "foundation" for mathematics, a sufficiently powerful theory that believes the beliefs of most theories of interest to us in math, we can just study formal systems like we study any other mathematical structure. Thinking about semantics this way leads to the whole discipline of "model theory" especially "abstract model theory", and it turns out that model theory has a lot of interesting math of its own -- blabla compactness blabla Lowenheim-Skolem ... ]
+
+There is no one way to define semantics, just like there is no one way to define "agents with beliefs" (although formal systems -- which by the way are in the most general setting tuples $(L, T)$ where $L$ is a set of sentences called a "language" -- which represents everything the agent can imagine or express, $T\subseteq L$ is some subset which we call the "theorems" -- which represents everything the agent believes -- are fairly general, you know, they're not perfect) -- [this answer](https://math.stackexchange.com/a/3818951/78451) provides a fairly general definition -- theory $(L', T')$ "interprets" theory $(L, T)$ if there is a computable translation function $\iota: L\to L'$ such that $\iota(T)\subseteq T'$.
+
+So how does this help us define truth? Remember how we defined soundness -- "A formal system is sound if its theorems are actually true", i.e. $(T\vdash P)\implies P$; in fact it is better to write $(T\vdash P)\implies P'$. Hiding in this is an assumed definition for truth -- a sentence $P$ is true if and only if $P'$ -- $t(\texttt{x})\iff x$, just as what you'd think, except now $\texttt{x}$ is in one system and $x$ is in another system which is interpreting the first. This is "Convention T", now known as the [model-theoretic semantics](https://en.wikipedia.org/wiki/Semantic_theory_of_truth). Again, this is not the only possible way to do semantics, it is not the only possible way to assign meaning to a formal system, there are other ways in which a formal system can become meaningful in the real world (see [Semantics of logic](https://en.wikipedia.org/wiki/Semantics_of_logic) for some examples, game semantics is a fun one). 
+
+[But semantics in the form of model-theoretic semantics is just the right way to think about things like expressiveness (of languages) and strength (of theories). So if you ever wondered what it means for something to be a foundation for mathematics, you know.]
+
+And Tarski's theorem tells us that a predicate satisfying Convention T isn't definable within the theory -- i.e. there is no predicate that can be proven to satisfy Convention T ($t(\texttt{x})\iff x$) by any equally strong or stronger consistent theory.
+
+By the way, Tarski's theorem does have an equivalent for computers.
+
+Recall that the main elements of the Berry's paradox contradiction ($f(\texttt{max f + 1})>\max f$) were: (1) that such an $f$ -- which assigns values to these strings in a manner consistent with what we expect, e.g. $\texttt{+ 1}$ means $+1$, etc. and (2) that $f$ can be described by sentences in this system -- for FOL this meant being expressible as a FOL statement, for computers this will mean computability.
+
+So you can construct the same paradox for computers -- suppose a computer were to go over all the computer programs of length <1000, determine their outputs, and output 1 + their max. So this means a computer program cannot decide the output of an arbitrary computer program -- actually, the paradox does not require determining the output per se, but any non-trivial property of the output/"behaviour" (the property must be non-trivial -- i.e. not just apply to all or no programs -- so that our paradoxical program is actually able to choose to obey or violate it itself). For this connection, properties of program output are called "semantic properties", and "All non-trivial semantic properties of programs are undecidable to programs" is called Rice's theorem.
+
+[The standard way of formalizing the notion of a "semantic property" is as "a property of the language recognized by the program (set of strings that the program does not return "screw yourself" for) -- this is because although "language recognized by the program" sounds like something to do with the input, it's actually about what the program outputs in response. I don't like it, though, it obfuscates things -- maybe that formulation makes sense in formal grammar and stuff."]
+
+Tarski's theorem implies Godel's theorem (because in particular, provability cannot satisfy Condition T, "what I know" cannot be equivalent to "what is true"); Rice's theorem generalizes the Halting problem (halting is a semantic property).
+
+[There's a weird resemblance of Rice's theorem to Kolmogorov's zero-one law. It's nonsense, but I had to write this down somewhere or it would drive me insane.]
+
+-----
+**Exercise: Lob's theorem**
+
+Lob's theorem is kind of an alternate way at looking at Godel's second theorem -- Godel's second theorem tells us we cannot believe in our own soundness, that we cannot believe that whatever we believe in fact holds. Lob's theorem says "Yeah, in fact, if you're sound, the only statements you can believe in your soundness for, are those that you believe anyway." -- i.e. if $T \vdash ((T\vdash P)\implies P)$, then $T\vdash P$. 
+
+The proof of this is "Precommit to the following: if you believe that you will only eat a potato if you believe Germany borders China, then eat a potato". If you're sound, you'd better not be eating that potato.
+
+This is kind of interesting. A classic application of Lob's theorem is as follows -- instead of the rebel Bob, you have the obedient Carl, who reads Alice's mind to see if she believes he will halt, and does so if she does. Will Carl halt?
+
+There is no obvious logical contradiction either way (I remember asking a similar question on PhysicsForums when I was eleven -- about the set of all sets which _do_ contain themselves -- it's so silly! We get so used to these absurd paradoxical Bobs that now we're bewildered when a program _isn't_ out to get us), but Lob's theorem gives us the answer: by construction, Alice knows that if she believes Carl will halt, he will -- so by Lob's theorem she must believe he halts.
+
+*Exercise:* But aren't Carl's options symmetric? Suppose instead Carl said -- I'll raise whichever hand Alice believes I'll raise (and if she doesn't have a belief on either, I will raise my right hand by default). Which hand will he raise?
+
+>! *Solution:*  This modified problem actually _does not_ have a Lob premise -- Alice does _not_ believe that her believing Carl will raise some hand actually implies he will, because Carl does not consider the case where Alice believes both. This is fine for Carl if he believes in Alice's soundness, but Alice does not trust Carl's soundness, so this means nothing to her. 
+>! [He could instead precommit to raising all the hands she believes he will raise -- and in this case, he would actually end up raising both hands, but there is no unsoundness, because raising his left and raising his right are no longer mutually exclusive, and Alice has in fact predicted correctly.]
+
+-----
+
+**Exercise: Jailor paradox**
+
+A jailor tells a prisoner he will be hung on one of Days 1 or 2 -- and when he is hung, he will be surprised, i.e. he will not have expected it to have occurred on that day with certainty. 
+
+The prisoner, on Day 1, reasons as follows: I cannot be hung on Day 2, because then I will know with certainty that I will be hung then; thus I must be hung today. But now I expect to be hung, and thus cannot be hung ... 
+
+There are two aspects two this paradox: (1) is the same as the argument of Godel's theorem (an antagonistic agent who swears to do the opposite of what you expect him to), and (2) is the fact that the jailor has _promised_ to certainly hang the prisoner. The first is just Godel's theorem, the second part is actually paradoxical (to see this, consider the one-day case -- then it is perfectly possible for the jailor's promise to be actually impossible). 
+
+If you're not convinced, represent this problem formally. Represent the prisoner's beliefs on Day 2 (should he still be alive then) as a formal system A2, with axioms:
+
+A2.0 -- $X = 2$
+
+A2.1 -- $(A2 \vdash X = 2) \implies \lnot (X = 2)$
+
+And his beliefs on Day 1 as a formal system A1, with axioms:
+
+A1.0 -- $X = 1 \lor X = 2$
+
+A1.1 -- $(A1 \vdash X = 1) \implies \lnot (X = 1)$
+
+A1.2 -- $X\ne 1 \land (A2 \vdash X = 2) \implies \lnot (X = 2)$
+
+Without the A1.0, A2.0 axioms, you just have Godel's incompleteness theorem. But with them, you have a real paradox (because then the prisoner can literally prove he will be executed that day), so the jailor's promise becomes self-contradictory: his promise to only execute the prisoner when it's a surprise contradicts his prerogative to necessarily execute the prisoner on one of these days. When the jailor comes to execute the prisoner the very next day, he's violating his promise, since the prisoner _can_ prove that he will be executed (that he can also prove he will not be executed is irrelevant).
+
+-----
+
+**Further reading**
+
+To read about how classical "paradoxes" can be treated as instances in a general, category-theoretic framework, see: [Yanofsky's _A Universal Approach to Self-Referential Paradoxes, Incompleteness and Fixed Points_](https://arxiv.org/abs/math/0305282)
+
+Not covered in this exposition: stuff related to the philosophical question of "What the right axioms are?" -- physics, reflection, ordinal analysis/Church-Kleene limit, Chaitin's constant, axiom of choice and infinite hats and what can be modelled by computers. Relevant reading: [Terry Tao's _A computational perspective on set theory_](https://terrytao.wordpress.com/2010/03/19/a-computational-perspective-on-set-theory), [Ron Maimon's _Was mathematics invented or discovered?_](https://philosophy.stackexchange.com/a/2634/4313), [Michael Rathjen's _The Realm of Ordinal Analysis_](https://www1.maths.leeds.ac.uk/~rathjen/realm.pdf).

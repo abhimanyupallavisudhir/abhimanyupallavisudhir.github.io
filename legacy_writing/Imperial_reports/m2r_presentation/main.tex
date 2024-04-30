@@ -1,0 +1,112 @@
+\documentclass[9pt]{beamer}
+
+% \usepackage{etoolbox}
+% \makeatletter
+% Insert [short title] for \section in ToC
+% \patchcmd{\beamer@section}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+% Insert [short title] for \section in Navigation
+% \patchcmd{\beamer@section}{{\the\c@section}{\secname}}{{\the\c@section}{#1}}{}{}
+% Insert [short title] for \subsection in ToC
+% \patchcmd{\beamer@subsection}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+% Insert [short title] for \subsection  in Navigation
+% \patchcmd{\beamer@subsection}{{\the\c@subsection}{#2}}{{\the\c@subsection}{#1}}{}{}
+% \makeatother
+
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-cd}
+\usepackage{parskip}
+\setlength{\parskip}{\medskipamount}
+\makeatletter
+\newcommand{\@minipagerestore}{\setlength{\parskip}{\medskipamount}}
+\makeatother
+\usefonttheme{serif}
+\usetheme{miir}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{exl}[dfn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{lem}[dfn]{Lemma}
+\newtheorem{thm}[dfn]{Theorem}
+\newtheorem{cor}[dfn]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[dfn]{Remark}
+\newtheorem*{claim}{Claim}
+
+\newcommand\N{\ensuremath{\mathbb{N}}} % natural numbers
+\newcommand\Z{\ensuremath{\mathbb{Z}}} % integers
+\newcommand\Q{\ensuremath{\mathbb{Q}}} % rationals
+\newcommand\R{\ensuremath{\mathbb{R}}} % real numbers
+\newcommand\C{\ensuremath{\mathbb{C}}} % complex numbers
+
+\newcommand\Half{\mathbb{H}} % half-plane
+\newcommand\D{\ensuremath{\mathbb{D}}} % disc
+\newcommand\fatou{\ensuremath{\mathcal{F}}} % fatou set
+\newcommand\julia{\ensuremath{\mathcal{J}}} % julia set
+\newcommand\kulia{\ensuremath{\mathcal{K}}} % filled julia set
+\newcommand\nhd{\ensuremath{\mathcal{N}}} % neighbourhood 
+\newcommand\basin{\ensuremath{\mathcal{A}}} % basin
+\newcommand\petal{\ensuremath{\mathcal{P}}} % petal
+\newcommand\kettle{\ensuremath{\mathcal{Q}}} % kettle
+\newcommand\inv{^{-1}} % inverse
+
+\newcommand\iter[2]{#1^{\circ#2}} % iterates of a map
+\newcommand\inviter[2]{\iter{\left(#1\inv\right)}{#2}} %invorb
+\newcommand\minuset{\ensuremath{-}} % set difference
+\newcommand\tendsto{\longrightarrow}
+\newcommand\abs[1]{\ensuremath{\left|#1\right|}}
+\newcommand\norm[1]{\ensuremath{\|{#1}}\|}
+\newcommand\cl[1]{\ensuremath{\overline{#1}}} % top closure
+\newcommand\eps{\ensuremath{\varepsilon}} % standard epsilon
+
+\newcommand\fix{z^*}          % fixed point
+\newcommand\crit{z^{\#}}      % critical point
+\newcommand\linT{\phi}        % linearization
+\newcommand\linV{\psi}        % linearization the other way
+\newcommand\lin[1]{           % linearized version
+    \ensuremath{\hat{#1}}}    
+\newcommand\LinT{\Phi}        % linearization near infty
+\newcommand\LinV{\Psi}        % ditto 
+\newcommand\Lin[1]{           % ditto 
+    \ensuremath{\hat{#1}}}    
+\newcommand\TrT{\omega}       % substitution
+\newcommand\Tr[1]{            % substituted version
+    \ensuremath{\tilde{#1}}}
+\newcommand\sector{           % sector of the complex plane
+    \ensuremath{\Delta}}
+    \newcommand{\chart}{\zeta} % charts
+
+\title{Local Normal Forms of Analytic Maps Near Fixed Points}
+\author{
+    [CID -- 01515432] Yuze Jin\newline 
+    [CID -- 01514289] Anagh Malik\newline 
+    [CID -- 01492068] Abhimanyu Pallavi Sudhir\newline
+    [CID -- 01520955] Harmeet Singh\newline
+    [CID -- 01227888] Jean (Chia-Chun) Lo\newline 
+    {---}\newline
+    \textbf{Supervisor}: Davoud Cheraghi}
+\institute{Imperial College London}
+\date{\today}
+
+\begin{document}
+
+% title
+\titleframe
+% toc
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+% content
+% COMMENTING OUT FOR A BIT, COMPILATION IS TAKING FOREVER
+% and also everyone else is like, done, anyway
+\include{chapters/intro}
+\include{chapters/ch-08}
+\include{chapters/ch-09}
+\include{chapters/ch-10}
+\include{chapters/ch-11}
+\include{chapters/ch-11-b}
+
+\end{document}

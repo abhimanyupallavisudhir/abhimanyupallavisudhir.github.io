@@ -1,0 +1,9 @@
+You can't assign probability to things that depend on (or are correlated with) your beliefs...
+
+There are two matters to discuss here:
+
+(1) Reflection; what extent are we allowed to have beliefs about beliefs?
+
+(2) Logical correlation; Kolmogorov mutual information, and how algorithmic information is closely related to statistical information
+
+(3) Explicit construction of a mathematical conjecture that is "logically correlated with your beliefs".

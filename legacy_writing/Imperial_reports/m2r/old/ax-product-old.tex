@@ -1,0 +1,56 @@
+\begin{thm}\label{ax:thm:binomial}
+For a $t \in \R$ such that $\abs{t} < 1$,
+\[
+\sum_{j=0}^\infty {{j + k} \choose j} t^j = (1-t)^{-(k+1)}
+\]
+\end{thm}
+\begin{proof}
+This follows from the binomial theorem applied to $(1-t)^{-(k+1)}$, in which convergence holds since by hypotheses $\abs{t} < 1$:
+\[
+(1 - t)^{-(k+1)}
+= \sum_{j=0}^\infty {{-(k+1)}\choose j}(-1)^jt^j
+\]
+in which we note that by direct computation
+\[
+{{-(k+1)}\choose j} (-1)^j
+=
+{{-(j+k) + j - 1}\choose j} (-1)^j
+= {{j + k} \choose j}
+\]
+\end{proof}
+
+\begin{thm}\label{ax:thm:product}
+Let $\{a_k\}_{k \in \N}$ be a sequence of real numbers. Then if
+$\displaystyle \sum_{k \in \N} a_k$
+converges absolutely, then so does
+$\displaystyle \prod_{k\in \N} (1+a_k)$.
+\end{thm}
+
+
+\begin{thm}\label{ax:thm:product-2}
+Let $\{a_k\}_{k \in \N}$ be a sequence of real numbers such that
+$\displaystyle \sum_{k \in \N} a_k$
+converges. Suppose furthermore that $0 < a_k < 1$ for each $a_k$. Then $\displaystyle \prod_{k\in \N} (1-a_k) > 0$.
+\end{thm}
+\begin{proof}
+It suffices to show this for $\sum_{k\in\N} a_k = S < 1$ (otherwise, choose $N$ sufficiently large so that $\sum_{k=N}^\infty a_k < 1$, and see that
+\[
+\prod_{k\in \N} (1-a_k) = \left(\prod_{k=0}^{N-1} (1-a_k)\right)\left(\prod_{k=N}^{\infty} (1-a_k)\right)
+\]
+in which the finite product is positive by hypothesis on $a_k$. Now
+\[
+(1-a_0)(1-a_1) = 1 - a_0 - a_1 + a_0a_1 \ge 1 - (a_0 + a_1)
+\]
+and for any finite $n \in \N$,
+\begin{align*}
+\prod_{k=0}^{n+1} (1-a_k) &= (1+a_{n+1}) \prod_{k=0}^{n} (1-a_k)\\
+&> (1-a_{n+1})(1-\sum_{k=0}^n a_k)\\
+&\ge 1 \cdot (1-\sum_{k\in\N} a_k) = 1-S
+\end{align*}
+Therefore the sequence
+$\{ \prod_{k=0}^{n} (1-a_k) \}_{n\in\N}$ is bounded below by a positive constant, so we may pass into the limit and conclude
+\[
+\prod_{k\in\N} (1-a_k) \ge 1 - S > 0
+\]
+in which the convergence of the product follows from applying Theorem \ref{ax:thm:product} to the sequence $\{-a_k\}$.
+\end{proof}

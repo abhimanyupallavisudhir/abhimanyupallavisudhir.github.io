@@ -1,0 +1,63 @@
+RESOLVED
+
+-- 1. THE MAIN STUFF --
+
+a) Learn the Dutch book arguments for probability theory, utility theory, Bayes theorem -- link them to financial arbitrage and think of an "algorithmic generalization thereof".
+
+b) Think: a perfectly rational agent "controlling" a boundedly rational agent, learning through it etc.
+
+c) Intelligence is ... capacity for arbitrary self-improvement? programs as choices?
+
+d) Write down the BR algorithm exactly.
+
+-- 2. LOGIC STUFF --
+
+a) Figure out the precise connection between computer science and model theory. 
+
+   i) Algorithmic reachability, what an agent can realistically know
+   ii) Formalizing ideas of "what we know" and "what we can talk about"
+   iii) "Function we can't compute" vs. "Theorem we can't prove" X(w)
+
+b) Special cases:
+
+   i) Godel, logical uncertainty, model theory of discovery algorithms
+   ii) TOE, X(w)
+   iii) C-T thesis, strong computability hypothesis
+   iv) Prisoner's dilemma and the argument for (correlated) equilibrium
+   v) RCT/pseudo-randomness/unbiased
+   vi) Turing completeness of agents, intelligence
+   vii) "Algorithmic" foundation of mathematics
+
+-- 3. BACKGROUND AND LIT REVIEW --
+
+a) Read Cenry, Correlated Equilibrium
+
+b) Write "connections between BR and MD"
+
+   0) Obviously, a full theory of MD requires BR
+   i) Not being exploitable/no-arbitrage
+   ii) Centrality of complexity
+   iii) Bayes rationality leads to correlated equilibrium, bounded rationality leads to equilibrium calculation algorithm?
+   iii) BR can be modeled as markets (?) 
+   iv) Zero-intelligence leads still to efficiency
+   v) Godel's incompleteness and Market pricing inefficiency for "YES if NO" asset
+   vi) Turing completeness and Arrow completeness
+
+c) Read: 
+
+   i) Singh et al, Subramanian et al
+   ii) ACT-R/EPIC/SOAR
+   iii) Halpern
+   iv) Golbeck to understand Rub/Pap
+   v) MIRI on self-modification
+
+d) Write proper lit-review saying things like -- 
+
+   i) alternate understanding of a program, everything is BR
+   ii) what is the measure of intelligence?
+   iii) Aspects people have looked at in the past:
+        - finite automata
+        - information lack
+   iv) As-if just pushes things down the road.
+   v) Dismissing it as an approx dismisses the richness of phenomena
+   vi) Logical uncertainty etc. yes ideally we'd be unbeatable Dutch but

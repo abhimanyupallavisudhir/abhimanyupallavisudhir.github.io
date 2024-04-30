@@ -1,0 +1,287 @@
+% chapter 09 - Anagh
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section{Superattracting fixed points} 
+\label{sec:9}
+
+\subsection{Introduction}
+
+In this section we will be dealing with \emph{superattracting} fixed points i.e. where the multiplier $\lambda = 0$. As before we can assume without loss of generality our map has a fixed point at 0 and so has the form
+
+\begin{equation}
+    \label{9:eq:1}
+    f(z) = a_pz^p + a_{p+1}z^{p+1}\dots = \sum_{k=p}^{\infty} a_{k}z^k
+\end{equation}
+
+where $p\geq 2$, $a_p \neq 0$. Here $p$ is called the \emph{local degree}. 
+
+\subsection{Böttcher's Theorem}
+
+It is reasonable to expect that we cannot define a \emph{linearisation} near superattracting fixed points, as the linear aspect of our function is zero. We thus look to \emph{higher derivatives} of $f$ at the fixed point in order to characterise the local behaviour. More generally, we consider a substitution that causes $f$ to locally behave like the power map $z \mapsto z^p$ near the fixed point.
+
+\begin{thm}
+    \label{9:thm:bottcher}
+    Let $f$ be as in Eq.~\ref{9:eq:1}. Then there exists a holomorphic change of coordinates $\lin{z} = \linT(z)$, such that $\linT(0) = 0$ and $\linT'(0) = 1$, where $\linT(f(z)) = \phi(z)^p$ in a neighbourhood of 0. Furthermore, $\linT$ is unique up to multiplication by a $(p-1)^{th}$ root of unity. 
+\end{thm}
+
+\begin{proof}
+
+For convenience, let $h(z)=cz$ where $c$ is some $(p-1)^{th}$ root of $a_p$. Then $h$ conjugates $f$ to a simpler form
+
+$$ \left(h\circ f \circ h\inv\right)(z) = cf(z/c) = c \sum_{k=p}^{\infty} a_{k}z^k/c^k = z^p +\sum_{k=p+1}^{\infty} a_k z^k/c^k= z^p +\sum_{k=p+1}^{\infty} b_k z^k$$
+
+Hence, we may assume without loss of generality that 
+\[
+f(z) = z^p +\sum_{k=p+1}^{\infty} b_k z^k = z^p(1+\eta(z))
+\]
+where $\eta(z) = \sum_{k=1}^{\infty} b_k z^k$.
+
+Now let $0<r<\frac{1}{2}$ be sufficiently small so that $\forall z \in \D_r,\, \abs{\eta(z)}<\frac{1}{2} $. Then if $z \in \D_r$, we have
+
+$$\abs{f(z)}=\abs{z^p(1+\eta(z))}<\frac{3}{2}\abs{z}^p\leq \frac{3}{4}\abs{z}$$
+
+since $\abs{z}<\frac{1}{2}$. Hence $f$ maps $\D_r$ into itself, with $f(z) \neq 0\; \forall z \in \D_r \minuset \{0\}$. It follows then that $\D_r$ is invariant under any iterate $\iter{f}{k}$.
+
+\begin{claim}
+$\iter{f}{k}(z) = z^{p^k}(1+p^{k-1}b_1z +z^2q(z))$ for some polynomial $q$ in $z$.
+\end{claim}  
+\begin{subproof}
+This is clearly the case for $k=1$, and assuming the statement for $k$, we see:
+
+\begin{align*}
+    \iter{f}{(k+1)}(z) & = f(\iter{f}{k}(z)) \\
+    & = f(z^{p^k}(1+p^{k-1}b_1z +z^2q(z))) \\
+    & = z^{p^{k+1}}(1+p^{k-1}b_1z+z^2q(z))^p(1 + \eta(\iter{f}{k})) \\
+    & = z^{p^{k+1}}(1+p^k b_1z +z^2r(x))
+\end{align*}
+\end{subproof}
+
+We now define $\linT_k : \D_r \to \C$ for $k=1,2\dots$ which will converge uniformly to our $\linT$ on $\D_r$. Specifically,
+
+$$\linT_k(z) = (\iter{f}{k}(z))^{\frac{1}{p^k}} = z(1+p^{k-1}b_1z +z^2q(z))^\frac{1}{p^k}$$ 
+
+where we take the unique $p^{k}-th$ root so that the Taylor expansion of $\linT_k(z)$ about $0$ is of the form
+\[
+\linT_k(z) = z(1+\frac{b_1}{p}z+\dots)
+\]
+
+This gives us the recursive relation $\linT_k(f(z)) = (\iter{f}{(k+1)}(z))^{\frac{1}{p^k}} = \linT_{k+1}(z)^{p}$. We make the substitution $\Tr{z} = \TrT(z) := \log(z)$. Due to the restriction of $z$ to $\D_r$, we have $Re(\Tr{z})<\log(r)$. Let $\Half_r$ denote the set of points that satisfy this inequality. Then $\TrT$ conjugates $f$ to $\Tr{f}$, where
+
+\begin{align*}
+    \Tr{f}(\Tr{z}) & = \log(f(e^{\Tr{z}})) \\
+    & = \log(e^{p\Tr{z}}(1+\eta(e^{\Tr{z}})) \\
+    & = p\Tr{z}+\mathrm{Log}(1+\eta(e^{\Tr{z}}))
+\end{align*}
+
+Note we can take the principal branch of the logarithm, since $1+\eta$ is contained in the ball centred at 1 of radius $\frac{1}{2}$ and hence $\Tr{f}$ is a holomorphic function $\Half_r \to \Half_r$ (due to the invariance of $\D_r$ under $f$). Now we also have: 
+
+\begin{equation}
+    \label{9:eq:2}
+    \abs{\Tr{f}(\Tr{z})-p\Tr{z}} = \abs{\log(1+\eta)} \leq \log(2) < 1
+\end{equation}
+
+since $\abs{\eta} < \frac{1}{2}$, as established previously. Hence, $\TrT$ also conjugates $\linT_k$ to $\Tr{\linT}_k$, where $\Tr{\linT}_k(\Tr{z}) = \log(\linT_k(e^{\Tr{z}}))=\frac{\Tr{f}^{k}(\Tr{z})}{p^k}$. This is also a holomorphic function $\Half_r\to\Half_r$. Now using Eq.~\ref{9:eq:2}, we have:
+
+$$
+\abs{\Tr{\linT}_{k+1}(\Tr{z}) - \Tr{\linT}_{k}(\Tr{z})}=\abs{\frac{\iter{\Tr{f}}{(k+1)}-p\iter{\Tr{f}}{k}(\Tr{z})}{p^{k+1}}} < \frac{1}{p^{k+1}}
+$$
+
+
+Then if $k>l$:
+
+$$\abs{\Tr{\linT}_{k}(\hat{z}) - \Tr{\linT}_{l}(\hat{z})}\leq \frac{1}{p^k}+\frac{1}{p^{k-1}}+\dots+\frac{1}{p^{l+1}}<\frac{1}{p^{l+1}}\frac{p}{p-1}$$
+
+We see that the final inequality $\tendsto 0$ as $l \tendsto \infty$. Hence, it follows that $\{\Tr{\linT_k}\}_{k\in \N}$ is a uniformly convergent sequence because of the Cauchy property.
+
+Now the exponential function is a contraction on $\Half_r$, since $\abs{e^z}=\abs{e^{a+bi}}=\abs{e^a}$, and $\Half_r$ is a subset of the left half plane (the result of contraction follows simply from ML inequality). Hence we have that $\linT_k$ is also a Cauchy sequence i.e. uniformly convergent.
+
+Now with the uniform convergence of $\phi_k$, where $k=1,2\dots$ we can take the limit from both sides of the recursive relation to end up $\linT(f(z)) = \linT(z)^p$. It is also easy to see that $\linT(0) = 0$ and $\linT'(0) = 1$ (this will help use define an inverse later on). Hence we are done with existence. 
+
+
+ Now to prove \textbf{uniqueness}. Firstly using the Inverse Function Theorem we notice that since $\linT'(0) = 1$, there is an open subsets U containg 0, so that $\linT$ is invertible on the restriction to U. Now if two maps $\linT_1$ and $\linT_2$ conjugate $f$ to the power map in some neighbourhood of 0, then $\linT_1 \circ \linT_2\inv$ conjugates the power map to itself in some neighbourhood of 0. So now we can limit ourselves to the case when $f(z)=z^p$, suppose $\linT(z) = c_1z + c_kz^k\dots$ conjugates $f$ to itself, then we have $\linT(f(z)) = \linT(z)^p$ i.e:
+
+$$c_1z^p + c_kz^{pk} \dots = c_1^pz^p + pc_1^{p-1}c_kz^{p+k-1}\dots$$
+
+comparing coefficients, we see $c_1^{p-1} =1$ and all higher coefficients are 0 (since degrees don't match up). And so we see $\linT_1 = c_1\linT_2$ and hence we are done.   
+
+
+\end{proof}
+
+
+Notice we can't extend $\linT$ throughout the basin of attraction if we want a biholomorphic map, if for example a point gets mapped into the fixed point by $f$, we will run into problems with the way we defined $\linT$. We can however extend the absolute value of $\linT$:
+
+\begin{thm}
+\label{9:thm:absval}
+Let $f$, $\linT$ be as in Theorem \ref{9:thm:bottcher} with basin of attraction of 0, $\basin$. Then the function $\abs{\linT}$ extends uniquely to a continuous map $\abs{\linT} : A \to [0,1)$, which satisfies the identity $\abs{\linT(f(z))} = {\abs{\linT(z)}}^{n}$.
+\end{thm}
+
+\begin{proof}
+Let $\linT_0$ be the map from Theorem \ref{9:thm:bottcher}, defined on $K \subset \basin$. For every $z \in \basin$, there exists $k$ s.t $\iter{f}{k}(z) \in K$, by definition of basin of attraction. Then, for any $z \in \basin$ and such a $k$, we define:
+
+$$\abs{\linT(z)} := \abs{\linT_0(\iter{f}{k}(z))}^\frac{1}{n^k}$$
+
+This is the unique continuous extension of $\abs{\linT_0}$. 
+
+To show $\abs{\linT}$ is continuous fix any $r\in \basin$. Let $k$ be such that $\iter{f}{k}(r)\in K$. Then due to continuity of $\iter{f}{k}$, there is a neighbourhood of $r$, which also gets mapped into $K$ then the result follows by the composition of continuous functions. Also notice, since $\linT(0)=0$ we have $\abs{\linT(z)}^{p^{k}} = \abs{\linT(\iter{f}{p}(z))}\tendsto 0$ (where p is the local degree of $f$), so we must have $0\leq\abs{\linT(z)}<1$.
+\end{proof}
+
+Now we can ruminate on how far $\linT$ can be extended. Of course this is not meaningful to generalize since as mentioned before, we could have a point mapped to the fixed point by $f$ in the basin. It is hence more meaningful to discuss the extension of the local inverse of $\linT$, which we have already understood exists, this follows from the Inverse Function Theorem and the fact that $\linT'(0) = 1$. If $\linV_r$ is the local inverse, we will extended it to $\linV$ with the theorem below: 
+
+
+\begin{thm}
+\label{9:thm:extension}
+Let $f$ and $\linT$ be as in Theorem \ref{9:thm:bottcher} and let $\linV_r$ be inverse of $\phi$ defined on an open neighbourhood of 0, $V$ . Then there exists a unique open disc $\D_\eps$ around 0 of maximal radius $0<\eps \leq 1$ such that $\linV_r$ extends holomorphically to a map $\linV$ from the disc into the immediate basin $\basin^0$ of $0$. If $\eps=1$, then $\linV$ maps the unit disc biholomorphically onto $\basin^0$ and $0$ is the only critical point of f in the basin. On the other hand if $\eps<1$ then there is at least one other critical point of $f$ in $\basin^0$, lying on the boundary of $\linV(\D_\eps)$.
+\end{thm}
+
+\begin{proof}
+ By holomorphic continuation we can extend $\linV_r$ as stated in the theorem to some disc of radius $\eps\leq1$. Then we have by Theorem \ref{9:thm:bottcher}, $q(z) := \linV(z^p)-f(\linV(z)) = 0$ on $V$ and since $q$ is holomorphic, we can use the Permanence Principle \ref{app:thm:permanence} from which we deduce $q=0$ on $\D_\eps$, similarly we get for all k, $\iter{f}{k}(\linV(\lin{z})) = \linV\left(\lin{z}^{p^{k}}\right)$ . From this we get (since $\abs{\lin{z}}<1$), as as $k\tendsto \infty$:
+
+$$\iter{f}{k}(\linV(\lin{z})) = \linV(\lin{z}^{p^{k}}) \tendsto \linV(0) = 0$$
+
+Combining that with the fact that $\linV$ is continuous and $\D_\eps$ is connected, we get $\linV(\D_\eps) = U \subset \basin^0$, since $0 \in U$.
+
+We will now show that  $\linV$ is conformal and injective, then for the case $\eps=1$ we will show it maps onto the whole immediate basin, this with the Inverse Function Theorem gives biholomorphism for that case. 
+
+Firstly suppose that ${\linV}'(\lin{z}) = 0$, for some $\lin{z}$. Then by chain rule and the functional equation we have ${\linV}'\left(\lin{z}^{p^k}\right) = 0$ for $k = 1, 2\dots$ Now we see $\{\lin{z}^{p^k}\}_{k\in\N}$ forms a sequence of critical points converging to 0, but then by continuity ${\linV_{r}}'(0) = 0$, which is a contradiction with the Theorem
+\ref{9:thm:bottcher}. 
+
+For injectivity we must first have for small $\lin{z}$, we have $\abs{\linT(\linV(\lin{z}))} = \abs{\linT(\linV_r(\lin{z}))} = \abs{\lin{z}}$ and by Theorem~\ref{9:thm:absval} and using the functional equation we have: 
+
+$$\abs{\linT(\linV(\lin{z}))}^{p^{k}} = \abs{\linT(\iter{f}{k}(\linV(\lin{z})))}=\abs{\linT(\linV(\lin{z}^{p^k}))} = \abs{\lin{z}}^{p^{k}}$$
+
+hence we can extend the the identity $\abs{\linT(\linV(\lin{z}))} = \abs{\lin{z}}$ to $\D_\eps$. Now suppose $\linV(\lin{z}_1) = \linV(\lin{z}_2)$, then applying $\abs{\linT}$, we get $\abs{\lin{z}_1}=\abs{\lin{z}_2}$. We must have some minimal value $t$ such that $\exists \lin{z}_1, \lin{z}_2 \in \D_\eps, \abs{\lin{z}_1}=\abs{\lin{z}_2}=t$ and $\linV(\lin{z}_1)=\linV(\lin{z}_2)$, due to injectivity of $\linV_r$. We then have by $\linV$ being an open mapping (by the Open Mapping Theorem \ref{app:thm:openmapping}) for $\lin{z}_1'$ sufficiently close to $\lin{z}_1$, $\exists \lin{z}_2'$, such that $\linV(\lin{z}_1')=\linV(\lin{z}_2')$ and $\abs{\lin{z}_1'}=\abs{\lin{z}_2'}<t$, contradiction. Hence $\linV$ is one-to-one. 
+
+Now to see that for the case $\eps = 1$, we have a biholomorphism suppose $U=\linV(\D_1)$. For a contradiction we can assume $U \neq \basin^0$, then since $U\subset \basin^0$, we must have $z_0 \in \partial U$, with $z_0 \in \basin^0$ and since $\partial U$ is contained in $\linV(\partial \D_1)$, we can have a sequence $\linV(\lin{z}_j) \tendsto z_0$, where $\abs{\linT(\linV(\lin{z}_j))} \tendsto \abs{\linT(z_0)}$, so $\abs{\linT(z_0)} = 1$, this gives a contradiction for the image of $\basin$ under $\abs{\linT}$. This also completes the discussion about critical points in this case.
+
+Now when $\eps <1$, for $U$ as before, we have using the functional equation and continuity:
+
+$$f(U) = f(\linV(\D_\eps))=\linV(\D_{\eps^n}) \subset \linV(\cl{\D_{\eps^n}}) \subset \cl{\linV(\D_{\eps^n})}$$
+
+so we have $U \subset f\inv(\cl{\linV(\D_{\eps^n})}))$. Now the right hand side is closed (continuity of f), we have $\cl{U} \subset f\inv(\linV(\cl{\D_{\eps^n}})) \subset \basin$, due to connectedness we have $\cl{U} \subset \basin^0$. This shows that $\partial U \subset \basin^0$. 
+
+Now all that is left is to show there's a critical point of $f$ on $\partial U$. Suppose $\partial U$ contains no critical points of f. Otherwise, let $\lin{z}_0 \in \partial \D_\eps$ and let $z_o$ be an accumulation point of $\linV(\lin{z}_0t)$, where $t\in [0, 1)$ as $t \tendsto 1$. Then by the Inverse Function Theorem we can find open sets $W, V$ such that $z_0 \in W$ and $f(z_0)\in V$, where $f$ is invertible on them with holomorphic inverse $f\inv$. Hence for all $z \in W$ we have $f\inv(f(z))=z$. We can this extend $\linV$ to $W$, by some neighbourhood of $\lin{z}_0$, by $\linV(\lin{z}) = f\inv(\linV(\lin{z}^p))$. Doing this for all points on $\partial \D_\eps$, due to compactness of the boundary, we can increase $\eps$ contradicting the minimality of it. 
+
+\end{proof}
+
+\begin{exl}
+To actually make more sense of our deliberations we will present an example of such a B\"ottcher map. It doesn't often happen that we can find a closed form expression for these kind of transforms. Take the rational function:
+
+$$f(z) = \frac{z^2}{1-2z^2} \approx z^2+2z^4+4z^6\dots$$
+
+with the expansion valid for $\abs{z}<\frac{1}{\sqrt{2}}$. We can see there's a super-attracting fixed point at 0 and furthermore there's no critical points except at $z=0$. Hence by our Theorem \ref{9:thm:extension} the extension of the inverse of the map will be valid in whole of $\D_1$. In this case it is in fact easier to give the inverse $\linV$, which should satisfy the functional equation $f(\linV(\lin{z})) = \linV(\lin{z}^2)$, since the local degree is 2. Our inverse in this case is given by:
+
+$$\linV(\lin{z}) = \frac{\lin{z}}{1+\lin{z}^2}$$
+
+We then see:
+
+$$f(\linV(\lin{z})) = f\left(\frac{\lin{z}}{1+\lin{z}^2}\right) = \frac{\lin{z}^2}{1+\lin{z}^4} = \linV(\lin{z}^2)$$
+\end{exl}
+
+
+\subsection{Polynomial Dynamics}
+
+Everything we have done so far has been proved for $\C$. However these results can be generalised to the Riemann Sphere $\widehat{\C}$, which will help us understand the behaviour of a polynomial near infinity. More definitions and discussions on the Riemann Sphere can be found in the Appendix. 
+
+Let 
+\begin{equation}
+f(z) = a_dz^d + a_{d+1}z^{d+1}\dots+a_1z + a_0
+\end{equation}
+
+where $d\geq 2$ be defined on the Riemann Sphere. We can assume without loss of generality $a_d \neq 0$ in fact by using the conjugation $cf(\frac{z}{c})$, where $c^{d-1} = a_d$ we can get a monic polynomial, so we limit our discussion to this case. 
+
+Now we can move on some results helping us understand how such polynomials behave at infinity and how we can apply our previously established results there and in parallel we will get a more concrete idea of the set of elements with bounded orbits for such maps. We formalise this as:
+
+\begin{dfn}
+We call the set of all $z \in \widehat{\C}$ with a bounded orbit under f the \emph{filled Julia set} of f, $\kulia = \kulia(f)$. 
+\end{dfn}
+
+\begin{thm}
+\label{9:thm:1.6}
+For any polynomial $f$ of degree at least 2, the filled Julia set $\kulia \subset \widehat{\C}$ is compact, with connected complement and with $\partial \kulia = \julia = \julia(f)$ (the Julia set) and with interior equal to the union of all the bounded components $U$ of the Fatou set $\widehat{\C}\setminus\julia$. Thus $K$ is equal to the union of all such $U$ and $\julia$ itself. 
+\end{thm}
+
+\begin{proof}
+We can assume without loss of generality that $f$ is monic as previously discussed. Clearly as $\abs{z} \tendsto \infty$, we have $\frac{f(z)}{z^d} \tendsto 1$. Hence $\exists r_0 \in \R_{\geq 2}$ such that $\abs{\frac{f(z)}{z^d}-1}<\frac{1}{2}, \forall \abs{z}<r_0$, then:
+$$\abs{f(z)}>\frac{\abs{z^d}}{2}>2\abs{z}$$
+
+By induction it is easy to notice $\abs{\iter{f}{k}}>2^kr_0$, hence clearly $\iter{f}{k}(z) \tendsto \infty$. 
+
+Let $U = {z: \abs{z}>r_0}$. Define $\basin(f, \infty)$ as the set of all elements with an unbounded orbit under $f$. Then clearly we have:
+
+$$\basin(f, \infty) = \{z : \exists k \in \Z, \iter{f}{k}(z) \in U\} = \bigcup\limits_{k=0}^{\infty} \inviter{f}{k}(U) $$
+
+Now since $U$ is open (as a complement of a closed set) and f is continuous, we have $\basin(f, \infty)$ is open and hence (as we have $K = \hat{C} \minuset \basin$) $K$ is closed. It is also bounded (contained in $\cl{\D_{r_0}}$) and hence it is compact. By Lemma~\ref{app:lem:julia} we have $\partial \kulia = \partial \basin = \julia(f)$. 
+
+We must now show that $\basin=\basin(f, \infty)$ is connected. 
+Let $V$ be any connected component of the Fatou set. By Lemma~\ref{app:lem:julia} it is either contained in $\basin$ or disjoint from it. If $V$ is unbounded then it unique (it contains all of $U$) and hence it is contained in $\basin$. So all that is left is to show any bounded component of the Fatou set is disjoint from $\basin$. Let $V$ be such a bounded component. For contradiction suppose $V\subset \basin$. Then $\partial V \subset \partial \basin \subset K$, so by Maximum Modulus Principle $\abs{\iter{f}{d}(z)} \leq r_0, \forall z \in V$. Hence $V$ is contained in $K$, contradiction. So $\basin$ is the unique unbounded component, hence it is connected and we are done. 
+
+\end{proof}
+
+Now we can further consider the fixed point at $\infty$ of the polynomial $f$ of degree $\geq 2$. Using the same notation as at the start of the section, we can make the substitution $Z = \frac{1}{z}$. And take the rational map (to study it's behaviour at 0):
+
+$$F(\zeta) = \frac{1}{f(1/\zeta)}$$
+
+Then assuming $f$ is monic, near $\infty$, $f(z) \approx z^d$. By that we have near 0, $$F(Z) \approx \frac{1}{z^d} = Z^d$$
+
+Hence (as $d\geq 2$) we have a super-attracting fixed point of $F$ at 0. This can be also shown more explicitly using the power series:
+
+$$F(Z) =\frac{z^{-d}}{1+a_{d-1}z^{-1} + a_{d-2}z^{-2}+\dots a_0z^{-d} } = \frac{Z^d}{1+a_{d-1}Z+a_{d-2}Z^2 +\dots a_0Z^d} =$$ 
+$$= Z^d \sum_{i=0}^{\infty}\left(a_{d-1}Z+a_{d-2}Z^2 +\dots a_0Z^d\right)^i = Z^d - a_{d-1}Z^{d+1}\dots$$
+
+Then from Theorem \ref{9:thm:bottcher} we can get a map $\LinT$, which conjugates $F$ locally around 0 to the power map $\Lin{z} \mapsto \Lin{z}^d$. Again by a change of coordinates we get:
+
+$$\linT(z) = \frac{1}{\LinT(\frac{1}{z})}$$
+
+which maps some neighbourhood of $\infty$ biholomorphically onto another neighbourhood of $\infty$. We then have:
+
+$$\linT(f(z)) = \linT(z)^d$$
+
+This motivates our next and final theorem, which is also a simple corollary of all that we have done so far:
+
+\begin{cor}
+Let $f$ be a polynomial of degree $\geq 2$. If the filled Julia set $\kulia$ contains all of the finite critical points of f, the complement of $\kulia$ is conformally isomorphic to the exterior of the closed unit disc $\cl{\D_1}$ under an isomorphism:
+
+$$\linT: \widehat{\C}\minuset \kulia \to \widehat{\C} \minuset \cl{\D_1}$$
+
+which conjugates $f$ to the $d$-th power map. On the other hand if at least one critical point of $f$ belongs to $\C\minuset \kulia$, then the map $\linT$ is defined on a subset of $\hat{C}\minuset \kulia$.
+
+\end{cor}
+
+\begin{proof}
+Bearing the discussion prior to this Corollary in mind, we see that a natural conjugate of $\LinT$, $\linT$ arises in a neighbourhood of infinity. 
+
+Consider first when there are no critical points in the basin $\basin(f, \infty)$, then there are no critical points in $\basin(F, 0)$ and by connectedness proved in Theorem \ref{9:thm:1.6} we see that due to Theorem \ref{9:thm:extension} the inverse of $\LinT$ is defined on $\LinV : \D_1 \to \basin(F, 0)$, so naturally we have $\LinT : \basin(F, 0) \to \D_1$ and so:
+
+$$\linT: \widehat{\C} \minuset \kulia \to \widehat{\C} \minuset \cl{\D_1}$$
+
+As $\basin(f, \infty) = \widehat{\C} \minuset \kulia$ and $\LinT(Z) \in \D_1 \implies \linT(1/Z) = \frac{1}{\LinT(Z)} \in \widehat{\C} \minuset \cl{\D_1}$. 
+
+The other case is done analogically considering Theorem \ref{9:thm:extension}. 
+
+\end{proof}
+
+Before ending this section we will give a final example with binds all of the results we have seen so far. It is connected to the example we considered before closed form expressions of B\"ottcher maps aren't easy to come by, so we have to recycle:
+
+\begin{exl}
+Let's take the map:
+
+$$f(z) = z^2 -2$$ 
+
+This has a super-attracting fixed point at $\infty$. Then notice if we use the same method we previously discussed (substitute $Z = 1/z$ and get map $F(Z)$), we get a map:
+
+$$F(Z) = \frac{1}{f\left(\frac{1}{Z}\right)} = \frac{Z^2}{1-2Z^2}$$
+
+which is the exact same map as in the previous example with a fixed point at 0. Hence we can use the $\linV$ analogically to how we discussed finding $\linT$. For $F$ we had the local inverse $\LinV(\Lin{z}) = \frac{\Lin{z}}{1+\Lin{z}^2}$, here we have:
+
+$$\linV(\lin{z}) = \frac{1}{\LinV(1/\lin{z})} = \lin{z} +\frac{1}{\lin{z}}$$
+
+which considering the critical points of $f$ will be defined on $\widehat{\C} \minuset \cl{\D_1}$. For verification we find:
+
+$$f\left(\lin{z} + \frac{1}{\lin{z}}\right) = \lin{z}^2 + \frac{1}{\lin{z}^2} = \linV(\lin{z}^2)$$
+
+
+\end{exl}
+    
+\end{document}

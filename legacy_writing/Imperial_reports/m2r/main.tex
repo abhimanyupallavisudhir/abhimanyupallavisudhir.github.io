@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage{parskip}
+\usepackage[doublespacing]{setspace} % paragraph & doublespacing, put this back before submission
+\usepackage{subfiles} % to compile individual chapters
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz-cd} % commutative diagrams
+
+
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage[top=3cm, bottom=3cm, left=2.4cm, right=2.4cm]{geometry} % smaller margins
+\usepackage{url} % toc links
+\usepackage{mleftright}
+\usepackage{framed} % remove afterwards, this is for editing notes
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{exl}[dfn]{Example}
+
+\theoremstyle{plain}
+\newtheorem{lem}[dfn]{Lemma}
+\newtheorem{thm}[dfn]{Theorem}
+\newtheorem{cor}[dfn]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[dfn]{Remark}
+\newtheorem*{claim}{Claim}
+
+%\newcommand{\comment}[1]{}
+\newcommand\note[1]{\begin{framed}\textit{editing note:} #1\end{framed}}
+\newcommand\todo[1]{\begin{framed}\textbf{to do:} #1\end{framed}}
+% Harmeet wants nested proofs. style this later
+\newenvironment{subproof}[1][\proofname]{\begin{proof}[#1]}{\end{proof}}
+
+\newcommand\N{\ensuremath{\mathbb{N}}} % natural numbers
+\newcommand\Z{\ensuremath{\mathbb{Z}}} % integers
+\newcommand\Q{\ensuremath{\mathbb{Q}}} % rationals
+\newcommand\R{\ensuremath{\mathbb{R}}} % real numbers
+\newcommand\C{\ensuremath{\mathbb{C}}} % complex numbers
+
+\newcommand\Half{\mathbb{H}} % half-plane
+\newcommand\D{\ensuremath{\mathbb{D}}} % disc
+\newcommand\fatou{\ensuremath{\mathcal{F}}} % fatou set
+\newcommand\julia{\ensuremath{\mathcal{J}}} % julia set
+\newcommand\kulia{\ensuremath{\mathcal{K}}} % filled julia set
+\newcommand\nhd{\ensuremath{\mathcal{N}}} % neighbourhood 
+\newcommand\basin{\ensuremath{\mathcal{A}}} % basin
+\newcommand\petal{\ensuremath{\mathcal{P}}} % petal
+\newcommand\kettle{\ensuremath{\mathcal{Q}}} % kettle
+\newcommand\inv{^{-1}} % inverse
+\newcommand\alt{^{\prime}} % prime
+\newcommand\iter[2]{#1^{\circ#2}} % iterates of a map
+\newcommand\inviter[2]{\iter{\left(#1\inv\right)}{#2}} %invorb
+\newcommand\minuset{\ensuremath{\setminus}} % set difference
+\newcommand\tendsto{\longrightarrow}
+\newcommand\abs[1]{\ensuremath{\left|#1\right|}}
+\newcommand\norm[1]{\ensuremath{\|{#1}}\|}
+\newcommand\cl[1]{\ensuremath{\overline{#1}}} % top closure
+\newcommand\eps{\ensuremath{\varepsilon}} % standard epsilon
+
+\newcommand\fix{z^*}          % fixed point
+\newcommand\crit{z^{\#}}      % critical point
+\newcommand\linT{\phi}        % linearization
+\newcommand\linV{\psi}        % linearization the other way
+\newcommand\lin[1]{           % linearized version
+    \ensuremath{\hat{#1}}}    
+\newcommand\LinT{\Phi}        % linearization near infty
+\newcommand\LinV{\Psi}        % ditto 
+\newcommand\Lin[1]{           % ditto 
+    \ensuremath{\hat{#1}}}    
+\newcommand\TrT{\omega}       % substitution
+\newcommand\Tr[1]{            % substituted version
+    \ensuremath{\tilde{#1}}}
+\newcommand\sector{           % sector of the complex plane
+    \ensuremath{\Delta}}
+    \newcommand{\chart}{\zeta} % charts
+
+% Tips on using above macros:
+% * If you need to use multiple of something
+%   transformations, subscript them as _1, _2 etc.
+% * But if you have just two and one of them is "central",
+%   then use prime, e.g. \lin and \lin\prime. This shows up
+%   e.g. in proving uniqueness of stuff. 
+
+\newcommand\Dioph[1]{\mathcal{D}(#1)} % Diophantine number
+
+% for email thingies, your choice of formatting
+% but tbh with five names i suspect any shoice would look hideous anyway. Yep!
+\newcommand\email[1]{\footnote{\texttt{#1}}}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+% \renewcommand{\floatpagefraction}{.8} % in case any images decide to capture other people's property
+
+% for horrible multi-line computations
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand\by[1]{\text{\footnotesize{(#1)}}}
+
+\title{Local Normal Forms of Analytic Maps Near Fixed Points}
+
+\author{
+Yuze Jin \email{yuze.jin18@imperial.ac.uk}
+\and Jean (Chia-Chun) Lo \email{chia-chun.lo17@imperial.ac.uk}
+\and Anagh Malik \email{anagh.malik18@imperial.ac.uk}
+\and Abhimanyu Pallavi Sudhir \email{abhimanyu.pallavi-sudhir18@imperial.ac.uk}
+\and Harmeet Singh \email{harmeet.singh18@imperial.ac.uk}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This report provides an introduction to local behaviour of iterating analytic functions near fixed points and is completed as a part of the M2R group project. We first lay down the foundations for and motivate this study of local behaviour, identifying different classes of dynamics. Throughout each section, we explore these classes one by one and also look to establish various normal forms. Specifically, we will look at conjugating our function to reduce the system to a much easier case from which we can immediately conclude dynamical behaviour. This will involve many notable theorems such as those of Koenigs, B\"ottcher, Cremer and Siegel, which will allow us to classify a broad range of local behaviour.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+\subfile{chapters/intro}
+\newpage
+\subfile{chapters/08}
+\newpage
+\subfile{chapters/09}
+\newpage
+\subfile{chapters/10}
+\newpage
+\subfile{chapters/11-a-1}
+\subfile{chapters/11-b}
+\subfile{chapters/11-seagulls}
+\subfile{chapters/11-a-2}
+\subfile{chapters/11-pictures}
+\clearpage
+\subfile{chapters/appendix}
+\newpage
+\subfile{chapters/acknowledgements}
+\subfile{chapters/references} 
+
+\end{document}

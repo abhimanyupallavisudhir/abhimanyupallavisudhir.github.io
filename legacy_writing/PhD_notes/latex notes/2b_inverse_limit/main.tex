@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\title{The $\sigma$-algebra inverse limit thing}
+\author{Abhimanyu Pallavi Sudhir}
+\date{13 November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Dummy}
+
+\begin{definition}[Maximal Introspection -- single-observer]\label{def:introspection}
+
+Let $\EVENT^0$ be a set, called the base partition, and define a sequence $\seq{\EVENT^n}$ by the following recurrence:
+
+\begin{align*}
+    \PROBS^{n} &= \set{\PROB : \EVENT^{n} \to [0, 1] \con \sum_{\event\in\EVENT^n}\PROB(\event)=1} \\
+    \EVENT^{n+1} &= \EVENT^0 \times \PROBS^{n}
+\end{align*}
+
+($\PROBS^{n}$ should be read as the probability measure defined by ``the $(n+1)$-level agent on the $n$-level partition'') -- and define for $m\le n$ the projection $\proj^{mn}:\EVENT^n\to\EVENT^m$ transitively via composition on the following recurrence:
+
+\begin{align*}
+    \proj^{01}\bra{\event^0, \PROB^0} &= \event^0 \\
+    \proj^{m(m+1)}\bra{\event^0, \PROB^m)} &= \tup{\event^0 \com 
+    \function{\eventG}{\EVENT^{m-1}}{\sum_{\eventH\in\inv{\proj^{(m-1)m}}\left(\eventG\right)}{\PROB^m(\eventH)}}}
+\end{align*}
+
+Then $\seq{\EVENT^n}$ forms an inverse family under these connecting morphisms, and we call the inverse limit $\EVENT := \varprojlim \EVENT^n$ the ``maximally introspective extension'' of $\EVENT^0$.
+
+\end{definition}
+
+Concretely, an element of $\EVENT$ is an element of $\EVENT^0$ along with a sequence of probability distributions such that each successive probability distribution that ``refines'' the previous. Examples of ``interpreting''/coarsening an event in $\EVENT^{n+1}$ as an event in $\EVENT^n$ (because this is the tricky bit) in Figs~\ref{fig:proj01},~\ref{fig:proj12},~\ref{fig:proj23} respectively.
+
+To be sure, this definition is pretty lacking -- it doesn't quite suffice for formulating G\"odel's theorem, because any program you place in $\EVENT^0$ is unable to refer to the agent's beliefs, which are located in the finer $\sigma$-algebras. A fuller description -- for an agent rather than an observer, and for multiple agents -- would require a more general (perhaps category-theoretic) definition, which would also provide a formal justification for this inverse-limit construction. I can probably do this fairly easily.
+
+But this does provide us with a toy model to figure out exactly how an inverse-limit construction avoids Cantorian issues, whether this $\EVENT$ should be interpreted as a $\sigma$-algebra or a sample space, etc. 
+
+\begin{figure}
+    \centering
+    \input{proj01.tex}
+    \caption{$\proj^{01}$}
+    \label{fig:proj01}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{proj12.tex}
+    \caption{$\proj^{12}$}
+    \label{fig:proj12}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{proj23.tex}
+    \caption{$\proj^{23}$}
+    \label{fig:proj23}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,48 @@
+GRAND IDEA: A general theory of as-if, in which a bounded rational agent is a rational agent with imperfect information
+
+> Idea 1: Based on Halpern/program-equilibrium ideas, thinking quite literally about how a "Halpernian agent" is really oh-so-perfectly-rational. Take cues from economics, where an inefficient market is still oh-so-perfectly-efficient -- we want a mind-market correspondence. 
+
+> Idea 2: Now more generally think about how to interpret a program as OSP rational. I think this may involve taking "interpretations" of agents by other agents -- like a general theory of semantics, perhaps a "utilitarian theory of semantics". And OSP rationality would be "interpretation of a program by a CK-rational agent (?)". This is the general theory of as-if. 
+
+> Idea 3: All changes to beliefs are from information; thus computation is information. How does this work? Maybe the real idea is: information theory without probabilities.
+
+> Idea 4: The weird thing about all this is ... there are limits to Bayesian reasoning, right? Because you can't assign a probability to anything correlated with your beliefs. 
+
+>> So what's the best way to act when there is something correlated with your beliefs? Is there a CK interpretation of such a decision theory? 
+[Hypothesized answer: there is no "best way", you can get arbitrarily better as you go up the ordinal ladder up to CK, but maybe that takes more and more computational power, so maybe there is a best way.]
+
+>> Some general logic stuff I need to learn:
+   - [reflection] How do we know reflection is right?`
+   - [reflection] Why reflection up to computable ordinals only? Above that does the theory cease to be computably enumerable?
+   - [reflection] Formalize the agent-based formulation: for agents to be able to reflect on their beliefs/to have opinions on things correlated with their beliefs. Why can't they reflect to an uncomputable ordinal? Write down a toy agent reflecting.
+   - [reflection] So is "reflecting" a rational thing to do or what? Like if an agent has some sigma algebra, is it the Bayes-rational thing to do to reflect? If so, to reflect how much? Or is this beyond Bayes? Maybe think of beliefs as choices ... 
+   - [choice] So you know, the idea is: I believe that you can talk about things like "this event will eventually/never occur", which is why you can do first-order logic, which quantifies over the natural numbers (omega). Why can you quantify over ordinals higher than omega? And why can('t) you quantify over non-computable ordinals?
+   - [choice] Can we say: a set is anything you can define a choice function on? And that's why ZFC allows a choice function on any set, but maybe what we really want is for a choice function for only sets with computable well-orderings? Is this DC?
+   - [ait] First give examples of logical vs statistical correlation.
+   - [ait] does this help us understand how algorithmic information is related to statistical information?
+   - [ait] Explicit construction of a mathematical conjecture that is "logically correlated with your beliefs" maybe based on a toy model of a reasoner.
+   - [ait] So how does the "logical correlation" argument relate to the "not enough information" argument? Think of e.g. a market and whether it has enough information to predict stuff.
+   - [ait] Similarly explain how Godel statement etc. are "logically correlated with your beliefs" and why "the set of all sets" etc. is logically correlated with your beliefs
+   - [ait] Do you eventually (after the event) find the answer to Godel's program? So does this mean "universal truth" eventually reveals itself, that the CK ordinal is essentially the knowledge of an agent at t = infinity?
+
+---
+
+LITERATURE TO READ
+
+Halpern (also give bounded optimality a skim)
+Tennezholtz
+The Life and Work of Gregory Chaitin
+What is a Free Lunch?
+MIRI logical induction: 29, 30 + https://www.lesswrong.com/posts/WmNeCipNwg9CmGy3T
+
+
+
+
+---
+
+IMPLICATIONS
+
+> (related to Idea 1) This will allow us to formulate our general framework of market dynamics, as we can just define it as a bunch of Halpernian agents -- then we can formulate all our assumptions as informational.
+
+> (related to Idea 2) We can then sort-of think about "What are a program's beliefs?" by giving it a utilitarian semantics. E.g. answer questions like "Does this program really believe ZFC or just believe that ZFC believes stuff?" and "Who would win in a fight, logic or computation?"
+

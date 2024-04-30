@@ -1,0 +1,183 @@
+\documentclass[../main.tex]{subfiles}
+\newcommand\postcrit{P}
+\newcommand\dist{\operatorname{dist}}
+\newcommand\deriv[2]{{#1}'(#2)}
+\begin{document}
+
+
+% chapter 11-specific stuff starts here
+\subsection{Siegel Discs and the Postcritical Closure}
+
+\note{I gave up on the attempt to set up all the machinery for this section, this will just be the statements of the theorems in the final report.}
+
+In the previous sections, we've shown that every attracting periodic orbit attracts a critical point (Theorem \ref{8:thm:orbcrit}), and that every parabolic fixed point contains a critical point in each of its basins (ah fuck, did we not cover theorem 10.15 in Milnor?). For an irrationally indifferent fixed point, there are again relations --- albeit less direct --- between the dynamics and the set of critical points.
+
+\begin{dfn} The \emph{postcritical closure} $\postcrit$ of a map $f : \hat{\C} \to \hat{\C}$ is the topological closure of the strict forward orbits of the critical points of $f$:
+\[
+\postcrit = \postcrit(f) = \cl{\bigcup\limits_{n > 0} \iter{f}{n}(V)}
+\]
+in which $V = \{ z \in \hat{\C} \mid \deriv{f}{z} = 0\}$.
+\end{dfn}
+
+Equivalently, $\postcrit(f)$ is the smallest closed set that contains the critical values of $\iter{f}{n}$ for every $n > 0$. 
+
+The main result of this section will be that $\postcrit(f)$ contains the attracting periodic orbits of $f$, as well as  the indifferent periodic orbits of $f$ which lie in the Julia set. In particular, 
+
+The following lemma takes care of the exceptional case:
+
+\begin{lem}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$. If $\abs{\postcrit(F)} < 3$, then $f$ is conjugate to $z \mapsto z^{\pm d}$.
+\end{lem}
+\begin{proof}
+    By the Riemann-Hurwitz formula, $f$ has $2d-2$ critical points, counting with multiplicity. See first that it cannot have only one critical point, since (invoking the hypothesis that $d \ge 2$) the single critical point would then have multiplicity $2d-2 > d-1$, which is absurd.
+    Furthermore, $f$ cannot have a single fixed point 
+    After conjugating by a Möbius transformation we may ...
+    
+    
+\end{proof}
+
+\subsubsection{The Poincaré Metric and the Schwarz-Pick Lemma}
+
+In this section we present an abridged account of some machinery.
+
+\begin{dfn}[Riemannian metric]
+(something something inner product on tangent spaces.
+\end{dfn}
+
+It turns out that every hyperbolic Riemann surface admits, up to a positive constant multiple, a unique Riemannian metric that is invariant under conformal automorphisms.
+
+If we in addition impose the condition that
+
+We shall depend on the existence and uniqueness of Poincaré metric in the following discussion, but we do not give details of the construction. Instead, we present a couple of examples: in the case where we are considering a Riemann surface which is a subset of $\C$, 
+
+\begin{exl}[unit disc]
+The Poincaré metric on $\D$ is given by
+\[
+ds = \frac{2\abs{dz}}{1-\abs{z}^2}
+\]
+\end{exl}
+
+\begin{exl}[punctured disc]
+The Poincaré metric on $\D\setminus \{0\}$ is given by
+\[
+ds = \frac{\abs{dz}}{\abs{z} \log(1/\abs{z})}
+\]
+\end{exl}
+
+
+
+\begin{dfn}[Poincaré arclength]
+The \emph{length} of a path $\gamma : [a, b] \to S$ in a hyperbolic Riemann surface $S$ equipped with its Poincaré metric, is defined to be
+\[
+\int_a^b \norm{\deriv{\gamma}{t}} dt
+\]
+\end{dfn}
+
+This notion of length enables us in turn to speak of \emph{distances} between points on a Riemann surface:
+
+
+\begin{lem}\label{11:lem:pre-schwarz-pick}
+Let $S$ and $T$ be hyperbolic Riemann surfaces equipped with their respective Poincaré metrics, and let $f : S \to T$ be holomorphic. Then $\norm{\deriv{f}{z}} \le 1$ for all $z \in S$, with equality when and only when $f$ is a covering map.
+\end{lem}
+
+We do not present a proof of this lemma here. We do derive from it the following consequence:
+
+\begin{lem}[Schwarz-Pick]
+Let $S$ and $T$ be hyperbolic Riemann surfaces equipped with their respective Poincaré metrics, and let $f : S \to T$ be holomorphic. 
+\begin{itemize}
+    \item \emph{isometry.} $f$ is a conformal isomorphism and preserves Poincaré distances:
+    \[
+    \dist_T(f(z_1), f(z_2)) = \dist_S(z_1, z_2)
+    \]
+    for all $z_1, z_2 \in S$.
+    \item \emph{covering.} $f$ is a nontrivial covering map, and
+    \[
+    \dist_T(f(z_1), f(z_2)) \le \dist_S(z_1, z_2)
+    \]
+    for all $z_1, z_2 \in S$.
+    \item \emph{contraction.} $f$ strictly decreases all non-zero distances. Furthermore, for compact $K \subseteq S$, there exists constant $c < 1$ such that
+    \[
+    \dist_T(f(z_1), f(z_2)) \le c \dist_S(z_1, z_2)
+    \]
+\end{itemize}
+\end{lem}
+\begin{proof}
+
+In all other cases $\norm{\deriv{f}{z}} < 1$ for all $z \in S$. Then we observe the following inequality: for $K \subseteq S$ compact and $z_1, z_2 \in K$, take $\gamma : [a, b] \to S$ a curve with length equal to $\dist_S(z_1, z_2)$, then after possibly choosing a larger compact $K' \supseteq K$ so that the image of $\gamma$ falls entirely within $K'$, we have
+\begin{align*}
+\dist_T(f(z_1), f(z_2))
+&\le \int_a^b \norm{\deriv{(f \circ \gamma)}{t}} dt
+&\by{definition of $\dist_T$}\\
+&\le \int_a^b \norm{\deriv{f}{\gamma(t)}} \norm{\deriv{\gamma}{t}} dt
+&\by{chain rule and sub-multiplicativity of operator norm}\\
+&\le \max_{z \in K'} \norm{\deriv{f}{z}} \int_a^b \norm{\deriv{\gamma}{t}} dt &\\
+&\le c \dist_S(z_1, z_2) &\by{by hypothesis on $\gamma$}
+\end{align*}
+in which $c = \max_{z \in K'} \norm{\deriv{f}{z}} < 1$ is a constant.
+\end{proof}
+
+\subsubsection{Expansion outside of the Postcritical Closure}
+
+
+\begin{lem}\label{lem:julia-in-cl-union}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$ and suppose $\abs{\postcrit(f)} \ge 3$. Then the Julia set of $f$ is contained in the closure of $\bigcup_{n \ge 0} P_n$. In particular, for every $z$ in the Julia set,
+\[
+\dist_Q(z,P_n) \tendsto 0 \quad\text{as}\quad n \tendsto \infty
+\]
+\end{lem}
+\begin{proof}
+Equivalently it suffices to show that the complement $U = \hat{\C}\setminus\cl{\bigcup_{n \ge 0} P_n}$ is contained in the Fatou set.
+
+Therefore the family $\{\iter{f}{n}\}$ defined on $U$ omits 
+\end{proof}
+
+
+
+\begin{thm}\label{11:thm:expansion-one}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$ and suppose $\abs{\postcrit(f)} \ge 3$. Then for all $z$ such that $f(z) \notin \postcrit(f)$ we have
+\[
+\norm{\deriv{f}{z}} \ge 1
+\]
+with respect to the Poincaré metric on $Q$.
+\end{thm}
+\begin{proof}
+
+\end{proof}
+
+\begin{thm}\label{11:thm:expansion-iter}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$ and suppose $\abs{\postcrit(f)} \ge 3$. Then for all $z$ in the Julia set whose forward orbit stays outside of $\postcrit(f)$ (i.e. $\iter{f}{n}(z) \notin \postcrit(f)$ for every $n \ge 0$), we have
+\[
+\norm{\deriv{(\iter{f}{n})}{z}} \tendsto \infty
+\]
+as $n \tendsto \infty$, with respect to the Poincaré metric on $Q$.
+\end{thm}
+\begin{proof}
+
+\end{proof}
+
+\begin{thm}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$. Then its postcritical closure $\postcrit$ contains all attracting fixed points, as well as all indifferent fixed points which lie in the Julia set.
+\end{thm}
+\begin{proof}
+In the case where $\abs{\postcrit(f)} < 3$, $f$ is conjugate to $z \mapsto z^{\pm d}$, which has
+\begin{itemize}
+    \item either attracting fixed points $0$ and $\infty$ in the case of $z \mapsto z^d$, or no attracting fixed points (but an attracting periodic orbit $\{0, \infty\}$) in the case $z \mapsto z^{-d}$.
+    \item no indifferent fixed points --- one might see this by computing the power series around any other fixed point to find that it has multiplier $d$ with $\abs{d} \ge 2$, and must therefore be repelling.
+    \item postcritical closure $P = \{0, \infty\}$.
+\end{itemize}
+thus we see that the conclusion holds in this case. In all other cases $\abs{\postcrit(f)} \ge 3$, and the conclusion follows from the two preceding results: by Theorem \ref{11:thm:expansion-one} a fixed point which does not lie in $\postcrit(f)$ cannot be attracting; by Theorem \ref{11:thm:expansion-iter} a fixed point in the Julia set whose forward orbit is disjoint from $\postcrit(f)$ cannot be indifferent.
+\end{proof}
+
+\begin{rmk}
+In particular, $\postcrit(f)$ contains every Cremer fixed point. Furthermore, for every Cremer fixed point $\fix$ there is at least once critical point which contains $\fix$ in the closure of its forward orbit: this follows from $\fix \in \postcrit(f)$ together with the fact that $f$ has at most finitely many critical points.
+\end{rmk}
+
+\begin{thm}
+Let $f : \hat{\C} \to \hat{\C}$ be a rational map of degree $d \ge 2$. Then the boundary of every Siegel disc is contained in $\postcrit(f)$.
+\end{thm}
+\begin{proof}
+In the case where $f$ is conjugate to $z \mapsto z^{\pm d}$, $f$ has no Siegel discs and the conclusion holds vacuously. Thus assuming $\abs{\postcrit(f)} \ge 3$:
+\end{proof}
+
+
+\end{document}

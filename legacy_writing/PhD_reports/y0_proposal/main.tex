@@ -1,0 +1,219 @@
+%% Base on http://tex.stackexchange.com/questions/150900/latex-coding-for-statement-of-purpose
+
+\documentclass{article}
+\usepackage[
+  %a4paper,
+  margin=1in,
+  headsep=12pt, % separation between header rule and text
+]{geometry}
+\usepackage{fancyhdr, xcolor, lastpage, enumitem}
+%\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage[scale=1]{tgschola}
+
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex#Reference_guide
+% https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
+% https://www.overleaf.com/learn/latex/Biblatex_citation_styles (this link often gets misplaced)
+\usepackage[ 
+  backend = biber, 
+  sorting = none, 
+  style = numeric-comp,
+]{biblatex}
+\addbibresource{references.bib}
+%\usepackage{cite}
+%\usepackage[natbibapa]{apacite}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+  \footnotesize\sffamily
+  \yourname\quad
+  %web: \textcolor{blue}{\itshape\yourweb}\quad
+  \textcolor{blue}{\youremail} \quad
+  Research proposal, 2022 PhD
+  \vspace{3pt}
+  }
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+
+\newcommand{\soptitle}{Towards a theoretical framework for algorithms of market dynamics}
+
+\newcommand{\yourname}{Abhimanyu Pallavi Sudhir}
+\newcommand{\youremail}{ap6218@imperial.ac.uk}
+\newcommand{\yourweb}{https://abhimanyu.io}
+
+\newcommand{\statement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\textbf{#1.}}\space
+}
+
+\newcommand{\substatement}[1]{\par\medskip
+  %\textcolor{blue}
+  {\emph{#1.}}\space
+}
+
+\usepackage[
+  breaklinks,
+  pdftitle={\yourname - \soptitle},
+  pdfauthor={\yourname},
+  unicode
+]{hyperref}
+
+\begin{document}
+
+\begin{center}
+\LARGE\soptitle%\\
+%\large [Research Proposal, 2022 PhD]
+\end{center}
+
+\hrule
+%\vspace{1pt}
+%\hrule height 1pt
+
+\bigskip
+
+%Broadly speaking, I am interested in studying algorithms for multi-agent co-ordination (referred to as ``market algorithms'' in the proceeding text); this is an area of significant theoretical importance that lies at the intersection of machine learning and theoretical economics, and has wide-ranging applications in both fields.
+
+%More specifically, I propose several closely-aligned research problems aimed at investigating the relationships between the market algorithms that exist in the literature, including a somewhat ambitious proposal of an idea for a general theoretical framework for market dynamics. I believe that this research will have appl 
+
+%Broadly speaking, I am interested in the intersection of machine learning and theoretical economics in the sense of algorithms for multi-agent co-ordination. This is an exciting field with great potential for cutting-edge research as well as applications and connections to numerous related fields including: algorithmic game theory, non-equilibrium phenomena, agent-based simulation, computational economics and multi-agent co-ordination.
+
+%More specifically, I wish to study market dynamics from an algorithmic perspective. While there exists research 
+
+%I will briefly review the literature that exists pertaining to this field and comment on the relationships between the several approaches discussed; I will then identify potential research ideas for exploration and describe their general unifying theme; finally, I will discuss the applications of this project and how it fits in with the department's research.
+
+%\substatement{TL;DR} I suggest that market dynamics could be viewed from an abstract lens wherein the market mechanism is itself a (unique) equilibrium of a larger temporal game. This will allow for a unified theoretical framework to study the multitude of equilibrium computation and multi-agent co-ordination algorithms, and affords numerous applications in machine learning and theoretical economics.
+
+Broadly speaking, I am interested in studying market dynamics from an algorithmic perspective. This is a problem at the intersection of machine learning and theoretical economics, and has significant potential for cutting-edge research as well as applications and connections to related areas in both economics and computer science.
+
+To state the research problem more precisely, I will need to first develop some background. I will first describe the significant literature there exists on ``market algorithms'' (algorithms on markets, whether for equilibrium computation or optimization), and more specifically on my problem of interest: modeling ``real'' market dynamics in terms of these algorithms. 
+
+The closest line of research to this problem I am aware of is probably Kanoria et al \cite{bayati1, bayati2, bayati3}, who demonstrate an equivalence between a simple model of market dynamics and a belief propagation algorithm. I am more generally interested in creating a unified theoretical framework for market algorithms, which predicts them as the dynamics on a market given some agent-level assumptions.
+
+The most immediate implications of my research would be in agent-based computational economics; more computer science oriented implications are described in subsequent sections.
+
+\statement{Background} 
+
+There are several different methodologies/perspectives to studying market dynamics and equilibrium computation. I briefly review them below, and highlight the differences between them and their limitations. 
+
+\substatement{Algorithmic game theory} There are numerous algorithms studied in mechanism design that amount to computing the equilibrium of a game. We refer to \cite{agt:5, tesfatsion, gode} for reviews of these mechanisms -- of particular interest is the case when agents are organized into a graph \cite{kakade} and algorithms based on double auctions \cite{tagiew, mcafee}, such as on a supply chain \cite{babaioff-nisan, babaioff-walsh}.
+
+These algorithms are typically considered over the setting of an artificially-designed market, such as an online supply chain, and the dynamics of the game are thus ``hard-coded'' into the system, as it is an engineering problem. 
+
+\substatement{Multi-agent learning} Of particular interest are repeated games, in which the agents in the system must learn to optimize their actions to their environment. There is extensive research on multi-agent reinforcement learning \cite{zhang, canese}, as well as other algorithms for game dynamics like no-regret learning \cite{calliess}. These concern themselves with optimization by explicitly strategic agents; the agents' internal algorithms may have varying degrees of computational efficiency.
+
+\substatement{Message-passing algorithms} Message-passing algorithms are commonly used in multi-agent co-ordination; a classic example is Max-Sum \cite{rogers}. 
+
+These algorithms are typically for optimization rather than equilibrium computation, and require full collaboration. If we are interested in predicting market dynamics from individual-level assumptions about agents' interests, then this sort of algorithm may entail less realistic assumptions, or be less promising. Furthermore, Max-Sum is computationally expensive to scale \cite{khan}, which raises doubts as to how realistic it is as a model of economic computation in real markets. 
+
+However, the perspective that market dynamics is fundamentally a matter of information propagation is worth entertaining, and is also a perspective that is shared by Kanoria et al \cite{bayati1, bayati2, bayati3}.
+
+\substatement{Out-of-equilibrium phenomena} The ``economic'' perspective on market algorithms is that of agent-based computational economics, which seeks to directly address the problem of realistically modeling market dynamics outside of equilibrium. 
+
+Here, market dynamics are derived by making ad-hoc behavioral assumptions about agent behaviour -- we defer to \cite{hce:32} for a review of these methods, and to \cite{gas, hal1, hal2} for examples of agent-based modeling of supply shocks, which is the context in which these methods are most widely used.
+
+\par\medskip
+
+While literature in each of these areas is extensive, a unified picture is lacking. Outside of the mechanisms studied in ACE/Out-of-equilibrium phenomena, there seems to be very little work on explicitly reverse-engineering the behavioral assumptions that completely specify a particular market mechanism, or conversely on deriving the consequences of particular behavioral assumptions.
+
+The problem of reverse-engineering utility functions (up to a certain equivalence class) from the equilibrium has been studied before in the context of inverse game theory \cite{igt, egt, aumann, expressivity, bishop}. However, the utility functions themselves are not sufficient to determine the \emph{dynamics} of the game, only its equilibrium.
+
+There are efforts in mechanism design to discover certain desired properties of market mechanisms (the seminal result on which is the Myerson-Satterthwaite theorem \cite{myerson}), these do not amount to being able to uniquely determine the dynamics from some set of assumptions on the agents.
+
+The closest vein of research to my plan appears to be the research of Kanoria et al \cite{bayati1, bayati2, bayati3}, who constructed a simple agent-based model of bargaining in exchange networks and demonstrated its equivalence to a belief propagation algorithm, thereby founding the latter in precise behavioral assumptions. However, like in agent-based computational economics, these behavioral assumptions are ad-hoc, and not expressible in a general theoretical framework; their work cannot directly be extended to a different model of agent behavior.
+
+In general, the dynamics of a game cannot be uniquely determined from the agents' utility functions, or any equivalent formulation of the game set-up; to do so, a new theoretical framework is needed. This is the gap my research plan seeks to address.
+
+\statement{Research problems}
+
+I seek to develop a unified framework for algorithms of market dynamics, under which specific market algorithms can be derived as special cases, as the ``natural dynamics'' that arise under certain behavioral assumptions. 
+
+These assumptions cannot be formulated within the framework of the game itself, as the agents' utility functions only determine the equilibrium of the game, and not the algorithm by which this equilibrium is computed. 
+
+Instead, I suggest that the dynamics of an agent should itself be considered a ``choice'' in some more abstract sense. Then the dynamics of the original game arises as the unique equilibrium of this new game with expanded choice sets. 
+
+\substatement{Research hypothesis 1} For any game $G$ and algorithm $p$ on $G$, a temporal game $\hat{G}$ can be constructed with an expanded choice space and a unique equilibrium $\hat{x}$ corresponding to $p$. 
+
+\par\medskip
+
+Such a $\hat{G}$ can be constructed uniquely for any $(G, p)$. Each particular $p$ will then correspond to some set of statements about the utility functions of agents in the temporal game. By altering these agent-level assumptions, we will be able to produce different algorithms of out-of-equilibrium behavior.
+
+The intuition here is thus: in some philosophical sense, the market is ``always'' at equilibrium. Less blasphemously, one may say that an agent acting sub-optimally to its environment can still be considered optimal if we say that any other choice would be impossible or infinitely expensive, simply in the sense that the agent was not able to consider that choice in time. Obviously, this statement is blatantly false under a precise specification of the game, and thus the formalization of this idea involves constructing a new game.
+
+The thesis that market dynamics may be derived from some utility functions on an expanded game depends fundamentally on the notion of agents being \emph{strategic} -- this is not the case with message-passing algorithms, which assume full collaboration. 
+
+However, I am still interested in including message-passing algorithms in my proposed framework, as I believe the perspective of market dynamics being fundamentally being a matter of information propagation (via the price aggregation mechanism) is rather interesting and natural. To this end, I suggest that one may ``force'' the agents to collaborate by imposing a \emph{rights structure} on the agents' choices.
+
+Rights structures are the central of idea of property rights theory, and are mathematically formalized e.g. in \cite{garden, pasu}. The simplest example of a rights structure is the initial endowment of a Walrasian setting: in general, a rights structure allows an agent to ``forbid'' certain choices of another agent's. This connects naturally to our problem, as this allows agents to enforce collaboration by another agent.
+
+In my own previous work \cite{pasu}, I suggested that there may be a correspondence between rights structures and aggregate utility functions (i.e. that each rights structure maximizes a particular utility function at equilibrium), and that this may be worth further study. This is a problem of direct interest to us, as we are interested in finding the rights structure implied by a particular message-passing algorithm (i.e. by a particular function being optimized).
+
+\substatement{Research problem 2} Determine the precise correspondence between rights structures and aggregate utility functions, and use this to formulate message-passing algorithms as equilibrium computation algorithms on games with rights structures.
+
+\statement{Applications and significance}
+
+%for example, this directly leads to a theory of Max-Sum for ordinal utility functions; other implications are discussed in the applications section. 
+% There are implementations of a continuous Max-Sum algorithm, e.g. \cite{soton}, which rely on approximation by piecewise linear functions. A more intuitive approach may involve looking at message-passing as a differentiable process to implement a ``marginal Max-Sum'' algorithm. I suspect such an algorithm might look a lot like backpropagation when implemented on an acyclic graph; in particular, it would be valuable to study the behavioral assumptions that cause the emergence of marginal Max-Sum (or other ``marginal'' algorithms), thus looping back to RP 1.
+
+
+The most immediate motivation for RH 1 -- i.e. for developing a general theoretical framework for market algorithms -- lies in agent-based computational economics and the study of out-of-equilibrium phenomena. 
+
+Existing work in this field essentially makes certain ad-hoc assumptions about agent behavior \cite{hce:32} and subsequently derives a model of market dynamics from these assumptions. A general theoretical framework will enable a wider and more systematic study of possible market dynamics, and will allow us to draw general results connecting specific behavioral assumptions to specific emergent behaviors.
+
+In particular, my work will have implications in microfoundational work. Microfoundational economics refers to the attempt to model macroeconomic concepts as emergent phenomena arising from underlying microeconomic laws: for example, previous economics research has attempted to create reductionist models of economic growth \cite{growth}, business cycles \cite{cycles} and agent-based simulations of specific observed market behaviors such as loyalty \cite{loyalty} (the last of these isn't technically ``macro'', but belongs to a similar philosophical paradigm).
+
+My proposed theoretical framework will bring greater scientific clarity to such phenomenological work, as it enables us to make precise scientific predictions, allowing the falsification of models of agent behavior and bounded rationality.
+
+Furthermore, RP 2 directly pertains to the theoretical foundations of welfare economics, and could in similar spirit pave the way for research into the effects of redistribution, or on the relative inequalities in preference fulfilment resulting from a particular rights structure.
+
+Conversely, my work will also have implications in computer science and machine learning algorithms. 
+
+There is a popular quote attributed to Christos Papadimitriou in agent-based computational economics: ``If your laptop can't find it, then neither can the market''. The contrapositive to this is that a realistic model of information propagation in the market will allow for computationally efficient multi-agent co-ordination mechanisms. 
+
+The development of a ``natural'' model of market dynamics from realistic assumptions about the temporal game will contribute directly to this goal. This serves to address the known computational inadequacies of existing message-passing algorithms like Max-Sum \cite{khan}. 
+
+Furthermore, many classic machine learning/optimization algorithms may be mathematically equivalent to multi-agent co-ordination algorithms -- this is shown by \cite{bayati1, bayati2, bayati3} for belief propagation, and I suspect that a differential version of Max-Sum may look a lot like backpropagation when implemented on acyclic graphs (there is a continuous version of Max-Sum in the literature \cite{soton}, but it is not marginal in nature). While this line of research is more speculative, my research agenda in general may have implications for studying (or reverse-engineering) the convergence and complexity properties of traditional learning algorithms.
+
+\statement{Tentative research plan}
+
+In the proposal above, I've listed several closely-aligned problems that I am interested in; the proposal is ambitious, and it is not necessarily the case that they can all practically be completed in a PhD timeframe. While my research problem RH 1 is essential to my research agenda as I currently envision it, the relevance and meaningfulness of RP 2 depends largely on the progress that I will make in my first year of research, and the applications described are essentially auxillary.
+
+Below is a coarse tentative research plan/outline of the research phase of my PhD:
+
+\substatement{Background reading} The central theme of my research agenda is the explicit specification of axiomatic behavioral assumptions and deriving market mechanisms emergent from them; one of the purposes of doing so is to derive natural or realistic models of market dynamics.
+
+This is closely related to the goals of agent-based computational economics (ACE), which \cite{tesfatsion} describes as ``growing economies from the ground up''. In order to perform productive research towards this goal, it is essential that I review the existing literature in this area; a comprehensive review work is \cite{hce:32}. 
+
+Apart from ACE, the most interesting consequences of my research might be for multi-agent learning with strategic agents, an area I know comparatively little of; references include \cite{zhang, canese, calliess}. Other relevant references to my work include \cite{agt:5, bayati1, bayati2, bayati3, garden}; I will also briefly review the microfoundations literature (including \cite{growth, cycles}). 
+
+I intend to start this background reading before starting my PhD and end it two months into the program at the very latest.
+
+\substatement{Months 1-8} In the first eight months of my PhD, I will work on ``reverse-engineering'' the assumptions behind some market algorithms of interest.
+
+At this point, I do not necessarily intend to have rigorously formulated the theoretical framework that I aim to eventually state these assumptions in; I will see if the results I obtain are most naturally interpreted in such a framework, and will keep an open mind to other possible frameworks.
+
+As doing this with message-passing algorithms in this way would require progress on RP 2, I intend to focus mostly on mechanisms like auctions in this period. Depending on what results I get and the natural flow of my work, I might choose to incorporate repeated games or message-passing algorithms (in the latter case, I would have to begin work on RP 2 early). 
+
+Based on the results and time constraints, I could then work on applications and analogies to classic optimization algorithms (including addressing RP 2b), which I believe would have the potential to lead to papers in the standard top-tier machine learning conferences.
+
+\substatement{Months 9-16} I will then make an effort to produce the desired theoretical framework, thus addressing RH 1. I expect coming up with this framework itself to not take too long given the insights from the previous phase, but I could foresee many interesting theoretical problems arising (one that I can already anticipate is the proof of the uniqueness of the temporal game equilibrium). 
+
+This is tentatively the most central and important part of the project (as I currently have it planned), and has the potential to lead to several papers e.g. in conferences such as LOFT and EC, and journals like Games and Economic Behavior.
+
+\substatement{Months 17-24} Depending on the intuition I have developed by this stage for my work on other mechanisms, I may decide to work either on RH 2 (therefore allowing us to incorporate message-passing algorithms into our framework) or may decide to delve deeper into the applications of my research. In the latter case, I would focus primarily on proposing laws for the ``natural dynamics'' of markets in the temporal game framework.
+
+\substatement{Months 25-36} In the final year of my PhD, I will focus on exploring the applications I've previously described, as I believe my work will open many exciting new directions of future research beyond my PhD. The economic applications of my work are those that currently hold my interest, although this is subject to change based on what I discover in the process.
+
+It is likely that I will only be able to do exploratory research on the applications, and that they could each be the subject of interesting long-term research programs.
+
+\par\medskip
+
+I am very excited to begin work on my research plan, which I believe addresses interesting and impactful problems that are particularly significant to the department's strong program in computational social science and mechanism design. 
+
+I have previous research experience in theoretical economics, specifically property rights theory: \cite{pasu}. This relates directly to my interest in RP 2, but also trained me in the relevant mathematical formalisms for RH 1, as I used games with expanded choice sets to formulate the mathematical notion of rights in this paper. I believe this makes me well-qualified to work on this research plan.
+
+%\bibliographystyle{unsrt}
+%\bibliography{references}
+\printbibliography
+
+\end{document}

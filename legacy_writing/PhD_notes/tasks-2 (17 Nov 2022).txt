@@ -1,0 +1,49 @@
+1) Reflection, inverse limit and computable ordinals
+2) What actually is logic
+3) Boolean algebras
+4) Beliefs as choices
+5) Choice is like quantifying on all sets
+6) So what is actually the optimal way to handle a disobedient Bob
+7) All changes to beliefs are from information; thus computation is information
+   -- algorithmic information?
+
+--------
+########
+
+
+
+
+#####
+-----
+
+1) LOGICAL UNCERTAINTY
+
+"Twin primes conjecture is true" 
+<=> in such axiomatic system, there is a proof of twin primes conjecture
+<=> there will ever exist (in the lifespan of the universe) a proof enumeration program that will discover this as a theorem
+
+This is well-defined for a computably enumerable theory, not so for others [e.g. you could run into Godelian issues]
+
+???
+
+Does this make sense?
+
+Because how do you even define the probability that a proof enumeration program will discover this as a theorem?
+
+Dutch book arguments...
+
+We really need some general framework wherein to define a "Dutch book argument" or optimal strategy... %Philosophy of logic -- it is a way to compress information. A foundation for algorithmic information theory?
+
+2) PROBABILITY OF GODEL??????
+
+a) Just figure out what the inverse limit thing looks like, if only for shits and giggles
+
+b) Dutch book argument, family of strategies, semantics, bounded rationality, everything
+
+Read Halpern, I guess, and figure out how his boundedly rational agent addresses the Godel statement -- what is this incredible strategy that dominates Bayesianism 
+
+c) Godel gets resolved after the passage of time
+
+http://zhat.io/articles/notes-dutch-book-argument
+https://en.wikipedia.org/wiki/Boolean_algebra_(structure)
+file:///C:/Users/abhim/Downloads/4320249.pdf We Turing Machines Aren't Expected-Utility Maximizers (Even Ideally)

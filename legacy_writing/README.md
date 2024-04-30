@@ -1,0 +1,1 @@
+Writing, presentations and notes in legacy formats (e.g. Microsoft Office, scattered txt notes or for presentations even LaTeX) which I keep around as a record of things I still find relevant.

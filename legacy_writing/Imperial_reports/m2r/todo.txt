@@ -1,0 +1,92 @@
+O means not done, V means done. 
+
+Chapterwise content left
+ O Ch 8
+   O Check the proof of \ref{8:lem:inv}. Doesn't seem right.
+ O Ch 10
+   O Make sure definition of attraction basin etc. is OK.
+   O Definition 1 is obviously wrong, needs to be fixed
+   O Ecale-Voronin classification -- don't understand anything   other than "has to do with defining Fatou co-ordinate on    neighbourhood")
+   O Stuff about rational maps
+ O Ch 11 -- Jean's to-do comments
+
+Sections
+ V Table of Contents 
+ V Introduction                                  
+   V <ext>                                       
+   V Notations and conventions                   
+ O Main matter
+   V Ch. 8
+   O Ch. 9
+   V Ch. 10
+   O Ch. 11A
+   O Ch. 11B
+   O Ch. 11B-alt
+   O Ch. 11B-seagulls 
+ O Exercises
+ O Appendix                                      
+ O References                                    
+
+Standardize
+ O Notation: f, p, n, lambda, mu, etc.
+ O Conventions: fixed point = 0, etc.
+ V Numbering
+  V Be conservative about numbering equations
+  V What's a lemma, theorem, corollary, remark, result etc. 
+  V What to do with Ch 11 chapter numbering? 
+ V Latex macros and environments
+  V Consistent amsthm environments (thm, etc.)
+  V Consistent semantic macros (abs, etc.)
+  V Consistent text thingadingies (emph, etc.)
+  V Consistent packages and other preamble stuff
+
+Content checks
+ O Add useful intuitive stuff
+ O Add any relevant figures
+ O Add captions that are *useful* to the reader 
+ O Inline references?
+ O Structure, language, make sure not just copying the source
+ O Bugs, errors, formatting issues, beauty 
+ O Check for plagiarism, figure sources 
+
+----
+Checklist for standardization and cleaning
+ O Notation and conventions
+  O "p" for the local degree of f (not n)
+  O Don't bother talking about \hat{p}, just say 0
+  O If you do mention \hat{z}, use z^* instead
+  O n for integers tending to infinity
+  O \basin for attraction basin
+  O \D_r(0) for disk with radius r centered at 0
+  O Use \C, \R, \Q, \Z, \N. Don't just bold everything, please.
+  O T, T_k etc. for conjugation (not \phi)
+  O \zeta for the conjugate space (not \omega)
+  O \phi for the conjugate function (not F)
+ O LaTeX tips 
+  O Use \log, \exp instead of log, exp
+  O Use \label and \ref, don't type "Thm 2.1" manually.
+    Follow this format for labels:
+    \label{9:eq:whatever}
+    \label{9:thm:whatever}
+    \label{9:lem:whatever}
+    \label{9:cor:whatever}
+    \label{9:dfn:whatever}
+    \label{9:rmk:whatever}
+    The "9" is important, to avoid conflicts btw documents
+  O Don't invent new notation for inverses. Just use T\inv,
+    f\inv, etc. with some subscript to indicate what domain
+    it's defined on 
+  O Try to use \nhd to show neighbourhoods when possible
+  O (!) Remember to put math in $ $. Sometimes you write
+    single terms ("z", "n" etc.) without math mode. 
+
+----
+
+Useful find-and-replace regexes.
+
+Be careful while running this, make sure you don't start in the middle of absolute value signs. 
+First run: 
+  find \\left\|([^\|]*)\\right\|, replace \abs{$1}
+Then run:
+  find \|([^\|]*)\|, replace \abs{$1}
+The order is important, because the second pattern also matches the first kind of thing, which you don't want. I'm sure more acceptable methods exist, ask Jean.
