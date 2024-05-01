@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  30 APR 2024 21:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  1 MAY 2024 14:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,12 +463,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (19.69073pt too wide) in paragraph at lines 183--184
+Overfull \hbox (19.69073pt too wide) in paragraph at lines 178--179
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (85.82684pt too wide) in paragraph at lines 194--195
+Overfull \hbox (85.82684pt too wide) in paragraph at lines 189--190
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
  []
 
@@ -481,15 +481,15 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 13954 strings out of 474222
- 223614 string characters out of 5750209
- 1950978 words of memory out of 5000000
+ 13956 strings out of 474222
+ 223630 string characters out of 5750209
+ 1951978 words of memory out of 5000000
  35991 multiletter control sequences out of 15000+600000
- 563746 words of font info for 84 fonts, out of 8000000 for 9000
+ 563797 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,5n,93p,1084b,733s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,6n,93p,1084b,735s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on cv.pdf (5 pages, 148407 bytes).
+Output written on cv.pdf (5 pages, 149665 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
