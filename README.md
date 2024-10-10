@@ -8,7 +8,7 @@
 * Profiles: [LessWrong](https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir), [Stack Exchange](https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir), [Twitter](https://twitter.com/abhimanyupasu)
 * Also profiles: [LinkedIn](https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/), [GScholar](https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-2506-0515)
 
-**Stuff I'm doing now:**
+**Doing now:**
 
 - **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
 - `7f1de4ce0aea3d445afb288f15e58243f0c54038`
@@ -16,6 +16,8 @@
 - **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
 - **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
 - `b1d917de991507892970d8286218dc13fe519d6f`
+
+**Deferred:**
 
 Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon:
 
