@@ -8,24 +8,24 @@
 * Profiles: [LessWrong](https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir), [Stack Exchange](https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir), [Twitter](https://twitter.com/abhimanyupasu)
 * Also profiles: [LinkedIn](https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/), [GScholar](https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-2506-0515)
 
-Things I've created and am actively working on:
+**Stuff I'm doing now:**
 
-- [Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)
+- **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
 - `7f1de4ce0aea3d445afb288f15e58243f0c54038`
 - `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
-- [costly](https://github.com/abhimanyupallavisudhir/costly), a Python package for automatically estimating costs of complex LLM workflows before you run them
-- [Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)
+- **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
+- **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
 - `b1d917de991507892970d8286218dc13fe519d6f`
 
 Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon:
 
-- prediction markets for latent space variables/"subjective" questions somehow
-- reformulating probability theory in terms of closed-under-_computable_-union sigma-algebras
-- understanding market dynamics and bounded rationality _properly_ (this I kinda already do, it just needs to be written up with some elegance)
-- property rights theory, transaction costs, information asymmetry and thermodynamics
-- finishing this [very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)
+- **Prediction markets for latent space variables** or "subjective" questions somehow
+- **Reformulating probability theory in terms of closed-under-***_computable_***-union sigma-algebras**
+- **Market dynamics and bounded rationality**
+- **Property rights theory**, transaction costs, information asymmetry and thermodynamics
+- **[My very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)**
 
-List of holes in my understanding of math:
+<!-- List of holes in my understanding of math:
 
 - the Pythagoras theorem (I think I can grok it by thinking of it as derived from _scale invariance_ -- or visualizing a line rotating in a circle around another line -- tbh this just needs me to spend more time thinking about it)
 - generating functions // why Fourier transforms are special among transformations // why the normal distribution is the fixed point of the Fourier transform
@@ -33,4 +33,4 @@ List of holes in my understanding of math:
 - Fisher information
 - why the first two derivatives are basically all that matter in so many places in physics
 
-It's mildly interesting that all these things seem to have a unifying theme of "why is the second-order so much more important than anything higher-order?"
+It's mildly interesting that all these things seem to have a unifying theme of "why is the second-order so much more important than anything higher-order?" -->
