@@ -8,6 +8,8 @@
 * Profiles: [LessWrong](https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir), [Stack Exchange](https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir), [Twitter](https://twitter.com/abhimanyupasu)
 * Also profiles: [LinkedIn](https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/), [GScholar](https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-2506-0515)
 
+I'm interested in stuff at the intersection of markets and AI.
+
 **Doing now:**
 
 - **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
@@ -19,7 +21,7 @@
 
 **Deferred:**
 
-Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon:
+Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon.
 
 - **Prediction markets for latent space variables** or "subjective" questions somehow
 - **Reformulating probability theory in terms of closed-under-***_computable_***-union sigma-algebras**
