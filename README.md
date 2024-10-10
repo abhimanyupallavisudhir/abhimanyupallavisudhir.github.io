@@ -8,17 +8,29 @@
 * Profiles: [LessWrong](https://www.lesswrong.com/users/abhimanyu-pallavi-sudhir), [Stack Exchange](https://math.stackexchange.com/users/78451/abhimanyu-pallavi-sudhir), [Twitter](https://twitter.com/abhimanyupasu)
 * Also profiles: [LinkedIn](https://www.linkedin.com/in/abhimanyu-pallavi-sudhir/), [GScholar](https://scholar.google.com/citations?user=lb38BjYAAAAJ&hl=en), [ORCID](https://orcid.org/0000-0002-2506-0515)
 
-My goal is to design an AI agent whose internal structure is that of a market (because markets and intelligent agents do basically the same things; markets : intelligence :: capitalism : learning). My research will prevent the now-seemingly-inevitable destruction of the world and lead us to a glorious utopia, for three broad reasons:
+Things I've created and am actively working on:
 
-* **(Alignment is Industrial Organization)** Markets serve the consumers, they don't develop nefarious goals of their own, at least when you have a decent antitrust system, or spies. In fact this also addresses the question of how to handle conflicting interests between the humans we'd like to align the AI to.
-* **(Eliciting Latent Knowledge = Interpretability)** We could maybe get agents to bet on questions on their own latent space, or get agents to somehow bet on each others' latent spaces in a useful manner.
-* **(Coherent Extrapolated Volition)** I like transhumanism as much as the next android, but there was a Jimmy Neutron episode wherein one of the characters' heads grew 500x its size and he became evil. It's not obvious how to factor someone as Intelligence X Utility_function, because any "utility function" you might have is going to be some rationalization/as-if fit to the person's actions, which are limited by his bounded rationality. But markets solve the question of bounded rationality; "more algorithmic information" just means "more traders".
+- [Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)
+- `7f1de4ce0aea3d445afb288f15e58243f0c54038`
+- `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
+- [costly](https://github.com/abhimanyupallavisudhir/costly), a Python package for automatically estimating costs of complex LLM workflows before you run them
+- [Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)
+- `b1d917de991507892970d8286218dc13fe519d6f`
 
-So far all I've done is devise prediction markets for First-Order Logic (and also hyperarithmetical) sentences -- preprint: [arxiv.org/abs/2402.14021](https://arxiv.org/abs/2402.14021). Some side-quests that have emerged as a corollary of all this -- contact if you're interested in collaborating, because I don't have the time to do them all:
+Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon:
 
-* **Building practical markets:** I can prove that a very theoretical implication of my framework works; designing real markets for this will require some work.
-* **Implications for mathematical logic:** What if you let mathematical theories bet on markets? If they make a lot of money, we should trust them. Maybe this gives us a nice way to think about proof-theoretic ordinals etc. IDK.
-* **Rewriting probability theory:** I think the probability theory axioms are wrong and should be rewritten in a way to make long-term prices on my market a probability distribution. In particular, a sigma-algebra should only be required to be closed under countable union of a computable enumeration of its elements.
-* **Bridges to neural networks:** As it stands, program markets are absurdly impractical. Now I think I can solve this with latent spaces, but maybe we can somehow transfer our ideas to neural networks, or interpret neural networks as markets.
+- prediction markets for latent space variables/"subjective" questions somehow
+- reformulating probability theory in terms of closed-under-_computable_-union sigma-algebras
+- understanding market dynamics and bounded rationality _properly_ (this I kinda already do, it just needs to be written up with some elegance)
+- property rights theory, transaction costs, information asymmetry and thermodynamics
+- finishing this [very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)
 
-The first one will help you get rich; the second and third will satiate your deepest intellectual curiosities; the last one will prevent the world from being destroyed.
+List of holes in my understanding of math:
+
+- the Pythagoras theorem (I think I can grok it by thinking of it as derived from _scale invariance_ -- or visualizing a line rotating in a circle around another line -- tbh this just needs me to spend more time thinking about it)
+- generating functions // why Fourier transforms are special among transformations // why the normal distribution is the fixed point of the Fourier transform
+- the second fundamental theorem of Lie theory/BCH formula
+- Fisher information
+- why the first two derivatives are basically all that matter in so many places in physics
+
+It's mildly interesting that all these things seem to have a unifying theme of "why is the second-order so much more important than anything higher-order?"
