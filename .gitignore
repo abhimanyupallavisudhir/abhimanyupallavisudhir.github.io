@@ -1,0 +1,6 @@
+hash.txt
+*.aux
+*.log
+*.out
+*.gz
+*.bbl
