@@ -19,11 +19,15 @@ I'm interested in stuff at the intersection of markets and AI.
 - **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
 - `b1d917de991507892970d8286218dc13fe519d6f`
 
-**Deferred:**
+**Deferred due to lack of time:**
+
+- **Prediction markets for latent space variables** or "subjective" questions somehow
+- **Anthropic alignment**, i.e. the [``just make AI situationally unaware''](https://www.lesswrong.com/posts/8gH4Biog63uxMw3qW/ways-to-think-about-alignment#B__Utility___Reward_) approach which I think people have given up too early
+
+**Deferred due to lack of urgency:**
 
 Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon.
 
-- **Prediction markets for latent space variables** or "subjective" questions somehow
 - **Reformulating probability theory in terms of closed-under-***_computable_***-union sigma-algebras**
 - **Market dynamics and bounded rationality**
 - **Property rights theory**, transaction costs, information asymmetry and thermodynamics
