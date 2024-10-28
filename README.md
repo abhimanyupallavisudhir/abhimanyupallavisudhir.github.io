@@ -22,7 +22,7 @@ I'm interested in stuff at the intersection of markets and AI.
 **Deferred due to lack of time:**
 
 - **Prediction markets for latent space variables** or "subjective" questions somehow
-- **Anthropic alignment**, i.e. the [``just make AI situationally unaware''](https://www.lesswrong.com/posts/8gH4Biog63uxMw3qW/ways-to-think-about-alignment#B__Utility___Reward_) approach which I think people have given up too early
+- **Anthropic alignment**, i.e. the [``just make AI situationally unaware''](https://www.lesswrong.com/posts/8gH4Biog63uxMw3qW/ways-to-think-about-alignment#B__Utility___Reward_) approach which I think people have given up on too early
 
 **Deferred due to lack of urgency:**
 
