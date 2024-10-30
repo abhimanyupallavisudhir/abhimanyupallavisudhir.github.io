@@ -10,13 +10,15 @@
 
 I'm interested in stuff at the intersection of markets and AI.
 
-**Doing now:**
+**Stuff I've done:**
 
-- **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
-- `7f1de4ce0aea3d445afb288f15e58243f0c54038`
-- `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
-- **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
-- **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
+`[!]`: doing now; `[@]`: maintaining; `[.]`: archived. 
+
+-`[!]` **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
+-`[!]` `7f1de4ce0aea3d445afb288f15e58243f0c54038`
+- `[@]` `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
+- `[@]` **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
+- `[!]` **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
 - `b1d917de991507892970d8286218dc13fe519d6f`
 
 **Deferred due to lack of time:**
