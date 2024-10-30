@@ -14,8 +14,8 @@ I'm interested in stuff at the intersection of markets and AI.
 
 `[!]`: doing now; `[@]`: maintaining; `[.]`: archived. 
 
--`[!]` **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
--`[!]` `7f1de4ce0aea3d445afb288f15e58243f0c54038`
+- `[!]` **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
+- `[!]` `7f1de4ce0aea3d445afb288f15e58243f0c54038`
 - `[@]` `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
 - `[@]` **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
 - `[!]` **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
