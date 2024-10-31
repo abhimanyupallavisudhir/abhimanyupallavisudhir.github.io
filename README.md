@@ -34,7 +34,7 @@ Other stuff I'm interested in but are currently somewhat low-priority because AG
 - **Reformulating probability theory in terms of closed-under-***_computable_***-union sigma-algebras**
 - **Market dynamics and bounded rationality**
 - **Property rights theory**, transaction costs, information asymmetry and thermodynamics
-- **Ways to better measure GDP, or better: [Objective Utility]("legacy_writing/drafts/objective_utility/main.pdf")**
+- **Ways to better measure GDP, or better: [Objective Utility](legacy_writing/drafts/objective_utility/main.pdf)**
 - **[My very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)**
 
 ## Stuff I don't know but would like to:
