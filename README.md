@@ -10,37 +10,36 @@
 
 I'm interested in stuff at the intersection of markets and AI.
 
-**Stuff I've done:**
+## Stuff I've done:
 
-`[!]`: doing now; `[@]`: maintaining; `[.]`: archived. 
+`[NOW]`: doing now; `[SUP]`: maintaining/supporting; `[...]`: archived. 
 
-- `[!]` **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
-- `[!]` `7f1de4ce0aea3d445afb288f15e58243f0c54038`
-- `[@]` `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
-- `[@]` **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
-- `[!]` **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
-- `[!]` `b1d917de991507892970d8286218dc13fe519d6f`
+- `[NOW]` **[Reinforcement Learning from Recursive Information Market Feedback](https://www.lesswrong.com/posts/Y79tkWhvHi8GgLN2q/reinforcement-learning-from-information-bazaar-feedback-and)**
+- `[NOW]` `7f1de4ce0aea3d445afb288f15e58243f0c54038`
+- `[SUP]` `72fd5a01a4248d40394bb13dce64ccc1a9fd7142`
+- `[SUP]` **[costly](https://github.com/abhimanyupallavisudhir/costly)**, a Python package for automatically estimating costs of complex LLM workflows before you run them
+- `[NOW]` **[Prediction markets for non-verifiable non-falsifiable sentences](https://arxiv.org/abs/2402.14021)**
+- `[NOW]` `b1d917de991507892970d8286218dc13fe519d6f`
+- `[...]` other random stuff on my CV (see above)
 
-**Deferred due to lack of time:**
+## Deferred due to lack of time:
 
 - **Prediction markets for latent space variables** or "subjective" questions somehow
 - **Anthropic alignment**, i.e. the [``just make AI situationally unaware''](https://www.lesswrong.com/posts/8gH4Biog63uxMw3qW/ways-to-think-about-alignment#B__Utility___Reward_) approach which I think people have given up on too early
 
-**Deferred due to lack of urgency:**
+## Deferred due to lack of urgency:
 
 Other stuff I'm interested in but are currently somewhat low-priority because AGI is going to be a thing soon.
 
 - **Reformulating probability theory in terms of closed-under-***_computable_***-union sigma-algebras**
 - **Market dynamics and bounded rationality**
 - **Property rights theory**, transaction costs, information asymmetry and thermodynamics
+- **Ways to better measure GDP, or better: [Objective Utility]("legacy_writing/drafts/objective_utility/main.pdf")**
 - **[My very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)**
 
-<!-- List of holes in my understanding of math:
+## Stuff I don't know but would like to:
 
-- the Pythagoras theorem (I think I can grok it by thinking of it as derived from _scale invariance_ -- or visualizing a line rotating in a circle around another line -- tbh this just needs me to spend more time thinking about it)
-- generating functions // why Fourier transforms are special among transformations // why the normal distribution is the fixed point of the Fourier transform
-- the second fundamental theorem of Lie theory/BCH formula
-- Fisher information
-- why the first two derivatives are basically all that matter in so many places in physics
-
-It's mildly interesting that all these things seem to have a unifying theme of "why is the second-order so much more important than anything higher-order?" -->
+- Cryptography and cryptostuff
+- Macroeconomics -- money, interest rates, debt, inflation
+- Quantum information/probability/computing theory (should finish writing my [quantum mechanics article series](https://thewindingnumber.blogspot.com/p/quantum-mechanics.html) at some point)
+- [List of things in math I have learned but not really understood](https://thewindingnumber.blogspot.com/2024/10/why-is-pythagoras-theorem-true-anyway.html)
