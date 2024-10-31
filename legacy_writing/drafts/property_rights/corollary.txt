@@ -1,0 +1,5 @@
+
+\begin{cor}
+    \label{cor:equilibrium}
+    If an exchange economy has an equilibrium $(\bar{x},p)$, then any choice of the form $(x_\alpha^0, R_{-\alpha}(p))$ (where $x_\alpha^0$ satisfies $\bar{x}_\alpha = \sum_{\beta\in A}{x_\alpha^0(\beta)}$) in the corresponding abstract economy (as defined in Def~\ref{dfn:pure}) is an equilibrium in that economy.
+\end{cor}

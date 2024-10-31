@@ -1,0 +1,284 @@
+\documentclass{journal}
+
+\usepackage[utf8]{inputenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{tikz, hyperref, url}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+\newtheorem{eg}{Example}
+
+\newcommand{\economy}{\ensuremath{\mathcal{E}}}
+\newcommand{\emax}{\ensuremath{\operatornamewithlimits{emax}}}
+
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\topfraction}{.8}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+
+\title{``Observable utility'' as a generalization of GDP outside the consumer-firm model}
+\author{Abhimanyu Pallavi Sudhir\thanks{Department of Mathematics, Imperial College London.}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    We note the theoretical inadequacy of GDP as a measure of welfare outside the consumer-firm model due to its definitional reliance on ``final goods'', and introduce a generalization that we term \emph{observable utility}. We demonstrate that this metric is a natural generalization of GDP, and note conditions for which it reduces to the latter.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+The Gross Domestic Product (GDP) of an economy is defined either as the \emph{total expenditure on all final goods}, or as the \emph{total end-incomes} -- here, a final good is defined as a good bought by consumers, and an end-income is an income earned by individuals (rather than firms) including wages, rents, interests and profits \cite{bea}. 
+
+The motivating assumption for these definitions is what we call the \emph{consumer-firm model}. In this model, spending by \emph{consumers} is considered to be \emph{consumption} (i.e. purely for the purpose of maximizing utility, rather than as an investment to increase future consumption) while spending by \emph{firms} is considered to be \emph{investment} and does not have inherent value.
+
+Therefore, e.g. firm revenue is not separately added to GDP, but instead considered to be accounted for in where the revenue is later spent (e.g. wages, profits).
+
+\textbf{Note.} It is \emph{not} sufficient to say ``to avoid double-counting'' -- all income flow is circular, not just firm revenue, e.g. wages are later spent on goods that flow into their makers' wages.
+
+However, this is a very specific and arbitrary model (see Sec.~\ref{sec:eg} for examples of situations that are difficult to fit into this model) -- in general, a particular transaction may be motivated both by its inherent value (inherent utility gain) and by its value as an investment (an obvious concrete example is education). In any case, a general measure of welfare is desirable.
+
+While many metrics of welfare are known to the field of welfare economics \cite{eia}, we are particularly interested in a measure that acts as a natural generalization of income, or GDP, as a measure of welfare -- this principle will motivate our definition of \emph{observable utility}. 
+
+It is worth keeping in mind that our approach is similar in spirit to that of \emph{compensating and equivalent variation} \cite{hicks}\cite{tb}, but our goals and construction are different: instead of measuring the impact of economic and regulatory changes on welfare, we are interested in an overall measure of welfare that should be seen as a generalization of income.
+
+\subsection{Conventions used in this paper}
+\label{sec:conv}
+
+We use a directed graph representation of an economy (denoted by symbols such as $\economy$), with the following conventions:
+\begin{itemize}
+    \item Addition of agents into an economy is denoted as $\economy\cup \alpha$, with the interaction of $\alpha$ with the existing nodes clarified separately.
+    \item Agents are denoted by vertices, transactions of goods between agents are denoted by directed edges. Each transaction is marked by a quantity $Q$.
+    \item The utility function of an agent is denoted as a function of the quantities of each transaction it engages in, $U(Q^\leftarrow, Q^\rightarrow)$ where $Q^\leftarrow$, $Q^\rightarrow$ are vectors representing all buying and selling transactions by the agent respectively.
+\end{itemize}
+
+We define the following algebra on transaction vectors (such as $Q^\leftarrow$, $Q^\rightarrow$):
+\begin{itemize}
+    \item Addition of transaction vectors $Q_1 + Q_2$ -- the union of two sets of edges from or to the same vertex.
+    \item Magnitude of a transaction vector $|Q|$ -- reduces a vector of quantities of each transaction to a vector of quantities of each good (i.e. a basket), regardless of the specific agent the transaction was made with.
+    \item Inner product of basket with a good $\langle |Q|, G\rangle$ -- represents the quantity of good $G$ in basket $|Q|$.
+\end{itemize}
+
+Finally, regarding allowability of a quantity configuration ($Q^\leftarrow, Q^\rightarrow$): 
+
+\begin{itemize}
+    \item We distinguish between \emph{physical allowability} of a configuration (e.g. it is physically impossible to produce steel without iron, so a configuration that produces more steel than iron is physically impossible) and \emph{environmental allowability} (i.e. configurations consistent with other agents' policies/attainable by the agent from negotiating with the other agents).
+    \item Rather than letting utility be $-\infty$ for physically impossible quantity combinations, we will simply restrict the domain of the utility function. 
+    \item The operator $\max\limits_{Q^\leftarrow, Q^\rightarrow} U(Q^\leftarrow, Q^\rightarrow)$ takes the maximum of a function among physically allowable combinations $(Q^\leftarrow, Q^\rightarrow)$; the operator $\emax\limits_{Q^\leftarrow, Q^\rightarrow}^\economy U(Q^\leftarrow, Q^\rightarrow)$ takes the maximum of the utility function among environmentally allowable combinations $(Q^\leftarrow, Q^\rightarrow)$ in an economy $\economy$ (i.e. configurations attainable by the agent from negotiating with the other agents).
+\end{itemize} 
+
+\section{Observable utility}
+\label{sec:main}
+
+The purpose of defining a metric of welfare is that an agent's utility itself cannot be measured, or meaningfully compared across agents -- doubling a utility function has no impact on the agent's behaviour. The intuition for the notion of \emph{observable utility} is that it measures utility directly in terms of interactions with other agents, therefore creating a standardized metric of utility.
+
+\begin{dfn}[Perfect welfare unit]
+    \label{dfn:pfu}
+    Consider economies $\economy, \economy\cup\omega$, where $\omega(Q_M)$ is an agent who freely supplies a quantity $Q_M$ of a specific good $M$ to agent $\alpha$. Furthermore, $M$ satisfies the following properties:
+    \begin{itemize}
+        \item No agent in the economy holds $M$ to have inherent value, i.e. 
+        \begin{equation}
+            \label{eq:pwu1}
+            \forall \alpha\in\economy,\  U_\alpha(Q^\leftarrow + Q_M^\leftarrow,Q^\rightarrow + Q_M^\rightarrow)=U_\alpha(Q^\leftarrow,Q^\rightarrow)
+        \end{equation}
+        \item An agent's environmentally maximal attainable utility should strictly increase with the free provision of $M$, i.e. 
+        \begin{equation}
+            \label{eq:pwu2}
+            Q_{M, 1} < Q_{M, 2} \implies \emax\limits_{Q^\leftarrow, Q^\rightarrow}^{\economy + \omega(Q_{M, 1})} U(Q^\leftarrow, Q^\rightarrow) < \emax\limits_{Q^\leftarrow, Q^\rightarrow}^{\economy+\omega(Q_{M, 2})} U(Q^\leftarrow, Q^\rightarrow)
+        \end{equation}
+        \item Furthermore, it should be possible to attain any physically allowable utility by \emph{only} supplying $M$ for the agent to spend, i.e.
+        % \begin{equation}
+        %     \label{eq:pwu3}
+        %     \exists Q_M, \max\limits_{Q^\leftarrow, Q^\rightarrow} U(Q^\leftarrow, Q^\rightarrow) < \emax\limits_{Q^\leftarrow, Q^\rightarrow}^{\left(\economy + \omega(Q_M)\right)^*} U(Q^\leftarrow, Q^\rightarrow)
+        % \end{equation}
+        \begin{equation}
+            \label{eq:pwu3}
+            \forall (Q^\leftarrow, Q^\rightarrow), \ \exists Q_M,\  U(Q^\leftarrow, Q^\rightarrow) = \emax\limits_{Q^\leftarrow, |Q^\rightarrow|\le |Q^{\leftarrow}|}^{\economy + \omega(Q_M)} U(Q^\leftarrow, Q^\rightarrow)
+        \end{equation}
+        \item Finally, for the sake of meaningful comparison between agents, we must ensure that an expenditure of the same quantity of $M$ can buy the same goods for all agents. Thus, we require that the utility of agents in the economy is a function purely of the goods and services they trade, rather than directly on the identities of the agents they trade with -- i.e.
+        \begin{equation}
+            \label{eq:pwu4} 
+            \forall \beta\in\economy,\  U_\beta(Q^\leftarrow, Q^\rightarrow) = U_\beta(|Q^\leftarrow|, |Q^\rightarrow|)
+        \end{equation}
+    \end{itemize}
+    Then $M$ is called a \emph{perfect welfare unit} and $\omega$ is called a \emph{perfect observer}.
+\end{dfn}
+
+\begin{dfn}[Observable utility]
+    \label{dfn:ou}
+    Let $\alpha$ be an agent, $M$ be a perfect welfare unit and $Q_M\mapsto \omega(Q_M)$ be an indexed set of perfect observers. The minimum $Q_M$ for which $\alpha$ will agree to cease all outward transactions in any good except received goods is called the \textbf{observable utility} of the agent in units of $M$, which we will denote hereby as $\Upsilon_M$.
+    
+    Mathematically: $\Upsilon_M(Q^\leftarrow, Q^\rightarrow)$ is such that 
+    
+    \begin{equation}
+        \label{eq:ou}
+        U(Q^\leftarrow, Q^\rightarrow) = \emax\limits_{\Theta^\leftarrow, |\Theta^\rightarrow|\le |\Theta^{\leftarrow}|}^{\economy + \omega(\Upsilon_M(Q^\leftarrow, Q^\rightarrow))} U(\Theta^\leftarrow, \Theta^\rightarrow)
+    \end{equation}
+\end{dfn}
+
+\begin{thm}[Uniqueness of observable utility]
+    \label{thm:unique}
+    Definition~\ref{dfn:ou} is well-defined -- the quantity $\Upsilon_M$ defined in Eq.~\ref{eq:ou} exists, is unique, and is indeed the smallest $Q_M$ for which the agent will agree to cease all outward transactions. 
+\end{thm}
+\begin{proof}
+    Existence follows immediately from Eq.~\ref{eq:pwu3}. Uniqueness and minimality follow immediately from Eq.~\ref{eq:pwu2}.
+\end{proof}
+
+\begin{thm}[Justification for calling observable utility a welfare metric]
+    \label{thm:welfare}
+    Let $\alpha$ be an agent with utility function $U(Q^{\leftarrow}, Q^{\rightarrow})$ where $Q^\leftarrow, Q^\rightarrow$ are the vectors of quantities of goods bought and sold by the agent respectively. Then where $M$ is a perfect welfare unit, $U(Q_1^\leftarrow, Q_1^\rightarrow)<U(Q_2^\leftarrow, Q_2^\rightarrow) \iff \Upsilon_M(Q_1^\leftarrow, Q_1^\rightarrow)<\Upsilon_M(Q_2^\leftarrow, Q_2^\rightarrow)$.
+\end{thm}
+\begin{proof}
+    We prove the backward implication, and the forward implication follows as in this case the contrapositive happens to be identical to the converse.
+    
+    Consider the mapping $\economy\mapsto\economy^*$, where $\economy^*$ is identical to $\economy$, except that the agent $\alpha$ is not physically permitted to make any outward transactions in any good except received goods -- i.e.
+    
+    \begin{equation}
+        \label{eq:econ*}
+        \emax\limits_{Q^\leftarrow, Q^\rightarrow}^{\economy^*} U(Q^\leftarrow, Q^\rightarrow) = 
+        \emax\limits_{Q^\leftarrow, |Q^\rightarrow|<|Q^\leftarrow|}^{\economy} U(Q^\leftarrow, Q^\rightarrow)
+    \end{equation}
+    
+    Note that $(\economy + \omega)^* = \economy^* + \omega$. Now, assume $\Upsilon_M(Q_1^\leftarrow, Q_1^\rightarrow)<\Upsilon_M(Q_2^\leftarrow, Q_2^\rightarrow)$. Then by Eq.~\ref{eq:pwu2}, 
+    
+    \begin{equation*}
+        \emax\limits_{\Theta^\leftarrow, \Theta^\rightarrow}^{\economy^* + \omega(\Upsilon(Q_1))} U(\Theta^\leftarrow, \Theta^\rightarrow) < \emax\limits_{\Theta^\leftarrow, \Theta^\rightarrow}^{\economy^*+\omega(\Upsilon(Q_1))} U(\Theta^\leftarrow, \Theta^\rightarrow)
+    \end{equation*}
+    
+    Rewriting via Eq.~\ref{eq:econ*}, 
+    
+    \begin{equation*}
+        \emax\limits_{\Theta^\leftarrow, |\Theta^\rightarrow|<|\Theta^\leftarrow|}^{\economy + \omega(\Upsilon(Q_1))} U(\Theta^\leftarrow, \Theta^\rightarrow) < \emax\limits_{\Theta^\leftarrow, |\Theta^\rightarrow|<|\Theta^\leftarrow|}^{\economy+\omega(\Upsilon(Q_1))} U(\Theta^\leftarrow, \Theta^\rightarrow)
+    \end{equation*}
+    
+    Rewriting via Eq.~\ref{eq:ou},
+    
+    \begin{equation*}
+        U(Q_1^\leftarrow, Q_1^\rightarrow) < U(Q_2^\leftarrow, Q_2^\rightarrow) 
+    \end{equation*}
+\end{proof}
+
+\begin{thm}[Conditions for observable utility to equal income]
+    \label{thm:gdp}
+    Let $M$ be a perfect welfare unit. Consider the following model of an agent $\alpha$:
+    \begin{itemize}
+        \item The outflows of goods that are \emph{not} $M$ are environmentally tied to inflows of $M$ (i.e. $\alpha$ works for money).
+        \item The inflows of goods that are not $M$ are environmentally tied to outflows of $M$ (i.e. $\alpha$ spends money on goods).
+        \item $\alpha$ does not inherently value its work, i.e. $U(Q^\leftarrow, Q^\rightarrow)=U(Q^\leftarrow)$. 
+    \end{itemize}
+    Then, given that $\alpha$ has maximized its utility, the quantity of $\alpha$'s $M$ inflows equals its observable utility, i.e.
+    \begin{equation}
+        \label{eq:gdp}
+        \langle Q^\leftarrow, M \rangle = \Upsilon_M(Q^\leftarrow, Q^\rightarrow)
+    \end{equation}
+\end{thm}
+\begin{proof}
+    We must show:
+    \begin{equation*}
+        \emax\limits_{\Theta^\leftarrow,|\Theta^\rightarrow|\le|\Theta^\leftarrow|}^{\economy + \omega\left(\langle Q^\leftarrow, M\rangle\right)} U(\Theta^\leftarrow, \Theta^\rightarrow) = U(Q^\leftarrow, Q^\rightarrow)
+    \end{equation*}
+    Or since $U$ is a function only of its inflows and $\alpha$ has maximized its utility:
+    \begin{equation*}
+        \emax\limits_{\Theta^\leftarrow,|\Theta^\rightarrow|\le|\Theta^\leftarrow|}^{\economy + \omega\left(\langle Q^\leftarrow, M\rangle\right)} U(\Theta^\leftarrow) = \emax_{Q^\leftarrow,Q^\rightarrow}^\economy U(Q^\leftarrow)
+    \end{equation*}
+    As in $\economy$, the environment $\economy+\omega(\langle Q^\leftarrow, M\rangle)$ permits $\alpha$ to purchase the goods $Q^\leftarrow - \langle Q^\leftarrow, M\rangle$ with the money $\langle Q^\leftarrow, M\rangle$. As the model requires that the only source of $M$ (other than $\omega$) for $\alpha$ is payment for its outflows, which are banned in $\economy+\omega(\langle Q^\leftarrow, M\rangle)$, and the only source of utility-providing goods is $M$, $\alpha$ is not able to increase its utility further.
+\end{proof}
+
+\subsection{Examples}
+\label{sec:eg}
+
+\begin{eg}
+    \label{eg:1}
+    The following descriptions are fundamentally equivalent.
+    \begin{itemize}
+        \item Bob buys iron from Alice at price $p$ to produce steel for sale at price $q$. Bob's income is $q$, Alice's income is $p$.
+        \item Bob runs a firm, which buys iron from Alice to produce steel for sale. Bob's income is the profit $q-p$, Alice's income is $p$.
+    \end{itemize}
+    Since only the latter formulation obeys the axioms of the consumer-firm model, only the latter answer is correct within the model. More generally, however, one may calculate the observable utility in either formulation. Assuming Alice and Bob don't inherently value their work: paying Bob $q-p$ to stop selling steel will work; paying Alice $p$ to stop selling iron will work. Thus their observable utilities are $q-p$ and $p$ respectively.
+\end{eg}
+
+\begin{eg}
+    \label{eg:2}
+    The following descriptions are fundamentally equivalent.
+    \begin{itemize}
+        \item Alice (who earns $r$) and Bob (who earns $r$) enter a roommate agreement in which they both pay $0.5r$ rent. Furthermore, Alice pays Bob $0.2r$ to do maintenance work. Alice's income is $r$ Bob's income is $1.2r$.
+        \item Alice pays $0.7r$ rent for a well-maintained room, and Bob pays $0.3r$ rent for a room he has to maintain. Alice's income is $r$, Bob's income is $r$.
+    \end{itemize}
+    In terms of observable utility -- write Bob's dislike for maintenance work (the lowest wage he is willing to do it for, in absence of other offers) by $h$ and suppose neither of them inherently value their day jobs. Then Alice's observable utility is $r$, Bob's observable utility is $1.2r-h_2$.
+    
+    In other words: Bob doing maintenance work \emph{is} does add to the economy; \emph{however} his inherent dislike for maintenance work should be accounted for; \emph{however} accounting for it as a full $0.2r$ welfare loss is an overstatement of the loss (since he has actually chosen to engage in the activity, implying his overall benefit from it).
+\end{eg}
+
+\section{Concluding comments}
+\label{sec:concl}
+
+The definition given in this paper should by no means by regarded as the ``fundamental'' measure of welfare. For example, one may instead have more easily postulated a hypothetical good, \emph{pleasure} that directly increases an agent's utility without bound, and considered the amount of pleasure needed to convince an agent to stop all other actions.
+
+Instead, observable utility is specifically intended to act as a generalization of income as a measure of welfare. For this purpose, we defined a perfect welfare unit (Definition~\ref{dfn:pfu}) to be desirable theoretical properties of a currency.
+
+\subsection{Comments on aggregate utility and inequality}
+\label{sec:agg}
+
+The arbitrariness in the choice of the perfect welfare unit implies that any reparameterization of observable utility is acceptable. Therefore, aggregations of utility like $E(\Upsilon)$ (``total observable utility per capita'') are not truly fundamental; a reparameterization of $\Upsilon$ would yield an aggregation $f(E(f^{-1}(\Upsilon)))$ for the same system.
+
+This has implications on the study of the ethics of inequality -- it suggests that there is no fundamental way to define a notion of ``diminishing returns'' on welfare to talk about maximizing aggregate welfare in a utilitarian sense. If one accepts the veil of ignorance \cite{rawls} as a valid ethical principle, then the appropriate consideration of inequality will be \emph{subjective} -- i.e. one's subjective risk-averseness and other criteria would determine considerations as to the optimal distribution of observable utility. 
+
+\subsection{Limitations}
+\label{sec:lim}
+
+As observable utility should not be seen as particularly fundamental, it should not be surprising that it still faces several important model limitations:
+
+\begin{itemize}
+    \item The notion of a perfect welfare unit is an \emph{idealization} that is not truly found in the real world -- currency is not truly a perfect welfare unit. In particular: 
+    \begin{itemize}
+        \item Eq.~\ref{eq:pwu1} demands that money has no inherent value apart from the goods it can buy. An important violation of this behaviour is donations, where the donor inherently values cash outflows -- the result is that the receipt of donations is not counted in aggregations of observable utility.
+        \item Eq.~\ref{eq:pwu3} demands, in words, that a sufficiently high monetary payment will convince an economic agent of any desired action. This is unrealistic of many aspects of human social behaviour (although an acceptable model of the behaviours usually classified as ``economic behaviour''), as humans often have notions of \emph{priceless goods} (this does not mean a good that has infinite utility, but only that it has greater utility than any monetary sum, because the latter may have diminishing returns). 
+        \item Eq.~\ref{eq:pwu4} is violated by trade barriers and regulatory differences, making it difficult to meaningfully compare observable utility across jurisdictions.
+    \end{itemize} 
+    \item The obvious method to measure observable utility would be to sample a population and make random one-time offers of specific amounts to cease their productivity and make inferences from the response. This will be (a) expensive, since one must pay the individual to cease their entire lifetime productivity to take long-term investments into account (b) difficult to legally enforce (c) introduce sampling bias, e.g. if there are correlations between observable utility and viewing one's work as a priceless good.
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{bea}
+Bureau of Economic Analysis (2015),
+\emph{Measuring the Economy: A Primer on GDP and the National Income and Product Accounts} (p. 3),
+\url{https://www.bea.gov/resources/methodologies/measuring-the-economy}
+
+\bibitem{eia}
+Arora, V. (2013),
+\emph{Alternative Measures of Welfare in Macroeconomic Models} (p. 3),
+U.S. Energy Information Administration: 
+Independent Statistics \& Analysis, Working Paper Series.
+
+\bibitem{tb}
+Mas-Colell, A., Whinston, M and Green, J. (1995) 
+\emph{Microeconomic Theory}, 
+New York: Oxford University Press.
+
+\bibitem{firm}
+Spulber, D. (2009).
+\emph{The Theory of the Firm: Microeconomics with Endogenous Entrepreneurs, Firms, Markets, and Organizations.}
+Cambridge: Cambridge University Press. 
+\url{https://doi.org/10.1017/CBO9780511819902}
+
+\bibitem{rawls}
+Rawls, J. (1971).
+\emph{A Theory of Justice.}
+Cambridge, Massachusetts: Belknap Press.
+ISBN 0-674-00078-1.
+
+\bibitem{hicks}
+Hicks, J. (1939), 
+\emph{Value and capital: An inquiry into some fundamental principles of economic theory}, 
+Oxford: Clarendon Press.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,21 @@
+==Endorsers==
+(1 Jan 2020 - 4 Feb 2020)
+Metin Uyanik       - University of Queensland                         - Assistant Professor
+Yonatan Berman     - Paris School of Economics [INEQUALITY]           - Associate Professor
+Krishna Dasaratha  - Harvard                                          - PhD student
+Warut Suksompong   - Oxford                                           - Postdoc
+Erel Segal-Halevi  - Ariel University                                 - Lecturer
+Benjamin Golub     - Harvard                                          - Associate Professor
+Kevin He           - U Penn                                           - Assistant Professor
+Anqi Li            - WUSTL [SCARY]                                    - Assistant Professor
+Laura Doval        - Northwestern                                     - Assistant Professor 
+Mark Whitmeyer     - University of Bonn                               - Postdoc
+Rodrigo Velez      - Texas A&M                                        - Associate Professor
+Ludvig Sinander    - Northwestern [FRIENDLY]                          - PhD student 
+S. Nageeb Ali      - Penn State University                            - Associate Professor 
+
+==Journals==
+Autonomous Agents and Multi-Agent Systems [not in scope for observable utility paper]
+Economics letters                         [paid, 40 USD]
+Social choice and welfare                 
+Conferences

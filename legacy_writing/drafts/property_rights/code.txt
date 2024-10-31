@@ -1,0 +1,83 @@
+variables {agent : Type} 
+
+local attribute [instance, priority 0] classical.prop_decidable
+
+-- nth consent set
+def conset (X0 : agent → Type) (n : ℕ) : agent → Type := 
+nat.rec X0 (λ (n : ℕ) (Xn : agent → Type) (α : agent), X0 α × Π (β : agent), set (Xn β)) n
+
+-- projection from (n + 1)th consent set to nth consent set
+
+def conj {X0 : agent → Type} : ∀ {n : ℕ} {α}, conset X0 (n + 1) α → conset X0 n α
+| 0 := λ α ⟨x0, xb⟩, x0
+| (n + 1) := λ α x, ⟨x.fst, λ β, set.image conj (x.snd β)⟩
+
+def consentification (X0 : agent → Type) : agent → Type := λ α, { x : Π n, conset X0 n α // ∀ n, x n = conj (x (n + 1)) }
+
+-- α doesn't consent to β's choice
+def forbids {X0 : agent → Type} {α β : agent} (xa : consentification X0 α) (xb : consentification X0 β) : Prop :=
+∀ n, xb.val n ∈ (xa.val (n + 1)).snd β 
+
+def forbidden {X0 : agent → Type} {α β : agent } : consentification X0 α → set (consentification X0 β) := forbids
+
+lemma conj_rec {X0 : agent → Type} {n : ℕ} {α : agent} (x : conset X0 (nat.succ n + 1) α)
+  : conj x = (x.fst, λ β, set.image conj (x.snd β)) :=  rfl
+
+lemma prod1 {α β: Type} {x : α} {y₁ : β} {y₂ : β} 
+  : y₁ = y₂ → (x, y₁) = (x, y₂) :=  λ y, by rw y
+
+lemma prod2 {α β : Type} {x y : α × β} 
+  : x = y → x.fst = y.fst ∧ x.snd = y.snd := λ h, by rw h; exact ⟨rfl, rfl⟩
+
+-- injection from set (consentification X0 β) to consentification X0 α
+def contor {X0 : agent → Type} {α β : agent} (H : ∀ γ : agent, consentification X0 γ) 
+  : set (consentification X0 β) → consentification X0 α := 
+λ Rb, 
+⟨ λ n, nat.cases_on n ((H α).val 0) (λ n, ⟨(H α).val 0, λ γ, 
+    if G : β = γ then -- show set(conset X0 n γ); 
+      eq.rec (set.image (λ (x : consentification _ _), x.val n) Rb) G
+    else 
+      ((H α).val (n + 1)).snd γ⟩), 
+  λ n, 
+  begin 
+    cases n,
+    { refl },
+    { show ((H α).val 0, _) = @conj _ _ (n + 1) α ((H α).val 0, _),
+      simp [conj_rec],
+      refine prod1 (funext (λ γ, _)),
+      cases classical.em (β = γ) with T T,
+      { simp [T],
+        have G 
+          : set.image (λ (x : consentification X0 β), x.val n) Rb = 
+            set.image conj (set.image (λ (x : consentification X0 β), x.val (n.succ.add 0)) Rb) := 
+          funext (λ xn, propext ⟨
+            λ ⟨x, Hx⟩, ⟨x.val n.succ, ⟨⟨x, ⟨Hx.1, rfl⟩⟩, Hx.2 ▸ eq.symm (x.property n)⟩⟩,
+            λ ⟨xm, ⟨⟨x, Hx⟩, Hxm⟩⟩, ⟨x, ⟨Hx.1, Hxm ▸ (Hx.2 ▸ x.property n)⟩⟩⟩),
+        rw G,
+        induction T, 
+        refl },
+      { have P := (prod2 ((H α).property (n + 1))).2,
+        simp [conj_rec] at P,
+        simp [T, P], refl } }
+  end
+⟩
+
+theorem contor_inv {X0 : agent → Type} {α β : agent} (H : ∀ γ : agent, consentification X0 γ)  (Rb : set (consentification X0 β))
+  : Rb = @forbidden _ _ α β (contor H Rb) :=
+begin
+  refine funext (λ y, propext ⟨λ Hy, _, λ Hy, _⟩),
+  { intro n, 
+    sorry -- this is possible, i just didn't bother 
+  },
+  { sorry -- this is impossible 
+  }
+end
+
+-- therefore this is impossible
+def contor_inj {X0 : agent → Type} {α β : agent} (H : ∀ γ : agent, consentification X0 γ) 
+  : function.injective (@contor _ X0 α β H) :=
+λ Rb₁ Rb₂ HI, by rw [@contor_inv _ _ α β H Rb₁, @contor_inv _ _ α β H Rb₂, HI]
+
+--have HJ := subtype.mk.inj HI,
+
+#check subtype.mk.inj
