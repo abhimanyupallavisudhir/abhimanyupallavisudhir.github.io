@@ -3,11 +3,11 @@
 https://github.com/karpathy/LLM101n
 
 **Cryptoeconomics and such:**
-https://www.lesswrong.com/posts/qwLK9BZGG7kNLbcN3/vitalik-cryptoeconomics-and-x-risk-researchers-should-listen
-https://ethereum.org/en/developers/docs/intro-to-ethereum/
-https://www.lesswrong.com/posts/nMNi86hgNjaNnh8iu/a-whirlwind-tour-of-ethereum-finance
-https://bitcoin.org/bitcoin.pdf
-[Some fundamentals of mathematics of blockchain](https://drive.google.com/file/d/1aFQD06IlRnv--6O_R1-JTOVUlkJiK9OJ/view?usp=sharing)
+- https://www.lesswrong.com/posts/qwLK9BZGG7kNLbcN3/vitalik-cryptoeconomics-and-x-risk-researchers-should-listen
+- https://ethereum.org/en/developers/docs/intro-to-ethereum/
+- https://www.lesswrong.com/posts/nMNi86hgNjaNnh8iu/a-whirlwind-tour-of-ethereum-finance
+- https://bitcoin.org/bitcoin.pdf
+- [Some fundamentals of mathematics of blockchain](https://drive.google.com/file/d/1aFQD06IlRnv--6O_R1-JTOVUlkJiK9OJ/view?usp=sharing)
 
 Twitter list of high-signal content: https://x.com/i/lists/1854695454962803149
 
