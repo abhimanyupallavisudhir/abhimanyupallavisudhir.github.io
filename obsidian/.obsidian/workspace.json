@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "7ba3b8bba290d2f1",
+        "id": "d34d419f7b16e3bd",
         "type": "tabs",
         "children": [
           {
-            "id": "12a60a96de7ac813",
+            "id": "e2f06191914b25e7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BOOKMARKS.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "BOOKMARKS"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "BOOKMARKS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +88,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for BOOKMARKS"
+              "title": "Backlinks"
             }
           },
           {
@@ -115,11 +110,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "BOOKMARKS.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of BOOKMARKS"
+              "title": "Outline"
             }
           },
           {
@@ -161,8 +154,9 @@
       "obsidian-word-sprint:Activate Word Sprint Leaf": false
     }
   },
-  "active": "aed9df17ba0314fc",
+  "active": "e2f06191914b25e7",
   "lastOpenFiles": [
+    "BOOKMARKS.md",
     "_private/EVENTS.md",
     "_private",
     "New folder",
@@ -206,7 +200,6 @@
     "_private/substack/Assorted notes on political strategy.md",
     "_private/substack/A positive vision for conservatives.md",
     "_private/substack",
-    "BOOKMARKS.md",
     "notepad/Untitled",
     "_private/applications_and_planning/_attachments",
     "Untitled.canvas"
