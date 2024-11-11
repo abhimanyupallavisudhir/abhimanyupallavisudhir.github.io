@@ -116,10 +116,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_private/EVENTS.md"
+                "file": "BOOKMARKS.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of EVENTS"
+              "title": "Outline of BOOKMARKS"
             }
           },
           {
@@ -142,11 +142,12 @@
             "state": {
               "type": "stat-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "running-man",
+              "title": "Word Sprint"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -160,7 +161,7 @@
       "obsidian-word-sprint:Activate Word Sprint Leaf": false
     }
   },
-  "active": "12a60a96de7ac813",
+  "active": "aed9df17ba0314fc",
   "lastOpenFiles": [
     "_private/EVENTS.md",
     "_private",
