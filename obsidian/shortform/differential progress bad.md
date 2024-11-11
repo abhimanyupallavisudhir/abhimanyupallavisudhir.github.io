@@ -1,0 +1,7 @@
+The use of "Differential Progress" ("does this advance safety more or capabilities more?") by the AI safety community to evaluate the value of research is ill-motivated.
+
+Most capabilities advancements are not very [counterfactual](https://www.lesswrong.com/posts/csHstEPagqs8wChhh/examples-of-highly-counterfactual-discoveries) ("some similar advancement would have happened anyway"), whereas safety research is. In other words: differential progress measures absolute rather than comparative advantage / disregards the impact of supply on value / measures value as the y-intercept of the demand curve rather than the intersection of the demand and supply curves.
+
+Even if you looked at actual market value, just p_safety > p_capabilities isn't a principled condition.
+
+Concretely, I think that harping on differential progress risks AI safety getting crowded out by harmless but useless work -- most obviously "AI bias" "AI disinformation", and in my more controversial opinion, overtly [prosaic AI safety research](https://www.lesswrong.com/posts/QzQQvGJYDeaDE4Cfg/talent-needs-of-technical-ai-safety-teams#BNkpTqwcgMjLhiC8L) which will not give us any insights that can be generalized beyond current architectures. A serious solution to AI alignment will in all likelihood involve risky things like imagining more powerful architectures and revealing some deeper insights about intelligence.

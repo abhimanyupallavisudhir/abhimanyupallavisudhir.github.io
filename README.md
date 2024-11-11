@@ -43,3 +43,5 @@ Other stuff I'm interested in but are currently somewhat low-priority because AG
 - Macroeconomics -- money, interest rates, debt, inflation
 - Quantum information/probability/computing theory (should finish writing my [quantum mechanics article series](https://thewindingnumber.blogspot.com/p/quantum-mechanics.html) at some point)
 - [List of things in math I have learned but not really understood](https://thewindingnumber.blogspot.com/2024/10/why-is-pythagoras-theorem-true-anyway.html)
+
+See also: [BOOKMARKS](obsidian/BOOKMARKS.md) for a list of useful links.

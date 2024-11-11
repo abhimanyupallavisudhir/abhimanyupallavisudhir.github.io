@@ -4,3 +4,4 @@ hash.txt
 *.out
 *.gz
 *.bbl
+obsidian/_private/

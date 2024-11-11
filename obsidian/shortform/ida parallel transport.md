@@ -1,0 +1,1 @@
+IDA is parallel transport through the space of agents.

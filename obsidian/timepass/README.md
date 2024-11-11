@@ -1,0 +1,1 @@
+Abandoned projects and writings from high school and early undergrad that still have some merit to them.
