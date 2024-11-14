@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  13 NOV 2024 01:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.29)  14 NOV 2024 12:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -465,17 +465,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (18.08653pt too wide) in paragraph at lines 198--199
+Overfull \hbox (18.08653pt too wide) in paragraph at lines 201--202
 []|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (84.87411pt too wide) in paragraph at lines 209--210
+Overfull \hbox (84.87411pt too wide) in paragraph at lines 212--213
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
  []
 
 [2]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 266.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 269.
  (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -492,15 +492,15 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14189 strings out of 474222
- 227697 string characters out of 5750209
+ 14191 strings out of 474222
+ 227719 string characters out of 5750209
  1950978 words of memory out of 5000000
  36201 multiletter control sequences out of 15000+600000
- 569975 words of font info for 92 fonts, out of 8000000 for 9000
+ 570033 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,5n,93p,1079b,772s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,6n,93p,1079b,764s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on cv.pdf (5 pages, 226428 bytes).
+Output written on cv.pdf (5 pages, 227113 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  100 compressed objects within 1 object stream
