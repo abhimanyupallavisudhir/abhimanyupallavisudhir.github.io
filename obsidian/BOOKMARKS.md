@@ -1,6 +1,8 @@
 ## Current reading list
 
 https://github.com/karpathy/LLM101n
+- Francois Fleuret’s [book](https://fleuret.org/francois/lbdl.html)
+
 
 **Cryptoeconomics and such:**
 - https://www.lesswrong.com/posts/qwLK9BZGG7kNLbcN3/vitalik-cryptoeconomics-and-x-risk-researchers-should-listen
@@ -39,6 +41,7 @@ Things that have been found to result in useful thought patterns:
 - https://www.jeremykun.com/
 - https://nosology.substack.com
 - https://near.blog/
+- [Oliver Nash](http://olivernash.org/)
 
 ## AI alignment meta
 
@@ -74,13 +77,14 @@ Things that have been found to result in useful thought patterns:
 - https://course.fast.ai/
 - [ilya30u30](https://arc.net/folder/D0472A20-9C20-4D3F-B145-D2865C0A9FEE)
 - https://www.vikas.sh/post/how-i-got-into-deep-learning
+- Francois Fleuret’s [deep-learning course](https://fleuret.org/dlc/) and [book](https://fleuret.org/francois/lbdl.html)
 
 - https://github.com/karpathy/LLM101n
 ## Good explanations
 
 - [Mitchell Porter](https://physics.stackexchange.com/users/1486/mitchell-porter), [Ron Maimon](https://physics.stackexchange.com/users/4864/ron-maimon), [Mark Eichenlaub](https://www.quora.com/profile/Mark-Eichenlaub), [CR Drost](https://physics.stackexchange.com/users/73490/cr-drost)
 - [3blue1brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw), [Summer of Math Exposition](https://www.3blue1brown.com/blog/some1-results), [Math3ma](https://www.math3ma.com/), [Welch Labs](https://www.youtube.com/c/WelchLabsVideo/videos), [Better Explained](https://betterexplained.com/) 
-- [Oliver Nash](http://olivernash.org/), [Gibiansky](https://andrew.gibiansky.com/), [Gowers](https://gowers.wordpress.com/), [Colah](http://colah.github.io/), [Distill](https://distill.pub/), [Soren Bouma](https://sorenbouma.github.io/)
+-  [Gibiansky](https://andrew.gibiansky.com/), [Gowers](https://gowers.wordpress.com/), [Colah](http://colah.github.io/), [Distill](https://distill.pub/), [Soren Bouma](https://sorenbouma.github.io/)
 
 ## Tools
 ```
@@ -97,6 +101,8 @@ ActivityWatch (vastly better than everything else in this category)
 
 Need a better reference management solution tbh. Zotero is kinda slow. Org-mode? 
 ```
+
+Big list: https://debarghyadas.com/writes/github/
 
 **OCR**
 

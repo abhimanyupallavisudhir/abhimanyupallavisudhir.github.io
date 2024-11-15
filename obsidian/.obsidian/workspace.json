@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d34d419f7b16e3bd",
+        "id": "a20e12c471ddc1e4",
         "type": "tabs",
         "children": [
           {
-            "id": "e2f06191914b25e7",
+            "id": "d3ce6100a526e2b4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "BOOKMARKS.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "BOOKMARKS"
             }
           }
         ]
@@ -110,9 +114,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "BOOKMARKS.md"
+              },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of BOOKMARKS"
             }
           },
           {
@@ -154,7 +160,7 @@
       "obsidian-word-sprint:Activate Word Sprint Leaf": false
     }
   },
-  "active": "e2f06191914b25e7",
+  "active": "d3ce6100a526e2b4",
   "lastOpenFiles": [
     "BOOKMARKS.md",
     "_private/EVENTS.md",
