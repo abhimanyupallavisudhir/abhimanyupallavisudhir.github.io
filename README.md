@@ -36,6 +36,7 @@ Other stuff I'm interested in but are currently somewhat low-priority because AG
 - **Property rights theory**, transaction costs, information asymmetry and thermodynamics
 - **Ways to better measure GDP, or better: [Objective Utility](legacy_writing/drafts/objective_utility/main.pdf)**
 - **[My very sensible grammar concept](https://github.com/abhimanyupallavisudhir/Docs-timepass_public/blob/master/grammar.md)**
+- **[Mathematical/computational models of state and war](https://x.com/abhimanyupasu/status/1855725522636165547)**
 
 ## Stuff I don't know but would like to:
 
