@@ -64,6 +64,7 @@ Things that have been found to result in useful thought patterns:
 - http://markforster.squarespace.com/autofocus-system/
 - https://www.facebook.com/Xuenay/posts/10153513535798662
 - https://blog.samaltman.com/how-to-be-successful
+- http://benjaminrosshoffman.com/approval-extraction-advertised-as-production/
 - https://guzey.com/lifehacks/
 
 - ## Stuff that might be relevant in life at some point
@@ -87,20 +88,23 @@ Things that have been found to result in useful thought patterns:
 -  [Gibiansky](https://andrew.gibiansky.com/), [Gowers](https://gowers.wordpress.com/), [Colah](http://colah.github.io/), [Distill](https://distill.pub/), [Soren Bouma](https://sorenbouma.github.io/)
 
 ## Tools
-```
-PDF tools: PDFSam/PDFGear/FoxIt/[PDF24](tools.pdf24.org)/[PDFArranger](https://github.com/pdfarranger/pdfarranger)
+
+PDF tools: PDFSam/PDFGear/FoxIt/[PDF24](tools.pdf24.org)/[PDFArranger](https://github.com/pdfarranger/pdfarranger) -- haven't really played with them enough.
+
+Photo editing: Pinta. This is the perfect image editing app for 99.9% of users; it has the simplicity of MS Paint (without the bugginess) but the power of GIMP (at least as far as anything you will ever need). I've tried Krita, PaintPP, Gnome Drawing, none of them come close.
 
 Video editing: capcut?
 
-Diagrams: SVG? TikZ? Draw.io? Excalidraw? Mermaid? IDK haven’t figured out a good one yet
+Diagrams: SVG? TikZ? Draw.io? Excalidraw? Mermaid? IDK haven’t figured out a good one yet.
 
 yt-dlp
+
 pandoc
 
 ActivityWatch (vastly better than everything else in this category)
 
-Need a better reference management solution tbh. Zotero is kinda slow. Org-mode? 
-```
+Zotero 7 with BetterBibTeX (to export specific folders to bib files and keep them updated automatically) + Zotmoov (to organize attachments into folders e.g. mirroring your categories). Zotero 7 is *vastly* faster and more intuitive to use than Zotero 6, and Zotmoov replaces Zotfile very well (there's also Attanger, but its documentation is only in Chinese).
+
 
 Big list: https://debarghyadas.com/writes/github/
 

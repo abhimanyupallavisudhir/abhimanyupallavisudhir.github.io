@@ -1,0 +1,224 @@
+{
+  "main": {
+    "id": "62e175bf1391cbe0",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2036adb89b5ef89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "716e2b084571d6bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_private/SYSTEM_CONFIG.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SYSTEM_CONFIG"
+            }
+          },
+          {
+            "id": "2f0e51bdd2082b80",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.7"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.7"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "08dd2d861daa6ac5",
+    "type": "split",
+    "children": [
+      {
+        "id": "e5021c2c11c7da74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0014f1669bdd1fe3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b69a95e11b57a73f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "system_",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "eb4c8177aec88d9c",
+    "type": "split",
+    "children": [
+      {
+        "id": "91c674be19c86b67",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ca4dc48b5f5edbaf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "91883a6ab7c0bcdb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_private/EVENTS.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from EVENTS"
+            }
+          },
+          {
+            "id": "aed9df17ba0314fc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "7416a7d294b212ec",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "cd181ef6089bf9fd",
+            "type": "leaf",
+            "state": {
+              "type": "stat-view",
+              "state": {},
+              "icon": "running-man",
+              "title": "Word Sprint"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 326.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Open graph view": true,
+      "command-palette:Open command palette": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-word-sprint:Activate Word Sprint Leaf": false
+    }
+  },
+  "active": "2f0e51bdd2082b80",
+  "lastOpenFiles": [
+    "_private/applications_and_planning/plans/linux.md",
+    "_private/SYSTEM_CONFIG.md",
+    "_private/applications_and_planning/applications/Application - Global AI safety fellowship 2025.md",
+    "lesswrong/structures/thesis or report structure.md",
+    "_private/applications_and_planning/applications/Application - AI safety camp mentor.md",
+    "_private/radnyee app.md",
+    "lesswrong/structures/intro.md",
+    "BOOKMARKS.md",
+    "lesswrong/posted/Marketic Agents project intro.md",
+    "lesswrong/structures",
+    "_private/EVENTS.md",
+    "_private",
+    "New folder",
+    "_private/_attachments/Pasted image 20241104202604.png",
+    "_private/applications_and_planning/plans/cryonics.md",
+    "_private/applications_and_planning/applications/Recommendation letter - CAIF Fellowship 2024.md",
+    "_private/applications_and_planning/applications/WPCCS 2023.md",
+    "lesswrong/structures/nonVF paper structure.md",
+    "_private/applications_and_planning/reviews",
+    "_private/applications_and_planning/plans",
+    "_private/applications_and_planning/applications",
+    "lesswrong/Property rights, transaction costs, information, thermodynamics.md",
+    "lesswrong/USAGE.md",
+    "timepass/README.md",
+    "notepad/substack/A positive vision for conservatives.md",
+    "_private/substack/_attachments/tweets/Pasted image 20240426100531.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426101027.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426095402.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426095006.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426094936.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426094110.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426093958.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426093943.png",
+    "_private/substack/_attachments/tweets/Pasted image 20240426093939.png",
+    "_private/substack/_attachments/tweets",
+    "_private/substack/_attachments",
+    "_private/substack/Understanding macroeconomics.md",
+    "_private/substack/tweets.md",
+    "_private/substack/Table of common inconsistencies.md",
+    "_private/substack/Reasons to shit on leftists.md",
+    "_private/substack/README.md",
+    "_private/substack/Playing commie’s advocate- Steelmanning everything to understand economics.md",
+    "_private/substack/On media bias.md",
+    "_private/substack/How to stop being a midwit- things that are common knowledge among based people.md",
+    "_private/substack",
+    "notepad/Untitled",
+    "Untitled.canvas"
+  ]
+}

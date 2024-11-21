@@ -5,5 +5,5 @@
   "literatureNoteContentTemplate": "---\ntitle: {{title}}\nauthors: {{authorString}}\nyear: {{year}}\n---\n\n",
   "markdownCitationTemplate": "[@{{citekey}}]",
   "alternativeMarkdownCitationTemplate": "@{{citekey}}",
-  "citationExportPath": "C:\\Users\\abhim\\Google Drive\\Gittable\\Bib\\Stuff.bib"
+  "citationExportPath": "/home/manyu/gdrive/Gittable/Bib/Stuff.bib"
 }

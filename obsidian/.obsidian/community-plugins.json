@@ -1,8 +1,6 @@
 [
-  "obsidian-link-converter",
-  "obsidian-importer",
-  "obsidian-diagrams-net",
-  "obsidian-word-sprint",
+  "obsidian-footnotes",
+  "obsidian-citation-plugin",
   "obsidian-smart-typography",
-  "obsidian-footnotes"
+  "obsidian-word-sprint"
 ]
