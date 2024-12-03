@@ -12,25 +12,6 @@ https://github.com/karpathy/LLM101n
 - [Some fundamentals of mathematics of blockchain](https://drive.google.com/file/d/1aFQD06IlRnv--6O_R1-JTOVUlkJiK9OJ/view?usp=sharing)
 
 Twitter list of high-signal content: https://x.com/i/lists/1854695454962803149
-
-## Genuinely valuable wisdom
-
-- Learn things with insight/have confidence & curiosity. Learning the "lay of the land" in depth seems critical to everything.
-- Get your hands dirty with things.
-- Learn the ropes/the ways of your world/canonical ways of doing things, seek high signal content.
-- Do a lot of things.
-- Be perfectionist in even bureaucratic details of getting your work to have attention. Do donkey work.
-
-Things that have been found to result in useful thought patterns:
-
-- setting deadlines
-- setting immediate deadlines/timestamps — *opposite* of time-tracking
-- [NSDR](https://www.youtube.com/watch?v=AKGrmY8OSHM)
-- Sometimes you go on Twitter because it feels like it’s one of 2 things you could do. Actually, it’s one of 11 things you could do. Look at your to-do.
-- You should just do things, instead of sitting around deciding what to do
-- You should do more donkey work.
-- [Cookie boxing](https://x.com/kitten_beloved/status/1792668447366943000): introducing even small amounts of friction in the path of a habit you want to avoid produces measurable results. The reverse is also true: remove friction from activities you want to do more.
-- [Not even a drop of time must flow into the past without being made useful to man](https://en.wikipedia.org/wiki/Parakramabahu_I)
 ## Blogs
 
 - http://markforster.squarespace.com/forum/
@@ -57,6 +38,7 @@ Things that have been found to result in useful thought patterns:
 - https://www.reddit.com/r/thinkpad/comments/5xh702/no_way_to_check_battery_cycles_on_linux_t450s/
 - https://www.reddit.com/r/linux4noobs/comments/cveg5s/backing_up_windows_10_before_making_the_full/
 - [Git LFS stuff](https://chatgpt.com/share/66f84fbc-5638-8005-83f0-a73f1bc97652)
+- [Git SSH configuration](https://news.ycombinator.com/item?id=42233524)
 - The [OSSU Computer Science](https://github.com/ossu/computer-science) course seems like a good reference for teaching “the ropes”.
 
 ## Productivity
@@ -131,6 +113,7 @@ Apple Vision
 
 **Fun**  
 - [Gender-guesser](http://www.hackerfactor.com/GenderGuesser.php), [Bad at entropy](http://www.loper-os.org/bad-at-entropy/manmach.html) ([explanation](https://www.reddit.com/r/programming/comments/1p3ti1/you_are_bad_at_entropy/)), [Akinator](https://en.akinator.com/), [Mathgen](https://thatsmathematics.com/mathgen/)
+- [latex.vercel.app](https://latex.vercel.app/), a stylesheet for making websites look like latex
 ## Misc
 
 - https://en.wikipedia.org/wiki/Template:Types_of_cooking_oils_and_fats

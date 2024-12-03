@@ -1,0 +1,5 @@
+The third virtue of rationality, [lightness](https://www.lesswrong.com/posts/7ZqGiPHTpiDMwqMN2/twelve-virtues-of-rationality), is wrong. In fact: the more you value information to change your mind on some question, the more obstinate you should be to changing your mind on that question. Lightness implies disinterest in the question.
+
+Imagine your mind as a logarithmic market-maker which assigns some initial subsidy $b(Q)$ to any new question $Q$. This subsidy parameter captures [your marginal value for information on $Q$](lmsr%20info.md). But it also measures how hard it is to change your mind — the cost of moving your probability from $p$ to $p’$ is $b\min\left[\log\frac{1-p}{1-p'},\log\frac{p}{p’}\right]$. 
+
+What would this imply in practice? It means that each individual “trader” (both internal mental heuristics/thought patterns, and external sources of information/other people) will generally have a smaller influence on your beliefs, as they may not have enough wealth. Traders who influence your belief will carry greater risk (to their influence on you in future), though will also earn more reward if they’re right.
